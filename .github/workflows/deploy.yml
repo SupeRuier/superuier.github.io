@@ -30,7 +30,7 @@ jobs:
           path: gh-pages
 
       - name: "Clean install dependencies and build"
-        working-directory: master
+        working-directory: main
         run: |
           npm install hexo-cli -g
           npm install
