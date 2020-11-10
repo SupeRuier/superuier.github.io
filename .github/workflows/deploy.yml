@@ -41,7 +41,7 @@ jobs:
         working-directory: gh-pages
         run: |
           # rm -rf assets fonts langs math ml others programming reading software *.html *.css english jp python windows
-          mv ../main/public/* .
+          mv -f ../main/public/* .
 
       - name: "Deploy"
         working-directory: gh-pages
