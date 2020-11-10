@@ -36,6 +36,13 @@ jobs:
           npm install
           npm run build
 
+      - name: "Copy dist files"
+        ## Need to specifiy a working-directory, otherwise it cannot find the path
+        working-directory: gh-pages
+        run: |
+          # rm -rf assets fonts langs math ml others programming reading software *.html *.css english jp python windows
+          mv ../main/public/* .
+
       - name: "Deploy"
         working-directory: gh-pages
         run: |
