@@ -40,7 +40,8 @@ jobs:
         ## Need to specifiy a working-directory, otherwise it cannot find the path
         working-directory: gh-pages
         run: |
-          rm -rf 2020 archives categories css img js tags *.html *.json
+          # rm -rf 2020 archives categories css img js tags *.html *.json
+          git rm -r *
           mv -f ../main/public/* .
 
       - name: "Deploy"
