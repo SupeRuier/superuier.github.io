@@ -19,6 +19,12 @@ More info: [Writing](https://hexo.io/docs/writing.html)
 $ hexo server
 ```
 
+{% asset_img IMG_5169.PNG%}
+
+![Test](IMG_5264.PNG)
+
+Another image doesn't show aaaaaa.
+
 More info: [Server](https://hexo.io/docs/server.html)
 
 ### Generate static files
