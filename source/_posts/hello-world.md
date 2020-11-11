@@ -19,11 +19,14 @@ More info: [Writing](https://hexo.io/docs/writing.html)
 $ hexo server
 ```
 
+Image 1.
+
 {% asset_img IMG_5169.PNG%}
 
+Image 2
 ![Test](IMG_5264.PNG)
 
-Another image doesn't show aaaaaa.
+Another image doesn't show aaaaaabbbbb.
 
 More info: [Server](https://hexo.io/docs/server.html)
 
