@@ -42,18 +42,31 @@ More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
 ### Insert figures
 
 不同于markdown的图片引用方法，Hexo有着自己的语法。
-
-```
-{% asset_img IMG_5264.PNG%}
-```
-{% asset_img IMG_5264.PNG%}
-
-markdone的语法需要配置之后才可以使用，具体配置的方法见!()[Hexo-Trials.md]
-```
-![Test](IMG_5264.PNG)
-```
-
-![Test](IMG_5264.PNG)
-
-
 图片文件夹位于`_post`目录下
+
+```
+{% asset_img IMG_5264.PNG%}
+```
+{% asset_img IMG_5264.PNG%}
+
+同时可以自定义图片大小。
+
+```
+<div style="width:70%;margin:auto">{% asset_img IMG_5264.PNG%}</div>
+```
+<div style="width:70%;margin:auto">{% asset_img IMG_5264.PNG%}</div>
+
+markdone的语法需要配置之后才可以使用，具体配置的方法见{% post_link Hexo-Trials 这篇文章 %}
+```
+![Test](IMG_5264.PNG)
+```
+
+![Test](IMG_5264.PNG)
+
+### 文章间引用
+
+站内文章引用语法如下。
+
+```
+{% post_link file_name Title_of_link %}
+```
