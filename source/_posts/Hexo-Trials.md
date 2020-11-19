@@ -6,6 +6,8 @@ tags:
 
 本文记录使用Hexo中遇到的很多坑，以后可能会重复遇到，记录在此，以观后效。
 
+<!-- more -->
+
 ## 功能&支持
 
 ### Markdown image insertion grammar support
