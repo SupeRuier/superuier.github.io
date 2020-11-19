@@ -11,7 +11,7 @@ tags:
 
 MacOS是不可以通过HDMI/DP控制外接显示器的音量输出的。
 但是黑苹果是一定要外接显示器，同时使用显示器自带的扬声器是极为方便的，所以这是一个需要解决的问题。
-目前来看有两种解决方案：
+目前来看有三种解决方案：
 - Soundflower配套方案
 - Monitor Control插件
 - Sound Control插件
@@ -41,4 +41,6 @@ Macbook外接大部分2K显示器时并不会开启HiDPI，需要手动开启。
 开启方法很多帖子写的很详细了，详见[此链接](https://www.smslit.top/2019/01/02/mac_hidpi/)。
 印象中是有一些坑，待下次再设置的时候更新。
 
+## Google Software Update 自启动
 
+详见[这篇文章](https://www.imore.com/how-stop-googlesoftwareupdateapp-trying-run-your-mac)。
