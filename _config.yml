@@ -2,10 +2,10 @@ title: Hexo
 subtitle: ''
 description: ''
 keywords: null
-author: John Doe
+author: Rui He
 language: en
 timezone: ''
-url: 'http://example.com'
+url: 'https://superuier.github.io'
 root: /
 permalink: ':year/:month/:day/:title/'
 permalink_defaults: null
