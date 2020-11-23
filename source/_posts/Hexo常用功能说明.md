@@ -1,5 +1,6 @@
 ---
 title: Hexo常用功能说明
+cover: /gallery/covers/test.jpg
 ---
 
 本文档会用作Hexo基本用法记录演示。
