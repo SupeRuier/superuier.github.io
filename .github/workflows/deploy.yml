@@ -34,7 +34,7 @@ jobs:
         run: |
           npm install hexo-cli -g
           npm install
-          cp -f custom/default.styl ../gh-pages/node-modules/hexo-theme-icarus/source/css/
+          cp -f custom/default.styl node-modules/hexo-theme-icarus/source/css/
           npm run build
 
       - name: "Copy dist files"
