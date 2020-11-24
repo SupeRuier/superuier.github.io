@@ -22,11 +22,6 @@ jobs:
           ## Set `fetch-depth: 0` to fetch all history
           fetch-depth: 0
           path: main
-
-      - name: "Debug"
-        working-directory: main
-        run: |
-          ls
         
       - name: "Checkout branch: gh-pages"
         uses: actions/checkout@v2
@@ -34,20 +29,13 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      - name: "Debug"
-        working-directory: gh-pages
-        run: |
-          ls
-
       - name: "Clean install dependencies and build"
         working-directory: main
         run: |
-          ls
           npm install hexo-cli -g
           npm install
-          ls
           cp -f custom/default.styl node_modules/hexo-theme-icarus/source/css
-          # npm run clean
+          npm run clean
           npm run build
 
       - name: "Copy dist files"
