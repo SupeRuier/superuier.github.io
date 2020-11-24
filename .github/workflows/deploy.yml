@@ -22,10 +22,12 @@ jobs:
           ## Set `fetch-depth: 0` to fetch all history
           fetch-depth: 0
           path: main
+
+      - name: "Debug"
+        working-directory: main
         run: |
           ls
         
-
       - name: "Checkout branch: gh-pages"
         uses: actions/checkout@v2
         with:
