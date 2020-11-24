@@ -35,6 +35,7 @@ jobs:
           npm install hexo-cli -g
           npm install
           ls 
+          ls node-modules/
           ls node-modules/hexo-theme-icarus/
           ls node-modules/hexo-theme-icarus/source/
           cp -f custom/default.styl node-modules/hexo-theme-icarus/source/css
