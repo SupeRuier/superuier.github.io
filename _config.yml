@@ -30,9 +30,9 @@ external_link:
 filename_case: 0
 render_drafts: false
 post_asset_folder: true
-markdown:
-  render:
-    breaks: false
+marked:
+  gfm: true
+  breaks: false
 relative_link: false
 future: true
 highlight:
