@@ -34,16 +34,21 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
+      - name: "Debug"
+        working-directory: gh-pages
+        run: |
+          ls
+
       - name: "Clean install dependencies and build"
         working-directory: main
         run: |
+          ls
           npm install hexo-cli -g
           npm install
+          ls
           cp -f custom/default.styl node_modules/hexo-theme-icarus/source/css
           # npm run clean
           npm run build
-          tail -n 3 source/_posts/讲座记录.md
-          tail -n 3 source/_posts/肖刚讲座.md
 
       - name: "Copy dist files"
         ## Need to specifiy a working-directory, otherwise it cannot find the path
