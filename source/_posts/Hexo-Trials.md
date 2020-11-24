@@ -1,7 +1,11 @@
 ---
 title: Hexo-Trials
 date: 2020-11-13 00:00:33
+category: 
+- Utilities
+- Hexo
 tags:
+- Hexo
 ---
 
 本文记录使用Hexo中遇到的很多坑，以后可能会重复遇到，记录在此，以观后效。

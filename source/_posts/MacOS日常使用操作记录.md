@@ -1,7 +1,11 @@
 ---
 title: 苹果日常使用操作记录
 date: 2020-11-14 15:47:07
+category: 
+- Utilities
+- MacOS
 tags:
+- MacOS
 ---
 
 不得不说在多年的MacOS使用过程中还是有很多不方便的地方。

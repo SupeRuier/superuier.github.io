@@ -33,6 +33,9 @@ post_asset_folder: true
 marked:
   prependRoot: true
   postAsset: true
+markdown:
+  render:
+    breaks: false
 relative_link: false
 future: true
 highlight:

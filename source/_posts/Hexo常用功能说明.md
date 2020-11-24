@@ -1,6 +1,14 @@
 ---
 title: Hexo常用功能说明
+date: 2020-11-13
 cover: /gallery/covers/test.jpg
+category: 
+- Utilities
+- Hexo
+tag: 
+- Master Ma
+- Hexo
+
 ---
 
 本文档会用作Hexo基本用法记录演示。

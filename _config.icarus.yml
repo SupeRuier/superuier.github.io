@@ -135,7 +135,7 @@ article:
         # Default folding status of the code blocks. Can be "", "folded", "unfolded"
         fold: unfolded
     # Whether to show estimated article reading time
-    readtime: true
+    readtime: false
     # Article licensing block
     licenses:
         Creative Commons:
@@ -169,7 +169,7 @@ sidebar:
     # Left sidebar configurations
     left:
         # Whether the sidebar sticks to the top when page scrolls
-        sticky: false
+        sticky: true
     # Right sidebar configurations
     right:
         # Whether the sidebar sticks to the top when page scrolls
@@ -199,9 +199,9 @@ widgets:
         follow_link: 'https://github.com/SupeRuier'
         # Links to be shown on the bottom of the profile widget
         social_links:
-            Github:
-                icon: fab fa-github
-                url: 'https://github.com/SupeRuier'
+            # Github:
+            #     icon: fab fa-github
+            #     url: 'https://github.com/SupeRuier'
             # Facebook:
             #     icon: fab fa-facebook
             #     url: 'https://facebook.com'
@@ -220,7 +220,7 @@ widgets:
         position: left
         type: toc
         # Whether to show the index of each heading
-        index: true
+        index: false
         # Whether to collapse sub-headings when they are out-of-view
         collapsed: true
         # Maximum level of headings to show (1-6)
@@ -243,12 +243,12 @@ widgets:
     # Recent posts widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
-        position: left
+        position: right
         type: recent_posts
     # Archives widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
-        position: left
+        position: right
         type: archives
     # Tags widget configurations
     -
@@ -258,7 +258,7 @@ widgets:
     # Google FeedBurner email subscription widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
-        position: left
+        position: right
         type: subscribe_email
         # Hint text under the email input
         description: 
