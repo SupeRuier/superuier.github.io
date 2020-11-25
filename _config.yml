@@ -33,6 +33,8 @@ post_asset_folder: true
 marked:
   gfm: true
   breaks: false
+  prependRoot: true
+  postAsset: true
 relative_link: false
 future: true
 highlight:
