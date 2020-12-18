@@ -46,7 +46,6 @@ nvcc --version
 
 有时会显示command not found，解决方法[见此](#nvcc---version-command-not-found)。
 
-
 ## nvcc --version command not found
 
 首先查看
