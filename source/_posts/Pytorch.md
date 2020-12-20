@@ -10,6 +10,12 @@ tags: Pytorch
 
 <!-- more -->
 
+# 用法
+
+## nn.module 中 \_\_call\_\_ vs forward
+
+call 方法中调用了 forward 函数，区别主要在于如果使用 forward 函数来进行前向传播，则无法使用 pytorch 提供的 hook 功能。
+
 # 设置
 ## Dataloader 中的 num_workers 造成训练循环缓慢
 
