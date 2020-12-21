@@ -6,7 +6,7 @@ categories:
 tags: Pytorch
 ---
 
-用 Pytorch 时出现一些坑，在此记录一下。
+使用 Pytorch 时学到的一些知识
 
 <!-- more -->
 
@@ -15,6 +15,22 @@ tags: Pytorch
 ## nn.module 中 \_\_call\_\_ vs forward
 
 call 方法中调用了 forward 函数，区别主要在于如果使用 forward 函数来进行前向传播，则无法使用 pytorch 提供的 hook 功能。
+
+## NLLLoss & CrossEntropyLoss
+
+从文档中：
+
+> This CrossEntropyLoss criterion combines nn.LogSoftmax() and nn.NLLLoss() in one single class.
+
+可以简单理解为：
+
+Softmax + CrossEntropyLoss == LogSoftmax + NLLLoss
+
+那我们为什么要用 LogSoftmax 呢？
+
+因为在实现上，算log值更加便捷，如果直接计算指数值，可能会出现极大或者极其接近0的情况。
+所以使用 LogSoftmax 的话数值稳定性可能会更好。
+参考[此链接](https://www.zhihu.com/question/358069078/answer/912691444)。
 
 # 设置
 ## Dataloader 中的 num_workers 造成训练循环缓慢
