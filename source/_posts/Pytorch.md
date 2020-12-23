@@ -12,9 +12,45 @@ tags: Pytorch
 
 # 用法
 
-## nn.module 中 \_\_call\_\_ vs forward
+## 随机种子
 
-call 方法中调用了 forward 函数，区别主要在于如果使用 forward 函数来进行前向传播，则无法使用 pytorch 提供的 hook 功能。
+> 在导入文件之前，先导入与随机种子相关的包，这样导入的文件随机数也被确定。
+
+在文件的开头添加以下代码：
+
+```python
+def seed_torch(seed=1029):
+	random.seed(seed)
+	os.environ['PYTHONHASHSEED'] = str(seed) # 为了禁止hash随机化，使得实验可复现
+	np.random.seed(seed)
+	torch.manual_seed(seed)
+	torch.cuda.manual_seed(seed)
+	torch.cuda.manual_seed_all(seed) # if you are using multi-GPU.
+	torch.backends.cudnn.benchmark = False
+	torch.backends.cudnn.deterministic = True
+
+seed_torch()
+```
+
+## zero_grad optimizer or net？
+
+> `model.zero_grad()` and `optimizer.zero_grad()` are the same IF all your model parameters are in that optimizer. 
+It is safer to call `model.zero_grad()` to make sure all grads are zero. 
+e.g. if you have two or more optimizers for one model.
+
+## 初始化网络
+
+网络参数初始化会对模型表现产生影响，一般通过一些随机的方式初始化参数。具体的影响可以见[这篇博文](https://zhuanlan.zhihu.com/p/25110150)。
+具体如何实现网络权重初始化，可以通过对模型每一层遍历赋值实现，参见如下代码。
+
+```python
+params = list(net.parameters())
+torch.nn.init.xavier_uniform(layer) for layer in params
+```
+
+## nn.module 中 `__call__` vs `forward`
+
+> call 方法中调用了 forward 函数，区别主要在于如果使用 forward 函数来进行前向传播，则无法使用 pytorch 提供的 hook 功能。
 
 ## NLLLoss & CrossEntropyLoss
 
@@ -24,11 +60,11 @@ call 方法中调用了 forward 函数，区别主要在于如果使用 forward 
 
 可以简单理解为：
 
-Softmax + CrossEntropyLoss == LogSoftmax + NLLLoss
+> Softmax + CrossEntropyLoss == LogSoftmax + NLLLoss
 
 那我们为什么要用 LogSoftmax 呢？
 
-因为在实现上，算log值更加便捷，如果直接计算指数值，可能会出现极大或者极其接近0的情况。
+> 因为在实现上，算log值更加便捷，如果直接计算指数值，可能会出现极大或者极其接近0的情况。
 所以使用 LogSoftmax 的话数值稳定性可能会更好。
 参考[此链接](https://www.zhihu.com/question/358069078/answer/912691444)。
 
