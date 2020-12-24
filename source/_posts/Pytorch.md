@@ -68,6 +68,16 @@ torch.nn.init.xavier_uniform(layer) for layer in params
 所以使用 LogSoftmax 的话数值稳定性可能会更好。
 参考[此链接](https://www.zhihu.com/question/358069078/answer/912691444)。
 
+## tensor 非 contiguous 导致无法使用 view()
+
+当使用 tensor 操作时，新建了一份 tensor 元信息，并重新制定 stride，导致其不连续，无法使用 view()。
+
+最简单的解决方法是使用`tensor.contiguous()`, 此时会重新开辟一块内存储存底层数据。
+
+若不介意底层数据是否使用了新的内存，用`reshape()`则更方便。
+
+[这篇文章](https://zhuanlan.zhihu.com/p/64551412)提供了一个非常完善的解释。
+
 # 设置
 ## Dataloader 中的 num_workers 造成训练循环缓慢
 
@@ -91,3 +101,17 @@ torch.nn.init.xavier_uniform(layer) for layer in params
 | [0,1]             | [0,1,2,3]    |
 
 解决方法只要找到矛盾发生的地方，对数据中类别的标签进行改动即可。当然有的时候也可能是网络格式写错。
+
+## RuntimeError: CUDA out of memory
+
+起因在于丢了49000张 mnist 数据进去没有分 batch，本来以为数据的大小只占了450m内存应该不会有问题，但是发现跑了一个前向就加了七八个g的显存，甚至一个模型直接把24g的显卡显存跑炸了。
+
+分析原因应该是因为 batch size 较大的时候，前向输入模型，在某一层计算时申请了很大的 tensor 导致消耗了成倍与数据大小的显存。
+这个在小 batch 的情况下应该并不会有太大影响，所以说还是需要使用 batch。
+
+当然还是可以在需要的时候释放缓存，治标不治本。
+```python
+torch.cuda.empty_cache() 
+```
+
+[这篇文章](https://blog.csdn.net/weixin_38278334/article/details/105575403)简要介绍了 pytorch 的缓存机制。
