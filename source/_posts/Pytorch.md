@@ -10,9 +10,9 @@ tags: Pytorch
 
 <!-- more -->
 
-# 用法
+# 1. 用法
 
-## 随机种子
+## 1.1. 随机种子
 
 > 在导入文件之前，先导入与随机种子相关的包，这样导入的文件随机数也被确定。
 
@@ -32,13 +32,13 @@ def seed_torch(seed=1029):
 seed_torch()
 ```
 
-## zero_grad optimizer or net？
+## 1.2. zero_grad optimizer or net？
 
 > `model.zero_grad()` and `optimizer.zero_grad()` are the same IF all your model parameters are in that optimizer. 
 It is safer to call `model.zero_grad()` to make sure all grads are zero. 
 e.g. if you have two or more optimizers for one model.
 
-## 初始化网络
+## 1.3. 初始化网络
 
 网络参数初始化会对模型表现产生影响，一般通过一些随机的方式初始化参数。具体的影响可以见[这篇博文](https://zhuanlan.zhihu.com/p/25110150)。
 具体如何实现网络权重初始化，可以通过对模型每一层遍历赋值实现，参见如下代码。
@@ -48,11 +48,11 @@ params = list(net.parameters())
 torch.nn.init.xavier_uniform(layer) for layer in params
 ```
 
-## nn.module 中 `__call__` vs `forward`
+## 1.4. nn.module 中 `__call__` vs `forward`
 
 > call 方法中调用了 forward 函数，区别主要在于如果使用 forward 函数来进行前向传播，则无法使用 pytorch 提供的 hook 功能。
 
-## NLLLoss & CrossEntropyLoss
+## 1.5. NLLLoss & CrossEntropyLoss
 
 从文档中：
 
@@ -68,7 +68,7 @@ torch.nn.init.xavier_uniform(layer) for layer in params
 所以使用 LogSoftmax 的话数值稳定性可能会更好。
 参考[此链接](https://www.zhihu.com/question/358069078/answer/912691444)。
 
-## tensor 非 contiguous 导致无法使用 view()
+## 1.6. tensor 非 contiguous 导致无法使用 view()
 
 当使用 tensor 操作时，新建了一份 tensor 元信息，并重新制定 stride，导致其不连续，无法使用 view()。
 
@@ -78,8 +78,8 @@ torch.nn.init.xavier_uniform(layer) for layer in params
 
 [这篇文章](https://zhuanlan.zhihu.com/p/64551412)提供了一个非常完善的解释。
 
-# 设置
-## Dataloader 中的 num_workers 造成训练循环缓慢
+# 2. 设置
+## 2.1. Dataloader 中的 num_workers 造成训练循环缓慢
 
 在本地跑实验，一个简单的网络的训练，发现 Dataloader 中 num_workers 设置的数目越大，在 batch 中训练越耗时，表示莫名其妙。在我的情形下将其设为8要比将其设为0慢了百倍以上。
 仔细看了一下 mini-batch 的训练过程并且记录了一下时间，发现主要的时间开销发生于 for 循环遍历 loader 之后退出循环时。
@@ -87,9 +87,9 @@ torch.nn.init.xavier_uniform(layer) for layer in params
 
 造成这个的主要原因可能是 IO 耗时和模型前/后传耗时之间的 GAP 太大，导致进程间造成了阻塞，详见[这篇文章](https://bbs.cvmart.net/topics/2066)。
 
-# 报错
+# 3. 报错
 
-## RuntimeError: CUDA error: device-side assert triggered
+## 3.1. RuntimeError: CUDA error: device-side assert triggered
 
 参考[此篇文章](https://cloud.tencent.com/developer/article/1686771)。
 
@@ -102,7 +102,7 @@ torch.nn.init.xavier_uniform(layer) for layer in params
 
 解决方法只要找到矛盾发生的地方，对数据中类别的标签进行改动即可。当然有的时候也可能是网络格式写错。
 
-## RuntimeError: CUDA out of memory
+## 3.2. RuntimeError: CUDA out of memory
 
 起因在于丢了49000张 mnist 数据进去没有分 batch，本来以为数据的大小只占了450m内存应该不会有问题，但是发现跑了一个前向就加了七八个g的显存，甚至一个模型直接把24g的显卡显存跑炸了。
 
