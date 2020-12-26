@@ -78,6 +78,61 @@ torch.nn.init.xavier_uniform(layer) for layer in params
 
 [这篇文章](https://zhuanlan.zhihu.com/p/64551412)提供了一个非常完善的解释。
 
+## 1.7. pytorch 中 hook 的使用
+
+Pytorch 中的 hook 为我们提供了一个较为方便的方式来访问网络某一层的输入与输出（前向的话返回 feature，反向的话返回梯度。）
+
+具体的使用方法，首先要在相应的层上打开前向或者反向的 hook：
+
+```python
+# forward
+# 定义 forward hook function
+def hook_fn_forward(module, input, output):
+    print(module) # 用于区分模块
+    print('input', input) # 首先打印出来
+    print('output', output)
+    total_feat_out.append(output) # 然后分别存入全局 list 中
+    total_feat_in.append(input)
+
+# Add hook on the layer you want
+modules = model.named_children() # 
+for name, module in modules:
+    module.register_forward_hook(hook_fn_forward)
+
+###############################################
+# backward
+def hook_fn_backward(module, grad_input, grad_output):
+    print(module) # 为了区分模块
+    # 为了符合反向传播的顺序，我们先打印 grad_output
+    print('grad_output', grad_output) 
+    # 再打印 grad_input
+    print('grad_input', grad_input)
+    # 保存到全局变量
+    total_grad_in.append(grad_input)
+    total_grad_out.append(grad_output)
+
+modules = model.named_children()
+for name, module in modules:
+    module.register_backward_hook(hook_fn_backward)
+```
+
+注意 register 函数接受的是一个函数，会为传入的函数传递三个参数 module， grad_input， grad_output。
+这里的 input 和 output 都是以前向网络的方向来进行标记的。
+
+反向传播中对于线性模块：o=W*x+b ，它的输入端包括了W、x 和 b 三部分，因此 grad_input 就是一个包含三个元素的 tuple。
+而在 forward hook 中，input 是 x，而不包括 W 和 b。
+
+详见这篇非常好的[讲解](https://zhuanlan.zhihu.com/p/75054200)。
+
+## 1.8. 查看某一层梯度
+
+hook 是一种提取梯度的方法，同样的，还有其他方法可以提取梯度。
+
+```python
+# 一个全链接层举例
+list(model.modules())[5].weight.grad
+```
+
 # 2. 设置
 ## 2.1. Dataloader 中的 num_workers 造成训练循环缓慢
 
