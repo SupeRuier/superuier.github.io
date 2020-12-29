@@ -133,6 +133,37 @@ hook 是一种提取梯度的方法，同样的，还有其他方法可以提取
 list(model.modules())[5].weight.grad
 ```
 
+## 1.9. 计算某一层梯度
+
+其实如果使用 `loss.backward()` 然后再利用 hook来提取梯度会有一些耗费时间，因为反向传播是要从尾到头的，如果你只需要倒数几层的梯度的话，其实可以直接计算。
+
+`torch.autograd.grad` 方法提供了一个计算梯度的方式，可以看以下例子，此方法返回的对象是一个元祖。
+
+```python
+# 计算梯度
+# 如果需要多次计算的话记得保留计算图
+grad= torch.autograd.grad(outputs=loss, inputs=W, retain_graph=True, only_inputs=True)[0]
+```
+
+## 1.10. 计算梯度的时间
+
+在我的实验终有一个计算每一样本对梯度贡献的需求，有两种方法计算：
+- 将 `batch_size` 设为1，然后使用 `torch.autograd.grad` 计算梯度。
+- 用非1的 `batch_size`，计算 loss 时，不 reduce，这样得出来的 loss 是一个向量。遍历这个向量，对向量中每一个tensor使用 `torch.autograd.grad` 计算梯度。
+
+但是发现一个问题。
+在 batch 下，平均每个样本的前向时间是要远小于不使用 batch。
+但是平均每个样本的后向时间是要远大于不使用 batch。
+（这里远小远大是指数量级）。
+
+推测原因为如果遍历向量的话的话，获得的 tensor 中 `grad_fn` 是 UnbindBackward 而不是 nlllossbackward。
+所以尝试在计算 loss 之前就对样本进行遍历，但是其实时间上和遍历 loss 是一样的。
+因为是用 loss 计算梯度是要使用之前的计算图，遍历网络输出会使遍历的每一个输出的 `grad_fn` 变化。
+用这种方式虽然看起来 loss 的 `grad_fn` 还是 nlllossbackward，但是在梯度的计算过程中还是会遇到 UnbindBackward。
+
+所以这个问题没有想到具体的解决方法，就选取了耗费时间相对较短的方法。
+
+
 # 2. 设置
 ## 2.1. Dataloader 中的 num_workers 造成训练循环缓慢
 
