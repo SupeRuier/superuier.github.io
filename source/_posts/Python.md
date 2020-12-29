@@ -43,3 +43,19 @@ f"{b:.2%}"            ## "50.00%"
 ```
 
 Copy from Yu's [blog](https://yzhang-gh.github.io/notes/programming/python/python.html#作用域-scope).
+
+### 将 Traceback 信息保存到 log 文件中
+
+有时候要跑一个运行时间很长的文件，中间会创建 log 文件。
+如果跑到一半报错终止，文件中却没有相应记录则很难追踪错误。
+所以需要加入报错信息。
+
+```python
+import traceback
+
+try:
+    main() # The code need to be executed.
+except Exception as e:
+    logger.error(f"Main program error: {e}")
+    logger.error(traceback.format_exc())
+```
