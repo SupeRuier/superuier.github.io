@@ -21,7 +21,7 @@ bash Miniconda2-4.5.11-Linux-x86_64.sh
 source ~/.bashrc
 ```
 
-Conda 默认的软件源在国外,速度非常的慢,我们可以将其更换为清华源。
+Conda 默认的软件源在国外,速度非常的慢,我们可以将其更换为[清华源](https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/)。
 可以直接在`.condarc`中添加
 
 {% codeblock .condarc lang:bash %}
