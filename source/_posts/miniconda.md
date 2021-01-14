@@ -31,7 +31,12 @@ Conda 默认的软件源在国外,速度非常的慢,我们可以将其更换为
 - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
 {% endcodeblock %}
 
+之后需要使用 `conda clean -i` 清除索引缓存，保证用的是镜像站提供的索引。]
+注意有的时候会显示 url 错误， 此时换成 https 可能会解决问题。
+
 ## 配置
+
+### 创建环境
 
 创建所需要环境
 
@@ -49,4 +54,16 @@ conda install XXX
 退出环境
 ```
 conda deactivate py3.8
+```
+
+### 批量导入导出组件
+
+导出
+```
+conda list -e > requirements.txt
+```
+导入有两种方式
+```
+conda create --name py3.8 --file requirements.txt # 顺便创建环境
+conda install --yes --file requirements.txt
 ```
