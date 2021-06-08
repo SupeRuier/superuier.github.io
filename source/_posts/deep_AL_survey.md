@@ -1,6 +1,7 @@
 ---
 title: A Survey of Deep Active Learning
 date: 2020-12-20 18:47:07
+updated: 2020-12-20 18:47:07
 category: 
 - Paper Reading
 tags:
