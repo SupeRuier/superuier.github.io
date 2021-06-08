@@ -42,11 +42,12 @@ jobs:
         ## Need to specify a working-directory, otherwise it cannot find the path
         working-directory: gh-pages
         run: |
-          # rm -rf 2020 archives categories css img js tags *.html *.json
+          # rm -rf *
           ls -a
-          git ls-files 
-          git rm -f *
-          ls -a
+          # git ls-files 
+          # git rm -f *
+          # git filter-branch --force *
+          # ls -a
           cp -f ../main/public/* .
 
       - name: "Deploy"
