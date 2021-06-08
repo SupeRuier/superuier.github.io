@@ -44,7 +44,7 @@ jobs:
         run: |
           # rm -rf 2020 archives categories css img js tags *.html *.json
           git rm -r *
-          mv -f ../main/public/* .
+          cp -f ../main/public/* .
 
       - name: "Deploy"
         working-directory: gh-pages
