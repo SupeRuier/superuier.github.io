@@ -1,4 +1,4 @@
-title: Hexo
+title: Rui's Blog
 subtitle: ''
 description: ''
 keywords: null
@@ -20,6 +20,7 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: ':lang'
 skip_render: null
+
 new_post_name: ':title.md'
 default_layout: post
 titlecase: false

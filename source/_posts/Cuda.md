@@ -1,7 +1,6 @@
 ---
 title: Cuda 配置
 date: 2020-12-04 15:02:50
-updated: 2020-12-04 15:02:50
 categories:
 - Programming
 tags: Cuda

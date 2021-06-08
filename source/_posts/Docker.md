@@ -1,7 +1,6 @@
 ---
 title: Docker
 date: 2020-11-25 14:56:03
-updated: 2020-11-25 14:56:03
 categories:
 - Programming
 tags: Docker

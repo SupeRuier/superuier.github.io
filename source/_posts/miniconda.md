@@ -1,7 +1,6 @@
 ---
 title: Miniconda
 date: 2020-12-04 20:18:50
-updated: 2020-12-04 20:18:50
 categories:
 - Programming
 tags: Conda
