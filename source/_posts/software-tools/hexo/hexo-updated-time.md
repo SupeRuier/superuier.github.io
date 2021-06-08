@@ -8,7 +8,6 @@ category:
 tag: 
 - Master Ma
 - Hexo
-permalink: :category/:title/
 ---
 <!-- omit in toc -->
 Hexo 在使用远程部署时，默认 `update_option: mtime`, 即以最后修改时间作为更新时间。

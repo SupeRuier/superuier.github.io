@@ -1,5 +1,5 @@
 ---
-title: Cuda 配置
+title: Cuda 使用记录
 date: 2020-12-04 15:02:50
 categories:
 - Programming

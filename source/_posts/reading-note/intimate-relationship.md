@@ -2,7 +2,7 @@
 title: 亲密关系
 date: 2020-12-05 13:50:50
 categories:
-- 读书笔记
+- Reading Note
 ---
 
 《亲密关系》 克里斯多福·孟

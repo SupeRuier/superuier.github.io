@@ -7,7 +7,7 @@ language: en
 timezone: 'Asia/Shanghai'
 url: 'https://superuier.github.io'
 root: /
-permalink: ':category/:title/'
+permalink: :title/
 permalink_defaults: null
 pretty_urls:
   trailing_index: true

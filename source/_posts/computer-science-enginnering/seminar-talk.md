@@ -1,17 +1,16 @@
 ---
-title: 讲座记录
+title: 讲座及研讨班记录
 date: 2020-11-23 18:26:53
 category: 
 - Computer Science and Engineering
 toc: true
 tags:
 ---
+<!-- omit in toc -->
 
 本篇Blog用于记录参加的讲座，不定期更新。
 
 <!-- more -->
-
-<!-- omit in toc -->
 # 搜索引擎的技术趋势和精准度提高【常毅】
 
 <br>

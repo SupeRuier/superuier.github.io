@@ -2,7 +2,7 @@
 title: 自我提升
 date: 2020-12-09 16:44:50
 categories:
-- 柴米油盐
+- Knowledge from Growth
 ---
 
 一些平时总是注意不到但是应该要注意的东西。
