@@ -4,7 +4,7 @@ description: ''
 keywords: null
 author: Rui He
 language: en
-timezone: ''
+timezone: 'Asia/Shanghai'
 url: 'https://superuier.github.io'
 root: /
 permalink: ':category/:title/'
