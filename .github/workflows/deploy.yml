@@ -39,12 +39,13 @@ jobs:
           npm run build
 
       - name: "Copy dist files"
-        ## Need to specifiy a working-directory, otherwise it cannot find the path
+        ## Need to specify a working-directory, otherwise it cannot find the path
         working-directory: gh-pages
         run: |
           # rm -rf 2020 archives categories css img js tags *.html *.json
           ls -a
-          git filter-branch *
+          git rm -f *
+          ls -a
           cp -f ../main/public/* .
 
       - name: "Deploy"
