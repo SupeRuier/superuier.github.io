@@ -43,7 +43,7 @@ jobs:
         working-directory: gh-pages
         run: |
           # rm -rf 2020 archives categories css img js tags *.html *.json
-          git rm -r *
+          git filter-branch *
           cp -f ../main/public/* .
 
       - name: "Deploy"
