@@ -8,11 +8,12 @@ category:
 tag: 
 - Master Ma
 - Hexo
+permalink: :category/:title/
 ---
 <!-- omit in toc -->
 Hexo 在使用远程部署时，默认 `update_option: mtime`, 即以最后修改时间作为更新时间。
 这个问题导致每次编译时，文章提交到远程，所有的文章都显示更新，且时间相同。
-具体解决方法则是在状态栏加入`updated:`项，则编译过后的更新时间以此为准。
+具体解决方法则是在 Front-matter 中加入`updated:`项，则编译过后的更新时间以此为准。
 目前看来没有可以使其自动更新的方法。
 
 <!-- more -->
