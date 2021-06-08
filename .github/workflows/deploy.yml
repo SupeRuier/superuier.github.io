@@ -42,7 +42,7 @@ jobs:
         ## Need to specify a working-directory, otherwise it cannot find the path
         working-directory: gh-pages
         run: |
-          # rm -rf *
+          rm -rf *
           ls -a
           # git ls-files 
           # git rm -f *
