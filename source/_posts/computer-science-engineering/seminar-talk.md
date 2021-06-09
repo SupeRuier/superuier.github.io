@@ -4,7 +4,7 @@ date: 2020-11-23 18:26:53
 category: 
 - Computer Science and Engineering
 toc: true
-tags:
+tags: cs-seminar
 ---
 <!-- omit in toc -->
 

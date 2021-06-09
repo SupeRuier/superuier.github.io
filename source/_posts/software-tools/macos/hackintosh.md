@@ -2,8 +2,7 @@
 title: 黑苹果使用记录
 date: 2020-12-20 15:47:07
 category: 
-- Utilities
-- MacOS
+- Software Tools
 tags:
 - MacOS
 - Hackintosh

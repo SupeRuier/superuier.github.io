@@ -55,7 +55,15 @@ index_generator:
   per_page: 10
   order_by: '-date'
 default_category: uncategorized
-category_map: null
+# map category/tag to specific string to make the url clear
+category_map:
+  Computer Science and Engineering: computer-science-engineering
+  Economy & Finance: economy-finance
+  Knowledge from Growth: knowledge-from-growth
+  Paper Reading: paper-reading
+  Programming: programming
+  Reading Note: reading-note
+  Software Tools: software-tools
 tag_map: null
 meta_generator: true
 date_format: YYYY-MM-DD

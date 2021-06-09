@@ -3,7 +3,9 @@ title: Miniconda
 date: 2020-12-04 20:18:50
 categories:
 - Programming
-tags: Conda
+tags: 
+- Conda
+- Python
 ---
 
 Miniconda 与 Anaconda 为 conda 的发行版，主要用于包管理，其中 miniconda 更轻量级。

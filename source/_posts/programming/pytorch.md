@@ -3,7 +3,9 @@ title: Pytorch 踩坑
 date: 2020-12-09 14:55:50
 categories:
 - Programming
-tags: Pytorch
+tags: 
+- Pytorch
+- Python
 ---
 
 使用 Pytorch 时学到的一些知识

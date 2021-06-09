@@ -2,8 +2,7 @@
 title: MacOS 功能与设置
 date: 2020-11-14 15:47:07
 category: 
-- Utilities
-- MacOS
+- Software Tools
 tags:
 - MacOS
 ---

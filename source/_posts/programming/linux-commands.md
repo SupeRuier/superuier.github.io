@@ -3,7 +3,7 @@ title: Linux 常用命令
 date: 2020-12-14 14:56:03
 categories:
 - Programming
-tags: linux
+tags: Linux
 ---
 
 常用到的 linux 命令语句

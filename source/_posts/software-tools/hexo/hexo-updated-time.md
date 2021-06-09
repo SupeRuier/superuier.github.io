@@ -2,8 +2,7 @@
 title: Hexo文档更新时间设置
 date: 2021-06-08 19:02:05
 category: 
-- Utilities
-- Hexo
+- Software Tools
 tag: 
 - Master Ma
 - Hexo

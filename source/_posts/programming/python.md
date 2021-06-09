@@ -3,7 +3,7 @@ title: Python
 date: 2020-12-15 12:56:03
 categories:
 - Programming
-tags: python
+tags: Python
 ---
 
 常用到但是总忘记的的 Python 知识/语句

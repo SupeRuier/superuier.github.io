@@ -3,6 +3,7 @@ title: 摸爬滚打
 date: 2020-12-09 16:44:50
 categories:
 - Knowledge from Growth
+tags: 感悟总结
 ---
 
 增强对这个世界各种属性的认识。
