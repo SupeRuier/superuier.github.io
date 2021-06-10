@@ -64,6 +64,7 @@ category_map:
   Programming: programming
   Reading Note: reading-note
   Software Tools: software-tools
+  Research: research
 tag_map: null
 meta_generator: true
 date_format: YYYY-MM-DD
