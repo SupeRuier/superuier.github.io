@@ -73,7 +73,7 @@ More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
 ```
 <div style="width:70%;margin:auto">{% asset_img test.jpg%}</div>
 
-markdone的语法需要配置之后才可以使用，具体配置的方法见{% post_link Hexo-Trials 这篇文章 %}
+markdown的语法需要配置之后才可以使用，具体配置的方法见{% post_link software-tools/hexo/hexo-trials 这篇文章 %}
 ```
 ![Test](test.jpg)
 ```
