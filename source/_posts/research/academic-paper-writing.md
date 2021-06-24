@@ -14,7 +14,7 @@ A note about the precautions in academic writing.
 
 # Try to avoid
 -  Avoid and eliminate the fuzziness and subjectivity of language to the greatest extent.
-   -  Avoid to use "we", "I think", tec.
+   -  Avoid to use "we", "I think", etc.
 
 # Try to do
 - Make the definitions clear.
