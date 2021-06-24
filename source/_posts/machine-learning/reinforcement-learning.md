@@ -6,9 +6,9 @@ category:
 - Machine Learning
 toc: true
 tags: 
-- machine learning
-- reinforcement learning
-- imitation learning
+- machine-learning
+- reinforcement-learning
+- imitation-learning
 
 mathjax: true
 ---
