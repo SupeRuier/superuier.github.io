@@ -35,6 +35,7 @@ jobs:
           npm install hexo-cli -g
           npm install
           cp -f custom/default.styl node_modules/hexo-theme-icarus/source/css
+          cp -f custom/inline.js node_modules/kramed/lib/rules/
           npm run clean
           npm run build
 
