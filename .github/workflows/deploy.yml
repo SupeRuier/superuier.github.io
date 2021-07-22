@@ -52,14 +52,14 @@ jobs:
           # ls -a
           mv -f ../main/public/* .
 
-      - name: "Deploy on cloud-server"
-        uses: webfactory/ssh-agent@v0.4.1
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-        run: |
-          ssh-keyscan ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
-          ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "git -C ${{ secrets.REPO_PATH}} pull"
-          ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "sh /home/ubuntu/script/deploy.sh"
+      # - name: "Deploy on cloud-server"
+      #   uses: webfactory/ssh-agent@v0.4.1
+      #   with:
+      #     ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      #   run: |
+      #     ssh-keyscan ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
+      #     ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "git -C ${{ secrets.REPO_PATH}} pull"
+      #     ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "sh /home/ubuntu/script/deploy.sh"
 
       - name: "Deploy on gh-pages"
         working-directory: gh-pages
