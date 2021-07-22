@@ -34,7 +34,7 @@ PubkeyAuthentication yes # 使用密钥登录
 
 ## 使用 nginx 部署 Server
 
-详见这篇文档：
+详见这一篇文档：
 - [云服务器搭建网站全过程](https://zhuanlan.zhihu.com/p/108720935)
 
 ## ssh 连接服务器长时间不操作断开
