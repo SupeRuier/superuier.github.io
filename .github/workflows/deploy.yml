@@ -52,16 +52,6 @@ jobs:
           # ls -a
           mv -f ../main/public/* .
 
-      - name: "Deploy on gh-pages"
-        working-directory: gh-pages
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add -A
-          git commit -m "deploy"
-          git push
-
       - name: "Setup ssh."
         uses: webfactory/ssh-agent@v0.4.1
         with:
@@ -77,4 +67,12 @@ jobs:
         run: ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "sh /home/ubuntu/script/deploy.sh"
 
 
+      - name: "Deploy on gh-pages"
+        working-directory: gh-pages
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          git add -A
+          git commit -m "deploy"
+          git push
