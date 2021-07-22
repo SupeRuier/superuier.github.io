@@ -58,3 +58,6 @@ Host *
 - [使用Github的Webhooks+Node完成网站的自动化部署](https://zhuanlan.zhihu.com/p/116136090)
 - [使用 GitHub Webhook 实现静态网站自动化部署](https://jimmysong.io/blog/github-webhook-website-auto-deploy/)
 - [使用Github的webhooks进行网站自动化部署](https://jelly.jd.com/article/6006b1025b6c6a01506c878a)
+
+然而事实是并没有从 webhook 的方向来部署，而是从 github action 中 ssh 到服务器进行操作。
+具体的部署步骤放在服务器的 deploy 文件中。
