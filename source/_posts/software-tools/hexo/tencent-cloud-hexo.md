@@ -36,3 +36,18 @@ PubkeyAuthentication yes # 使用密钥登录
 
 详见这篇文档：
 - [云服务器搭建网站全过程](https://zhuanlan.zhihu.com/p/108720935)
+
+## ssh 连接服务器长时间不操作断开
+
+具体来说修改以下文件 `~/.ssh/config`。
+增添以下内容。
+
+``` bash
+Host *
+        # 断开时重试连接的次数
+        ServerAliveCountMax 5
+        # 每隔5秒自动发送一个空的请求以保持连接
+        ServerAliveInterval 5
+```
+
+参考[这篇文章](https://www.pkslow.com/archives/ssh-keep-alive)。
