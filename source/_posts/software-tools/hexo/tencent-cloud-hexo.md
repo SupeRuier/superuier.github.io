@@ -34,7 +34,7 @@ PubkeyAuthentication yes # 使用密钥登录
 
 ## 使用 nginx 部署 Server
 
-详见这篇文档：
+详见这一篇文档：
 - [云服务器搭建网站全过程](https://zhuanlan.zhihu.com/p/108720935)
 
 ## ssh 连接服务器长时间不操作断开
@@ -51,3 +51,10 @@ Host *
 ```
 
 参考[这篇文章](https://www.pkslow.com/archives/ssh-keep-alive)。
+
+## 使用 webhook 对 repo 的更新进行监控
+
+详见这几篇文档：
+- [使用Github的Webhooks+Node完成网站的自动化部署](https://zhuanlan.zhihu.com/p/116136090)
+- [使用 GitHub Webhook 实现静态网站自动化部署](https://jimmysong.io/blog/github-webhook-website-auto-deploy/)
+- [使用Github的webhooks进行网站自动化部署](https://jelly.jd.com/article/6006b1025b6c6a01506c878a)
