@@ -42,7 +42,7 @@ PubkeyAuthentication yes # 使用密钥登录
 具体来说修改以下文件 `~/.ssh/config`。
 增添以下内容。
 
-``` bash
+```bash
 Host *
         # 断开时重试连接的次数
         ServerAliveCountMax 5
