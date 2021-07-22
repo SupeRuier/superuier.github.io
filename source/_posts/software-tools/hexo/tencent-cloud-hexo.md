@@ -24,7 +24,7 @@ tags:
 这时需要在腾讯云实例的控制台中对 ssh 进行相关设置。
 具体来说修改以下文件 `/etc/ssh/sshd_config`。
 
-```bash
+``` bash
 PasswordAuthentication yes # 开启密码登录权限
 PubkeyAuthentication yes # 使用密钥登录
 ```
