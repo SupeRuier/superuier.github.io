@@ -2,6 +2,7 @@
 title: 大师计划系列视频
 date: 2021-06-14 14:09:31
 updated: 2021-07-14 00:42:31
+cover: /gallery/covers/dashi.jpg
 category: 
 - Economy & Finance
 toc: true

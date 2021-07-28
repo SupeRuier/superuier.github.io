@@ -1,6 +1,7 @@
 ---
 title: 糖盐
 date: 2021-01-21 19:44:50
+cover: /gallery/covers/sugar-salt.jpg
 categories:
 - Knowledge from Growth
 tags: 感悟总结

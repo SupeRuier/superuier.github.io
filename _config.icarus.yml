@@ -95,7 +95,7 @@ head:
         # E.g., name=theme-color;content=#123456 => <meta name="theme-color" content="#123456">
         - ''
     # URL or path to the website's RSS atom.xml
-    rss: 
+    # rss: /atom.xml
 # Page top navigation bar configurations
 navbar:
     # Navigation menu items
@@ -104,7 +104,7 @@ navbar:
         Archives: /archives
         Categories: /categories
         Tags: /tags
-        About: /about
+        # About: /about
     # Links to be shown on the right of the navigation bar
     # links:
     #     Download on GitHub:
@@ -192,16 +192,16 @@ widgets:
         avatar: 
             /images/avatar_rui.png
         # Whether show the rounded avatar image
-        avatar_rounded: false
+        avatar_rounded: true
         # Email address for the Gravatar
         gravatar: 
         # URL or path for the follow button
         follow_link: 'https://github.com/SupeRuier'
         # Links to be shown on the bottom of the profile widget
         social_links:
-            # Github:
-            #     icon: fab fa-github
-            #     url: 'https://github.com/SupeRuier'
+            Github:
+                icon: fab fa-github
+                url: 'https://github.com/SupeRuier'
             # Facebook:
             #     icon: fab fa-facebook
             #     url: 'https://facebook.com'
@@ -211,9 +211,9 @@ widgets:
             # Dribbble:
             #     icon: fab fa-dribbble
             #     url: 'https://dribbble.com'
-            # RSS:
-            #     icon: fas fa-rss
-            #     url: /
+            RSS:
+                icon: fas fa-rss
+                url: /atom.xml
     # Table of contents widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
