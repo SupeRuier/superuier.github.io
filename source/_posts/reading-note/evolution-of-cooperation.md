@@ -2,7 +2,7 @@
 title: 合作的进化
 date: 2021-7-26 23:44:00
 categories:
-- 读书笔记
+- Reading Note
 ---
 
 《合作的进化》 罗伯特·阿克塞尔罗德
