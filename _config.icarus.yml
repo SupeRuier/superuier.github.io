@@ -190,7 +190,7 @@ widgets:
         location: Shenzhen, China
         # URL or path to the avatar image
         avatar: 
-            /images/avatar_rui.png
+            /images/avatar_rui_2.jpg
         # Whether show the rounded avatar image
         avatar_rounded: true
         # Email address for the Gravatar

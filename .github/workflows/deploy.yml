@@ -60,7 +60,7 @@ jobs:
       - name: "Add known host."
         run: ssh-keyscan ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
 
-      - name: "Call the script on cloud-server to pull"
+      - name: "Pull on cloud-server"
         run: ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "git -C ${{ secrets.REPO_PATH}} pull origin main:main"
 
       - name: "Call the script on cloud-server to deploy"
