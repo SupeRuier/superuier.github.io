@@ -2,6 +2,7 @@
 title: Gaussian Process
 date: 2021-07-21 16:34:53
 updated: 2021-07-21 16:34:53
+cover: /gallery/covers/gaussian-process.png
 category: 
 - Math
 toc: true
