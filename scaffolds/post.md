@@ -6,7 +6,6 @@ cover: /gallery/covers/
 toc: true
 category: 
 tags:
-toc: false
 ---
 <!-- omit in toc -->
 
