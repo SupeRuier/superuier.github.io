@@ -3,7 +3,7 @@ title: 神经网络损失函数
 cover: /gallery/covers/neural-network-loss.jpg
 toc: true
 date: 2021-07-30 15:16:55
-updated: 2021-07-30 15:16:55
+updated: 2021-08-02 20:11:55
 category:
 - Programming
 tags:
@@ -35,6 +35,8 @@ l_n = -w_{y_n}X_{n,y_n},
 $$
 
 其中 `X` 是输入，`y` 是目标，`w` 是类别的权重，`N` 是 batch size。
+
+具体的计算例子可以看[这篇文章](https://blog.csdn.net/qq_22210253/article/details/85229988)。
 
 ## CrossEntropyLoss
 
