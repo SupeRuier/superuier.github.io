@@ -1,7 +1,7 @@
 ---
 title: 腾讯云相关记录
 date: 2021-07-22 14:51:00
-updated: 2021-07-22 14:51:00
+updated: 2021-08-05 20:11:00
 cover: /gallery/covers/tencent-cloud-hexo.png
 category: 
 - Software Tools
@@ -35,8 +35,9 @@ PubkeyAuthentication yes # 使用密钥登录
 
 ## 使用 nginx 部署 Server
 
-详见这一篇文档：
+详见以下文档：
 - [云服务器搭建网站全过程](https://zhuanlan.zhihu.com/p/108720935)
+- [Nginx 基础命令](https://juejin.cn/post/6844903941545656333)
 
 ## ssh 连接服务器长时间不操作断开
 
@@ -60,5 +61,5 @@ Host *
 - [使用 GitHub Webhook 实现静态网站自动化部署](https://jimmysong.io/blog/github-webhook-website-auto-deploy/)
 - [使用Github的webhooks进行网站自动化部署](https://jelly.jd.com/article/6006b1025b6c6a01506c878a)
 
-然而事实是并没有从 webhook 的方向来部署，而是从 github action 中 ssh 到服务器进行操作。
+然而事实是我这次并没有从 webhook 的方向来部署，而是从 github action 中 ssh 到服务器进行操作。
 具体的部署步骤放在服务器的 deploy 文件中。
