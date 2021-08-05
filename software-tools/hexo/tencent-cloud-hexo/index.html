@@ -10,12 +10,14 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PasswordAuthentication yes <span class="comment"># 开启密码登录权限</span></span><br><span class="line">PubkeyAuthentication yes <span class="comment"># 使用密钥登录</span></span><br></pre></td></tr></table></figure>
 <p>之后重启服务 <code>sudo service sshd restart</code> 即可。
 之后使用 ssh 和下载好的密钥进行连接，详见<a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/1207/44643#.E4.BD.BF.E7.94.A8.E5.AF.86.E9.92.A5.E7.99.BB.E5.BD.95">官方文档</a>。</p>
-<h2 id="使用-nginx-部署-Server"><a href="#使用-nginx-部署-Server" class="headerlink" title="使用 nginx 部署 Server"></a>使用 nginx 部署 Server</h2><p>详见以下文档：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/108720935">云服务器搭建网站全过程</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903941545656333">Nginx 基础命令</a></li>
-</ul>
-<h2 id="ssh-连接服务器长时间不操作断开"><a href="#ssh-连接服务器长时间不操作断开" class="headerlink" title="ssh 连接服务器长时间不操作断开"></a>ssh 连接服务器长时间不操作断开</h2><p>具体来说修改以下文件 <code>~/.ssh/config</code>。
+<h2 id="使用-nginx-部署-Server"><a href="#使用-nginx-部署-Server" class="headerlink" title="使用 nginx 部署 Server"></a>使用 nginx 部署 Server</h2><p>详见<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/108720935">这篇文档</a></p>
+<p>其中涉及到不少对 Nginx 的操作，下面记录一些基础命令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 首先使用 Nginx 命令的时候需要使用管理员权限。</span></span><br><span class="line"><span class="comment">## 开启服务器</span></span><br><span class="line">sudo systemctl nginx</span><br><span class="line"><span class="comment">## 重新启动更新设置</span></span><br><span class="line">sudo systemctl restart nginx.service </span><br></pre></td></tr></table></figure>
+<p>其中 Nginx 的配置文件位于 <code>/etc/nginx/nginx.conf</code>，更改过后重启即可。</p>
+<h2 id="服务器-SSL-证书安装部署"><a href="#服务器-SSL-证书安装部署" class="headerlink" title="服务器 SSL 证书安装部署"></a>服务器 SSL 证书安装部署</h2><p>可以参考腾讯云的<a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/400/35244">这篇文档</a>。
+主要就是将证书上传再再 Nginx 中设置。
+需要注意的是颁发证书对应的域名一定要和真是域名相同，不要少前缀。</p>
+<h2 id="本地-ssh-连接服务器长时间不操作断开问题"><a href="#本地-ssh-连接服务器长时间不操作断开问题" class="headerlink" title="本地 ssh 连接服务器长时间不操作断开问题"></a>本地 ssh 连接服务器长时间不操作断开问题</h2><p>具体来说修改以下文件 <code>~/.ssh/config</code>。
 增添以下内容。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line">        <span class="comment"># 断开时重试连接的次数</span></span><br><span class="line">        ServerAliveCountMax 5</span><br><span class="line">        <span class="comment"># 每隔5秒自动发送一个空的请求以保持连接</span></span><br><span class="line">        ServerAliveInterval 5</span><br></pre></td></tr></table></figure>
 <p>参考<a target="_blank" rel="noopener" href="https://www.pkslow.com/archives/ssh-keep-alive">这篇文章</a>。</p>
