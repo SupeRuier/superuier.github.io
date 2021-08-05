@@ -35,11 +35,26 @@ PubkeyAuthentication yes # 使用密钥登录
 
 ## 使用 nginx 部署 Server
 
-详见以下文档：
-- [云服务器搭建网站全过程](https://zhuanlan.zhihu.com/p/108720935)
-- [Nginx 基础命令](https://juejin.cn/post/6844903941545656333)
+详见[这篇文档](https://zhuanlan.zhihu.com/p/108720935)
 
-## ssh 连接服务器长时间不操作断开
+其中涉及到不少对 Nginx 的操作，下面记录一些基础命令。
+
+``` bash
+# 首先使用 Nginx 命令的时候需要使用管理员权限。
+## 开启服务器
+sudo systemctl nginx
+## 重新启动更新设置
+sudo systemctl restart nginx.service 
+```
+其中 Nginx 的配置文件位于 `/etc/nginx/nginx.conf`，更改过后重启即可。
+
+## 服务器 SSL 证书安装部署
+
+可以参考腾讯云的[这篇文档](https://cloud.tencent.com/document/product/400/35244)。
+主要就是将证书上传再再 Nginx 中设置。
+需要注意的是颁发证书对应的域名一定要和真是域名相同，不要少前缀。
+
+## 本地 ssh 连接服务器长时间不操作断开问题
 
 具体来说修改以下文件 `~/.ssh/config`。
 增添以下内容。
