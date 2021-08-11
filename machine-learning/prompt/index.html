@@ -7,8 +7,10 @@
 <a id="more"></a>
 <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>当前在自然语言处理中主要存在以下范式，其中由 a 到 d 基本按照时间顺序出现。
 总的来说，目前为止经历了两个 sea changes（重大变化）。</p>
+<blockquote>
 <div style="width:100%;margin:auto"><img src="/machine-learning/prompt/paradigm.png" class=""></div>
 
+</blockquote>
 <p>在2017年以前，主要以完全监督学习为主（a和b范式）。
 研究的主要内容在于特征提取（传统模型），结构构建（深度模型）。
 但是在2017年之后，经历了第一个重大变化，完全监督的旧范式的使用不断在缩小，预训练及微调（c范式）开始流行。
@@ -22,8 +24,10 @@
 <p>通过这种选取合适的 prompt 的方法，预训练的 language model（LM）可以用来预测合适的输出，有时甚至不需要 task-specific 的训练。</p>
 <h1 id="Prompt-的正式表述"><a href="#Prompt-的正式表述" class="headerlink" title="Prompt 的正式表述"></a>Prompt 的正式表述</h1><p>基于 prompt 的方法尝试规避无法获得大规模数据的问题，直接对样本 $\boldsymbol{x}$ 的概率 $P(\boldsymbol{x};\theta)$ 进行建模，之后再用这个概率来预测$\boldsymbol{y}$。
 以下是一些基于 prompt 的方法中的术语。</p>
+<blockquote>
 <div style="width:100%;margin:auto"><img src="/machine-learning/prompt/terminology.png" class=""></div>
 
+</blockquote>
 <p>通常来说，prompt 的方法预测高质量的输出 $\hat{\boldsymbol{y}}$ 有三步。</p>
 <ol>
 <li>Prompt Addition：通过模版，将原始语句转化为 Prompt，含有空白等待填入。</li>
