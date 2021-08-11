@@ -65,7 +65,7 @@ mathjax: true
 
 此处不一一展开，可以到综述中寻找具体的部分。
 
-# Prompt 的应用和挑战
+## Prompt 的应用和挑战
 
 这篇综述也详尽的展开了当前 Prompt 的应用和挑战。
 这里只简单记录不做展开。
@@ -73,6 +73,12 @@ mathjax: true
 应用方面，几乎涉及了 NLP 的方方面面，集中于以下几大类：Knowledge Probing、Classiﬁcation-based Tasks、Information Extraction、“Reasoning” in NLP、Question Answering、Text Generation、Automatic Evaluation of Text Generation、Multi-modal Learning、Meta-Applications。
 
 挑战方面，主要集中于以下几个大类：Prompt Design、Answer Engineering、Selection of Tuning Strategy、Multiple Prompt Learning、Selection of Pre-trained Models、Theoretical and Empirical Analysis of Prompting、Transferability of Prompts、Combination of Different Paradigms、Calibration of Prompting Methods。
+
+## 相关资料
+
+- [Pretrain, Prompt, Predict: A New Paradigm for NLP](http://pretrain.nlpedia.ai)
+- [Pre-train, Prompt, and Predict: A Systematic Survey of Prompting Methods in Natural Language Processing](https://arxiv.org/pdf/2107.13586.pdf) 
+- [PromptPapers](https://github.com/thunlp/PromptPapers)
 
 # 对这个范式的看法
 
