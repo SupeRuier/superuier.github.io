@@ -1,6 +1,8 @@
 ---
 title: Icarus 主题设置
+cover: /gallery/covers/icarus.png
 date: 2020-11-24 19:46:26
+updated:  2021-08-11 22:44:00
 category: 
 - Software Tools
 tags: 
@@ -27,3 +29,29 @@ sidebar:
     right:
         sticky: true
 {% endcodeblock %}
+
+## 样式更改
+
+### 字体更改
+
+觉得自带 Ubuntu 字体太丑了。
+更改字体需要更改两个文件。
+
+这个文件是告诉浏览器使用哪个字体的。
+{% codeblock /Users/rui/Documents/Note/node_modules/hexo-theme-icarus/include/style/base.styl lang:yaml %}
+// line 9
+$family-sans-serif ?= 'Open Sans', 'Noto Serif SC', 'Microsoft YaHei', sans-serif
+{% endcodeblock %}
+
+这个文件是告诉浏览器下载哪个字体的。
+{% codeblock /Users/rui/Documents/Note/node_modules/hexo-theme-icarus/layout/common/head.jsx lang:yaml %}
+// line 54
+// 输入需要下载的字体即可
+default: fontcdn('Open+Sans:wght@400;600&family=Source+Code+Pro', 'css2'),
+{% endcodeblock %}
+
+同时部署时需要把文件拷进去。
+
+参考：
+- [github hexo blog web font 적용하기](https://chinsun9.github.io/tags/web-font/)
+- [博客相关问题一揽子记录](http://81.70.200.6/2020/12/16/博客相关问题一揽子记录/)
