@@ -26,7 +26,7 @@ mathjax: true
 当前在自然语言处理中主要存在以下范式，其中由 a 到 d 基本按照时间顺序出现。
 总的来说，目前为止经历了两个 sea changes（重大变化）。
 
-<div style="width:100%;margin:auto">{% asset_img paradigm.png%}</div>
+> <div style="width:100%;margin:auto">{% asset_img paradigm.png%}</div>
 
 在2017年以前，主要以完全监督学习为主（a和b范式）。
 研究的主要内容在于特征提取（传统模型），结构构建（深度模型）。
@@ -46,7 +46,7 @@ mathjax: true
 基于 prompt 的方法尝试规避无法获得大规模数据的问题，直接对样本 $\boldsymbol{x}$ 的概率 $P(\boldsymbol{x};\theta)$ 进行建模，之后再用这个概率来预测$\boldsymbol{y}$。
 以下是一些基于 prompt 的方法中的术语。
 
-<div style="width:100%;margin:auto">{% asset_img terminology.png%}</div>
+> <div style="width:100%;margin:auto">{% asset_img terminology.png%}</div>
 
 通常来说，prompt 的方法预测高质量的输出 $\hat{\boldsymbol{y}}$ 有三步。
 
