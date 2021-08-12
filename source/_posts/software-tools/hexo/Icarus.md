@@ -55,3 +55,14 @@ default: fontcdn('Open+Sans:wght@400;600&family=Source+Code+Pro', 'css2'),
 参考：
 - [github hexo blog web font 적용하기](https://chinsun9.github.io/tags/web-font/)
 - [博客相关问题一揽子记录](http://81.70.200.6/2020/12/16/博客相关问题一揽子记录/)
+
+### 主题定制
+
+之后是一定会对主题进行定制的，但是近期没有时间，而且欠缺一些前端方面的知识。
+这里记录一些见过的对 lcarus 定制的连接，用于学习和获得灵感。
+
+List：
+- [hexo及icarus主题个性定制](https://angericky.github.io/2018/12/24/icarus个性定制/)：文章显示较为好看，而且加了不少插件。
+- [hexo icarus 테마 프로필영역 css 수정](https://chinsun9.github.io/tags/hexo/)：这个是加了一个新主题。
+- [Icarus 主题自定义](https://www.alphalxy.com/2019/03/customize-icarus)：一些细节改动
+- [Hexo博客icarus主题定制](https://blog.it-follower.com/posts/2085550418.html)
