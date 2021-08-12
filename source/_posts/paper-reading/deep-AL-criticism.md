@@ -12,7 +12,7 @@ tags:
 <!-- omit in toc -->
 
 目前出现一些对深度主动学习批判的文章，结合自己的实践，深以为然，此处将其整理一下。
-同时这些文章也收录进了本人 `awe-active-learning` 的仓库，详见[此链接](https://github.com/SupeRuier/awesome-active-learning/blob/master/subfields/deep_AL.md)。
+同时这些文章也收录进了本人 `awesome-active-learning` 的仓库，详见[此链接](https://github.com/SupeRuier/awesome-active-learning/blob/master/subfields/deep_AL.md)。
 在本文末尾，本人也提出了一些自己的看法。
 
 <!-- more -->
