@@ -2,7 +2,7 @@
 title: 好文阅读转载
 toc: false
 date: 2021-07-28 13:22:47
-updated: 2021-07-28 13:22:47
+updated: 2021-08-09 15:04:00
 cover: /gallery/covers/article-sharing.jpg
 categories:
 - Knowledge from Growth
@@ -27,3 +27,7 @@ tags:
 ## 哲学
 
 - [我们穷极一生，究竟追寻的是什么？ - 曹哲](https://www.zhihu.com/question/384441334/answer/1146525915)
+
+## 写作与表达
+
+- [你以为我在剑桥读经典，其实我不过是学会说话](https://mp.weixin.qq.com/s/nNl6qZtVx8OjyiT1rz6JJA)：准确使用语言。

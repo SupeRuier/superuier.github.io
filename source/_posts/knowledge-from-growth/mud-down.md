@@ -1,7 +1,7 @@
 ---
 title: 摸爬滚打
 date: 2020-12-09 16:44:50
-updated: 2021-07-28 13:16:00
+updated: 2021-08-09 15:05:00
 cover: /gallery/covers/mud-down.jpg
 categories:
 - Knowledge from Growth
@@ -28,3 +28,6 @@ tags: 感悟总结
   - 有两点感受：
     1. 找一个志同道合能一起进步的人十分重要。
     2. 持续的学习进步，一点一滴的成长十分关键。请尽量做一些收益可以累计的事情。可以参考[《收益值与半衰期》](https://yzhang-gh.github.io/notes/reading/reward-and-half-life.html)这篇文章。
+- 克制自己的欲望，特别是当它伪装成一种积极的形态出现时；克制自己的傲慢，特别是当它伪装成一种虚幻的正义感出现时。
+  - from 张列弛[《冷冬》](https://www.liechi.org/cn/2021/01/coldwinter/)
+  - 可以看作是对自己之前“熬夜是对生活仍有期待”观点的一种驳斥。

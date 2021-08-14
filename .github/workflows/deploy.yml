@@ -36,6 +36,8 @@ jobs:
           npm install
           cp -f custom/default.styl node_modules/hexo-theme-icarus/source/css
           cp -f custom/inline.js node_modules/kramed/lib/rules/
+          cp -f custom/base.styl node_modules/hexo-theme-icarus/include/style/
+          cp -f custom/head.jsx node_modules/hexo-theme-icarus/layout/common/
           npm run clean
           npm run build
 
