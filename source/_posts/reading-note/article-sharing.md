@@ -24,6 +24,10 @@ tags:
 
 - [怎么样回答外国朋友“这个世界人人有寄托，为什么中国人没有信仰”这个问题？ - 赵浪](https://www.zhihu.com/question/426477472/answer/1590124777)：简单宗教探讨中，如何进行辩经。
 
+## 哲学
+
+- [我们穷极一生，究竟追寻的是什么？ - 曹哲](https://www.zhihu.com/question/384441334/answer/1146525915)
+
 ## 写作与表达
 
 - [你以为我在剑桥读经典，其实我不过是学会说话](https://mp.weixin.qq.com/s/nNl6qZtVx8OjyiT1rz6JJA)：准确使用语言。
