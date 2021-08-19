@@ -5,6 +5,7 @@ cover: /gallery/covers/evolution-of-cooperation.jpg
 toc: true
 categories:
 - Reading Note
+tags: 读书
 ---
 
 《合作的进化》 罗伯特·阿克塞尔罗德
