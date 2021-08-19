@@ -1,6 +1,8 @@
 ---
 title: Miniconda
+cover: /gallery/covers/conda.png
 date: 2020-12-04 20:18:50
+updated: 2021-08-19 17:22:50
 categories:
 - Programming
 tags: 
@@ -38,34 +40,49 @@ Conda 默认的软件源在国外,速度非常的慢,我们可以将其更换为
 
 ## 配置
 
-### 创建环境
+### 对环境更改
 
-创建所需要环境
+创建所需要环境，一般有三种情况。
 
-```
+``` bash
+# 创建新环境
 conda create -n py3.8 python=3.8
+# 克隆环境
+conda create --name myclone --clone myenv
+# 直接从 yaml 文件生成新环境
+conda env create -f environment.yml
 ```
 激活环境
-```
+``` bash
 conda activate py3.8
 ```
-然后下包
-```
+然后下载所需软件包
+``` bash
 conda install XXX
 ```
 退出环境
-```
+``` bash
 conda deactivate py3.8
+```
+删除环境
+``` bash
+conda remove --name myenv --all
 ```
 
 ### 批量导入导出组件
 
-导出
+导出导入 yml 文件。
+
+``` bash
+conda env export --no-builds > environment.yml
+conda env create -f environment.yml
+conda env create -f environment.yml -n new_env_name # 新名称
+conda env update --file environment.yml # 用于对当前环境更新
 ```
+
+导出导入 txt 文件：
+``` bash
 conda list -e > requirements.txt
-```
-导入有两种方式
-```
 conda create --name py3.8 --file requirements.txt # 顺便创建环境
-conda install --yes --file requirements.txt
+conda install --yes --file requirements.txt # 不创建新环境
 ```

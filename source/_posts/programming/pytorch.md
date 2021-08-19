@@ -1,6 +1,7 @@
 ---
 title: Pytorch 踩坑
 date: 2020-12-09 14:55:50
+updated: 2020-12-09 14:55:50
 categories:
 - Programming
 tags: 
@@ -62,7 +63,7 @@ torch.nn.init.xavier_uniform(layer) for layer in params
 
 可以简单理解为：
 
-> Softmax + CrossEntropyLoss == LogSoftmax + NLLLoss
+> CrossEntropyLoss == LogSoftmax + NLLLoss
 
 那我们为什么要用 LogSoftmax 呢？
 
@@ -139,7 +140,7 @@ list(model.modules())[5].weight.grad
 
 其实如果使用 `loss.backward()` 然后再利用 hook来提取梯度会有一些耗费时间，因为反向传播是要从尾到头的，如果你只需要倒数几层的梯度的话，其实可以直接计算。
 
-`torch.autograd.grad` 方法提供了一个计算梯度的方式，可以看以下例子，此方法返回的对象是一个元祖。
+`torch.autograd.grad` 方法提供了一个计算梯度的方式，可以看以下例子，此方法返回的对象是一个元组。
 
 ```python
 # 计算梯度
@@ -165,6 +166,21 @@ grad= torch.autograd.grad(outputs=loss, inputs=W, retain_graph=True, only_inputs
 
 所以这个问题没有想到具体的解决方法，就选取了耗费时间相对较短的方法。
 
+## 1.11. 增加与删减维度
+
+有时在对批数据进行乘法等矩阵操作时，时常需要对数据进行升维降维。
+此处记录一下操作流程。
+
+例如我们相对两个矩阵进行乘法，第一个矩阵唯度为[N, M]，第二个矩阵维度为[N, K]，其中 N 为该 batch 中样本数目。
+我们期望通过得到一个维度为[N, M, K]的三维矩阵。
+但是直接的矩阵相乘并不能起到升维的效果，所以在相乘之前要进行升维。
+将两个矩阵分别升维到[N, M, 1]和[N, K, 1]。
+
+此处用到两个方法：
+- `torch.squeeze(n)`：若第 n 维维度为1，则将此维度删除。
+- `torch.unsqueeze(n)`：将第 n 为维度增加维度为1。
+
+有时在增加删减维度之后，需要对原始维度进行重新排序，此时可以用到`torch.permute()`方法。
 
 # 2. 设置
 ## 2.1. Dataloader 中的 num_workers 造成训练循环缓慢
