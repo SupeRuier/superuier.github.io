@@ -24,7 +24,7 @@ e.g. if you have two or more optimizers for one model.</p>
 </blockquote>
 <p>可以简单理解为：</p>
 <blockquote>
-<p>Softmax + CrossEntropyLoss == LogSoftmax + NLLLoss</p>
+<p>CrossEntropyLoss == LogSoftmax + NLLLoss</p>
 </blockquote>
 <p>那我们为什么要用 LogSoftmax 呢？</p>
 <blockquote>
@@ -47,7 +47,7 @@ e.g. if you have two or more optimizers for one model.</p>
 <h2 id="1-8-查看某一层梯度"><a href="#1-8-查看某一层梯度" class="headerlink" title="1.8. 查看某一层梯度"></a>1.8. 查看某一层梯度</h2><p>hook 是一种提取梯度的方法，同样的，还有其他方法可以提取梯度。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一个全链接层举例</span></span><br><span class="line"><span class="built_in">list</span>(model.modules())[<span class="number">5</span>].weight.grad</span><br></pre></td></tr></table></figure>
 <h2 id="1-9-计算某一层梯度"><a href="#1-9-计算某一层梯度" class="headerlink" title="1.9. 计算某一层梯度"></a>1.9. 计算某一层梯度</h2><p>其实如果使用 <code>loss.backward()</code> 然后再利用 hook来提取梯度会有一些耗费时间，因为反向传播是要从尾到头的，如果你只需要倒数几层的梯度的话，其实可以直接计算。</p>
-<p><code>torch.autograd.grad</code> 方法提供了一个计算梯度的方式，可以看以下例子，此方法返回的对象是一个元祖。</p>
+<p><code>torch.autograd.grad</code> 方法提供了一个计算梯度的方式，可以看以下例子，此方法返回的对象是一个元组。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 计算梯度</span></span><br><span class="line"><span class="comment"># 如果需要多次计算的话记得保留计算图</span></span><br><span class="line">grad= torch.autograd.grad(outputs=loss, inputs=W, retain_graph=<span class="literal">True</span>, only_inputs=<span class="literal">True</span>)[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
 <h2 id="1-10-计算梯度的时间"><a href="#1-10-计算梯度的时间" class="headerlink" title="1.10. 计算梯度的时间"></a>1.10. 计算梯度的时间</h2><p>在我的实验终有一个计算每一样本对梯度贡献的需求，有两种方法计算：</p>
 <ul>
@@ -63,6 +63,18 @@ e.g. if you have two or more optimizers for one model.</p>
 因为是用 loss 计算梯度是要使用之前的计算图，遍历网络输出会使遍历的每一个输出的 <code>grad_fn</code> 变化。
 用这种方式虽然看起来 loss 的 <code>grad_fn</code> 还是 nlllossbackward，但是在梯度的计算过程中还是会遇到 UnbindBackward。</p>
 <p>所以这个问题没有想到具体的解决方法，就选取了耗费时间相对较短的方法。</p>
+<h2 id="1-11-增加与删减维度"><a href="#1-11-增加与删减维度" class="headerlink" title="1.11. 增加与删减维度"></a>1.11. 增加与删减维度</h2><p>有时在对批数据进行乘法等矩阵操作时，时常需要对数据进行升维降维。
+此处记录一下操作流程。</p>
+<p>例如我们相对两个矩阵进行乘法，第一个矩阵唯度为[N, M]，第二个矩阵维度为[N, K]，其中 N 为该 batch 中样本数目。
+我们期望通过得到一个维度为[N, M, K]的三维矩阵。
+但是直接的矩阵相乘并不能起到升维的效果，所以在相乘之前要进行升维。
+将两个矩阵分别升维到[N, M, 1]和[N, K, 1]。</p>
+<p>此处用到两个方法：</p>
+<ul>
+<li><code>torch.squeeze(n)</code>：若第 n 维维度为1，则将此维度删除。</li>
+<li><code>torch.unsqueeze(n)</code>：将第 n 为维度增加维度为1。</li>
+</ul>
+<p>有时在增加删减维度之后，需要对原始维度进行重新排序，此时可以用到<code>torch.permute()</code>方法。</p>
 <h1 id="2-设置"><a href="#2-设置" class="headerlink" title="2. 设置"></a>2. 设置</h1><h2 id="2-1-Dataloader-中的-num-workers-造成训练循环缓慢"><a href="#2-1-Dataloader-中的-num-workers-造成训练循环缓慢" class="headerlink" title="2.1. Dataloader 中的 num_workers 造成训练循环缓慢"></a>2.1. Dataloader 中的 num_workers 造成训练循环缓慢</h2><p>在本地跑实验，一个简单的网络的训练，发现 Dataloader 中 num_workers 设置的数目越大，在 batch 中训练越耗时，表示莫名其妙。在我的情形下将其设为8要比将其设为0慢了百倍以上。
 仔细看了一下 mini-batch 的训练过程并且记录了一下时间，发现主要的时间开销发生于 for 循环遍历 loader 之后退出循环时。
 所还还是将其设为了0。</p>
