@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Batch Normalization - Rui&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Rui&#039;s Blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Rui&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta description="此处记录对于 Batch Normalization 的学习。"><meta property="og:type" content="blog"><meta property="og:title" content="Batch Normalization"><meta property="og:url" content="https://superuier.github.io/machine-learning/batch-normalization/"><meta property="og:site_name" content="Rui&#039;s Blog"><meta property="og:description" content="此处记录对于 Batch Normalization 的学习。"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://superuier.github.io/gallery/covers/batch-norm.jpg"><meta property="article:published_time" content="2021-09-03T07:00:00.000Z"><meta property="article:modified_time" content="2021-09-03T07:00:00.000Z"><meta property="article:author" content="Superui"><meta property="article:tag" content="neural-network"><meta property="article:tag" content="machine-learning"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/gallery/covers/batch-norm.jpg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://superuier.github.io/machine-learning/batch-normalization/"},"headline":"Rui's Blog","image":["https://superuier.github.io/gallery/covers/batch-norm.jpg"],"datePublished":"2021-09-03T07:00:00.000Z","dateModified":"2021-09-03T07:00:00.000Z","author":{"@type":"Person","name":"Superui"},"description":"此处记录对于 Batch Normalization 的学习。"}</script><link rel="canonical" href="https://superuier.github.io/machine-learning/batch-normalization/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Rui's Blog" type="application/atom+xml">
+</head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/images/logo_superui1.svg" alt="Rui&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/gallery/covers/batch-norm.jpg" alt="Batch Normalization"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-09-03T07:00:00.000Z" title="2021-09-03T07:00:00.000Z">2021-09-03</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-09-03T07:00:00.000Z" title="2021-09-03T07:00:00.000Z">2021-09-03</time></span><span class="level-item"><a class="link-muted" href="/categories/Machine-Learning/">Machine Learning</a></span></div></div><h1 class="title is-3 is-size-4-mobile">Batch Normalization</h1><div class="content"><!-- omit in toc -->
+<p>此处记录对于 Batch Normalization 的学习。</p>
+<a id="more"></a>
+<h2 id="神经网络中存在的-ICS-问题"><a href="#神经网络中存在的-ICS-问题" class="headerlink" title="神经网络中存在的 ICS 问题"></a>神经网络中存在的 ICS 问题</h2><p>深度学习中存在 Internal Covariate Shift (ICS) 的问题。
+类比迁移学习中的 Covariate Shift 指源领域和目标领域数据 marginal distribution 的偏移。
+这里 ICS 指神经网络中，由于参数的变化，引起的每一层输出分布的差异变化，换句话说之后下一层的输入在参数变化后，可能基于了另一个分布。
+所以下一层在训练过程中就需要不断的去适应这种变化。</p>
+<p>于是带来了以下问题：</p>
+<ul>
+<li>后面一层的参数需要适应不断变化的分布，训练效率降低。</li>
+<li>对于饱和非线性激活函数，例如 sigmoid 和 tanh，容易落入饱和区。饱和区是指由于输入值极度偏离0点，导致梯度计算接近于0，从而难以起到学习效果。</li>
+</ul>
+<h2 id="如何解决-ICS-问题"><a href="#如何解决-ICS-问题" class="headerlink" title="如何解决 ICS 问题"></a>如何解决 ICS 问题</h2><p>此类由于分布变化带来不良影响的问题，最 naive 的解决方式一般来说都是对分布进行限制。
+就比如在迁移学习中，会将源域和目标域的样本来做一个统一（减小分布差异）。
+在 ICS 问题中，也可以对分布进行限制。</p>
+<p>最初，白化（whitening）被提出，一般来说采用 <a target="_blank" rel="noopener" href="http://ufldl.stanford.edu/tutorial/unsupervised/PCAWhitening/">PCA</a> 或者 ZCA 的方法，使所有特征分布均值为0，方差为1（PCA）或相同（ZCA）。
+白话的目的是去除数据特征之间相关性（独立），同时使其具有相同均值和方差（同分布）。
+这样每一层网络的输入分布被固定，加速网络收敛。</p>
+<p>但是白化也存在一些问题：</p>
+<ul>
+<li>计算成本高</li>
+<li>改变数据表达能力，一些参数信息会被丢失</li>
+<li>不可微，难以通过反向传播训练</li>
+</ul>
+<p>所以说我们期望有一种计算代价低廉，且能使标准化的数据尽可能保有表达能力的方法。
+这就是 Batch Normalization 提出的背景。</p>
+<h2 id="什么是-Batch-Normalization"><a href="#什么是-Batch-Normalization" class="headerlink" title="什么是 Batch Normalization"></a>什么是 Batch Normalization</h2><p>主要思路：</p>
+<ul>
+<li>既然白化计算过程比较复杂，那我们就放松限制一点，尝试只单独对每个特征进行标准化，使其均值为0，方差为1。</li>
+<li>既然白化操作减弱了网络中每一层输入数据表达能力，那再加入线性变换操作，让这些数据再能够尽可能恢复本身的表达能力，使其不因规范化而下降。</li>
+</ul>
+<p>通用变换框架如下所示，包含两次平移和伸缩变换，在使用 BN 之后，每层神经元输入的样本的均值仅由 $\boldsymbol{b}$ 决定，而不像之前由前面一层神经网络复杂的参数决定：</p>
+<script type="math/tex; mode=display">
+h=f\left(\boldsymbol{g}\cdot\frac{\boldsymbol{x}-\boldsymbol{\mu}}{\boldsymbol{\sigma}}+\boldsymbol{b}\right)\\</script><p>同时 BN 有一些变体，在这里不展开了：</p>
+<ul>
+<li>纵向规范化（最基础）</li>
+<li>横向规范化</li>
+<li>参数规范化</li>
+<li>余弦规范化</li>
+</ul>
+<h2 id="如何使用-Batch-Normalization"><a href="#如何使用-Batch-Normalization" class="headerlink" title="如何使用 Batch Normalization"></a>如何使用 Batch Normalization</h2><p>适用场景：</p>
+<ul>
+<li>每个 mini-batch 比较大，数据分布比较接近。</li>
+<li>在进行训练之前，要做好充分的 shuffle， 否则效果会差很多。</li>
+<li>因此不适用于 动态的网络结构 和 RNN 网络</li>
+</ul>
+<p>测试阶段：</p>
+<ul>
+<li>保留训练时每一个 batch 的统计量 $\mu_{batch}$ 和 $\sigma^2_{batch}$。</li>
+<li>使用整个样本的统计量来对Test数据进行归一化，具体来说使用均值与方差的无偏估计。<ul>
+<li>$\mu_{test}=\mathbb{E} (\mu_{batch})$</li>
+<li>$\sigma^2_{test}=\frac{m}{m-1}\mathbb{E}(\sigma^2_{batch})$</li>
+</ul>
+</li>
+</ul>
+<p>构建阶段：</p>
+<ul>
+<li>置于 Conv 层或全连接层之后</li>
+<li>对于饱和非线性激活函数而言，BN 层需要放到 activation 之前。Dropout 则应当置于 activation layer 之后.</li>
+<li>对于 ReLU 而言，目前并没有定论，不管是实验还是理论争论都比较多，目前看来 BN 放在 ReLU 之后可能表现更好，但是放在 ReLU 前的可能更多一些（BN 原论文是放在了前面）。（<strong>大误</strong>）</li>
+</ul>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/33173246">详解深度学习中的Normalization，BN/LN/WN - Juliuszh的文章 - 知乎</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/34879333">Batch Normalization原理与实战 - 天雨粟的文章 - 知乎</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/318354788/answer/640006790">Batch Normalization 和激活函数的使用顺序是什么，神经元的饱和指的又是什么？ - 无双谱的回答 - 知乎</a></li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Batch Normalization</p><p><a href="https://superuier.github.io/machine-learning/batch-normalization/">https://superuier.github.io/machine-learning/batch-normalization/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Superui</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-09-03</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2021-09-03</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/neural-network/">neural-network</a><a class="link-muted mr-2" rel="tag" href="/tags/machine-learning/">machine-learning</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/programming/latex/"><span class="level-item">Latex 图片排版记录</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/images/avatar_rui_2.jpg" alt="Rui"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Rui</p><p class="is-size-6 is-block">PhD Student</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Shenzhen, China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">43</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">9</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">32</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/SupeRuier" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/SupeRuier"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/computer-science-engineering/"><span class="level-start"><span class="level-item">Computer Science and Engineering</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/economy-finance/"><span class="level-start"><span class="level-item">Economy &amp; Finance</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/knowledge-from-growth/"><span class="level-start"><span class="level-item">Knowledge from Growth</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/Machine-Learning/"><span class="level-start"><span class="level-item">Machine Learning</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/categories/paper-reading/"><span class="level-start"><span class="level-item">Paper Reading</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/programming/"><span class="level-start"><span class="level-item">Programming</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="/categories/reading-note/"><span class="level-start"><span class="level-item">Reading Note</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/research/"><span class="level-start"><span class="level-item">Research</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/software-tools/"><span class="level-start"><span class="level-item">Software Tools</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li></ul></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#神经网络中存在的-ICS-问题"><span class="level-left"><span class="level-item">神经网络中存在的 ICS 问题</span></span></a></li><li><a class="level is-mobile" href="#如何解决-ICS-问题"><span class="level-left"><span class="level-item">如何解决 ICS 问题</span></span></a></li><li><a class="level is-mobile" href="#什么是-Batch-Normalization"><span class="level-left"><span class="level-item">什么是 Batch Normalization</span></span></a></li><li><a class="level is-mobile" href="#如何使用-Batch-Normalization"><span class="level-left"><span class="level-item">如何使用 Batch Normalization</span></span></a></li><li><a class="level is-mobile" href="#Reference"><span class="level-left"><span class="level-item">Reference</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Conda/"><span class="tag">Conda</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Cuda/"><span class="tag">Cuda</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Docker/"><span class="tag">Docker</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/EA/"><span class="tag">EA</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hackintosh/"><span class="tag">Hackintosh</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Icarus/"><span class="tag">Icarus</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MacOS/"><span class="tag">MacOS</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Master-Ma/"><span class="tag">Master Ma</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python/"><span class="tag">Python</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Pytorch/"><span class="tag">Pytorch</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Research/"><span class="tag">Research</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Vim/"><span class="tag">Vim</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/active-learning/"><span class="tag">active-learning</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/cloud/"><span class="tag">cloud</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/cs-seminar/"><span class="tag">cs-seminar</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/few-shot-learning/"><span class="tag">few-shot-learning</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/gaussian-process/"><span class="tag">gaussian-process</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/imitation-learning/"><span class="tag">imitation-learning</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/latex/"><span class="tag">latex</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/loss/"><span class="tag">loss</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/machine-learning/"><span class="tag">machine-learning</span><span class="tag">8</span></a></div><div class="control"><a class="tags has-addons" href="/tags/neural-network/"><span class="tag">neural-network</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/nlp/"><span class="tag">nlp</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/numpy/"><span class="tag">numpy</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/reinforcement-learning/"><span class="tag">reinforcement-learning</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/survey/"><span class="tag">survey</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%84%9F%E6%82%9F%E6%80%BB%E7%BB%93/"><span class="tag">感悟总结</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BF%9F%E4%B8%9C%E5%8D%87/"><span class="tag">翟东升</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AF%BB%E4%B9%A6/"><span class="tag">读书</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%BD%AC%E8%BD%BD/"><span class="tag">转载</span><span class="tag">1</span></a></div></div></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/images/logo_superui1.svg" alt="Rui&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2021 Superui</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" async></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
