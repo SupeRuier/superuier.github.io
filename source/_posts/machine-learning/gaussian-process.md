@@ -4,10 +4,10 @@ date: 2021-07-21 16:34:53
 updated: 2021-07-21 16:34:53
 cover: /gallery/covers/gaussian-process.png
 category: 
-- Math
+- Machine Learning
 toc: true
 tags: 
-- math
+- machine-learning
 - gaussian-process
 
 ---

@@ -5,7 +5,7 @@ toc: true
 date: 2021-08-09 21:54:55
 updated: 2021-08-09 21:54:55
 category:
-- Math
+- Machine Learning
 tags:
 - neural-network
 - machine-learning
