@@ -29,19 +29,19 @@ $ docker run ubuntu /bin/echo "Hello world"
 ```
 以上命令完整的意思可以解释为：Docker 以 ubuntu15.10 镜像创建一个新容器，然后在容器里执行 bin/echo "Hello world"，然后输出结果。
 
-```
+``` bash
 $ docker images   #检查有哪些镜像
 $ docker ps –a    #检查有哪些容器
 ```
 
-```
+``` bash
 $ docker run -it ubuntu /bin/bash   #运行交互式容器
 $ docker run -itd ubuntu /bin/bash   #后台启动容器
 $ exit (ctrl+D) #容器内退出容器
 $ docker stop [id/name] #停止容器（在容器外）
-$ docker start [id/name] 启用停止的容器
+$ docker start [id/name] #后台启用停止的容器
 $ docker restart [id/name] #重启容器
-$ docker exec -it [id/name] #进入容器
+$ docker exec -it [id/name] #进入容器，退出终端容器不停止
 $ docker attach [id/name] #进入容器，退出终端导致容器停止
 $ docker rm [id/name] #删除容器
 $ docker rmi [id/name] #删除镜像
@@ -58,7 +58,7 @@ $ docker rmi [id/name] #删除镜像
 
 此处我们只考虑更新镜像。
 
-```
+``` bash
 $ docker run -it ubuntu /bin/bash  # Open a container
 $ /#    # Do modification
 $ exit  # exit container
@@ -82,3 +82,9 @@ docker save -o image_name.tar image_name
 docker load -i image_name.tar
 ```
 执行后再次查看镜像，可以看到镜像已经恢复。
+
+## 使用 GPU
+
+``` bash
+docker run --gpus all nvidia/cuda:11.1-base-ubuntu18.04 nvidia-smi
+```
