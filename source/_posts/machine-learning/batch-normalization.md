@@ -50,12 +50,14 @@ tags:
 
 主要思路：
 - 既然白化计算过程比较复杂，那我们就放松限制一点，尝试只单独对每个特征进行标准化，使其均值为0，方差为1。
-- 既然白化操作减弱了网络中每一层输入数据表达能力，那再加入线性变换操作，让这些数据再能够尽可能恢复本身的表达能力，使其不因规范化而下降。
+- 既然类白化操作减弱了网络中每一层输入数据表达能力，那再加入线性变换操作，让这些数据再能够尽可能恢复本身的表达能力，使其不因规范化而下降。
 
 通用变换框架如下所示，包含两次平移和伸缩变换，在使用 BN 之后，每层神经元输入的样本的均值仅由 $\boldsymbol{b}$ 决定，而不像之前由前面一层神经网络复杂的参数决定：
 $$
 h=f\left(\boldsymbol{g}\cdot\frac{\boldsymbol{x}-\boldsymbol{\mu}}{\boldsymbol{\sigma}}+\boldsymbol{b}\right)\\
 $$
+
+但是好像这个第二次的仿射变换在理论上是否有用，需不需要用还有争议，日后可以再仔细看一下。（挖坑）
 
 同时 BN 有一些变体，在这里不展开了：
 - 纵向规范化（最基础）
@@ -81,8 +83,14 @@ $$
 - 对于饱和非线性激活函数而言，BN 层需要放到 activation 之前。Dropout 则应当置于 activation layer 之后.
 - 对于 ReLU 而言，目前并没有定论，不管是实验还是理论争论都比较多，目前看来 BN 放在 ReLU 之后可能表现更好，但是放在 ReLU 前的可能更多一些（BN 原论文是放在了前面）。（**大误**）
 
+## 在 Pytorch 中的 Batch Normalization
+
+在 Pytorch 的实现中，BN 也包含两次平移和伸缩变换，其中第二次变换可以通过调整仿射变换参数 `affine=True` 选择是否打开。
+这里可能也体现了这个仿射变换是否有必要的争议。
+
 ## Reference
 
 - [详解深度学习中的Normalization，BN/LN/WN - Juliuszh的文章 - 知乎](https://zhuanlan.zhihu.com/p/33173246)
 - [Batch Normalization原理与实战 - 天雨粟的文章 - 知乎](https://zhuanlan.zhihu.com/p/34879333)
 - [Batch Normalization 和激活函数的使用顺序是什么，神经元的饱和指的又是什么？ - 无双谱的回答 - 知乎](https://www.zhihu.com/question/318354788/answer/640006790)
+- https://pytorch.org/docs/stable/generated/torch.nn.BatchNorm2d.html
