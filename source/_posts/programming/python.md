@@ -10,9 +10,15 @@ tags: Python
 
 <!-- more -->
 
-## 功能
+# 用法
 
-### 格式化字符串
+## 星号变量
+
+单个星号代表这个位置接收任意多个非关键字参数，在函数的`*args`位置上将其转化成元组，而双星号代表这个位置接收任意多个关键字参数，在`**args`位置上将其转化成字典。
+
+# 功能
+
+## 格式化字符串
 
 ```python
 ## Basics             ## use "·" to visualize whitespace
@@ -44,7 +50,7 @@ f"{b:.2%}"            ## "50.00%"
 
 Copy from Yu's [blog](https://yzhang-gh.github.io/notes/programming/python/python.html#作用域-scope).
 
-### 将 Traceback 信息保存到 log 文件中
+## 将 Traceback 信息保存到 log 文件中
 
 有时候要跑一个运行时间很长的文件，中间会创建 log 文件。
 如果跑到一半报错终止，文件中却没有相应记录则很难追踪错误。

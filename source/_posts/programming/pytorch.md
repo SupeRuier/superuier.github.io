@@ -182,6 +182,21 @@ grad= torch.autograd.grad(outputs=loss, inputs=W, retain_graph=True, only_inputs
 
 有时在增加删减维度之后，需要对原始维度进行重新排序，此时可以用到`torch.permute()`方法。
 
+## 1.12. 允许 batch 中的样本不等长
+
+一般情况下 pytorch 中，每个 batch 的每一个样本都是等长的，如果不等长的话会报错。
+
+```
+RuntimeError: each element in list of batch should be of equal size
+```
+
+一般来说，这是因为 Dataloader 中的参数 `collate_fn` 的默认值为 torch 自定义的 `default_collate`，`collate_fn` 的作用就是对每个batch进行处理，而默认的 `default_collate `处理出错。
+自定义的 `default_collate` 的作用是将列表中的元素变成 tensor 的形式，详见[这篇文章](https://blog.csdn.net/SWEDEN_1003/article/details/84343496)，同时源码见[这里](https://github.com/pytorch/pytorch/blob/master/torch/utils/data/_utils/collate.py)。
+
+所以这个时候的处理方式是自定义一个 `collate_fn`，并在其中使用 padding，将每个样本扩充至等长，使得变为 tensor 这一过程不出错。
+
+参考了[这篇文章](https://blog.csdn.net/weixin_44799217/article/details/115137820)。
+
 # 2. 设置
 ## 2.1. Dataloader 中的 num_workers 造成训练循环缓慢
 
