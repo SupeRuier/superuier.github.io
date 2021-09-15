@@ -1,12 +1,16 @@
 ---
 title: Python
+cover: /gallery/covers/python.jpeg
 date: 2020-12-15 12:56:03
+updated: 2021-09-15 10:50:00
 categories:
 - Programming
 tags: Python
 ---
 
-常用到但是总忘记的的 Python 知识/语句
+这里是个人的 Python 学习笔记。
+记录一些常用到但是总忘记的的 Python 知识/语句。
+也写一下自己有且被解决的疑问。
 
 <!-- more -->
 
@@ -65,3 +69,16 @@ except Exception as e:
     logger.error(f"Main program error: {e}")
     logger.error(traceback.format_exc())
 ```
+
+# 一些疑问及回答
+
+## 同一个可迭代对象的多个迭代器是否独立？
+
+独立。
+这问题其实是在问生成的两个迭代器是不是指向同一个内存。
+这个显然是不同的。
+所以说用两个迭代器同时遍历一个列表，都会是从头开始。
+
+需要注意的是在 pytorch 中，遍历 dataloader 需要使用迭代器。
+此时如果用两个迭代器，在第一次迭代生成的样本可能不同。
+这个其实是因为你在生成 dataloader 的时候可能传入 `shuffle = True`，所以在生成迭代器的时候会采用不同的顺序读区。
