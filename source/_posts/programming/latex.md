@@ -3,7 +3,7 @@ title: Latex 图片排版记录
 cover: /gallery/covers/latex.png
 toc: true
 date: 2021-08-30 11:00:00
-updated: 2021-08-30 11:00:00
+updated: 2021-09-24 16:00:00
 category:
 - Programming
 tags:
@@ -79,4 +79,12 @@ tags:
    \caption{A box of figures.}
    \label{fig:box-figures}
 \end{figure}
+```
+
+## 表格排版
+
+### 竖排表格中的文本
+
+``` LaTeX
+\rotatebox{90}{some rotated text}
 ```
