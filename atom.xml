@@ -6,7 +6,7 @@
   <link href="https://superuier.github.io/atom.xml" rel="self"/>
   
   <link href="https://superuier.github.io/"/>
-  <updated>2021-09-24T07:00:03.000Z</updated>
+  <updated>2021-09-27T08:00:00.000Z</updated>
   <id>https://superuier.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>人工智能的中的搜索</title>
+    <link href="https://superuier.github.io/artificial-intelligence/ai-search/"/>
+    <id>https://superuier.github.io/artificial-intelligence/ai-search/</id>
+    <published>2021-09-27T08:00:00.000Z</published>
+    <updated>2021-09-27T08:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>人工智能中关于搜索的一些最基础的知识。</p><a id="more"></a><h2 id="AI-中的搜索"><a href="#AI-中的搜索" class="headerlink" title="AI 中的搜索"></a>AI 中的搜索</h2><p>对于一个 goal-based agent，搜索是使其找到一个动作或者一系列动作来达到目标。有很多例子，比如走迷宫，寻路问题，8-queen 问题等。一般来说包含树搜索和图搜索等。</p><h2 id="对于考虑路径的搜索而言"><a href="#对于考虑路径的搜索而言" class="headerlink" title="对于考虑路径的搜索而言"></a>对于考虑路径的搜索而言</h2><p>评估策略需考虑以下四个维度：</p><ul><li>Completeness: Does it always find a solution if it exists?</li><li>Time complexity: # nodes generated/expanded.</li><li>Space complexity: maximum # nodes in memory.</li><li>Optimality: Does it always find the least-cost solution?</li></ul><p>存在两类搜索策略：</p><ul><li>Uniformed<ul><li>Breadth-first search (BFS): Expand shallowest node</li><li>Depth-first search (DFS): Expand deepest node</li><li>Depth-limited search (DLS): Depth first with depth limit</li><li>Iterative-deepening search (IDS): DLS with increasing limit</li><li>Uniform-cost search (UCS): Expand least cost node (the cost could be the length between nodes)</li></ul></li><li>Informed<ul><li>Greedy best-first search: Expand the node that appears to be closest to goal</li><li>A* search: Minimize the total estimated solution cost (to middle node + node to goal；f=g+h). BFS mode.</li><li>IDA<em>: IDS + A</em>. DLS mode. The cost of space is lower than A*.</li></ul></li></ul><p>对于 A* 中启发式策略而言（h）：</p><ul><li>A good heuristic must be admissible.</li><li>An admissible heuristic never overestimates the cost to reach the goal, that is it is optimistic</li><li>For admissible $h_1$ and $h_2$, if $h_1$(s) ≥ $h_2$(s) for ∀𝑠 ⇒ $h_1$ dominates $h_2$ and is more efficient for search.</li></ul><h2 id="对于不考虑路径的搜索"><a href="#对于不考虑路径的搜索" class="headerlink" title="对于不考虑路径的搜索"></a>对于不考虑路径的搜索</h2><p>Local search: the path doesn’t matter</p><ul><li>Hill climbing</li><li>Genetic algorithms</li><li>Simulated Annealing: Given a chance to jump out the local minimum</li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;人工智能中关于搜索的一些最基础的知识。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Artificial Intelligence" scheme="https://superuier.github.io/categories/Artificial-Intelligence/"/>
+    
+    
+    <category term="AI" scheme="https://superuier.github.io/tags/AI/"/>
+    
+  </entry>
   
   <entry>
     <title>Matplotlib 学习笔记</title>
@@ -457,29 +478,6 @@
     <summary type="html">&lt;!-- omit in toc --&gt;
 &lt;p&gt;2019.12.&lt;/p&gt;
 &lt;p&gt;该视频是翟币的由来视频。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Economy &amp; Finance" scheme="https://superuier.github.io/categories/economy-finance/"/>
-    
-    
-    <category term="翟东升" scheme="https://superuier.github.io/tags/%E7%BF%9F%E4%B8%9C%E5%8D%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>全球发展不平等，中国在其中扮演了什么角色？</title>
-    <link href="https://superuier.github.io/economy-finance/seminar-talks/global-inequality-china/"/>
-    <id>https://superuier.github.io/economy-finance/seminar-talks/global-inequality-china/</id>
-    <published>2021-07-14T14:39:46.000Z</published>
-    <updated>2021-07-14T14:39:46.000Z</updated>
-    
-    <content type="html"><![CDATA[<!-- omit in toc --><p>海南绿色金融研究院为世界银行原首席经济学家Branco Milanovic教授与翟东生老师组织了一个线上对话。Branco 是个很有思想的学者，他提出的“大象曲线”用以描述和解释全球化时代的财富再分配效应及其政治后果，是国际政治经济学中的经典概念。</p><a id="more"></a> <h1 id="讲座部分"><a href="#讲座部分" class="headerlink" title="讲座部分"></a>讲座部分</h1><h2 id="Global-Income-Inequality-and-the-Role-of-China-全球收入不平等和中国的作用"><a href="#Global-Income-Inequality-and-the-Role-of-China-全球收入不平等和中国的作用" class="headerlink" title="Global Income Inequality and the Role of China 全球收入不平等和中国的作用"></a>Global Income Inequality and the Role of China 全球收入不平等和中国的作用</h2><div style="width:60%; margin:auto"><img src="/economy-finance/seminar-talks/global-inequality-china/gini.png" class=""></div><p>大概分成三个部分：</p><ul><li>1950年前，英国日本等经济增长，而中国下降。不平等增加。</li><li>1950-2000，二战后美国在不平等中占据重要地位，不平等并未加剧。</li><li>1980年后中国印度崛起，这些国家之前贫穷，不平等减少。</li></ul><p>虽然中国等国家的崛起减少的国家间的不平等，但是国内的不平等仍在加剧。中国对减少全球不平等起着积极作用。但是随着中国越来越富有，作为中上收入国家，其实中国是会加剧全球不平等。印度非洲对减少全球不平等越来越重要。</p><h2 id="Inequality-in-US-美国的不平等"><a href="#Inequality-in-US-美国的不平等" class="headerlink" title="Inequality in US 美国的不平等"></a>Inequality in US 美国的不平等</h2><p>美国自由主义资本中的系统性不平等：</p><ul><li>资本收入对总收入的重要性提升，资本集中度提高。</li><li>高收入人群劳动收入也很高。不像传统的资本家只有资本收入。高等级人群在劳动力市场和资本市场都很富有。（homoploutia）</li><li>人们门当户对的结合。选型婚配。（homogamy）</li><li>富有的人对政治控制程度的增高。</li><li>大学入学率与父母收入正相关。</li></ul><h2 id="Inequality-in-China-中国的不平等"><a href="#Inequality-in-China-中国的不平等" class="headerlink" title="Inequality in China 中国的不平等"></a>Inequality in China 中国的不平等</h2><p>中国的不平等在2010年之后稳定并逐步下降。城镇不平等和总不平等高度相关。</p><div style="width:60%; margin:auto"><img src="/economy-finance/seminar-talks/global-inequality-china/gini-china.png" class=""></div><p>三个可解决的不平等，相比之下，美国较小：</p><ul><li>省份收入的不平等。可以提高GDP用财政政策解决。</li><li>城乡地理间收入的不平等。可以通过劳动力流动和解决户口解决。</li><li>腐败带来的不平等。反腐政策解决。</li></ul><p>三个可困难的不平等：</p><ul><li>资本收入增加。越高收入的人，资本收入越多。</li><li>高等级人群在劳动力市场和资本市场都很富有。近十年此指标增长较高。homoploutia。</li><li>社会流动性降低，教育与父母收入相关。</li></ul><h1 id="提问部分（翟东升）"><a href="#提问部分（翟东升）" class="headerlink" title="提问部分（翟东升）"></a>提问部分（翟东升）</h1><ol><li>质疑一下中国的发展未来会限制世界不平等，同时更依赖印度非洲等地区对不平等作出贡献。仅从GDP角度分析可能是这样，但是还是应该考虑一些其他因素。中国正在转型为资本提供者。从2013年来，中国把越来越多的钱投入到全球外围地区。所谓的一带一路。如果中国对人类命运共同体贡献成功，还是可以减轻全球不平等。在未来我们会通过长期促进全球外围地区发展来推动平等。</li><li>homoploutia，其实是一个可以解决的办法。新时代中国特色社会主义市场经济，整个世界的体制正在趋同。什么样的资本主义应该实行？美国的撒钱（helicopter money）更像共产主义来。欧洲的高福利其实使人懒惰。如何平衡成本和收益？对欧洲福利进行调整，构建一种社会福利体系。欧洲很多的福利被用于或者浪费于公共系统，或者让老年人多活一个月，这是性价比很低的。公共部门为了挽救人们生命和财富分配的干预应该致力于减少年轻人之间的不平等。年轻人无法选择，但是年长的人应该对自己的行为负责。所以财力应该节省出来给年轻人。中国的资本增长主要在于地产，年轻人要承担这个后果。在中国我们应该补偿这种代际剥夺。</li><li>抛去资本所有权的集中，更应该谈论数据所有权的集中。1971年之前资本指黄金，之后指大国的主权信用。1980后我们见证着资本稀缺性的下降。目前最重要的是数据的所有权。在美国是公司高管们拥有这些数据。</li></ol><h1 id="回复部分（BM）"><a href="#回复部分（BM）" class="headerlink" title="回复部分（BM）"></a>回复部分（BM）</h1><ol><li>一带一路可以为非洲带来增长，但是技术上讲，还是会不可避免的加剧不平衡。</li><li>代际不平衡类似人口老龄化，这种不平衡在美欧都有。年轻人进步的机会比其父母更少。</li><li>资本收入包括数据等资产。资本的种类的确在变化。</li></ol>]]></content>
-    
-    
-    <summary type="html">&lt;!-- omit in toc --&gt;
-&lt;p&gt;海南绿色金融研究院为世界银行原首席经济学家Branco Milanovic教授与翟东生老师组织了一个线上对话。
-Branco 是个很有思想的学者，他提出的“大象曲线”用以描述和解释全球化时代的财富再分配效应及其政治后果，是国际政治经济学中的经典概念。&lt;/p&gt;</summary>
     
     
     
