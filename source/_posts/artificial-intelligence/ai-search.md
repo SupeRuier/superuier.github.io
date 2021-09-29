@@ -1,7 +1,7 @@
 ---
 title: 人工智能的中的搜索
 date: 2021-09-27 16:00:00
-updated: 2021-09-27 16:00:00
+updated: 2021-09-29 13:00:00
 cover: /gallery/covers/ai-search.jpeg
 categories:
 - Artificial Intelligence
@@ -43,6 +43,11 @@ tags:
 - A good heuristic must be admissible.
 - An admissible heuristic never overestimates the cost to reach the goal, that is it is optimistic
 - For admissible $h_1$ and $h_2$, if $h_1$(s) ≥ $h_2$(s) for ∀𝑠 ⇒ $h_1$ dominates $h_2$ and is more efficient for search.
+
+UCS vs Greedy Best First vs A*:
+- UCS：f(n) = g(n) 
+- Greedy Best First: f(n) = h(n) 
+- A*: f(n)=g(n)+h(n)
 
 ## 对于不考虑路径的搜索
 
