@@ -6,7 +6,7 @@
   <link href="https://superuier.github.io/atom.xml" rel="self"/>
   
   <link href="https://superuier.github.io/"/>
-  <updated>2021-09-30T06:02:00.000Z</updated>
+  <updated>2021-10-08T11:30:00.000Z</updated>
   <id>https://superuier.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>排序算法</title>
+    <link href="https://superuier.github.io/computer-science-engineering/sorting/"/>
+    <id>https://superuier.github.io/computer-science-engineering/sorting/</id>
+    <published>2021-10-08T11:30:00.000Z</published>
+    <updated>2021-10-08T11:30:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<!-- omit in toc --><p>最近看了一篇比较有趣的文章<a href="https://mp.weixin.qq.com/s/_N_vbYEisNJ7yddaRjgZdQ">《比冒泡算法还简单的排序算法：看起来满是bug的程序，居然是对的》</a>，看了半天才看懂。发现自己其实已经不太记得各种排序方法了，此处做一个复习总结。（给自己看的笔记也不会很详细，毕竟大部分也都实现过，这里主要记录intuition。）主要参考了这篇知乎的博文，<a href="https://zhuanlan.zhihu.com/p/335048580">《八大经典排序算法详解》</a>。</p><a id="more"></a><h2 id="鸽巢排序"><a href="#鸽巢排序" class="headerlink" title="鸽巢排序"></a>鸽巢排序</h2><ul><li>基本思想：空间换时间，建立一个足够长的数组，按照数值的大小放到相应的位置，最后遍历删除空位置。</li><li>时间复杂度为 O(n)。但是如果需要排序的数中有特别大的，则数组需要建立的特别大，不方便使用。</li></ul><h2 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h2><p>上述鸽巢排序可以看作一种极端的（桶数很多的）桶排序：</p><ul><li>基本思想：空间换时间，将待排序的序列分到若干个桶中（桶具有顺序），每个桶内的元素再进行基于比较的排序。</li><li>时间复杂度为 O(k+n)，k 为最大值。</li><li>是稳定的排序方法。</li><li>限制比较多：只能int，空间消耗大，只有对于均匀数列效果好</li></ul><h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><ul><li>基本思想：将待插入样本按其值的大小插入前面已经排序的文件中适当位置上，直到全部插入完为止。</li><li>时间复杂度为 O(n^2)。</li><li>是稳定的排序方法。</li></ul><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><ul><li>基本思想：在待排序的元素任取一个元素作为基准(通常选第一个元素，称为基准元素），将待排序的元素进行分块，比基准元素大的元素移动到基准元素的右侧，比基准元素小的移动到作左侧，从而一趟排序过程，就可以锁定基准元素的最终位置，对左右两个分块重复以上步骤直到所有元素都是有序的（递归过程）。</li><li>快速排序平均时间复杂度为 O(nlogn)，最坏情况为 O(n^2)，n越大，速度越快。</li><li>不是稳定的排序算法。</li></ul><h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><ul><li>基本思想：每一次从待排序的数据元素中选出最小的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。</li><li>时间复杂度 O(n^2)。</li><li>选择排序是不稳定的排序方法。（存在不相邻元素的互换）</li></ul><h2 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h2><ul><li>基本思想：设置一定的步长序列 [a,b,c,1]（最后一个需要为1），然后根据步长来构建分组（以 a 为例，每个分组中都是相隔为a的一组样本：i, i+a, i+2a…），然后对分组里的样本进行排序，之后合并为新序列。a 步长进行完之后，在新的序列上使用下一个步长 b 得到下一个序列，如此往复。最后一个步长需要为1。</li><li>时间复杂度 平均时间 O(nlogn) 最差时间O(n^2)</li><li>是不稳定的排序方法。</li></ul><h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><ul><li>基本思想：利用最大堆或最小堆，先将所有值放入堆中储存，再一一取出，则排好序。</li><li>堆排序是一种选择排序,其时间复杂度为 O(nlogn)。堆排序是不稳定的</li></ul><h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><ul><li>基本思想：将待排序的数组分成前后两个部分，再递归的将前半部分数据和后半部分的数据各自归并排序，得到的两部分数据，然后使用merge合并算法将两部分数据合并到一起。</li><li>最好、最坏和平均时间复杂度都是 O(nlogn)，空间复杂度是 O(n)。</li><li>是稳定的排序算法。</li></ul><h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><ul><li>基本思想：持续比较相邻的元素。如果第一个比第二个大，就交换他们两个。直到没有任何一对数字需要比较。</li><li>冒泡排序最好的时间复杂度为 O(n)，冒泡排序的最坏时间复杂度为 O(n^2)，因为循环轮数不确定。因此冒泡排序总的平均时间复杂度为 O(n^2)。</li><li>算法适用于少量数据的排序。</li><li>是稳定的排序方法。</li></ul><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i = <span class="number">1</span> to n <span class="keyword">do</span></span><br><span class="line"><span class="keyword">for</span> j = i + <span class="number">1</span> to n <span class="keyword">do</span></span><br><span class="line"><span class="keyword">if</span> A[i] &gt; A[j] then</span><br><span class="line">swap A[i] <span class="keyword">and</span> A[j]</span><br></pre></td></tr></table></figure><h2 id="Bug-满满的“数组升序排序”"><a href="#Bug-满满的“数组升序排序”" class="headerlink" title="Bug 满满的“数组升序排序”"></a>Bug 满满的“数组升序排序”</h2><p>这个方法第一次见于<a href="https://mp.weixin.qq.com/s/_N_vbYEisNJ7yddaRjgZdQ">《比冒泡算法还简单的排序算法：看起来满是bug的程序，居然是对的》</a>。伪代码如下。这个代码相对于冒泡排序看起来有两个地方写错了，一个是判断时的小于号，一个是第二个 for 循环中的开始项。但是这个算法竟然可以惊讶地得到正确的结果。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i = <span class="number">1</span> to n <span class="keyword">do</span></span><br><span class="line"><span class="keyword">for</span> j = <span class="number">1</span> to n <span class="keyword">do</span></span><br><span class="line"><span class="keyword">if</span> A[i] &lt; A[j] then</span><br><span class="line">swap A[i] <span class="keyword">and</span> A[j]</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;!-- omit in toc --&gt;
+&lt;p&gt;最近看了一篇比较有趣的文章
+&lt;a href=&quot;https://mp.weixin.qq.com/s/_N_vbYEisNJ7yddaRjgZdQ&quot;&gt;《比冒泡算法还简单的排序算法：看起来满是bug的程序，居然是对的》&lt;/a&gt;，看了半天才看懂。
+发现自己其实已经不太记得各种排序方法了，此处做一个复习总结。
+（给自己看的笔记也不会很详细，毕竟大部分也都实现过，这里主要记录intuition。）
+主要参考了这篇知乎的博文，&lt;a href=&quot;https://zhuanlan.zhihu.com/p/335048580&quot;&gt;《八大经典排序算法详解》&lt;/a&gt;。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Computer Science and Engineering" scheme="https://superuier.github.io/categories/computer-science-engineering/"/>
+    
+    
+    <category term="sorting" scheme="https://superuier.github.io/tags/sorting/"/>
+    
+    <category term="algorithms" scheme="https://superuier.github.io/tags/algorithms/"/>
+    
+  </entry>
   
   <entry>
     <title>Contrastive Learning 学习记录</title>
@@ -466,30 +494,6 @@
     <category term="Hexo" scheme="https://superuier.github.io/tags/Hexo/"/>
     
     <category term="cloud" scheme="https://superuier.github.io/tags/cloud/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gaussian Process</title>
-    <link href="https://superuier.github.io/machine-learning/gaussian-process/"/>
-    <id>https://superuier.github.io/machine-learning/gaussian-process/</id>
-    <published>2021-07-21T08:34:53.000Z</published>
-    <updated>2021-07-21T08:34:53.000Z</updated>
-    
-    <content type="html"><![CDATA[<!-- omit in toc --><p>一份理解高斯分布的笔记。</p><a id="more"></a><p>参考：</p><ul><li><a href="https://www.jgoertler.com/visual-exploration-gaussian-processes/">A Visual Exploration of Gaussian Processes</a></li><li><a href="https://zhuanlan.zhihu.com/p/56562456">看得见的高斯过程：这是一份直观的入门解读</a></li><li><a href="https://www.zhihu.com/question/46631426/answer/1735470753">如何通俗易懂地介绍 Gaussian Process？</a></li><li><a href="https://zhuanlan.zhihu.com/p/104601803">高斯过程回归：推导，实现和理解</a></li></ul><hr><h2 id="模型的理解"><a href="#模型的理解" class="headerlink" title="模型的理解"></a>模型的理解</h2><p>高斯分布一般用来做回归。其原理是把回归当成一个采样过程。在 n 个测试样本上预测的情况，可以想象成在一个 n 维的高斯分布下进行采样。在每个维度上的采样结果可以当作在这个样本上的预测值。所以说回归问题转化为如何构建这个 n 维的高斯分布，一旦构建完成则可以用来预测。</p><p>直接对预测数据$X$构建这个先验分布$P(X)$是困难的，所以说在有训练数据$Y$的情况下，我们期望找到的是一个后验概率分布$P(X|Y)$。</p><hr><h2 id="目标模型的构建"><a href="#目标模型的构建" class="headerlink" title="目标模型的构建"></a>目标模型的构建</h2><h3 id="1-包含训练数据的先验分布"><a href="#1-包含训练数据的先验分布" class="headerlink" title="1. 包含训练数据的先验分布"></a>1. 包含训练数据的先验分布</h3><p>首先我们需要先得到一个包含训练点 $X_a$ 和测试点 $X_b$ 先验分布 $P (X_a,X_b)$，维度为 $|X_a|+|X_b| = p + q$。这个先验分布同样也是高斯分布 $P(X_a,X_b) \sim \mathcal{N}(\mu,\,\Sigma)$。具体来说，</p><script type="math/tex; mode=display">X=\begin{bmatrix}X_a\\X_b\end{bmatrix}_{p+q}\quad\mu=\begin{bmatrix}\mu_a\\\mu_b\end{bmatrix}_{p+q}\quad \Sigma=\begin{bmatrix}\Sigma_{aa}&\Sigma_{ab}\\\Sigma_{ba}&\Sigma_{bb}\end{bmatrix}_{p + q, p + q}</script><p>在这里我们需要定义 $\mu$ 和 $\Sigma$。对于均值 $\mu$，$\mu_a$ 是从训练集中得到的数值，$\mu_b$则需要人为设定或取 $\mu_a$ 的均值。一般在数据归一化的情况下，先验均值可以设为 0 函数。</p><p>对于协方差矩阵 $\Sigma$，则可以用核函数来生成。核函数，一般用来表示一种相似度的度量，这里用每个样本的特征 $x$ 建立样本间的相似度，再用其作为每个维度之间的协方差。此处的核函数有多种选择方式，同时也可以组合起来使用。通过不同核函数的选择可以起到添加人类的先验知识的作用。通过这一个步骤可以建立起联合分布的高斯分布表达式。</p><h3 id="2-通过先验分布得到后验分布"><a href="#2-通过先验分布得到后验分布" class="headerlink" title="2. 通过先验分布得到后验分布"></a>2. 通过先验分布得到后验分布</h3><p>此时我们可以通过条件作用从 $P(X_a,X_b)$ 得到 $P(X_b|X_a)$。这样是从一个维度为$|X_a|+|X_b|$的高斯分布得到一个维度为维度为 $|X_b|$ 的高斯分布。条件作用之后均值和标准差会发生变化，依据高斯分布的性质可以得到以下条件分布，</p><script type="math/tex; mode=display">X_b|X_a\sim N(\mu_{b|a},\Sigma_{b|a})</script><p>其中，$\mu_{b|a}=\Sigma_{ba}\Sigma^{-1}_{aa}(X_a-\mu_a)+\mu_b$，$\Sigma_{b|a}=\Sigma_{bb}-\Sigma_{ba}\Sigma^{-1}_{aa}\Sigma_{ab}$。</p><p>直观上讲，训练点是为候选的函数设了一个限定范围，所得到的函数需要通过训练点。所以在结果中，靠近训练数据点的区域预测不确定性会小，离得越远，不确定性越大。</p><hr><h2 id="在无限维的条件下"><a href="#在无限维的条件下" class="headerlink" title="在无限维的条件下"></a>在无限维的条件下</h2><p>对于观测点 $X$ 与其对应值 $Y$，所有的非观测点 $X^<em>$ 的值定义为 $f(X^</em>)$。这里我们再把均值向量替换为均值函数。那么有，</p><script type="math/tex; mode=display">\begin{bmatrix}Y\\f(X^*)\end{bmatrix}\sim N(\begin{bmatrix}\mu(X)\\\mu(X^*)\end{bmatrix}，\begin{bmatrix}k(X,X)& k(X,X^*)\\k(X^*,X)&k(X^*,X^*)\end{bmatrix})</script><p>同样的我们可以得到条件分布，</p><script type="math/tex; mode=display">f(X^*)|Y\sim N(\mu^*,k^*)</script><p>其中, $\mu^\ast=k(X^\ast,X)k(X,X)^{-1}(Y-\mu(X))+\mu(X^\ast)$，$k^\ast=k(X^\ast,X^\ast)-k(X^\ast,X)k(X,X)^{-1}k(X,X^\ast)$。</p><p>同样的，一般在数据归一化的情况下，先验均值可以设为 0 函数。在 <code>sklean</code> 中，可以通过调节参数 <code>normalize_y=True</code> 实现。</p>]]></content>
-    
-    
-    <summary type="html">&lt;!-- omit in toc --&gt;
-&lt;p&gt;一份理解高斯分布的笔记。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Machine Learning" scheme="https://superuier.github.io/categories/Machine-Learning/"/>
-    
-    
-    <category term="machine-learning" scheme="https://superuier.github.io/tags/machine-learning/"/>
-    
-    <category term="gaussian-process" scheme="https://superuier.github.io/tags/gaussian-process/"/>
     
   </entry>
   
