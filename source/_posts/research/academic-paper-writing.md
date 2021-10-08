@@ -13,6 +13,13 @@ A note about the principles for academic writing.
 
 <!-- more -->
 
+# Details
+
+- Capitalize the first letter of a proper noun
+  - For models: True
+  - For paradigms: False
+- Do not use "And" at the start of a sentence.
+
 # Narrative/Statement
 
 - Avoid and eliminate the fuzziness and subjectivity of language to the greatest extent.
