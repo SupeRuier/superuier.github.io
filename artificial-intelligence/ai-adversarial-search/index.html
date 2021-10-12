@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>对抗搜索问题和 Minimax 算法 - Rui&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Rui&#039;s Blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Rui&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta description="人工智能中的对抗搜索学习笔记。"><meta property="og:type" content="blog"><meta property="og:title" content="对抗搜索问题和 Minimax 算法"><meta property="og:url" content="https://superuier.github.io/artificial-intelligence/ai-adversarial-search/"><meta property="og:site_name" content="Rui&#039;s Blog"><meta property="og:description" content="人工智能中的对抗搜索学习笔记。"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://superuier.github.io/gallery/covers/ai-adversarial-search.jpeg"><meta property="article:published_time" content="2021-10-12T03:30:00.000Z"><meta property="article:modified_time" content="2021-10-12T03:30:00.000Z"><meta property="article:author" content="Superui"><meta property="article:tag" content="AI"><meta property="article:tag" content="search"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/gallery/covers/ai-adversarial-search.jpeg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://superuier.github.io/artificial-intelligence/ai-adversarial-search/"},"headline":"Rui's Blog","image":[],"datePublished":"2021-10-12T03:30:00.000Z","dateModified":"2021-10-12T03:30:00.000Z","author":{"@type":"Person","name":"Superui"},"description":"人工智能中的对抗搜索学习笔记。"}</script><link rel="canonical" href="https://superuier.github.io/artificial-intelligence/ai-adversarial-search/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Rui's Blog" type="application/atom+xml">
+</head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/images/logo_superui1.svg" alt="Rui&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a></div><div class="navbar-end"><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/gallery/covers/ai-adversarial-search.jpeg" alt="对抗搜索问题和 Minimax 算法"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-10-12T03:30:00.000Z" title="2021-10-12T03:30:00.000Z">2021-10-12</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-10-12T03:30:00.000Z" title="2021-10-12T03:30:00.000Z">2021-10-12</time></span><span class="level-item"><a class="link-muted" href="/categories/Artificial-Intelligence/">Artificial Intelligence</a></span></div></div><h1 class="title is-3 is-size-4-mobile">对抗搜索问题和 Minimax 算法</h1><div class="content"><p>人工智能中的对抗搜索学习笔记。</p>
+<a id="more"></a>
+<h1 id="对抗搜索问题"><a href="#对抗搜索问题" class="headerlink" title="对抗搜索问题"></a>对抗搜索问题</h1><p>对抗搜索其实可以看作游戏场景，存在一个我们不能控制的对手。
+相比于搜索，我们不是要找一个值或一系列序列，而是要找一个策略（strategy/policy）来对对手的行为进行反馈。
+而游戏是人工智能中一个比较难的方向，它可以分为以下几类。</p>
+<div style="width:80%; margin:auto"><img src="/artificial-intelligence/ai-adversarial-search/game-types.png" class=""></div>
+
+<h2 id="正式化-Formalization"><a href="#正式化-Formalization" class="headerlink" title="正式化 Formalization"></a>正式化 Formalization</h2><p>将对抗搜索的问题抽象化，正式化，我们会得到以下要素：</p>
+<ul>
+<li>$s$: state, $s \in S$.</li>
+<li>$p$: $p \in P(s)$, defines which <strong>player</strong> has the move in state $s$. Usually taking turns.</li>
+<li>$a$: <strong>action</strong>, $a \in A(s)$, returns the set of legal moves in $s$.</li>
+<li>$T(s,a)$: $S \times A \rightarrow S$, <strong>transition function</strong>, defines the result of a move.</li>
+<li>$u(s,p)$: <strong>utility function</strong> or objective function for a game that ends in terminal state s for player p. It describes the earning at the end of the game.</li>
+<li>$\pi(s): S  \rightarrow A$, <strong>strategy</strong>, output an action given a state.</li>
+</ul>
+<h1 id="Minimax-算法"><a href="#Minimax-算法" class="headerlink" title="Minimax 算法"></a>Minimax 算法</h1><p>这里很多内容参考了 <a target="_blank" rel="noopener" href="https://yzhang-gh.github.io/notes/others/minimax.html#问题定义">Yu Zhang 的笔记</a>。</p>
+<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><p>这里不再是广义的游戏背景，一般来说做出了一些限制。
+Minimax 算法常用于<strong>「有限状态，零和，完全信息，两个玩家（Max/Min）」</strong>博弈问题，比如棋类。</p>
+<h2 id="算法概要"><a href="#算法概要" class="headerlink" title="算法概要"></a>算法概要</h2><p>存在两个玩家，Max（希望最大化自己的收益），Min（希望最小化 Max 的收益）。
+从初始状态开始，通过两个玩家选用不同动作交替操作，可以形成一个树，树中的每一个节点都代表一个状态$s$。
+我们的目标是找到一个给 Max 的最优策略，使在游戏结束时的状态拥有最大的效用函数，这是一个在树中搜索的问题。</p>
+<p>在 minimax 算法中，我们认为每一个状态 $s$ 都拥有一个 minimax 值（递归得到）。
+这个值表示从当前状态 s 开始，<strong>双方均采取最优策略直至游戏结束</strong>时玩家 Max 的<strong>效用值</strong>
+具体到计算过程中，如果状态为终止状态，那么它就是当下的效用值；如果是中间状态，则是子状态 minimax 值中的（最大值，Max 操作，目的最有利于自己；最小值，Min 操作，目的最不利于 Max）：</p>
+<script type="math/tex; mode=display">
+\text{minimax}(s)=
+\left\{ 
+    \begin{aligned} 
+    &u(s, \text{Max})                   & & \text{if GameOver}(s) \\ 
+    &\max_{a \in A(s)}\text{minimax}(T(s,a)) & & \text{if Max's turn}\\ 
+    &\min_{a \in A(s)}\text{minimax}(T(s,a)) & & \text{if Min's turn}
+    \end{aligned} \right.</script><p>对于算法的解释</p>
+<ul>
+<li>对于游戏树的 DFS 搜索，从终点回推过程节点的 minimax 值。</li>
+<li>最优/最终的节点可以出现于任何深度。</li>
+<li>在 Max 使用最优策略的情况下：<ul>
+<li>如果对手 Min 使用最优策略，那么一个节点只要计算出了 minimax 值，就已经看到了游戏的结局（效用值）。</li>
+<li>如果对手 Min 不使用最优策略，那么 Max 的最终效用只会更高。</li>
+</ul>
+</li>
+</ul>
+<p>一个简单的例子，自下而上的递归推导。</p>
+<div style="width:80%; margin:auto"><img src="/artificial-intelligence/ai-adversarial-search/minimax-example.png" class=""></div>
+
+<h2 id="Alpha-Beta-剪枝"><a href="#Alpha-Beta-剪枝" class="headerlink" title="Alpha-Beta 剪枝"></a>Alpha-Beta 剪枝</h2><p>假设 game tree 的深度为 $m$，每个节点有 $b$ 种走法，则该算法的时间复杂度为$O(b^m)$，在实际情况中是不现实的。
+相应的，其空间复杂度为$O(bm)$。
+哪怕是在最简单的一字棋（tic-tac-toe）游戏中，这个数量级也相对较大：
+存在 $9!=362880$ 个终止节点。</p>
+<p>所以我们必须要进行一定的手段来对搜索空间进行限制，来保证搜索的实际可行性。
+具体的思路是，我们其实不必要遍历所有的点，因为很多点是必然不会经历/不需要考虑的。
+例如下图，虚线框的值不必考虑，因为 C 节点的 minimax 值必然小于 2（Min 只会选取最小节点），所以在 A 节点上选取是必然不会考虑 C 节点。</p>
+<div style="width:100%; margin:auto"><img src="/artificial-intelligence/ai-adversarial-search/ab-example.png" class=""></div>
+
+<p>所以，在此算法上：</p>
+<ul>
+<li>对于每一个节点，我们维护一组上下限 $[\alpha, \beta]$，表示在当前节点 Minimax 值的范围，初始设置为 $[-\infty, \infty]$。[Max 至少能实现的收益, Max 最多能实现的收益]</li>
+<li>对于一个 Max 节点 $s_{max}$，我们向上更新他的 $\alpha$ 值，将其子节点 $m$ 的 $\beta(m)$ 值与当前的 $\alpha$ 做比较：<ul>
+<li>如果 $\beta(m) \leq \alpha$，则后续分支可以剪掉（直接 return）。<ul>
+<li>若 $m$ 的一个子节点 $n$ 上，$\beta(n) \leq \alpha$，则 $\beta(m)$ 必然小于 $\alpha$。</li>
+</ul>
+</li>
+<li>对于 $\beta(m) &gt; \alpha$，则需要更新 $s_{min}$ 上的 $\alpha$ 值。</li>
+</ul>
+</li>
+<li>对于一个 Min 节点 $s_{min}$，我们向下更新他的 $\beta$ 值，将其子节点 $m$ 的 $\alpha(m)$ 值与当前的 $\beta$ 做比较<ul>
+<li>如果 $\alpha(m) \geq \beta$，则后续分支可以剪掉（直接 return）。<ul>
+<li>若 $m$ 的一个子节点 $n$ 上，$\alpha(n) \geq \beta$，则 $\alpha(m)$ 必然不小于 $\beta$。</li>
+</ul>
+</li>
+<li>对于 $\alpha(m) \lt \beta$，则需要更新 $s_{min}$ 上的 $\beta$ 值。</li>
+</ul>
+</li>
+<li>对于叶节点 $k$， $\alpha(k) = \beta(k) = \text{utility}(k, p)$</li>
+</ul>
+<blockquote>
+<p><strong>TIP</strong></p>
+<p>即使使用了 alpha-beta 剪枝，在实际中也基本不可能搜索到游戏结束，这就需要使用启发式评估函数 (heuristic evaluation function) 来代替游戏结束时的效用函数，来对一些较深层的状态进行评估，这里不再展开。</p>
+</blockquote>
+</div><div class="article-licensing box"><div class="licensing-title"><p>对抗搜索问题和 Minimax 算法</p><p><a href="https://superuier.github.io/artificial-intelligence/ai-adversarial-search/">https://superuier.github.io/artificial-intelligence/ai-adversarial-search/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Superui</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-10-12</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2021-10-12</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/AI/">AI</a><a class="link-muted mr-2" rel="tag" href="/tags/search/">search</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/computer-science-engineering/sorting/"><span class="level-item">排序算法</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/images/avatar_rui_2.jpg" alt="Rui"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Rui</p><p class="is-size-6 is-block">PhD Student</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Shenzhen, China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">50</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">11</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">40</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/SupeRuier" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/SupeRuier"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Artificial-Intelligence/"><span class="level-start"><span class="level-item">Artificial Intelligence</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/computer-science-engineering/"><span class="level-start"><span class="level-item">Computer Science and Engineering</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/economy-finance/"><span class="level-start"><span class="level-item">Economy &amp; Finance</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/Interesting-Stuff/"><span class="level-start"><span class="level-item">Interesting Stuff</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/knowledge-from-growth/"><span class="level-start"><span class="level-item">Knowledge from Growth</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/Machine-Learning/"><span class="level-start"><span class="level-item">Machine Learning</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/paper-reading/"><span class="level-start"><span class="level-item">Paper Reading</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/programming/"><span class="level-start"><span class="level-item">Programming</span></span><span class="level-end"><span class="level-item tag">12</span></span></a></li><li><a class="level is-mobile" href="/categories/reading-note/"><span class="level-start"><span class="level-item">Reading Note</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/research/"><span class="level-start"><span class="level-item">Research</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/software-tools/"><span class="level-start"><span class="level-item">Software Tools</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li></ul></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><!--!--><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/AI/"><span class="tag">AI</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Conda/"><span class="tag">Conda</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Cuda/"><span class="tag">Cuda</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Docker/"><span class="tag">Docker</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/EA/"><span class="tag">EA</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hackintosh/"><span class="tag">Hackintosh</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Icarus/"><span class="tag">Icarus</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MacOS/"><span class="tag">MacOS</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Master-Ma/"><span class="tag">Master Ma</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Matplotlib/"><span class="tag">Matplotlib</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python/"><span class="tag">Python</span><span class="tag">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Pytorch/"><span class="tag">Pytorch</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Research/"><span class="tag">Research</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Vim/"><span class="tag">Vim</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/active-learning/"><span class="tag">active-learning</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/algorithms/"><span class="tag">algorithms</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/cloud/"><span class="tag">cloud</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/contrastive-learning/"><span class="tag">contrastive-learning</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/cs-seminar/"><span class="tag">cs-seminar</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/few-shot-learning/"><span class="tag">few-shot-learning</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/gaussian-process/"><span class="tag">gaussian-process</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/imitation-learning/"><span class="tag">imitation-learning</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/interesting/"><span class="tag">interesting</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/latex/"><span class="tag">latex</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/loss/"><span class="tag">loss</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/machine-learning/"><span class="tag">machine-learning</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/neural-network/"><span class="tag">neural-network</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/nlp/"><span class="tag">nlp</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/numpy/"><span class="tag">numpy</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/reinforcement-learning/"><span class="tag">reinforcement-learning</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/search/"><span class="tag">search</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/self-supervised-learning/"><span class="tag">self-supervised-learning</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/sorting/"><span class="tag">sorting</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/survey/"><span class="tag">survey</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%84%9F%E6%82%9F%E6%80%BB%E7%BB%93/"><span class="tag">感悟总结</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BF%9F%E4%B8%9C%E5%8D%87/"><span class="tag">翟东升</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AF%BB%E4%B9%A6/"><span class="tag">读书</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%BD%AC%E8%BD%BD/"><span class="tag">转载</span><span class="tag">1</span></a></div></div></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/images/logo_superui1.svg" alt="Rui&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2021 Superui</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" async></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
