@@ -7,6 +7,7 @@ categories:
 - Artificial Intelligence
 tags: 
 - AI
+- search
 ---
 
 人工智能中关于搜索的一些最基础的知识。
