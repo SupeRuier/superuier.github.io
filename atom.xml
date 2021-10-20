@@ -6,7 +6,7 @@
   <link href="https://superuier.github.io/atom.xml" rel="self"/>
   
   <link href="https://superuier.github.io/"/>
-  <updated>2021-10-12T03:30:00.000Z</updated>
+  <updated>2021-10-19T07:50:00.000Z</updated>
   <id>https://superuier.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>约束满足问题（CSPs）</title>
+    <link href="https://superuier.github.io/artificial-intelligence/ai-csp/"/>
+    <id>https://superuier.github.io/artificial-intelligence/ai-csp/</id>
+    <published>2021-10-19T07:50:00.000Z</published>
+    <updated>2021-10-19T07:50:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>人工智能中的约束满足问题（Constraint Satisfaction Problems 问题）学习笔记。</p><a id="more"></a><h1 id="约束满足问题"><a href="#约束满足问题" class="headerlink" title="约束满足问题"></a>约束满足问题</h1><p>约束满足问题的目标是在一定的约束下，寻找符合条件的状态。这种问题在生活中比较常见，以大学排课为例，已知教授的授课可以授课的时间，寻求满足所有教授时间的排课课程表。常见的一些约束满足问题有：</p><ul><li>八皇后问题</li><li>图着色问题</li><li>填字游戏</li><li>数独</li></ul><h2 id="问题定义"><a href="#问题定义" class="headerlink" title="问题定义"></a>问题定义</h2><p>CSPs 包含以下三个要素：</p><ul><li>A set of variables（变量）, $X={X_{1},\ldots ,X_{n}}$</li><li>A set of domains （值域） for each variable: $D={D_{1},\ldots ,D_{n}}$</li><li>A set of constraints $C={C_{1},\ldots ,C_{m}}$ （限制条件） that specify allowable combinations of values. Every constraint $C_{j}\in C$ is in turn a pair $\langle t_{j},R_{j}\rangle$ , where $t_{j}\subset X$ is a subset of k variables and $R_{j}$ is a k-ary relation (among k variables) on the corresponding subset of domains $D_{j}$.</li></ul><p>问题的状态由对部分或者全部变量的定值（assignment）来确定：</p><ul><li>如果定值不违反任何的限制条件，我们说他是无矛盾的（consistent）</li><li>如果定值包含了所有的变数，我们说他是完备的（complete）</li><li>如果定值是无矛盾的且完备的，我们说这个定值是一个解（solution），这样的定值就是 CSP 的解。</li></ul><p>一个图着色问题的例子：</p><div style="width:80%; margin:auto"><img src="/artificial-intelligence/ai-csp/map-color.png" class=""></div><p>一个八皇后问题的例子：</p><div style="width:80%; margin:auto"><img src="/artificial-intelligence/ai-csp/eight-queen.png" class=""></div><p>一般来说 CSPs 使用的都是绝对约束，如果是非绝对的约束（偏好性），这样的问题称为约束优化问题（COP），在此不做讨论。</p><h1 id="求解-CSPs"><a href="#求解-CSPs" class="headerlink" title="求解 CSPs"></a>求解 CSPs</h1><h2 id="CSPs-形式化的优点"><a href="#CSPs-形式化的优点" class="headerlink" title="CSPs 形式化的优点"></a>CSPs 形式化的优点</h2><ol><li>快速消减庞大的搜索空间</li><li>发现某部分不是解迅速丢弃，直观看到哪一部分变量赋值违反约束。</li><li>CSP 具有可交换性（commutative）</li></ol><h2 id="CSPs-中的局部相容性（consistency）"><a href="#CSPs-中的局部相容性（consistency）" class="headerlink" title="CSPs 中的局部相容性（consistency）"></a>CSPs 中的局部相容性（consistency）</h2><p>在 CSPs 中，算法可以<strong>搜索</strong>，也可以做一种称作约束传播的<strong>推理</strong>。推理的目的是用约束减小一个变量的合法取值范围。可以把推理作为搜索前的预处理步骤。核心思想是增强局部相容性，使不相容的结点取值被删除。</p><ul><li>节点相容（Node-consistency）：来自节点本身的一元约束</li><li>弧相容（Arc-consistency）：某变量所有取值满足该变量所有的二元约束。<ul><li>最流行的算法是 AC-3，维护一个弧相容队列。<ul><li>从队列弹出一条弧，使其一个节点弧相容，如果其值域无变化，则处理下一条弧。</li><li>如果其值域发生变化，那么每个指向这个节点的弧必须重新插入队列准备检验。</li></ul></li></ul></li><li>路径相容（Path-consistency）：通过观察变量得到隐式约束并以此来加强二元约束。<ul><li>比如说有三个连接节点，却只有两种颜色。</li><li>所有的 n-ary 约束都可以转换为 binary 约束。</li></ul></li></ul><h2 id="具体解法：回溯搜索"><a href="#具体解法：回溯搜索" class="headerlink" title="具体解法：回溯搜索"></a>具体解法：回溯搜索</h2><p>仍然使用搜索来求解，一般来说使用 Backtracking Search（BTS）回溯搜索。用于深度优先之中，每次为一个变量选择一个赋值，当没有合法的值时就回溯。由于可交换性，我们只用搜索组合而不是排列，所以叶节点个数至多为$d^n$个（不回溯的情况）。</p><p>在回溯搜索中，也需要考虑如下问题来对搜索进行改进：</p><ul><li>下一步给哪个变量赋值？对于所选变量，选用怎样的赋值顺序？</li><li>每步搜索应该进行怎样的推理？是否能预见失败？</li><li>当我们搜索到某赋值违反约束时，搜索本身能避免重复这样的失败吗？</li></ul><h3 id="1-下一步给哪个变量赋值？对于所选变量，选用怎样的赋值顺序？"><a href="#1-下一步给哪个变量赋值？对于所选变量，选用怎样的赋值顺序？" class="headerlink" title="1. 下一步给哪个变量赋值？对于所选变量，选用怎样的赋值顺序？"></a>1. 下一步给哪个变量赋值？对于所选变量，选用怎样的赋值顺序？</h3><p>选取变量：</p><ul><li>最少剩余值启发式 Minimum Remaining Value (MRV)，选择合法取值最少的变量赋值。这样通过早期有效剪枝有助于最小化节点数。</li><li>对于第一个节点而言，最小剩余值相同，应该选用度启发式，选择与其他未赋值变量约束最多的变量来试图降低未来的分支因子。</li></ul><p>选取赋值：</p><ul><li>最小约束值 Least Constraining Value (LCV)，试图为剩余变量赋值留下最大的空间。这里只需要找到一个解，所以优先考虑最可能的值。</li></ul><h3 id="2-每步搜索应该进行怎样的推理？是否能预见失败？"><a href="#2-每步搜索应该进行怎样的推理？是否能预见失败？" class="headerlink" title="2. 每步搜索应该进行怎样的推理？是否能预见失败？"></a>2. 每步搜索应该进行怎样的推理？是否能预见失败？</h3><p>搜索和推理应当交替进行。推理的目的是减小值域，减小搜索空间。当我们决定给某个变量某个值时，都有机会推理其邻接变量的值域空间。</p><ul><li>最简单的形式是向前检验 Forward Checking（FC）。跟踪维护所有为选取变量的可能取值，当任何一个变量没有合法取值时结束。联合使用 MRV 和前向检验，很多问题的搜索将更有效。但是前向检验只使当前变量弧相容，却不向前看使其他变量弧相容。</li><li>MAC 维护弧相容，递归传播约束。对一个变量赋值后，使用 AC-3，从临接的未赋值变量开始进行约束传播，如果值域为空，则调用失败立即回溯。</li></ul><h3 id="3-当我们搜索到某赋值违反约束时，搜索本身能避免重复这样的失败吗？"><a href="#3-当我们搜索到某赋值违反约束时，搜索本身能避免重复这样的失败吗？" class="headerlink" title="3. 当我们搜索到某赋值违反约束时，搜索本身能避免重复这样的失败吗？"></a>3. 当我们搜索到某赋值违反约束时，搜索本身能避免重复这样的失败吗？</h3><ul><li>简单的时序回溯。退回到上一个变量</li><li>冲突指导的回溯。退回到可能解决当前问题的变量（因为上一个变量可能无力于解决当前冲突）。构建一个冲突集，回溯到冲突集中时间最近的赋值。</li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;人工智能中的约束满足问题（Constraint Satisfaction Problems 问题）学习笔记。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Artificial Intelligence" scheme="https://superuier.github.io/categories/Artificial-Intelligence/"/>
+    
+    
+    <category term="AI" scheme="https://superuier.github.io/tags/AI/"/>
+    
+    <category term="search" scheme="https://superuier.github.io/tags/search/"/>
+    
+  </entry>
   
   <entry>
     <title>对抗搜索问题和 Minimax 算法</title>
@@ -475,27 +498,6 @@
     
     
     <category term="转载" scheme="https://superuier.github.io/tags/%E8%BD%AC%E8%BD%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>合作的进化</title>
-    <link href="https://superuier.github.io/reading-note/evolution-of-cooperation/"/>
-    <id>https://superuier.github.io/reading-note/evolution-of-cooperation/</id>
-    <published>2021-07-26T15:44:00.000Z</published>
-    <updated>2021-07-26T15:44:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>《合作的进化》 罗伯特·阿克塞尔罗德</p><a id="more"></a><h2 id="极简简介"><a href="#极简简介" class="headerlink" title="极简简介"></a>极简简介</h2><p>罗伯特·阿克塞尔罗德是美国科学院院士，著名行为分析和博弈论专家。主要由他在博弈论和复杂性理论上基础性突破而广为人知。他是把计算机模型运用到社会科学问题领域的权威学者。</p><p>这本书是一本乐观的书。</p><p>本书从一个重复囚徒困境的竞赛结果出发，分析了表现优异策略的特点，并分析推广到社会生活中。阐述了合作如何诞生与发展，与合作存在的环境。通过分析“一报还一报”，将其特点作为重要元素，指导我们真实的合作进程。</p><h2 id="个人看法"><a href="#个人看法" class="headerlink" title="个人看法"></a>个人看法</h2><h3 id="极简评价"><a href="#极简评价" class="headerlink" title="极简评价"></a>极简评价</h3><p>这是一本蛮有趣的社会学书籍，其研究方法较为严谨符合逻辑。本书主张的观点，其实是可以为每一个正直人所用，的确有一些受益。最主要的观点在于合作中成功策略应该有四个特性，从个人角度看来，是可以在日常生活中运用的。这样在善良的前提下，可以保护自身利益。</p><p>此外作者对于合作产生的背景的研究也蛮有趣。我觉得这也是一个比较重要的部分。其重要性在于作为管理者，如何使被管理的部门产生且维持高效的合作。这样其实是会增大整体的效应。</p><p>本书主要观点其实不多。翟老师之前的介绍中其实已经基本涵盖。书中主要是多了很多实验细节和阐述，其实不需要刻意来读。</p><h3 id="缺点（喜爱挑毛病）"><a href="#缺点（喜爱挑毛病）" class="headerlink" title="缺点（喜爱挑毛病）"></a>缺点（喜爱挑毛病）</h3><p>这种基于强假设的逻辑推演局限性明显。因为真实环境，假设并不一定成立。</p><p>此外计算机的模拟其实并不能很好的作为“提炼道理”的工具。这就有些像日常生活中看到什么事，悟到了什么道理，这个事未必全面，这个道理未必准确。这也是很多 heuristic 方法的通病。</p><p>个人认为这本书其实是提出来一个假说。但是假说要通过演绎才能使其更加完备。</p><h1 id="按节讨论-摘录"><a href="#按节讨论-摘录" class="headerlink" title="按节讨论/摘录"></a>按节讨论/摘录</h1><h2 id="第一章：合作的问题"><a href="#第一章：合作的问题" class="headerlink" title="第一章：合作的问题"></a>第一章：合作的问题</h2><p>在什么条件下才能从没有集权的利己主义者中产生合作？国与国之间人与人之间都会面临这个问题。</p><p>本书重点研究追求各自利益的个体行为，并分析在社会系统中有哪些因素影响个体行为。目标是建立一个合作理论以帮助我们理解合作出现的必要条件。基本假设是个体追求自身利益。</p><p>假设下一步对局的收益是上一步对局收益的w倍（w是折扣系数，小于1）。<strong>那么如果折扣系数足够大，则不存在独立于对方所采用策略的最优策略。</strong>举例，参议院中，你最好喝将来会回报合作的人合作，而不是与将来行为不太受现在影响的人合作。</p><p>囚徒困境的框架：</p><ul><li>对策者的收益不可比较。</li><li>收益不必对称。</li><li>对策者收益是相对的而不是绝对的。</li><li>决定是否合作不必顾及他人的看法。</li><li>不必假设对策者是理性的，不必假设她们总是企图争取最大利润。</li><li>对策者的行为不必都是有意识地选择</li></ul><h2 id="第二章：“一报还一报”在计算机竞赛中的胜利"><a href="#第二章：“一报还一报”在计算机竞赛中的胜利" class="headerlink" title="第二章：“一报还一报”在计算机竞赛中的胜利"></a>第二章：“一报还一报”在计算机竞赛中的胜利</h2><p>“一报还一报”策略在重复囚徒困境中胜出。同时在演化计算的方式下，“一报还一报”在代际间保留，且比例增加。在演化后期，一些前期成功的不善良程序转折变差。</p><p>一个成功决策应有的四个特性：</p><ul><li>对方合作你就合作以避免不必要的冲突。</li><li>对方的背叛你是可激怒的。</li><li>在给挑衅以反击后你是宽容的。</li><li>行为要简单清晰。</li></ul><h2 id="第三章：合作的建立"><a href="#第三章：合作的建立" class="headerlink" title="第三章：合作的建立"></a>第三章：合作的建立</h2><p>探索结果的适用范围。简单来说要求<strong>个体有足够大的机会再次相遇</strong>，形成未来打交道的利害关系。在进化中数学表达就是当折扣系数足够大时，一报还一报是“集体稳定的”，不容易被侵入。</p><p>相似的，一个被认为在下次选举落选的国会议员很难在原有的信任和声誉上和同僚们做立法交易。</p><p>“总是背叛”的策略总是集体稳定的，可以阻止个体的侵入。但是新来者是一个小群体的话，就有机会建立合作。（相遇匹配不随机，新来者之间有机会建立合作。）善良的策略不能被单个个体侵入，那么也不能被这类个体的小群体侵入。</p><p>这样合作的进化可以分成三个阶段：</p><ol><li>起始阶段：合作可以在无条件背叛的世界里产生。有交往的可能，合作便会出现。</li><li>中间阶段：基于回报的策略在许多不同类型策略中成长起来。</li><li>最后阶段：基于回报的策略一旦建立，能防止其他不太合作的策略的侵入。因此社会进化的齿轮是不可逆转的。</li></ol><h2 id="第四章：一战中“自己活也让别人活”的系统"><a href="#第四章：一战中“自己活也让别人活”的系统" class="headerlink" title="第四章：一战中“自己活也让别人活”的系统"></a>第四章：一战中“自己活也让别人活”的系统</h2><p>四五章具体说明这个结果的适用范围。第四章论述“自己活也让别人活”系统。</p><p>讲述了一战英德前线对峙的例子。在都没有前进的企图时，双方愿意一起克制而不愿交替采取敌对行动。合作的开始，有同时进餐的因素，也有糟糕天气的因素。同时在合作中双方也会证明自己有必要是会报复的。</p><p>当然也有很多影响合作的问题：</p><ul><li>部队的换防</li><li>炮兵更不容易受到报复（在克制和报复中起到重要作用</li><li>最终由司令部的突然袭击破坏合作）</li></ul><h2 id="第五章：生物系统中的合作进化"><a href="#第五章：生物系统中的合作进化" class="headerlink" title="第五章：生物系统中的合作进化"></a>第五章：生物系统中的合作进化</h2><p>战壕里的士兵清楚理解和认识到回报在维持合作中的作用。但是参与者的这种理解并不是合作出现和稳定必须的。合作可以在没有预见的情况下产生。这一章主要是在生物学的角度论述。</p><p>在没有明显亲缘关系的情况下，自然界中形成了许多共生关系。这一章并没有太大兴趣，可以之后再仔细阅读。</p><h2 id="第六章：如何有效的选择"><a href="#第六章：如何有效的选择" class="headerlink" title="第六章：如何有效的选择"></a>第六章：如何有效的选择</h2><p>预见对于合作的进化不是必要的，但是的确很有帮助。</p><p>在持续的囚徒困境中如何表现，作者向个体选择提供四个方面的建议：</p><ul><li>不要妒忌对方的成功<ul><li>要求自己比对方做的更好不是一个很好的标准，否则可能导致危险的冲突</li><li>一报还一报总是表现不错，但是他从来没有比别人得更多的分。</li></ul></li><li>不要首先背叛</li><li>要对合作和背叛都做出回报</li><li>不耍小聪明<ul><li>不要用一些复杂的方法来推断对方，这些推断通常是错误的。</li><li>自己的策略复杂到对方不可理解是非常危险的。</li><li>在非零和博弈中，诀窍在于鼓励合作，表明你愿意回报。</li></ul></li></ul><h2 id="第七章：如何促进合作"><a href="#第七章：如何促进合作" class="headerlink" title="第七章：如何促进合作"></a>第七章：如何促进合作</h2><p>改革者通过改变相互作用的条件来促进合作：</p><ul><li>增大未来的影响，增加接触频率</li><li>改变收益值，使利害关系可以被看到</li><li>教育人们相互关心</li><li>教育人们要回报</li><li>改进辨别能力</li></ul><h2 id="第八章：合作的社会结构"><a href="#第八章：合作的社会结构" class="headerlink" title="第八章：合作的社会结构"></a>第八章：合作的社会结构</h2><p>合作理论应用的领域。不同类型社会结构如何影响合作发展方式。</p><p>四个能引起有趣的社会结构形式的因素：</p><ul><li>标记：划分种群。</li><li>信誉：体现在其他人对他采用策略的信心上。</li><li>管理：政府处理个人间公司间纠纷。</li><li>领地：策略在领地上传播。</li></ul><h2 id="第九章：回报的鲁棒性"><a href="#第九章：回报的鲁棒性" class="headerlink" title="第九章：回报的鲁棒性"></a>第九章：回报的鲁棒性</h2><p>进化的方法基于一个简单的原则：成功的东西可能在将来经常出现。这本书研究从在没有集权的情况下，合作如何从自私者中产生，扩展到当人们却是关心会发生什么和当有集权时又会发生什么。其中友谊不是合作的进化必要的，预见性也不是必要的。</p><p>从小群体开始合作，在善良、可激怒和某种程度的宽容规则中逐步成长，一旦成为一个群体，采用这种有识别力的策略的个体就能保护自己不受侵入，总体的合作水平是在上升而不是在下降。换句话说，合作的进化是不可逆转的。</p><p>最有价值的发现是：具有预见能力的参与者了解合作理论的真谛后，可以加快合作的进化。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;《合作的进化》 罗伯特·阿克塞尔罗德&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Reading Note" scheme="https://superuier.github.io/categories/reading-note/"/>
-    
-    
-    <category term="读书" scheme="https://superuier.github.io/tags/%E8%AF%BB%E4%B9%A6/"/>
     
   </entry>
   

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>约束满足问题（CSPs） - Rui&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Rui&#039;s Blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Rui&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta description="人工智能中的约束满足问题（Constraint Satisfaction Problems 问题）学习笔记。"><meta property="og:type" content="blog"><meta property="og:title" content="约束满足问题（CSPs）"><meta property="og:url" content="https://superuier.github.io/artificial-intelligence/ai-csp/"><meta property="og:site_name" content="Rui&#039;s Blog"><meta property="og:description" content="人工智能中的约束满足问题（Constraint Satisfaction Problems 问题）学习笔记。"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://superuier.github.io/gallery/covers/csp.jpeg"><meta property="article:published_time" content="2021-10-19T07:50:00.000Z"><meta property="article:modified_time" content="2021-10-19T07:50:00.000Z"><meta property="article:author" content="Superui"><meta property="article:tag" content="AI"><meta property="article:tag" content="search"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/gallery/covers/csp.jpeg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://superuier.github.io/artificial-intelligence/ai-csp/"},"headline":"Rui's Blog","image":[],"datePublished":"2021-10-19T07:50:00.000Z","dateModified":"2021-10-19T07:50:00.000Z","author":{"@type":"Person","name":"Superui"},"description":"人工智能中的约束满足问题（Constraint Satisfaction Problems 问题）学习笔记。"}</script><link rel="canonical" href="https://superuier.github.io/artificial-intelligence/ai-csp/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Rui's Blog" type="application/atom+xml">
+</head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/images/logo_superui1.svg" alt="Rui&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a></div><div class="navbar-end"><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/gallery/covers/csp.jpeg" alt="约束满足问题（CSPs）"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-10-19T07:50:00.000Z" title="2021-10-19T07:50:00.000Z">2021-10-19</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-10-19T07:50:00.000Z" title="2021-10-19T07:50:00.000Z">2021-10-19</time></span><span class="level-item"><a class="link-muted" href="/categories/Artificial-Intelligence/">Artificial Intelligence</a></span></div></div><h1 class="title is-3 is-size-4-mobile">约束满足问题（CSPs）</h1><div class="content"><p>人工智能中的约束满足问题（Constraint Satisfaction Problems 问题）学习笔记。</p>
+<a id="more"></a>
+<h1 id="约束满足问题"><a href="#约束满足问题" class="headerlink" title="约束满足问题"></a>约束满足问题</h1><p>约束满足问题的目标是在一定的约束下，寻找符合条件的状态。
+这种问题在生活中比较常见，以大学排课为例，已知教授的授课可以授课的时间，寻求满足所有教授时间的排课课程表。
+常见的一些约束满足问题有：</p>
+<ul>
+<li>八皇后问题</li>
+<li>图着色问题</li>
+<li>填字游戏</li>
+<li>数独</li>
+</ul>
+<h2 id="问题定义"><a href="#问题定义" class="headerlink" title="问题定义"></a>问题定义</h2><p>CSPs 包含以下三个要素：</p>
+<ul>
+<li>A set of variables（变量）, $X={X_{1},\ldots ,X_{n}}$</li>
+<li>A set of domains （值域） for each variable: $D={D_{1},\ldots ,D_{n}}$</li>
+<li>A set of constraints $C={C_{1},\ldots ,C_{m}}$ （限制条件） that specify allowable combinations of values. Every constraint $C_{j}\in C$ is in turn a pair $\langle t_{j},R_{j}\rangle$ , where $t_{j}\subset X$ is a subset of k variables and $R_{j}$ is a k-ary relation (among k variables) on the corresponding subset of domains $D_{j}$.</li>
+</ul>
+<p>问题的状态由对部分或者全部变量的定值（assignment）来确定：</p>
+<ul>
+<li>如果定值不违反任何的限制条件，我们说他是无矛盾的（consistent）</li>
+<li>如果定值包含了所有的变数，我们说他是完备的（complete）</li>
+<li>如果定值是无矛盾的且完备的，我们说这个定值是一个解（solution），这样的定值就是 CSP 的解。</li>
+</ul>
+<p>一个图着色问题的例子：</p>
+<div style="width:80%; margin:auto"><img src="/artificial-intelligence/ai-csp/map-color.png" class=""></div>
+
+<p>一个八皇后问题的例子：</p>
+<div style="width:80%; margin:auto"><img src="/artificial-intelligence/ai-csp/eight-queen.png" class=""></div>
+
+<p>一般来说 CSPs 使用的都是绝对约束，如果是非绝对的约束（偏好性），这样的问题称为约束优化问题（COP），在此不做讨论。</p>
+<h1 id="求解-CSPs"><a href="#求解-CSPs" class="headerlink" title="求解 CSPs"></a>求解 CSPs</h1><h2 id="CSPs-形式化的优点"><a href="#CSPs-形式化的优点" class="headerlink" title="CSPs 形式化的优点"></a>CSPs 形式化的优点</h2><ol>
+<li>快速消减庞大的搜索空间</li>
+<li>发现某部分不是解迅速丢弃，直观看到哪一部分变量赋值违反约束。</li>
+<li>CSP 具有可交换性（commutative）</li>
+</ol>
+<h2 id="CSPs-中的局部相容性（consistency）"><a href="#CSPs-中的局部相容性（consistency）" class="headerlink" title="CSPs 中的局部相容性（consistency）"></a>CSPs 中的局部相容性（consistency）</h2><p>在 CSPs 中，算法可以<strong>搜索</strong>，也可以做一种称作约束传播的<strong>推理</strong>。
+推理的目的是用约束减小一个变量的合法取值范围。
+可以把推理作为搜索前的预处理步骤。
+核心思想是增强局部相容性，使不相容的结点取值被删除。</p>
+<ul>
+<li>节点相容（Node-consistency）：来自节点本身的一元约束</li>
+<li>弧相容（Arc-consistency）：某变量所有取值满足该变量所有的二元约束。<ul>
+<li>最流行的算法是 AC-3，维护一个弧相容队列。<ul>
+<li>从队列弹出一条弧，使其一个节点弧相容，如果其值域无变化，则处理下一条弧。</li>
+<li>如果其值域发生变化，那么每个指向这个节点的弧必须重新插入队列准备检验。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>路径相容（Path-consistency）：通过观察变量得到隐式约束并以此来加强二元约束。<ul>
+<li>比如说有三个连接节点，却只有两种颜色。</li>
+<li>所有的 n-ary 约束都可以转换为 binary 约束。</li>
+</ul>
+</li>
+</ul>
+<h2 id="具体解法：回溯搜索"><a href="#具体解法：回溯搜索" class="headerlink" title="具体解法：回溯搜索"></a>具体解法：回溯搜索</h2><p>仍然使用搜索来求解，一般来说使用 Backtracking Search（BTS）回溯搜索。
+用于深度优先之中，每次为一个变量选择一个赋值，当没有合法的值时就回溯。
+由于可交换性，我们只用搜索组合而不是排列，所以叶节点个数至多为$d^n$个（不回溯的情况）。</p>
+<p>在回溯搜索中，也需要考虑如下问题来对搜索进行改进：</p>
+<ul>
+<li>下一步给哪个变量赋值？对于所选变量，选用怎样的赋值顺序？</li>
+<li>每步搜索应该进行怎样的推理？是否能预见失败？</li>
+<li>当我们搜索到某赋值违反约束时，搜索本身能避免重复这样的失败吗？</li>
+</ul>
+<h3 id="1-下一步给哪个变量赋值？对于所选变量，选用怎样的赋值顺序？"><a href="#1-下一步给哪个变量赋值？对于所选变量，选用怎样的赋值顺序？" class="headerlink" title="1. 下一步给哪个变量赋值？对于所选变量，选用怎样的赋值顺序？"></a>1. 下一步给哪个变量赋值？对于所选变量，选用怎样的赋值顺序？</h3><p>选取变量：</p>
+<ul>
+<li>最少剩余值启发式 Minimum Remaining Value (MRV)，选择合法取值最少的变量赋值。这样通过早期有效剪枝有助于最小化节点数。</li>
+<li>对于第一个节点而言，最小剩余值相同，应该选用度启发式，选择与其他未赋值变量约束最多的变量来试图降低未来的分支因子。</li>
+</ul>
+<p>选取赋值：</p>
+<ul>
+<li>最小约束值 Least Constraining Value (LCV)，试图为剩余变量赋值留下最大的空间。这里只需要找到一个解，所以优先考虑最可能的值。</li>
+</ul>
+<h3 id="2-每步搜索应该进行怎样的推理？是否能预见失败？"><a href="#2-每步搜索应该进行怎样的推理？是否能预见失败？" class="headerlink" title="2. 每步搜索应该进行怎样的推理？是否能预见失败？"></a>2. 每步搜索应该进行怎样的推理？是否能预见失败？</h3><p>搜索和推理应当交替进行。
+推理的目的是减小值域，减小搜索空间。
+当我们决定给某个变量某个值时，都有机会推理其邻接变量的值域空间。</p>
+<ul>
+<li>最简单的形式是向前检验 Forward Checking（FC）。跟踪维护所有为选取变量的可能取值，当任何一个变量没有合法取值时结束。联合使用 MRV 和前向检验，很多问题的搜索将更有效。但是前向检验只使当前变量弧相容，却不向前看使其他变量弧相容。</li>
+<li>MAC 维护弧相容，递归传播约束。对一个变量赋值后，使用 AC-3，从临接的未赋值变量开始进行约束传播，如果值域为空，则调用失败立即回溯。</li>
+</ul>
+<h3 id="3-当我们搜索到某赋值违反约束时，搜索本身能避免重复这样的失败吗？"><a href="#3-当我们搜索到某赋值违反约束时，搜索本身能避免重复这样的失败吗？" class="headerlink" title="3. 当我们搜索到某赋值违反约束时，搜索本身能避免重复这样的失败吗？"></a>3. 当我们搜索到某赋值违反约束时，搜索本身能避免重复这样的失败吗？</h3><ul>
+<li>简单的时序回溯。退回到上一个变量</li>
+<li>冲突指导的回溯。退回到可能解决当前问题的变量（因为上一个变量可能无力于解决当前冲突）。构建一个冲突集，回溯到冲突集中时间最近的赋值。</li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>约束满足问题（CSPs）</p><p><a href="https://superuier.github.io/artificial-intelligence/ai-csp/">https://superuier.github.io/artificial-intelligence/ai-csp/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Superui</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-10-19</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2021-10-19</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/AI/">AI</a><a class="link-muted mr-2" rel="tag" href="/tags/search/">search</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/artificial-intelligence/ai-adversarial-search/"><span class="level-item">对抗搜索问题和 Minimax 算法</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/images/avatar_rui_2.jpg" alt="Rui"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Rui</p><p class="is-size-6 is-block">PhD Student</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Shenzhen, China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">51</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">11</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">40</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/SupeRuier" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/SupeRuier"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Artificial-Intelligence/"><span class="level-start"><span class="level-item">Artificial Intelligence</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/computer-science-engineering/"><span class="level-start"><span class="level-item">Computer Science and Engineering</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/economy-finance/"><span class="level-start"><span class="level-item">Economy &amp; Finance</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/Interesting-Stuff/"><span class="level-start"><span class="level-item">Interesting Stuff</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/knowledge-from-growth/"><span class="level-start"><span class="level-item">Knowledge from Growth</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/Machine-Learning/"><span class="level-start"><span class="level-item">Machine Learning</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/paper-reading/"><span class="level-start"><span class="level-item">Paper Reading</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/programming/"><span class="level-start"><span class="level-item">Programming</span></span><span class="level-end"><span class="level-item tag">12</span></span></a></li><li><a class="level is-mobile" href="/categories/reading-note/"><span class="level-start"><span class="level-item">Reading Note</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/research/"><span class="level-start"><span class="level-item">Research</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/software-tools/"><span class="level-start"><span class="level-item">Software Tools</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li></ul></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><!--!--><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/AI/"><span class="tag">AI</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Conda/"><span class="tag">Conda</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Cuda/"><span class="tag">Cuda</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Docker/"><span class="tag">Docker</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/EA/"><span class="tag">EA</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hackintosh/"><span class="tag">Hackintosh</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Icarus/"><span class="tag">Icarus</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MacOS/"><span class="tag">MacOS</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Master-Ma/"><span class="tag">Master Ma</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Matplotlib/"><span class="tag">Matplotlib</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python/"><span class="tag">Python</span><span class="tag">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Pytorch/"><span class="tag">Pytorch</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Research/"><span class="tag">Research</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Vim/"><span class="tag">Vim</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/active-learning/"><span class="tag">active-learning</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/algorithms/"><span class="tag">algorithms</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/cloud/"><span class="tag">cloud</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/contrastive-learning/"><span class="tag">contrastive-learning</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/cs-seminar/"><span class="tag">cs-seminar</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/few-shot-learning/"><span class="tag">few-shot-learning</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/gaussian-process/"><span class="tag">gaussian-process</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/imitation-learning/"><span class="tag">imitation-learning</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/interesting/"><span class="tag">interesting</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/latex/"><span class="tag">latex</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/loss/"><span class="tag">loss</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/machine-learning/"><span class="tag">machine-learning</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/neural-network/"><span class="tag">neural-network</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/nlp/"><span class="tag">nlp</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/numpy/"><span class="tag">numpy</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/reinforcement-learning/"><span class="tag">reinforcement-learning</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/search/"><span class="tag">search</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/self-supervised-learning/"><span class="tag">self-supervised-learning</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/sorting/"><span class="tag">sorting</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/survey/"><span class="tag">survey</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%84%9F%E6%82%9F%E6%80%BB%E7%BB%93/"><span class="tag">感悟总结</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BF%9F%E4%B8%9C%E5%8D%87/"><span class="tag">翟东升</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AF%BB%E4%B9%A6/"><span class="tag">读书</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%BD%AC%E8%BD%BD/"><span class="tag">转载</span><span class="tag">1</span></a></div></div></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/images/logo_superui1.svg" alt="Rui&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2021 Superui</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" async></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
