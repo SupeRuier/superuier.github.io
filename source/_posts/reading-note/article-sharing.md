@@ -5,7 +5,7 @@ date: 2021-07-28 13:22:47
 updated: 2021-10-09 15:11:00
 cover: /gallery/covers/article-sharing.jpg
 categories:
-- Knowledge from Growth
+- Reading Note
 tags: 
 - 转载
 ---
