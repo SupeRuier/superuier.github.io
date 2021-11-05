@@ -6,7 +6,7 @@
   <link href="https://superuier.github.io/atom.xml" rel="self"/>
   
   <link href="https://superuier.github.io/"/>
-  <updated>2021-10-21T05:00:00.000Z</updated>
+  <updated>2021-11-05T08:48:00.000Z</updated>
   <id>https://superuier.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>距离矩阵</title>
+    <link href="https://superuier.github.io/machine-learning/distance-matrix/"/>
+    <id>https://superuier.github.io/machine-learning/distance-matrix/</id>
+    <published>2021-11-05T08:48:00.000Z</published>
+    <updated>2021-11-05T08:48:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<!-- omit in toc --><p>在看 k-center 的时候发现自己对其距离矩阵的计算不是很清楚，于是在此记录。</p><a id="more"></a><h2 id="距离矩阵的计算及-Python-实现"><a href="#距离矩阵的计算及-Python-实现" class="headerlink" title="距离矩阵的计算及 Python 实现"></a>距离矩阵的计算及 Python 实现</h2><p>给定 $m\times n$ 矩阵 $X$, $X = [x_1, x_2,…,x_n]$，这里第 $i$ 列向量 $x_i$ 是 $m$ 维向量，任务是计算出一个 $n\times n$ 矩阵，使得：$D_{ij}=||x_i-x_j||^2$。</p><p>具体的，$D_{ij} = (x_i - x_j)^T(x_i-x_j)=x^T_ix_i-2x^T_ix_j+x^T_jx_j$。</p><p>用 Gram Matrix 表示，$D_{ij}=G_{ii}-2G_{ij}+G_{jj}$。</p><p>放在矩阵的尺度来看，$D = H + K -2G$。其中，$H_{ij} = G_{ii}, K_{ij} = G_{jj}$。</p><p>根据最后一个式子，计算的时候可以避免循环：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">compute_dist_matrix</span>(<span class="params">X</span>):</span></span><br><span class="line">  m,n = X.shape</span><br><span class="line">  G = np.dot(X.T, X)</span><br><span class="line">  H = np.tile(np.diag(G), (n, <span class="number">1</span>)) <span class="comment"># Construct an array by repeating the number of times.</span></span><br><span class="line">  <span class="keyword">return</span> H + H.T - <span class="number">2</span>*G</span><br></pre></td></tr></table></figure><p>Reference:</p><ul><li><a href="https://zhuanlan.zhihu.com/p/21341296">斯坦福CS231N课程笔记（三）-距离矩阵的计算方法</a></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;!-- omit in toc --&gt;
+&lt;p&gt;在看 k-center 的时候发现自己对其距离矩阵的计算不是很清楚，于是在此记录。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Machine Learning" scheme="https://superuier.github.io/categories/Machine-Learning/"/>
+    
+    
+    <category term="machine-learning" scheme="https://superuier.github.io/tags/machine-learning/"/>
+    
+  </entry>
   
   <entry>
     <title>原则读书笔记</title>
@@ -470,34 +492,6 @@
     <category term="machine-learning" scheme="https://superuier.github.io/tags/machine-learning/"/>
     
     <category term="loss" scheme="https://superuier.github.io/tags/loss/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>神经网络损失函数</title>
-    <link href="https://superuier.github.io/programming/neural-network-loss/"/>
-    <id>https://superuier.github.io/programming/neural-network-loss/</id>
-    <published>2021-07-30T07:16:55.000Z</published>
-    <updated>2021-08-02T12:11:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<!-- omit in toc --><p>由于总是忘记一些 loss 的常用场景和区别，此处记录一些常用的神经网络 loss。</p><a id="more"></a><p>Pytorch <a href="https://pytorch.org/docs/stable/nn.html#loss-functions">官方文档</a>中有十余种 loss 函数，其中常用的主要是<code>CrossEntropyLoss</code>、<code>NLLLoss</code>、<code>MSELoss</code>等。这里仅先对这些常用 loss 展开。</p><h2 id="NLLLoss"><a href="#NLLLoss" class="headerlink" title="NLLLoss"></a>NLLLoss</h2><p>负对数损失，常用于分类任务。值得注意的是，这里的输入 <code>X</code> 需要已经包含对于相应类别的 log-probability。<strong>使用这个 loss 的时候需要在模型最后加入 <code>LogSoftmax</code> 层。</strong></p><script type="math/tex; mode=display">l(X,y) = L = \{l_1,...,l_N\}^\top, \\l_n = -w_{y_n}X_{n,y_n},</script><p>其中 <code>X</code> 是输入，<code>y</code> 是目标，<code>w</code> 是类别的权重，<code>N</code> 是 batch size。</p><p>具体的计算例子可以看<a href="https://blog.csdn.net/qq_22210253/article/details/85229988">这篇文章</a>。</p><h2 id="CrossEntropyLoss"><a href="#CrossEntropyLoss" class="headerlink" title="CrossEntropyLoss"></a>CrossEntropyLoss</h2><p>交叉墒损失，同样常用于分类任务。这个标准结合了 LogSoftmax 和 NLLLoss 两个部分。</p><p>首相介绍一下 LogSoftmax，其包含 log 函数和 softmax 函数。</p><script type="math/tex; mode=display">\operatorname{LogSoftmax}\left(x_{i}\right)=\log \left(\frac{\exp \left(x_{i}\right)}{\sum_{j} \exp \left(x_{j}\right)}\right)</script><p>对于交叉墒损失，值得注意的是，这里的输入 <code>X</code> 需要已经包含对每一个类，未经处理的 unformalized score。<strong>换句话说，使用这个 loss 的时候不需要在模型最后加入 <code>Softmax</code> 层。</strong></p><script type="math/tex; mode=display">\operatorname{loss}(x, \text { class })=-\log \left(\frac{\exp (x[\text { class }])}{\sum_{j} \exp (x[j])}\right)=-x[\text { class }]+\log \left(\sum_{j} \exp (x[j])\right)</script><p>对于加权的情况，</p><script type="math/tex; mode=display">\operatorname{loss}(x, \text { class })=\text { weight }[\text { class }]\left(-x[\text { class }]+\log \left(\sum_{j} \exp (x[j])\right)\right)</script><p>最终的 loss 需要加权平均得到，</p><script type="math/tex; mode=display">\operatorname{loss}(x, \text { class })=\text { weight }[\text { class }]\left(-x[\text { class }]+\log \left(\sum_{j} \exp (x[j])\right)\right)</script><p>其中 <code>x</code> 是输入，<code>class</code> 是目标类，<code>weight</code> 是类别的权重，<code>N</code> 是 batch size。</p>]]></content>
-    
-    
-    <summary type="html">&lt;!-- omit in toc --&gt;
-&lt;p&gt;由于总是忘记一些 loss 的常用场景和区别，此处记录一些常用的神经网络 loss。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Programming" scheme="https://superuier.github.io/categories/programming/"/>
-    
-    
-    <category term="neural-network" scheme="https://superuier.github.io/tags/neural-network/"/>
-    
-    <category term="machine-learning" scheme="https://superuier.github.io/tags/machine-learning/"/>
-    
-    <category term="Python" scheme="https://superuier.github.io/tags/Python/"/>
-    
-    <category term="Pytorch" scheme="https://superuier.github.io/tags/Pytorch/"/>
     
   </entry>
   
