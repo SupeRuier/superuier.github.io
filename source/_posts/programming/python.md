@@ -2,7 +2,7 @@
 title: Python
 cover: /gallery/covers/python.jpeg
 date: 2020-12-15 12:56:03
-updated: 2021-09-15 10:50:00
+updated: 2021-11-30 10:50:00
 categories:
 - Programming
 tags: Python
@@ -68,6 +68,21 @@ try:
 except Exception as e:
     logger.error(f"Main program error: {e}")
     logger.error(traceback.format_exc())
+```
+
+## `~` 的使用与补码
+
+使用 `~` 进行按位取反，包含符号位。
+
+举例，5 的二进制为 0101：
+- 各位取反，1010
+- 变为负数，转化为其补码形式（符号位保持不变，各位取反，再加1）
+  - 符号位不变，各位取反 1（1101）
+  - 再加1（1110），也即 -6
+
+```
+>> ~5
+>> -6
 ```
 
 # 一些疑问及回答
