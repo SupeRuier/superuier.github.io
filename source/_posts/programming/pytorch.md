@@ -1,7 +1,7 @@
 ---
 title: Pytorch 踩坑
 date: 2020-12-09 14:55:50
-updated: 2020-12-09 14:55:50
+updated: 2021-12-06 14:55:50
 categories:
 - Programming
 tags: 
@@ -234,3 +234,12 @@ torch.cuda.empty_cache()
 ```
 
 [这篇文章](https://blog.csdn.net/weixin_38278334/article/details/105575403)简要介绍了 pytorch 的缓存机制。
+
+## 3.3. RuntimeError: CUDA error: device-side assert triggered
+
+在服务器上调试的时候出现这个错误，错误描述很模糊。
+一般来说这个报错存在于在 GPU 运行时，不易清晰定位到错误源，所以网络上大家给出的建议是去 CPU 上跑一下。
+
+对于我这次报错本身而言，问题是存在于数据集上的标签为 [1,7], 但是我只给了7个神经元。
+解决方法是对训练数据进行更改，将其标签改为 [0,6]。
+（其实网上看了几个案例都是类似的标签问题，所以这个报错可能也是和标签强相关。）
