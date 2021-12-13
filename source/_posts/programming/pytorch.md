@@ -1,7 +1,7 @@
 ---
 title: Pytorch 踩坑
 date: 2020-12-09 14:55:50
-updated: 2021-12-06 14:55:50
+updated: 2021-12-13 14:30:50
 categories:
 - Programming
 tags: 
@@ -212,7 +212,8 @@ RuntimeError: each element in list of batch should be of equal size
 
 参考[此篇文章](https://cloud.tencent.com/developer/article/1686771)。
 
-一般来说这个错误出现的原因是数据中的类标记label和网络中的类标记label不匹配。包括但不限于以下几种问题。
+一般来说这个报错存在于在 GPU 运行时，不易清晰定位到错误源，所以网络上大家给出的建议是去 CPU 上跑一下。
+这个错误出现的原因是数据中的类标记label和网络中的类标记label不匹配。包括但不限于以下几种问题。
 
 | pytorch识别的类别 | 数据中的类别 |
 | ----------------- | ------------ |
@@ -235,11 +236,25 @@ torch.cuda.empty_cache()
 
 [这篇文章](https://blog.csdn.net/weixin_38278334/article/details/105575403)简要介绍了 pytorch 的缓存机制。
 
-## 3.3. RuntimeError: CUDA error: device-side assert triggered
+## 3.3. RuntimeError: Function 'MulBackward0' returned nan values in its 0th output.
 
-在服务器上调试的时候出现这个错误，错误描述很模糊。
-一般来说这个报错存在于在 GPU 运行时，不易清晰定位到错误源，所以网络上大家给出的建议是去 CPU 上跑一下。
+其实很多类似的这种报错，只是 Function 不一样而已。
+出现这种情况的原因是出现了梯度爆炸（gradient-explode），导致出现 NaN 值。
+解决的方法是先定位，再处理。
 
-对于我这次报错本身而言，问题是存在于数据集上的标签为 [1,7], 但是我只给了7个神经元。
-解决方法是对训练数据进行更改，将其标签改为 [0,6]。
-（其实网上看了几个案例都是类似的标签问题，所以这个报错可能也是和标签强相关。）
+定位可以使用 `detect_anomaly`，找到报错位置。
+``` python
+with autograd.detect_anomaly():
+    loss.backward()
+```
+
+处理的话方法不定，一般来说是需要让梯度不要过大。
+有一些人提到可以减小学习率，但是这个治标不治本（到底多少才算小呢？）。
+所以比较好的方法还是在容易出现梯度爆炸的地方进行处理。
+一般来说容易出现梯度爆炸的地方是 `log` 函数中，在对概率求熵时出现。
+所以可以给概率值加上一个很小的数值，如下所示：
+``` python
+def calculate_entropy(y_softmax):
+    entropy = - torch.sum(y_softmax * torch.log(y_softmax + 1e-6), dim = 1) # Avoid gradient explode.
+    return entropy
+```
