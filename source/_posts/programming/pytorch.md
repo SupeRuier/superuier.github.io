@@ -1,7 +1,7 @@
 ---
 title: Pytorch 踩坑
 date: 2020-12-09 14:55:50
-updated: 2021-12-13 14:30:50
+updated: 2021-12-22 11:15:50
 categories:
 - Programming
 tags: 
@@ -196,6 +196,16 @@ RuntimeError: each element in list of batch should be of equal size
 所以这个时候的处理方式是自定义一个 `collate_fn`，并在其中使用 padding，将每个样本扩充至等长，使得变为 tensor 这一过程不出错。
 
 参考了[这篇文章](https://blog.csdn.net/weixin_44799217/article/details/115137820)。
+
+## 1.12. 对 BatchNorm 的参数进行固定
+
+采用预训练模型的时候，其中经常包含 `BatchNorm` 层，在对模型进行改造的时候，有的时候会出现问题，这个时候就需要对 `BatchNorm` 层进行一个固定。
+
+``` python
+for m in net.modules():
+    if isinstance(m, nn.BatchNorm2d):
+        m.eval()
+```
 
 # 2. 设置
 ## 2.1. Dataloader 中的 num_workers 造成训练循环缓慢
