@@ -74,15 +74,15 @@ $\Sigma_{b|a}=\Sigma_{bb}-\Sigma_{ba}\Sigma^{-1}_{aa}\Sigma_{ab}$。
 --------
 ## 在无限维的条件下
 
-对于观测点 $X$ 与其对应值 $Y$，所有的非观测点 $X^*$ 的值定义为 $f(X^*)$。
+对于观测点 $X$ 与其对应值 $Y$，所有的非观测点 $X^\ast$ 的值定义为 $f(X^\ast)$。
 这里我们再把均值向量替换为均值函数。
 那么有，
 
-$$\begin{bmatrix}Y\\f(X^*)\end{bmatrix}\sim N(\begin{bmatrix}\mu(X)\\\mu(X^*)\end{bmatrix}，\begin{bmatrix}k(X,X)& k(X,X^*)\\k(X^*,X)&k(X^*,X^*)\end{bmatrix})$$
+$$\begin{bmatrix}Y\\f(X^\ast)\end{bmatrix}\sim N(\begin{bmatrix}\mu(X)\\\mu(X^\ast)\end{bmatrix}，\begin{bmatrix}k(X,X)& k(X,X^\ast)\\k(X^\ast,X)&k(X^\ast,X^\ast)\end{bmatrix})$$
 
 同样的我们可以得到条件分布，
 
-$$f(X^*)|Y\sim N(\mu^*,k^*)$$
+$$f(X^\ast)|Y\sim N(\mu^\ast,k^\ast)$$
 
 其中, $\mu^\ast=k(X^\ast,X)k(X,X)^{-1}(Y-\mu(X))+\mu(X^\ast)$，$k^\ast=k(X^\ast,X^\ast)-k(X^\ast,X)k(X,X)^{-1}k(X,X^\ast)$。
 
