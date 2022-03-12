@@ -2,7 +2,7 @@
 title: Python
 cover: /gallery/covers/python.jpeg
 date: 2020-12-15 12:56:03
-updated: 2021-11-30 10:50:00
+updated: 2022-03-12 16:00:00
 categories:
 - Programming
 tags: Python
@@ -97,3 +97,17 @@ except Exception as e:
 需要注意的是在 pytorch 中，遍历 dataloader 需要使用迭代器。
 此时如果用两个迭代器，在第一次迭代生成的样本可能不同。
 这个其实是因为你在生成 dataloader 的时候可能传入 `shuffle = True`，所以在生成迭代器的时候会采用不同的顺序读区。
+
+# 使用中的一些坑
+
+## Terminal 传入 Boolean 类型的参数
+
+由于传入的参数以 string 解析，所以还需要对 string 进行判断。
+
+> sys.argv provides you the string representation of cmd line params. 
+> 'True' and 'False' are both strings, and if a string has any content in it at all, the boolean representation is True. 
+> You should simply change your condition to if test.lower() == 'true'
+
+所以在习惯上还是尽量使用 json 文件传参数。
+但是如果使用命令行进行调试时，还是需要输入。
+所以目前的解决方案是在 argparse 中默认设置为 False，传入 True 则覆盖。
