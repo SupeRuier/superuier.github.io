@@ -2,7 +2,7 @@
 title: Python
 cover: /gallery/covers/python.jpeg
 date: 2020-12-15 12:56:03
-updated: 2022-03-12 16:00:00
+updated: 2022-03-16 16:00:00
 categories:
 - Programming
 tags: Python
@@ -19,6 +19,20 @@ tags: Python
 ## 星号变量
 
 单个星号代表这个位置接收任意多个非关键字参数，在函数的`*args`位置上将其转化成元组，而双星号代表这个位置接收任意多个关键字参数，在`**args`位置上将其转化成字典。
+
+## 反射
+
+反射是 Python 中很实用的一个功能，他可以通过字符串来导入模块和方法。
+
+```python
+package = importlib.import_module(f'{name_of_package}')
+class_name = getattr(package, f'{name_of_class}')
+class_instance = class_name() # Remember the instantiation.
+```
+
+参考这两篇博文：
+- [Python 使用反射机制实例化对象](https://blog.csdn.net/lom9357bye/article/details/79107711)
+- [Python 动态导入对象, importlib.import_module() 使用](https://blog.csdn.net/xie_0723/article/details/78004649)
 
 # 功能
 
