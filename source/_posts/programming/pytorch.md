@@ -1,7 +1,8 @@
 ---
 title: Pytorch 踩坑
 date: 2020-12-09 14:55:50
-updated: 2021-12-22 11:15:50
+updated: 2022-03-21 20:00:00
+cover: /gallery/covers/pytorch.png
 categories:
 - Programming
 tags: 
@@ -12,6 +13,29 @@ tags:
 使用 Pytorch 时学到的一些知识
 
 <!-- more -->
+
+- [1. 用法](#1-用法)
+  - [1.1. 随机种子](#11-随机种子)
+  - [1.2. zero_grad optimizer or net？](#12-zero_grad-optimizer-or-net)
+  - [1.3. 初始化网络](#13-初始化网络)
+  - [1.4. nn.module 中 `__call__` vs `forward`](#14-nnmodule-中-__call__-vs-forward)
+  - [1.5. NLLLoss & CrossEntropyLoss](#15-nllloss--crossentropyloss)
+  - [1.6. tensor 非 contiguous 导致无法使用 view()](#16-tensor-非-contiguous-导致无法使用-view)
+  - [1.7. pytorch 中 hook 的使用](#17-pytorch-中-hook-的使用)
+  - [1.8. 查看某一层梯度](#18-查看某一层梯度)
+  - [1.9. 计算某一层梯度](#19-计算某一层梯度)
+  - [1.10. 计算梯度的时间](#110-计算梯度的时间)
+  - [1.11. 增加与删减维度](#111-增加与删减维度)
+  - [1.12. 允许 batch 中的样本不等长](#112-允许-batch-中的样本不等长)
+  - [1.12. 对 BatchNorm 的参数进行固定](#112-对-batchnorm-的参数进行固定)
+  - [1.13. 对使用线程数进行固定](#113-对使用线程数进行固定)
+- [2. 设置](#2-设置)
+  - [2.1. Dataloader 中的 num_workers 造成训练循环缓慢](#21-dataloader-中的-num_workers-造成训练循环缓慢)
+- [3. 报错](#3-报错)
+  - [3.1. RuntimeError: CUDA error: device-side assert triggered](#31-runtimeerror-cuda-error-device-side-assert-triggered)
+  - [3.2. RuntimeError: CUDA out of memory](#32-runtimeerror-cuda-out-of-memory)
+  - [3.3. RuntimeError: Function 'MulBackward0' returned nan values in its 0th output.](#33-runtimeerror-function-mulbackward0-returned-nan-values-in-its-0th-output)
+
 
 # 1. 用法
 
@@ -207,6 +231,17 @@ for m in net.modules():
         m.eval()
 ```
 
+## 1.13. 对使用线程数进行固定
+
+自己在使用 Pytorch 的时候发现，有时候一个文件会占用很多的 CPU 核心。
+当提交多个任务时，其会将所有 CPU 快速占满，且难以高效运用，导致影响所有的实验任务。
+于是对单个任务的 CPU 使用加以限制成为了一个需求。
+此时可以使用以下命令来限制 torch 使用的线程数。
+
+```python
+torch.set_num_threads(1) 
+```
+
 # 2. 设置
 ## 2.1. Dataloader 中的 num_workers 造成训练循环缓慢
 
@@ -214,7 +249,9 @@ for m in net.modules():
 仔细看了一下 mini-batch 的训练过程并且记录了一下时间，发现主要的时间开销发生于 for 循环遍历 loader 之后退出循环时。
 所还还是将其设为了0。
 
-造成这个的主要原因可能是 IO 耗时和模型前/后传耗时之间的 GAP 太大，导致进程间造成了阻塞，详见[这篇文章](https://bbs.cvmart.net/topics/2066)。
+造成这个的主要原因可能是 IO 耗时和模型前/后传耗时之间的 GAP 太大，导致进程间造成了阻塞
+- [PyTorch DataLoader 初探](https://bbs.cvmart.net/topics/2066)
+- [Pytorch训练加速技巧](https://liulin1995.github.io)
 
 # 3. 报错
 
