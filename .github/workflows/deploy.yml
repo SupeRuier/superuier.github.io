@@ -38,6 +38,7 @@ jobs:
           cp -f custom/inline.js node_modules/kramed/lib/rules/
           cp -f custom/base.styl node_modules/hexo-theme-icarus/include/style/
           cp -f custom/head.jsx node_modules/hexo-theme-icarus/layout/common/
+          cp -f custom/comment.jsx node_modules/hexo-theme-icarus/layout/common/
           npm run clean
           npm run build
 
