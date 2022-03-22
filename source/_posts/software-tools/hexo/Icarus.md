@@ -2,7 +2,7 @@
 title: Icarus 主题设置
 cover: /gallery/covers/icarus.png
 date: 2020-11-24 19:46:26
-updated:  2021-08-11 22:44:00
+updated: 2022-03-22 20:55:00
 category: 
 - Software Tools
 tags: 
@@ -66,3 +66,15 @@ List：
 - [hexo icarus 테마 프로필영역 css 수정](https://chinsun9.github.io/tags/hexo/)：这个是加了一个新主题。
 - [Icarus 主题自定义](https://www.alphalxy.com/2019/03/customize-icarus)：一些细节改动
 - [Hexo博客icarus主题定制](https://blog.it-follower.com/posts/2085550418.html)
+
+## 功能开启或添加
+
+### 加入博客评论区
+
+有很多插件可供选择，这里我们使用了 Gitalk，本质上是在 Github 上面新开一个 Repo，然后在 issue 区记录评论，然后通过 OAuth App 读写并显示到博客中。
+具体的设置可以参见 Icarus 的[用户评论插件](https://ppoffice.github.io/hexo-theme-icarus/Plugins/Comment/icarus用户指南-用户评论插件/)。
+
+插件设置好之后可能会出现一些问题：
+- gitalk授权登录后报错403：一般来说是版本或 Proxy 的问题，需要升级版本或者更换 proxy，我选择了后者。参考 Gitalk 的 [issue](https://github.com/gitalk/gitalk/issues/433) 和[这篇博客](https://umm.js.org/p/1d1d49e9/)。
+- [文章批量初始化](https://eminoda.github.io/2021/06/16/hexo-gitalk-comment-plugins-in-github-issue/)：我由于文章数较少，是一个一个手动初始化的，日后可能会需要用上批量初始化。
+

@@ -14,7 +14,7 @@ tag:
 
 <!-- more -->
 
-## Create a new post
+## 新建博文
 
 ``` bash
 $ hexo new "My New Post"
@@ -33,7 +33,7 @@ $ hexo server # Build local server
 More info: [Server](https://hexo.io/docs/server.html)
 More info: [Generating](https://hexo.io/docs/generating.html)
 
-## Deploy to remote sites (use Gitbuh Action)
+## 远端部署 (use Gitbuh Action)
 
 The procedure is in `.github/workflows/deploy.yml`
 
