@@ -78,3 +78,5 @@ List：
 - gitalk授权登录后报错403：一般来说是版本或 Proxy 的问题，需要升级版本或者更换 proxy，我选择了后者。参考 Gitalk 的 [issue](https://github.com/gitalk/gitalk/issues/433) 和[这篇博客](https://umm.js.org/p/1d1d49e9/)。
 - [文章批量初始化](https://eminoda.github.io/2021/06/16/hexo-gitalk-comment-plugins-in-github-issue/)：我由于文章数较少，是一个一个手动初始化的，日后可能会需要用上批量初始化。
 
+之后准备转用 Giscus。
+
