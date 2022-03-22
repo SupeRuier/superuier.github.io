@@ -69,7 +69,7 @@ List：
 
 ## 功能开启或添加
 
-### 加入博客评论区
+### 加入博客评论区 Gitalk
 
 有很多插件可供选择，这里我们使用了 Gitalk，本质上是在 Github 上面新开一个 Repo，然后在 issue 区记录评论，然后通过 OAuth App 读写并显示到博客中。
 具体的设置可以参见 Icarus 的[用户评论插件](https://ppoffice.github.io/hexo-theme-icarus/Plugins/Comment/icarus用户指南-用户评论插件/)。
@@ -78,5 +78,33 @@ List：
 - gitalk授权登录后报错403：一般来说是版本或 Proxy 的问题，需要升级版本或者更换 proxy，我选择了后者。参考 Gitalk 的 [issue](https://github.com/gitalk/gitalk/issues/433) 和[这篇博客](https://umm.js.org/p/1d1d49e9/)。
 - [文章批量初始化](https://eminoda.github.io/2021/06/16/hexo-gitalk-comment-plugins-in-github-issue/)：我由于文章数较少，是一个一个手动初始化的，日后可能会需要用上批量初始化。
 
-之后准备转用 Giscus。
+### 加入博客评论区 Giscus
+
+Icarus 并没有对 Giscus 的支持，所以还是要从 index 文件层面进行改动。
+整体来说愿意与 Gitalk 比较相似，不过不是在 issue 区记录评论，而是在 discussion 区记录。
+回答可以按照层级展开，个人比较喜欢。
+
+首先访问 [Giscus 官网](https://giscus.app/zh-CN)，获取对应的 `html` 代码，如下所示
+``` html
+<script src="https://giscus.app/client.js"
+        data-repo="xxxxxxxxx"
+        data-repo-id="xxxxxxxxx"
+        data-category="xxxxxxxxx"
+        data-category-id="xxxxxxxxx"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+```
+之后只需要将其放到原有的主题中放置 comments 的地方，替换原有代码即可。
+在 Icarus 中对应的文件是 `node_modules/hexo-theme-icarus/layout/common/comment.jsx`。climbing
+
+参考了以下几篇文章：
+- [Giscus: The New Commenting Engine for My Website](https://zhauniarovich.com/post/2021/2021-06-giscus/)
+- [How to use the github discussions to add a comment feature to your static website built with hexo?](https://www.futlabs.com/2021/09/20/How-to-use-the-github-discussions-to-add-a-comment-feature-to-your-static-website-build-with-hexo/)
 
