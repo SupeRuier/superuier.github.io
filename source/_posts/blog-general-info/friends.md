@@ -1,6 +1,5 @@
 ---
 title: 友情链接
-# cover: /gallery/covers/message-board.jpg
 toc: false
 date: 2019-01-01 00:00
 updated: 2019-01-01 00:00
