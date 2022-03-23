@@ -81,6 +81,3 @@ ignore: null
 theme: icarus
 deploy:
   type: ''
-# giscus:
-#   enable: true
-

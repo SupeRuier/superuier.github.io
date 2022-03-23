@@ -405,3 +405,17 @@ donates:
     #     qrcode: ''
 # Share plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Share/
+
+giscus:
+  enable: true
+  data_repo: SupeRuier/blog_giscus
+  data_repo_id: R_kgDOHC5FJQ
+  data_category: Announcements
+  data_category_id: DIC_kwDOHC5FJc4CON5R
+  data_mapping: pathname
+  data_reactions_enabled: 1
+  data_emit_metadata: 0
+  data_input_position: bottom
+  data_theme: light
+  data_lang: zh-CN
+  crossorigin: anonymous

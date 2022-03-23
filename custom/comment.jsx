@@ -14,21 +14,24 @@ module.exports = class extends Component {
         return <div class="card">
             <div class="card-content">
                 <h3 class="title is-5">{__('article.comments')}</h3>
-
-                    <script src="https://giscus.app/client.js"
-                        data-repo="SupeRuier/blog-giscus"
-                        data-repo-id="R_kgDOHC5FJQ"
-                        data-category="Announcements"
-                        data-category-id="DIC_kwDOHC5FJc4CON5R"
-                        data-mapping="pathname"
-                        data-reactions-enabled="1"
-                        data-emit-metadata="0"
-                        data-input-position="bottom"
-                        data-theme="light"
-                        data-lang="zh-CN"
-                        crossorigin="anonymous"
+                {(() => {
+                    if (config.giscus.enable === true) {
+                        return <script src="https://giscus.app/client.js"
+                        data-repo={config.giscus.data_repo}
+                        data-repo-id={config.giscus.data_repo_id}
+                        data-category={config.giscus.data_category}
+                        data-category-id={config.giscus.data_category_id}
+                        data-mapping={config.giscus.data_mapping}
+                        data-reactions-enabled={config.giscus.data_reactions_enabled}
+                        data-emit-metadata={config.giscus.data_emit_metadata}
+                        data-input-position={config.giscus.data_input_position}
+                        data-theme={config.giscus.data_theme}
+                        data-lang={config.giscus.data_lang}
+                        crossorigin={config.giscus.crossorigin}
                         async>
-                    </script>
+                        </script>
+                    } 
+                })()}
 
             </div>
         </div>;
