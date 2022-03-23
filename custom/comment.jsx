@@ -13,7 +13,6 @@ module.exports = class extends Component {
 
         return <div class="card">
             <div class="card-content">
-                <h3 class="title is-5">{__('article.comments')}</h3>
                 {(() => {
                     if (config.giscus.enable === true) {
                         return <script src="https://giscus.app/client.js"
@@ -32,7 +31,6 @@ module.exports = class extends Component {
                         </script>
                     } 
                 })()}
-
             </div>
         </div>;
     }

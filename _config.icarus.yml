@@ -138,6 +138,8 @@ article:
     # Whether to show estimated article reading time
     readtime: false
     # Article licensing block
+    show_neighbor: true
+    licenses_show: true
     licenses:
         Creative Commons:
             icon: fab fa-creative-commons
