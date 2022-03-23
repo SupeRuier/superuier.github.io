@@ -408,7 +408,7 @@ donates:
 
 giscus:
   enable: true
-  data_repo: SupeRuier/blog_giscus
+  data_repo: SupeRuier/blog-giscus
   data_repo_id: R_kgDOHC5FJQ
   data_category: Announcements
   data_category_id: DIC_kwDOHC5FJc4CON5R
