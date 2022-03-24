@@ -1,8 +1,8 @@
 ---
 title: 友情链接
 toc: false
-date: 2019-01-01 00:00
-updated: 2019-01-01 00:00
+date: 2018-01-01 00:00
+updated: 2018-01-01 00:00
 article:
     show_neighbor: false
     licenses_show: false
@@ -14,7 +14,7 @@ article:
       <article class="media">
         <div class="media-left">
           <div class="image is-64x64">
-            <a class="gallery-item" href="https://yzhang-gh.github.io/notes/imgs/joshua-tree.jpg"><img class="is-rounded" src="https://yzhang-gh.github.io/notes/imgs/joshua-tree.jpg" alt=""></a>
+            <img class="is-rounded" src="https://yzhang-gh.github.io/notes/imgs/joshua-tree.jpg" alt="">
           </div>
         </div>
         <div class="media-content">
