@@ -130,7 +130,6 @@ $$
 - 当$i=c$时, $\frac{\partial loss}{\partial x_i} = S(x_i)-1$
 - 当$i\neq c$时, $\frac{\partial loss}{\partial x_i} = S(x_i)-0$
 
-
 ## Reference
 
 - [Cross entropy - From Wikipedia, the free encyclopedia](https://en.wikipedia.org/wiki/Cross_entropy)
