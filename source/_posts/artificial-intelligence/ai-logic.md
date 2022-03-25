@@ -10,7 +10,7 @@ tags:
 - logic
 ---
 
-将逻辑作为基于知识的 Agent 的一类通用表示，这样的 Agent 通过对信息的组合荷载组合以适应各种用途。
+将逻辑作为基于知识的 Agent 的一类通用表示，这样的 Agent 通过对信息的组合和再组合以适应各种用途。
 本文一部分参考了这位同学的[笔记](https://blog.csdn.net/rectsuly/article/details/73104723)。
 
 <!-- more -->
