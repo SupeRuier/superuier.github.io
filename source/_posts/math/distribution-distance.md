@@ -1,6 +1,6 @@
 ---
 title: 分布间距离度量
-date: 2022-03-24 14:30:00
+date: 2022-03-26 16:00:00
 updated: 2022-03-26 16:00:00
 cover: /gallery/covers/distribution-distance.png
 category: 
@@ -20,14 +20,13 @@ tags:
 
 <!-- more -->
 
-参考：
-1. [Statistical distance](https://en.wikipedia.org/wiki/Statistical_distance)
-2. [Jensen–Shannon divergence](https://en.wikipedia.org/wiki/Jensen–Shannon_divergence)
-3. [From GAN to WGAN](https://lilianweng.github.io/posts/2017-08-20-gan/)
-4. [令人拍案叫绝的Wasserstein GAN](https://zhuanlan.zhihu.com/p/25071913)
-5. [Wasserstein metric](https://en.wikipedia.org/wiki/Wasserstein_metric)
-6. [MMD Maximum Mean Discrepancy 最大均值差异](https://zhuanlan.zhihu.com/p/163839117)
-7. [马氏距离(Mahalanobis Distance)](https://zhuanlan.zhihu.com/p/46626607)
+- [Kullback–Leibler Divergence (KL-Divergence)](#kullbackleibler-divergence-kl-divergence)
+- [Jensen-Shannon Divergence (JSD)](#jensen-shannon-divergence-jsd)
+- [Maximum Mean Discrepancy (MMD)](#maximum-mean-discrepancy-mmd)
+- [Wasserstein Distance](#wasserstein-distance)
+  - [一维分布下的计算](#一维分布下的计算)
+- [Bhattacharyya Distance](#bhattacharyya-distance)
+- [Mahalanobis Distance](#mahalanobis-distance)
 
 ---------
 
@@ -40,6 +39,7 @@ tags:
 这些度量一般需要满足一些性质：正定（大于等于零，且可以取到0），对称，满足三角不等式。
 以下就是一些常见的度量。
 
+---
 ## Kullback–Leibler Divergence (KL-Divergence)
 
 对于分布 $P$ 和 $Q$，已知其交叉熵，可以得到 $P$ 相对于 $Q$ 的相对熵：
@@ -164,3 +164,13 @@ D_{M}(x, y)=\sqrt{(x-y)^{T} \Sigma^{-1}(x-y)}
 $$
 
 其中 $\Sigma$ 是多维随机变量的协方差矩阵。
+
+---
+参考：
+1. [Statistical distance](https://en.wikipedia.org/wiki/Statistical_distance)
+2. [Jensen–Shannon divergence](https://en.wikipedia.org/wiki/Jensen–Shannon_divergence)
+3. [From GAN to WGAN](https://lilianweng.github.io/posts/2017-08-20-gan/)
+4. [令人拍案叫绝的Wasserstein GAN](https://zhuanlan.zhihu.com/p/25071913)
+5. [Wasserstein metric](https://en.wikipedia.org/wiki/Wasserstein_metric)
+6. [MMD Maximum Mean Discrepancy 最大均值差异](https://zhuanlan.zhihu.com/p/163839117)
+7. [马氏距离(Mahalanobis Distance)](https://zhuanlan.zhihu.com/p/46626607)
