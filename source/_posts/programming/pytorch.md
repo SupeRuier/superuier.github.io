@@ -1,7 +1,7 @@
 ---
 title: Pytorch 踩坑
 date: 2020-12-09 14:55:50
-updated: 2022-03-21 20:00:00
+updated: 2022-04-11 10:45:00
 cover: /gallery/covers/pytorch.png
 categories:
 - Programming
@@ -163,13 +163,23 @@ list(model.modules())[5].weight.grad
 ## 1.9. 计算某一层梯度
 
 其实如果使用 `loss.backward()` 然后再利用 hook来提取梯度会有一些耗费时间，因为反向传播是要从尾到头的，如果你只需要倒数几层的梯度的话，其实可以直接计算。
-
-`torch.autograd.grad` 方法提供了一个计算梯度的方式，可以看以下例子，此方法返回的对象是一个元组。
+`torch.autograd.grad` 方法提供了一个计算梯度的方式，可以看以下例子，此方法返回的对象是一个仅有一个元素的元组。
 
 ```python
 # 计算梯度
 # 如果需要多次计算的话记得保留计算图
 grad= torch.autograd.grad(outputs=loss, inputs=W, retain_graph=True, only_inputs=True)[0]
+```
+
+一般来说当我们计算每一个样本所引起的梯度时，可以将 batch_size 设为1，然后分别求梯度。
+但是这样是比较费时的，所以可以使用 `autograd.grad` 中的 `is_grads_batched` 选项 (Pytorch 1.11 版本)。
+在[源代码](https://github.com/pytorch/pytorch/blob/caa28ff4959c7cf7165dabf1ffae7c233b8e4b61/torch/autograd/__init__.py#L177)中对其这样描述：
+
+```python
+'''
+is_grads_batched (bool, optional): If ``True``, the first dimension of each tensor in ``grad_outputs`` will be interpreted as the batch dimension.
+'''
+grad= torch.autograd.grad(outputs=loss, inputs=W, retain_graph=True, only_inputs=True, is_grads_batched=True)[0]
 ```
 
 ## 1.10. 计算梯度的时间
