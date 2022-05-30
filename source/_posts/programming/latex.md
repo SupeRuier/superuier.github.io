@@ -1,9 +1,9 @@
 ---
-title: Latex 图片排版记录
+title: Latex 图片表格排版记录
 cover: /gallery/covers/latex.png
 toc: true
 date: 2021-08-30 11:00:00
-updated: 2021-09-24 16:00:00
+updated: 2022-05-30 11:00:00
 category:
 - Programming
 tags:
@@ -81,6 +81,11 @@ tags:
 \end{figure}
 ```
 
+### 子图引用
+
+如果是单张子图，可以直接引用 `Fig.~\ref{子图}`。
+如果是多张子图，可以使用 `Fig.~\ref{主图}\subref{子图1}\subref{子图2}` 来进行引用。（但是这个方法无法放到同一个括号里。）
+
 ## 表格排版
 
 ### 竖排表格中的文本
@@ -88,3 +93,8 @@ tags:
 ``` LaTeX
 \rotatebox{90}{some rotated text}
 ```
+
+### 表格中文本加粗
+
+通常情况下加粗后会使文本变宽，导致表格无法对齐。
+[前人](https://blog.csdn.net/a411358606/article/details/120121332)也遇到过这个问题，并尝试了了不同的加粗命令，发现使用`\pmb`可以避免文本变宽情况出现。
