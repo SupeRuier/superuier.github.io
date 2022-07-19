@@ -81,3 +81,6 @@ ignore: null
 theme: icarus
 deploy:
   type: ''
+# sitemap
+sitemap:
+  path: sitemap.xml
