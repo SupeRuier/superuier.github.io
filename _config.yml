@@ -19,7 +19,7 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: ':lang'
-skip_render: google7afef6b191d84a85.html
+skip_render: [google7afef6b191d84a85.html, baidu_verify_code-S37S9X1mE8.html]
 
 new_post_name: ':title.md'
 default_layout: post
@@ -84,3 +84,5 @@ deploy:
 # sitemap
 sitemap:
   path: sitemap.xml
+baidusitemap:
+    path: baidusitemap.xml
