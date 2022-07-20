@@ -3,11 +3,11 @@
   <title>Rui&#39;s Blog</title>
   
   
-  <link href="https://superuier.github.io/atom.xml" rel="self"/>
+  <link href="https://blog.superui.cc/atom.xml" rel="self"/>
   
-  <link href="https://superuier.github.io/"/>
+  <link href="https://blog.superui.cc/"/>
   <updated>2022-07-19T05:45:00.000Z</updated>
-  <id>https://superuier.github.io/</id>
+  <id>https://blog.superui.cc/</id>
   
   <author>
     <name>Superui</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Awesome Active Learning</title>
-    <link href="https://superuier.github.io/machine-learning/awesome-active-learning/"/>
-    <id>https://superuier.github.io/machine-learning/awesome-active-learning/</id>
+    <link href="https://blog.superui.cc/machine-learning/awesome-active-learning/"/>
+    <id>https://blog.superui.cc/machine-learning/awesome-active-learning/</id>
     <published>2022-07-19T05:45:00.000Z</published>
     <updated>2022-07-19T05:45:00.000Z</updated>
     
@@ -33,19 +33,19 @@
     
     
     
-    <category term="Machine Learning" scheme="https://superuier.github.io/categories/Machine-Learning/"/>
+    <category term="Machine Learning" scheme="https://blog.superui.cc/categories/Machine-Learning/"/>
     
     
-    <category term="machine-learning" scheme="https://superuier.github.io/tags/machine-learning/"/>
+    <category term="machine-learning" scheme="https://blog.superui.cc/tags/machine-learning/"/>
     
-    <category term="active-learning" scheme="https://superuier.github.io/tags/active-learning/"/>
+    <category term="active-learning" scheme="https://blog.superui.cc/tags/active-learning/"/>
     
   </entry>
   
   <entry>
     <title>主动学习(Active Learning)，看这一篇就够了</title>
-    <link href="https://superuier.github.io/machine-learning/al-all-in-one/"/>
-    <id>https://superuier.github.io/machine-learning/al-all-in-one/</id>
+    <link href="https://blog.superui.cc/machine-learning/al-all-in-one/"/>
+    <id>https://blog.superui.cc/machine-learning/al-all-in-one/</id>
     <published>2022-07-19T04:00:00.000Z</published>
     <updated>2022-07-19T04:00:00.000Z</updated>
     
@@ -58,19 +58,19 @@
     
     
     
-    <category term="Machine Learning" scheme="https://superuier.github.io/categories/Machine-Learning/"/>
+    <category term="Machine Learning" scheme="https://blog.superui.cc/categories/Machine-Learning/"/>
     
     
-    <category term="machine-learning" scheme="https://superuier.github.io/tags/machine-learning/"/>
+    <category term="machine-learning" scheme="https://blog.superui.cc/tags/machine-learning/"/>
     
-    <category term="active-learning" scheme="https://superuier.github.io/tags/active-learning/"/>
+    <category term="active-learning" scheme="https://blog.superui.cc/tags/active-learning/"/>
     
   </entry>
   
   <entry>
     <title>浪潮之巅</title>
-    <link href="https://superuier.github.io/reading-note/top-of-the-wave/"/>
-    <id>https://superuier.github.io/reading-note/top-of-the-wave/</id>
+    <link href="https://blog.superui.cc/reading-note/top-of-the-wave/"/>
+    <id>https://blog.superui.cc/reading-note/top-of-the-wave/</id>
     <published>2022-06-14T15:10:00.000Z</published>
     <updated>2022-06-14T15:10:00.000Z</updated>
     
@@ -81,17 +81,17 @@
     
     
     
-    <category term="Reading Note" scheme="https://superuier.github.io/categories/reading-note/"/>
+    <category term="Reading Note" scheme="https://blog.superui.cc/categories/reading-note/"/>
     
     
-    <category term="读书" scheme="https://superuier.github.io/tags/%E8%AF%BB%E4%B9%A6/"/>
+    <category term="读书" scheme="https://blog.superui.cc/tags/%E8%AF%BB%E4%B9%A6/"/>
     
   </entry>
   
   <entry>
     <title>富可敌国</title>
-    <link href="https://superuier.github.io/reading-note/more-money-than-god/"/>
-    <id>https://superuier.github.io/reading-note/more-money-than-god/</id>
+    <link href="https://blog.superui.cc/reading-note/more-money-than-god/"/>
+    <id>https://blog.superui.cc/reading-note/more-money-than-god/</id>
     <published>2022-05-15T09:00:00.000Z</published>
     <updated>2022-05-15T09:00:00.000Z</updated>
     
@@ -102,17 +102,17 @@
     
     
     
-    <category term="Reading Note" scheme="https://superuier.github.io/categories/reading-note/"/>
+    <category term="Reading Note" scheme="https://blog.superui.cc/categories/reading-note/"/>
     
     
-    <category term="读书" scheme="https://superuier.github.io/tags/%E8%AF%BB%E4%B9%A6/"/>
+    <category term="读书" scheme="https://blog.superui.cc/tags/%E8%AF%BB%E4%B9%A6/"/>
     
   </entry>
   
   <entry>
     <title>分布间距离度量</title>
-    <link href="https://superuier.github.io/math/distribution-distance/"/>
-    <id>https://superuier.github.io/math/distribution-distance/</id>
+    <link href="https://blog.superui.cc/math/distribution-distance/"/>
+    <id>https://blog.superui.cc/math/distribution-distance/</id>
     <published>2022-03-26T08:00:00.000Z</published>
     <updated>2022-03-26T08:00:00.000Z</updated>
     
@@ -125,23 +125,23 @@
     
     
     
-    <category term="Math" scheme="https://superuier.github.io/categories/Math/"/>
+    <category term="Math" scheme="https://blog.superui.cc/categories/Math/"/>
     
     
-    <category term="machine-learning" scheme="https://superuier.github.io/tags/machine-learning/"/>
+    <category term="machine-learning" scheme="https://blog.superui.cc/tags/machine-learning/"/>
     
-    <category term="distribution" scheme="https://superuier.github.io/tags/distribution/"/>
+    <category term="distribution" scheme="https://blog.superui.cc/tags/distribution/"/>
     
-    <category term="KL-divergence" scheme="https://superuier.github.io/tags/KL-divergence/"/>
+    <category term="KL-divergence" scheme="https://blog.superui.cc/tags/KL-divergence/"/>
     
-    <category term="JS-divergence" scheme="https://superuier.github.io/tags/JS-divergence/"/>
+    <category term="JS-divergence" scheme="https://blog.superui.cc/tags/JS-divergence/"/>
     
   </entry>
   
   <entry>
     <title>Dancing With The Dragon - China - Friend or Foe?</title>
-    <link href="https://superuier.github.io/economy-finance/seminar-talks/dance-dragon/"/>
-    <id>https://superuier.github.io/economy-finance/seminar-talks/dance-dragon/</id>
+    <link href="https://blog.superui.cc/economy-finance/seminar-talks/dance-dragon/"/>
+    <id>https://blog.superui.cc/economy-finance/seminar-talks/dance-dragon/</id>
     <published>2022-02-26T06:18:00.000Z</published>
     <updated>2022-02-26T06:18:00.000Z</updated>
     
@@ -154,17 +154,17 @@
     
     
     
-    <category term="Economy &amp; Finance" scheme="https://superuier.github.io/categories/economy-finance/"/>
+    <category term="Economy &amp; Finance" scheme="https://blog.superui.cc/categories/economy-finance/"/>
     
     
-    <category term="辩论" scheme="https://superuier.github.io/tags/%E8%BE%A9%E8%AE%BA/"/>
+    <category term="辩论" scheme="https://blog.superui.cc/tags/%E8%BE%A9%E8%AE%BA/"/>
     
   </entry>
   
   <entry>
     <title>中美关系、人民体系与未来起点收入</title>
-    <link href="https://superuier.github.io/economy-finance/seminar-talks/future-start-income/"/>
-    <id>https://superuier.github.io/economy-finance/seminar-talks/future-start-income/</id>
+    <link href="https://blog.superui.cc/economy-finance/seminar-talks/future-start-income/"/>
+    <id>https://blog.superui.cc/economy-finance/seminar-talks/future-start-income/</id>
     <published>2022-02-20T09:30:00.000Z</published>
     <updated>2022-02-20T09:30:00.000Z</updated>
     
@@ -176,17 +176,17 @@
     
     
     
-    <category term="Economy &amp; Finance" scheme="https://superuier.github.io/categories/economy-finance/"/>
+    <category term="Economy &amp; Finance" scheme="https://blog.superui.cc/categories/economy-finance/"/>
     
     
-    <category term="翟东升" scheme="https://superuier.github.io/tags/%E7%BF%9F%E4%B8%9C%E5%8D%87/"/>
+    <category term="翟东升" scheme="https://blog.superui.cc/tags/%E7%BF%9F%E4%B8%9C%E5%8D%87/"/>
     
   </entry>
   
   <entry>
     <title>乌合之众</title>
-    <link href="https://superuier.github.io/reading-note/the-crowd/"/>
-    <id>https://superuier.github.io/reading-note/the-crowd/</id>
+    <link href="https://blog.superui.cc/reading-note/the-crowd/"/>
+    <id>https://blog.superui.cc/reading-note/the-crowd/</id>
     <published>2022-02-06T07:00:00.000Z</published>
     <updated>2022-02-06T07:00:00.000Z</updated>
     
@@ -197,17 +197,17 @@
     
     
     
-    <category term="Reading Note" scheme="https://superuier.github.io/categories/reading-note/"/>
+    <category term="Reading Note" scheme="https://blog.superui.cc/categories/reading-note/"/>
     
     
-    <category term="读书" scheme="https://superuier.github.io/tags/%E8%AF%BB%E4%B9%A6/"/>
+    <category term="读书" scheme="https://blog.superui.cc/tags/%E8%AF%BB%E4%B9%A6/"/>
     
   </entry>
   
   <entry>
     <title>人工智能中的逻辑</title>
-    <link href="https://superuier.github.io/artificial-intelligence/ai-logic/"/>
-    <id>https://superuier.github.io/artificial-intelligence/ai-logic/</id>
+    <link href="https://blog.superui.cc/artificial-intelligence/ai-logic/"/>
+    <id>https://blog.superui.cc/artificial-intelligence/ai-logic/</id>
     <published>2021-11-24T13:30:00.000Z</published>
     <updated>2021-11-24T13:30:00.000Z</updated>
     
@@ -219,19 +219,19 @@
     
     
     
-    <category term="Artificial Intelligence" scheme="https://superuier.github.io/categories/Artificial-Intelligence/"/>
+    <category term="Artificial Intelligence" scheme="https://blog.superui.cc/categories/Artificial-Intelligence/"/>
     
     
-    <category term="AI" scheme="https://superuier.github.io/tags/AI/"/>
+    <category term="AI" scheme="https://blog.superui.cc/tags/AI/"/>
     
-    <category term="logic" scheme="https://superuier.github.io/tags/logic/"/>
+    <category term="logic" scheme="https://blog.superui.cc/tags/logic/"/>
     
   </entry>
   
   <entry>
     <title>国际经济形势与中美关系</title>
-    <link href="https://superuier.github.io/economy-finance/seminar-talks/china-us-relationship/"/>
-    <id>https://superuier.github.io/economy-finance/seminar-talks/china-us-relationship/</id>
+    <link href="https://blog.superui.cc/economy-finance/seminar-talks/china-us-relationship/"/>
+    <id>https://blog.superui.cc/economy-finance/seminar-talks/china-us-relationship/</id>
     <published>2021-11-14T04:39:46.000Z</published>
     <updated>2021-11-14T04:39:46.000Z</updated>
     
@@ -243,17 +243,17 @@
     
     
     
-    <category term="Economy &amp; Finance" scheme="https://superuier.github.io/categories/economy-finance/"/>
+    <category term="Economy &amp; Finance" scheme="https://blog.superui.cc/categories/economy-finance/"/>
     
     
-    <category term="翟东升" scheme="https://superuier.github.io/tags/%E7%BF%9F%E4%B8%9C%E5%8D%87/"/>
+    <category term="翟东升" scheme="https://blog.superui.cc/tags/%E7%BF%9F%E4%B8%9C%E5%8D%87/"/>
     
   </entry>
   
   <entry>
     <title>距离矩阵</title>
-    <link href="https://superuier.github.io/machine-learning/distance-matrix/"/>
-    <id>https://superuier.github.io/machine-learning/distance-matrix/</id>
+    <link href="https://blog.superui.cc/machine-learning/distance-matrix/"/>
+    <id>https://blog.superui.cc/machine-learning/distance-matrix/</id>
     <published>2021-11-05T08:48:00.000Z</published>
     <updated>2021-11-05T08:48:00.000Z</updated>
     
@@ -265,17 +265,17 @@
     
     
     
-    <category term="Machine Learning" scheme="https://superuier.github.io/categories/Machine-Learning/"/>
+    <category term="Machine Learning" scheme="https://blog.superui.cc/categories/Machine-Learning/"/>
     
     
-    <category term="machine-learning" scheme="https://superuier.github.io/tags/machine-learning/"/>
+    <category term="machine-learning" scheme="https://blog.superui.cc/tags/machine-learning/"/>
     
   </entry>
   
   <entry>
     <title>原则读书笔记</title>
-    <link href="https://superuier.github.io/reading-note/principles/"/>
-    <id>https://superuier.github.io/reading-note/principles/</id>
+    <link href="https://blog.superui.cc/reading-note/principles/"/>
+    <id>https://blog.superui.cc/reading-note/principles/</id>
     <published>2021-10-21T05:00:00.000Z</published>
     <updated>2021-10-21T05:00:00.000Z</updated>
     
@@ -287,17 +287,17 @@
     
     
     
-    <category term="Reading Note" scheme="https://superuier.github.io/categories/reading-note/"/>
+    <category term="Reading Note" scheme="https://blog.superui.cc/categories/reading-note/"/>
     
     
-    <category term="Ray-Dalio" scheme="https://superuier.github.io/tags/Ray-Dalio/"/>
+    <category term="Ray-Dalio" scheme="https://blog.superui.cc/tags/Ray-Dalio/"/>
     
   </entry>
   
   <entry>
     <title>约束满足问题（CSPs）</title>
-    <link href="https://superuier.github.io/artificial-intelligence/ai-csp/"/>
-    <id>https://superuier.github.io/artificial-intelligence/ai-csp/</id>
+    <link href="https://blog.superui.cc/artificial-intelligence/ai-csp/"/>
+    <id>https://blog.superui.cc/artificial-intelligence/ai-csp/</id>
     <published>2021-10-19T07:50:00.000Z</published>
     <updated>2021-10-19T07:50:00.000Z</updated>
     
@@ -308,19 +308,19 @@
     
     
     
-    <category term="Artificial Intelligence" scheme="https://superuier.github.io/categories/Artificial-Intelligence/"/>
+    <category term="Artificial Intelligence" scheme="https://blog.superui.cc/categories/Artificial-Intelligence/"/>
     
     
-    <category term="AI" scheme="https://superuier.github.io/tags/AI/"/>
+    <category term="AI" scheme="https://blog.superui.cc/tags/AI/"/>
     
-    <category term="search" scheme="https://superuier.github.io/tags/search/"/>
+    <category term="search" scheme="https://blog.superui.cc/tags/search/"/>
     
   </entry>
   
   <entry>
     <title>对抗搜索问题和 Minimax 算法</title>
-    <link href="https://superuier.github.io/artificial-intelligence/ai-adversarial-search/"/>
-    <id>https://superuier.github.io/artificial-intelligence/ai-adversarial-search/</id>
+    <link href="https://blog.superui.cc/artificial-intelligence/ai-adversarial-search/"/>
+    <id>https://blog.superui.cc/artificial-intelligence/ai-adversarial-search/</id>
     <published>2021-10-12T03:30:00.000Z</published>
     <updated>2021-10-12T03:30:00.000Z</updated>
     
@@ -331,19 +331,19 @@
     
     
     
-    <category term="Artificial Intelligence" scheme="https://superuier.github.io/categories/Artificial-Intelligence/"/>
+    <category term="Artificial Intelligence" scheme="https://blog.superui.cc/categories/Artificial-Intelligence/"/>
     
     
-    <category term="AI" scheme="https://superuier.github.io/tags/AI/"/>
+    <category term="AI" scheme="https://blog.superui.cc/tags/AI/"/>
     
-    <category term="search" scheme="https://superuier.github.io/tags/search/"/>
+    <category term="search" scheme="https://blog.superui.cc/tags/search/"/>
     
   </entry>
   
   <entry>
     <title>排序算法</title>
-    <link href="https://superuier.github.io/computer-science-engineering/sorting/"/>
-    <id>https://superuier.github.io/computer-science-engineering/sorting/</id>
+    <link href="https://blog.superui.cc/computer-science-engineering/sorting/"/>
+    <id>https://blog.superui.cc/computer-science-engineering/sorting/</id>
     <published>2021-10-08T11:30:00.000Z</published>
     <updated>2021-10-08T11:30:00.000Z</updated>
     
@@ -359,19 +359,19 @@
     
     
     
-    <category term="Computer Science and Engineering" scheme="https://superuier.github.io/categories/computer-science-engineering/"/>
+    <category term="Computer Science and Engineering" scheme="https://blog.superui.cc/categories/computer-science-engineering/"/>
     
     
-    <category term="sorting" scheme="https://superuier.github.io/tags/sorting/"/>
+    <category term="sorting" scheme="https://blog.superui.cc/tags/sorting/"/>
     
-    <category term="algorithms" scheme="https://superuier.github.io/tags/algorithms/"/>
+    <category term="algorithms" scheme="https://blog.superui.cc/tags/algorithms/"/>
     
   </entry>
   
   <entry>
     <title>Contrastive Learning 学习记录</title>
-    <link href="https://superuier.github.io/machine-learning/contrastive-learning/"/>
-    <id>https://superuier.github.io/machine-learning/contrastive-learning/</id>
+    <link href="https://blog.superui.cc/machine-learning/contrastive-learning/"/>
+    <id>https://blog.superui.cc/machine-learning/contrastive-learning/</id>
     <published>2021-09-30T06:02:00.000Z</published>
     <updated>2021-09-30T06:02:00.000Z</updated>
     
@@ -385,21 +385,21 @@
     
     
     
-    <category term="Machine Learning" scheme="https://superuier.github.io/categories/Machine-Learning/"/>
+    <category term="Machine Learning" scheme="https://blog.superui.cc/categories/Machine-Learning/"/>
     
     
-    <category term="machine-learning" scheme="https://superuier.github.io/tags/machine-learning/"/>
+    <category term="machine-learning" scheme="https://blog.superui.cc/tags/machine-learning/"/>
     
-    <category term="contrastive-learning" scheme="https://superuier.github.io/tags/contrastive-learning/"/>
+    <category term="contrastive-learning" scheme="https://blog.superui.cc/tags/contrastive-learning/"/>
     
-    <category term="self-supervised-learning" scheme="https://superuier.github.io/tags/self-supervised-learning/"/>
+    <category term="self-supervised-learning" scheme="https://blog.superui.cc/tags/self-supervised-learning/"/>
     
   </entry>
   
   <entry>
     <title>人工智能的中的搜索</title>
-    <link href="https://superuier.github.io/artificial-intelligence/ai-search/"/>
-    <id>https://superuier.github.io/artificial-intelligence/ai-search/</id>
+    <link href="https://blog.superui.cc/artificial-intelligence/ai-search/"/>
+    <id>https://blog.superui.cc/artificial-intelligence/ai-search/</id>
     <published>2021-09-27T08:00:00.000Z</published>
     <updated>2021-09-29T05:00:00.000Z</updated>
     
@@ -410,19 +410,19 @@
     
     
     
-    <category term="Artificial Intelligence" scheme="https://superuier.github.io/categories/Artificial-Intelligence/"/>
+    <category term="Artificial Intelligence" scheme="https://blog.superui.cc/categories/Artificial-Intelligence/"/>
     
     
-    <category term="AI" scheme="https://superuier.github.io/tags/AI/"/>
+    <category term="AI" scheme="https://blog.superui.cc/tags/AI/"/>
     
-    <category term="search" scheme="https://superuier.github.io/tags/search/"/>
+    <category term="search" scheme="https://blog.superui.cc/tags/search/"/>
     
   </entry>
   
   <entry>
     <title>Matplotlib 学习笔记</title>
-    <link href="https://superuier.github.io/programming/matplotlib/"/>
-    <id>https://superuier.github.io/programming/matplotlib/</id>
+    <link href="https://blog.superui.cc/programming/matplotlib/"/>
+    <id>https://blog.superui.cc/programming/matplotlib/</id>
     <published>2021-09-24T07:00:03.000Z</published>
     <updated>2021-09-24T07:00:03.000Z</updated>
     
@@ -434,19 +434,19 @@
     
     
     
-    <category term="Programming" scheme="https://superuier.github.io/categories/programming/"/>
+    <category term="Programming" scheme="https://blog.superui.cc/categories/programming/"/>
     
     
-    <category term="Python" scheme="https://superuier.github.io/tags/Python/"/>
+    <category term="Python" scheme="https://blog.superui.cc/tags/Python/"/>
     
-    <category term="Matplotlib" scheme="https://superuier.github.io/tags/Matplotlib/"/>
+    <category term="Matplotlib" scheme="https://blog.superui.cc/tags/Matplotlib/"/>
     
   </entry>
   
   <entry>
     <title>人工智能的基本概念</title>
-    <link href="https://superuier.github.io/artificial-intelligence/ai-basics/"/>
-    <id>https://superuier.github.io/artificial-intelligence/ai-basics/</id>
+    <link href="https://blog.superui.cc/artificial-intelligence/ai-basics/"/>
+    <id>https://blog.superui.cc/artificial-intelligence/ai-basics/</id>
     <published>2021-09-07T09:00:00.000Z</published>
     <updated>2021-09-07T09:00:00.000Z</updated>
     
@@ -457,17 +457,17 @@
     
     
     
-    <category term="Artificial Intelligence" scheme="https://superuier.github.io/categories/Artificial-Intelligence/"/>
+    <category term="Artificial Intelligence" scheme="https://blog.superui.cc/categories/Artificial-Intelligence/"/>
     
     
-    <category term="AI" scheme="https://superuier.github.io/tags/AI/"/>
+    <category term="AI" scheme="https://blog.superui.cc/tags/AI/"/>
     
   </entry>
   
   <entry>
     <title>有趣的事物</title>
-    <link href="https://superuier.github.io/interesting-stuff/interesting-stuff/"/>
-    <id>https://superuier.github.io/interesting-stuff/interesting-stuff/</id>
+    <link href="https://blog.superui.cc/interesting-stuff/interesting-stuff/"/>
+    <id>https://blog.superui.cc/interesting-stuff/interesting-stuff/</id>
     <published>2021-09-07T06:50:00.000Z</published>
     <updated>2021-09-07T06:50:00.000Z</updated>
     
@@ -478,10 +478,10 @@
     
     
     
-    <category term="Interesting Stuff" scheme="https://superuier.github.io/categories/Interesting-Stuff/"/>
+    <category term="Interesting Stuff" scheme="https://blog.superui.cc/categories/Interesting-Stuff/"/>
     
     
-    <category term="interesting" scheme="https://superuier.github.io/tags/interesting/"/>
+    <category term="interesting" scheme="https://blog.superui.cc/tags/interesting/"/>
     
   </entry>
   
