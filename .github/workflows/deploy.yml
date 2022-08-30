@@ -40,6 +40,7 @@ jobs:
           cp -f custom/head.jsx node_modules/hexo-theme-icarus/layout/common/
           cp -f custom/comment.jsx node_modules/hexo-theme-icarus/layout/common/
           cp -f custom/article.jsx node_modules/hexo-theme-icarus/layout/common/
+          cp -f custom/footer.jsx node_modules/hexo-theme-icarus/layout/common/
           npm run clean
           npm run build
 
