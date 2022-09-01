@@ -38,7 +38,7 @@ class Footer extends Component {
                             &nbsp;&nbsp;Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>&nbsp;&&nbsp;
                             <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                             <br/> 
-                            <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备2021108691号-1</a>
+                            <a href="http://beian.miit.gov.cn/" target="_blank">粤ICP备2021108691号-1</a>
                             {showVisitorCounter ? <br /> : null}
                             {showVisitorCounter ? <span id="busuanzi_container_site_uv"
                                 dangerouslySetInnerHTML={{ __html: visitorCounterTitle }}></span> : null}
