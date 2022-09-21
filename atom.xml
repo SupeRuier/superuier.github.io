@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>超级Rui科研生活记录</title>
+  <title>超级Rui的小站</title>
   
   
   <link href="https://blog.superui.cc/atom.xml" rel="self"/>
   
   <link href="https://blog.superui.cc/"/>
-  <updated>2022-07-24T08:30:00.000Z</updated>
+  <updated>2022-09-21T07:00:00.000Z</updated>
   <id>https://blog.superui.cc/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Focal Loss</title>
+    <link href="https://blog.superui.cc/machine-learning/focal-loss/"/>
+    <id>https://blog.superui.cc/machine-learning/focal-loss/</id>
+    <published>2022-09-21T07:00:00.000Z</published>
+    <updated>2022-09-21T07:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<!-- omit in toc --><p>前几天听到一个关于元学习的报告，里面提到了一下 Focal Loss，意识到总是听人讲起却没有好好看过它到底是什么，于是这里做一个简短的学习。</p><span id="more"></span><h2 id="类别不平衡问题"><a href="#类别不平衡问题" class="headerlink" title="类别不平衡问题"></a>类别不平衡问题</h2><p>Focal loss 是何恺明大神提出的，面向类别不平衡性能损失问题的一个思路。</p><p>通常情况下，面对类别不平衡，如果不加干预，模型则更倾向于对优势类有着更好表现。通常大家的解决思路是对不同类别的样本损失函数加权，降低优势类损失的权重，增强劣势类损失的权重，比例约为不同类别（正负样本）的数量比。</p><p>此处 focal loss 本质上也是一个对于 CEloss 的加权，但是它入手的角度是学习样本的难易程度。</p><h2 id="Focal-loss-具体形式"><a href="#Focal-loss-具体形式" class="headerlink" title="Focal loss 具体形式"></a>Focal loss 具体形式</h2><p>首先我们给出 focal loss 的表达式：</p><script type="math/tex; mode=display">L_{f l} =-\left(1-p_t\right)^\gamma \log \left(p_t\right)\\p_t = \begin{cases}\hat{p} & \text { if } \mathrm{y}=1 \\ 1-\hat{p} & \text { otherwise }\end{cases}</script><p>同理也有交叉墒损失函数的表达式:</p><script type="math/tex; mode=display">L_{ce}=- \log \left(p_t\right)\\</script><p>两者的主要区别在于 $log$ 项之前的权重。直观上理解，$p$ 反应了分类的难易程度，分类的置信度越高，代表样本越易分；分类的置信度越低，代表样本越难分。因此focal loss相当于增加了难分样本在损失函数的权重，使得损失函数倾向于难分的样本，有助于提高难分样本的准确度。而通常情况下，样本较少的类别天然会难分一些。</p><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/32423092">何恺明大神的「Focal Loss」，如何更好地理解？</a></li><li><a href="https://zhuanlan.zhihu.com/p/266023273">focal loss 通俗讲解</a></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;!-- omit in toc --&gt;
+&lt;p&gt;前几天听到一个关于元学习的报告，里面提到了一下 Focal Loss，意识到总是听人讲起却没有好好看过它到底是什么，于是这里做一个简短的学习。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Machine Learning" scheme="https://blog.superui.cc/categories/Machine-Learning/"/>
+    
+    
+    <category term="neural-network" scheme="https://blog.superui.cc/tags/neural-network/"/>
+    
+    <category term="machine-learning" scheme="https://blog.superui.cc/tags/machine-learning/"/>
+    
+    <category term="loss-function" scheme="https://blog.superui.cc/tags/loss-function/"/>
+    
+  </entry>
   
   <entry>
     <title>《世界简史》读书笔记</title>
@@ -463,27 +489,6 @@
     <category term="Python" scheme="https://blog.superui.cc/tags/Python/"/>
     
     <category term="Matplotlib" scheme="https://blog.superui.cc/tags/Matplotlib/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>人工智能的基本概念</title>
-    <link href="https://blog.superui.cc/artificial-intelligence/ai-basics/"/>
-    <id>https://blog.superui.cc/artificial-intelligence/ai-basics/</id>
-    <published>2021-09-07T09:00:00.000Z</published>
-    <updated>2021-09-07T09:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>人工智能基础知识和一些概念。</p><span id="more"></span><h2 id="AI-是什么？"><a href="#AI-是什么？" class="headerlink" title="AI 是什么？"></a>AI 是什么？</h2><p>其实很多地方都给出了不同角度的定义，此处仅记录自己的看法。</p><blockquote><p>AI 是承载于机器或程序，人为设计或训练，并可以解决特定或一些列特定问题的能力。</p></blockquote><p>其涵盖多个计算机领域：机器学习/优化/搜索/etc.</p><h2 id="智能体"><a href="#智能体" class="headerlink" title="智能体"></a>智能体</h2><p>AI 承载于智能体（Agent），即我的定义中的机器或程序。</p><blockquote><p>Agent = Architecture + Program</p></blockquote><p>在解决问题的过程中，智能体通过传感器（Sensors）接受外界环境（Environment）的信号，并自我处理信息，之后作出相应行动（Action）。于是在对一个智能体进行定义时，通常要考虑 <strong>PEAS</strong>：</p><ul><li>Performance</li><li>Environment</li><li>Actuators</li><li>Senors</li></ul><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>环境有很多重要的类别：</p><ul><li>Fully observable (vs. partially observable)</li><li>Deterministic (vs. stochastic)</li><li>Episodic (vs. sequential)</li><li>Static (vs. dynamic)</li><li>Discrete (vs. continuous)</li><li>Single agent (vs. multi-agent)</li><li>Known (vs. Unknown)</li></ul><p>下面是一些具体的例子。</p><div class="table-container"><table><thead><tr><th>Environment</th><th>Observable</th><th>Agents</th><th>Deterministic</th><th>Static</th><th>Discrete</th></tr></thead><tbody><tr><td>8-puzzle</td><td>Fully</td><td>Single</td><td>Deterministic</td><td>Static</td><td>Discrete</td></tr><tr><td>Chess</td><td>Fully</td><td>Multi</td><td>Deterministic</td><td>(Semi)Static</td><td>Discrete</td></tr><tr><td>Poker</td><td>Partially</td><td>Multi</td><td>Stochastic</td><td>Static</td><td>Discrete</td></tr><tr><td>Backgammon</td><td>Fully</td><td>Multi</td><td>Stochastic</td><td>Static</td><td>Discrete</td></tr><tr><td>Car</td><td>Partially</td><td>Multi</td><td>Stochastic</td><td>Dynamic</td><td>Continuous</td></tr><tr><td>Cleaner</td><td>partially</td><td>Single</td><td>Stochastic</td><td>Dynamic</td><td>Continuous</td></tr></tbody></table></div>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;人工智能基础知识和一些概念。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Artificial Intelligence" scheme="https://blog.superui.cc/categories/Artificial-Intelligence/"/>
-    
-    
-    <category term="AI" scheme="https://blog.superui.cc/tags/AI/"/>
     
   </entry>
   
