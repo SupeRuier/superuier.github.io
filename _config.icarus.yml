@@ -7,8 +7,7 @@ logo: /images/logo_superui1.svg
 # Page metadata configurations
 head:
     # URL or path to the website's icon
-    favicon: 
-        /images/favicon.svg
+    favicon: /images/favicon.svg
     # Web application manifests configuration
     # https://developer.mozilla.org/en-US/docs/Web/Manifest
     manifest:
