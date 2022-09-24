@@ -106,6 +106,7 @@ navbar:
         # Gallery: /blog-general-info/gallery
         Board: /blog-general-info/message-board
         Friends: /blog-general-info/friends
+        About Me: /blog-general-info/about-me
     # Links to be shown on the right of the navigation bar
     # links:
     #     Download on GitHub:
