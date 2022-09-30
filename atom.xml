@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>超级Rui的小站</title>
+  <title>Superui&#39;s Blog</title>
   
   
   <link href="https://blog.superui.cc/atom.xml" rel="self"/>
   
   <link href="https://blog.superui.cc/"/>
-  <updated>2022-09-21T07:00:00.000Z</updated>
+  <updated>2022-09-30T08:00:00.000Z</updated>
   <id>https://blog.superui.cc/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Attention 和 Transformer</title>
+    <link href="https://blog.superui.cc/machine-learning/attention/"/>
+    <id>https://blog.superui.cc/machine-learning/attention/</id>
+    <published>2022-09-30T08:00:00.000Z</published>
+    <updated>2022-09-30T08:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<!-- omit in toc --><p>注意力机制和 Transformer 在神经网络中已经取得了良好的表现，此处做一个简要的学习。因为在自己的工作中并不会用到，所以此处可能更注重一些逻辑上的思路，以加强直观上的理解，具体细节有需要的时候再进行补充。</p><span id="more"></span><h2 id="Attention-机制是什么？"><a href="#Attention-机制是什么？" class="headerlink" title="Attention 机制是什么？"></a>Attention 机制是什么？</h2><p>Attention 最初面对的是长程梯度消失以及中间隐变量信息含量有限的问题。其通过将输入中的样本信息指导输出过程，来解决这一问题。其有着参数少速度快效果好的优点。</p><p>Attention 做的事情简单来说就是“加权求和”：</p><ul><li>对什么加权？对 feature 或者一系列输入信息加权。</li><li>权重是多少？权重为一个函数，而不是固定值。（若为固定值的话则可视为全连接层了。）一般来说这个权重即为 attention 分布，基于输入位置和输出位置的关联性。</li><li>求和得到什么？所需的输出。</li></ul><div style="width:80%;margin:auto"><img src="/machine-learning/attention/knowledge_is_power.gif" class="" title="一个翻译任务的例子"></div><h2 id="Attention-定义"><a href="#Attention-定义" class="headerlink" title="Attention 定义"></a>Attention 定义</h2><p>以下是 “Attention Is All You Need”【4】这篇重磅论文中给出的定义。这个定义虽说是针对于他们的 scaled dot-product attention，但是整体来说整个 attention 都是一个思路，所以可以拿来作为定义。</p><script type="math/tex; mode=display">\operatorname{Attention}(Q, K, V)=\operatorname{softmax}\left(\frac{Q K^T}{\sqrt{d_k}}\right) V</script><p>即通过关系矩阵 $Q K^T$ 归一化得到的概率分布 $\operatorname{softmax}\left(\frac{Q K^T}{\sqrt{d_k}}\right)$ 对 $V$ 进行重采样。当然这个 $QKV$ 在不同场景下可能有着不同的具体含义。</p><h2 id="Multi-head-attention"><a href="#Multi-head-attention" class="headerlink" title="Multi-head attention"></a>Multi-head attention</h2><p>如下图所示。简单来说就是将多个 scaled dot-product attention 的值拼接，再通过线形结合输出。</p><div style="width:80%;margin:auto"><img src="/machine-learning/attention/multi-head-attention.png" class="" title="multi-head attention"></div><p>具体的，</p><script type="math/tex; mode=display">\operatorname{MultiHead}(Q, K, V)=\operatorname{Concat}\left(\operatorname{head}_1, \ldots\right., head \left._{\mathrm{h}}\right) W^O \\where \quad \text{head}_i=\operatorname{Attention}\left(Q W_i^Q, K W_i^K, V W_i^V\right)</script><h2 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h2><p>其模型结构如下图所示。Multi-head attention 是其主要组成部分。在 attention 之外，样本的位置（顺序）信息使用 positional encoding 嵌入（因为不像 RNN 有顺序结构）。</p><div style="width:50%;margin:auto"><img src="/machine-learning/attention/transformer.png" class="" title="transformer"></div><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol><li><a href="https://www.zhihu.com/question/320174043/answer/651998472">深度学习中Attention与全连接层的区别何在？ - SleepyBag的回答 - 知乎</a></li><li><a href="https://zhuanlan.zhihu.com/p/47063917">Attention机制详解（一）——Seq2Seq中的Attention</a></li><li><a href="https://www.zhihu.com/question/68482809/answer/1876764572">目前主流的attention方法都有哪些？ - 电光幻影炼金术的回答 - 知乎</a></li><li>Vaswani, Ashish, et al. “Attention is all you need.” Advances in neural information processing systems 30 (2017).</li></ol>]]></content>
+    
+    
+    <summary type="html">&lt;!-- omit in toc --&gt;
+&lt;p&gt;注意力机制和 Transformer 在神经网络中已经取得了良好的表现，此处做一个简要的学习。
+因为在自己的工作中并不会用到，所以此处可能更注重一些逻辑上的思路，以加强直观上的理解，具体细节有需要的时候再进行补充。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Machine Learning" scheme="https://blog.superui.cc/categories/Machine-Learning/"/>
+    
+    
+    <category term="neural-network" scheme="https://blog.superui.cc/tags/neural-network/"/>
+    
+    <category term="machine-learning" scheme="https://blog.superui.cc/tags/machine-learning/"/>
+    
+    <category term="attention" scheme="https://blog.superui.cc/tags/attention/"/>
+    
+  </entry>
   
   <entry>
     <title>Focal Loss</title>
@@ -465,30 +492,6 @@
     <category term="AI" scheme="https://blog.superui.cc/tags/AI/"/>
     
     <category term="search" scheme="https://blog.superui.cc/tags/search/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Matplotlib 学习笔记</title>
-    <link href="https://blog.superui.cc/programming/matplotlib/"/>
-    <id>https://blog.superui.cc/programming/matplotlib/</id>
-    <published>2021-09-24T07:00:03.000Z</published>
-    <updated>2021-09-24T07:00:03.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>这里是个人的 Matplotlib 学习笔记。记录一些作图的过程。</p><span id="more"></span><h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><h2 id="减小空白边界"><a href="#减小空白边界" class="headerlink" title="减小空白边界"></a>减小空白边界</h2><p>由于使用 Latex 排版时需要严格控制图片位置、大小、排布方式，所以任何冗余的空间都是需要极力避免的。在做图的时候可以直接将图片空白边界抹去。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.savefig(<span class="string">&#x27;test.png&#x27;</span>, bbox_inches=<span class="string">&#x27;tight&#x27;</span>)</span><br></pre></td></tr></table></figure><p>但是这个方法有一个问题就是多个图片的留白可能不一致，导致如果多子图放置于 latex 文档中会出现排版无法对齐的情况。此时需要手动对边界进行设置。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.subplots_adjust(left=<span class="number">0.12</span>, right=<span class="number">0.97</span>, top=<span class="number">0.98</span>, bottom=<span class="number">0.1</span>)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;这里是个人的 Matplotlib 学习笔记。
-记录一些作图的过程。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Programming" scheme="https://blog.superui.cc/categories/programming/"/>
-    
-    
-    <category term="Python" scheme="https://blog.superui.cc/tags/Python/"/>
-    
-    <category term="Matplotlib" scheme="https://blog.superui.cc/tags/Matplotlib/"/>
     
   </entry>
   
