@@ -6,7 +6,7 @@
   <link href="https://blog.superui.cc/atom.xml" rel="self"/>
   
   <link href="https://blog.superui.cc/"/>
-  <updated>2022-10-20T05:00:00.000Z</updated>
+  <updated>2022-10-27T13:00:00.000Z</updated>
   <id>https://blog.superui.cc/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LSTM</title>
+    <link href="https://blog.superui.cc/machine-learning/lstm/"/>
+    <id>https://blog.superui.cc/machine-learning/lstm/</id>
+    <published>2022-10-27T13:00:00.000Z</published>
+    <updated>2022-10-27T13:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<!-- omit in toc --><p>最近用到的 ASP-MTL 模型中使用 LSTM 作为特征提取器。自己对于 RNN 的认知很不成体系，在此进行一个梳理。对 LSTM 来做一个学习，主要针对结构和预测两方面。</p><span id="more"></span><h2 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h2><p>Recurrent Neural Networks（RNN）指循环神经网络，用来处理序列数据。每一个时刻的输出或中间信息会被传递到下一个时刻作为一部分输入，以保留时序信息。具体模式如下图所示。</p><div style="width:80%;margin:auto"><img src="/machine-learning/lstm/RNN-unrolled.png" class="" title="一个 RNN 示例"></div><p>其中处理以往和当前信息的结构十分简单，以一个 tanh 来合并。</p><div style="width:60%;margin:auto"><img src="/machine-learning/lstm/simpleRNN.png" class="" title="简单 RNN 内部结构示例"></div><h2 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h2><p>经典的 RNN 存在难以解决长距离依赖（long-term dependency）的问题，即时序上距离过远的相关信息难以被学到。于是 LSTM 模型被提出，其包含了一个记录长效信息的模块。LSTM 的结构如下图所示。最主要的核心观点是维护一个 cell state（细胞状态），以使得信息跨时序传输。当然这里个人认为翻译成“牢房”更为贴切。不同于简单的 RNN 中只有一个神经网络，LSTM 中含有四个主要的神经网络（门结构）。</p><div style="width:60%;margin:auto"><img src="/machine-learning/lstm/lstm.png" class="" title="LSTM 内部结构示例"></div><p>遗忘门决定要从细胞状态中舍弃什么信息。</p><div style="width:60%;margin:auto"><img src="/machine-learning/lstm/LSTM3-focus-f.png" class="" title="遗忘门"></div><p>输入门决定保存哪些新信息进入细胞状态。</p><div style="width:60%;margin:auto"><img src="/machine-learning/lstm/LSTM3-focus-i.png" class="" title="输入门"></div><p>旧的状态 $C_{t-1}$ 先 forget 再 input 得到新的状态 $C_t$。</p><div style="width:60%;margin:auto"><img src="/machine-learning/lstm/LSTM3-focus-C.png" class="" title="细胞状态更新"></div><p>输出一个“过滤”后的细胞状态。</p><div style="width:60%;margin:auto"><img src="/machine-learning/lstm/LSTM3-focus-o.png" class="" title="输出门"></div><h3 id="模型训练"><a href="#模型训练" class="headerlink" title="模型训练"></a>模型训练</h3><p>先由正向传播，算出最终的损失 $J$，再反向计算梯度即可。详细的正向过程可见【2】。反向过程可见【3】。值得注意的是，反向过程的梯度更新需要考虑每一个时间步的输出。</p><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol><li><a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/">Understanding LSTM Networks</a></li><li><a href="https://zhuanlan.zhihu.com/p/83496936">人人都能看懂的LSTM介绍及反向传播算法推导 - 陈楠的文章</a></li><li><a href="https://zhuanlan.zhihu.com/p/54775438">RNN之随时间反向传播BPTT推导细节，从公式中理解RNN梯度消失与梯度爆炸原因 - 塞巴斯万隆的文章</a></li></ol>]]></content>
+    
+    
+    <summary type="html">&lt;!-- omit in toc --&gt;
+&lt;p&gt;最近用到的 ASP-MTL 模型中使用 LSTM 作为特征提取器。
+自己对于 RNN 的认知很不成体系，在此进行一个梳理。
+对 LSTM 来做一个学习，主要针对结构和预测两方面。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Machine Learning" scheme="https://blog.superui.cc/categories/Machine-Learning/"/>
+    
+    
+    <category term="neural-network" scheme="https://blog.superui.cc/tags/neural-network/"/>
+    
+    <category term="machine-learning" scheme="https://blog.superui.cc/tags/machine-learning/"/>
+    
+    <category term="rnn" scheme="https://blog.superui.cc/tags/rnn/"/>
+    
+    <category term="lstm" scheme="https://blog.superui.cc/tags/lstm/"/>
+    
+  </entry>
   
   <entry>
     <title>深度神经网络模型复杂度</title>
@@ -466,34 +496,6 @@
     <category term="AI" scheme="https://blog.superui.cc/tags/AI/"/>
     
     <category term="search" scheme="https://blog.superui.cc/tags/search/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>排序算法</title>
-    <link href="https://blog.superui.cc/computer-science-engineering/sorting/"/>
-    <id>https://blog.superui.cc/computer-science-engineering/sorting/</id>
-    <published>2021-10-08T11:30:00.000Z</published>
-    <updated>2021-10-08T11:30:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<!-- omit in toc --><p>最近看了一篇比较有趣的文章<a href="https://mp.weixin.qq.com/s/_N_vbYEisNJ7yddaRjgZdQ">《比冒泡算法还简单的排序算法：看起来满是bug的程序，居然是对的》</a>，看了半天才看懂。发现自己其实已经不太记得各种排序方法了，此处做一个复习总结。（给自己看的笔记也不会很详细，毕竟大部分也都实现过，这里主要记录intuition。）主要参考了这篇知乎的博文，<a href="https://zhuanlan.zhihu.com/p/335048580">《八大经典排序算法详解》</a>。</p><span id="more"></span><h2 id="鸽巢排序"><a href="#鸽巢排序" class="headerlink" title="鸽巢排序"></a>鸽巢排序</h2><ul><li>基本思想：空间换时间，建立一个足够长的数组，按照数值的大小放到相应的位置，最后遍历删除空位置。</li><li>时间复杂度为 O(n)。但是如果需要排序的数中有特别大的，则数组需要建立的特别大，不方便使用。</li></ul><h2 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h2><p>上述鸽巢排序可以看作一种极端的（桶数很多的）桶排序：</p><ul><li>基本思想：空间换时间，将待排序的序列分到若干个桶中（桶具有顺序），每个桶内的元素再进行基于比较的排序。</li><li>时间复杂度为 O(k+n)，k 为最大值。</li><li>是稳定的排序方法。</li><li>限制比较多：只能int，空间消耗大，只有对于均匀数列效果好</li></ul><h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><ul><li>基本思想：将待插入样本按其值的大小插入前面已经排序的文件中适当位置上，直到全部插入完为止。</li><li>时间复杂度为 O(n^2)。</li><li>是稳定的排序方法。</li></ul><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><ul><li>基本思想：在待排序的元素任取一个元素作为基准(通常选第一个元素，称为基准元素），将待排序的元素进行分块，比基准元素大的元素移动到基准元素的右侧，比基准元素小的移动到作左侧，从而一趟排序过程，就可以锁定基准元素的最终位置，对左右两个分块重复以上步骤直到所有元素都是有序的（递归过程）。</li><li>快速排序平均时间复杂度为 O(nlogn)，最坏情况为 O(n^2)，n越大，速度越快。</li><li>不是稳定的排序算法。</li></ul><h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><ul><li>基本思想：每一次从待排序的数据元素中选出最小的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。</li><li>时间复杂度 O(n^2)。</li><li>选择排序是不稳定的排序方法。（存在不相邻元素的互换）</li></ul><h2 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h2><ul><li>基本思想：设置一定的步长序列 [a,b,c,1]（最后一个需要为1），然后根据步长来构建分组（以 a 为例，每个分组中都是相隔为a的一组样本：i, i+a, i+2a…），然后对分组里的样本进行排序，之后合并为新序列。a 步长进行完之后，在新的序列上使用下一个步长 b 得到下一个序列，如此往复。最后一个步长需要为1。</li><li>时间复杂度 平均时间 O(nlogn) 最差时间O(n^2)</li><li>是不稳定的排序方法。</li></ul><h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><ul><li>基本思想：利用最大堆或最小堆，先将所有值放入堆中储存，再一一取出，则排好序。</li><li>堆排序是一种选择排序,其时间复杂度为 O(nlogn)。堆排序是不稳定的</li></ul><h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><ul><li>基本思想：将待排序的数组分成前后两个部分，再递归的将前半部分数据和后半部分的数据各自归并排序，得到的两部分数据，然后使用merge合并算法将两部分数据合并到一起。</li><li>最好、最坏和平均时间复杂度都是 O(nlogn)，空间复杂度是 O(n)。</li><li>是稳定的排序算法。</li></ul><h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><ul><li>基本思想：持续比较相邻的元素。如果第一个比第二个大，就交换他们两个。直到没有任何一对数字需要比较。</li><li>冒泡排序最好的时间复杂度为 O(n)，冒泡排序的最坏时间复杂度为 O(n^2)，因为循环轮数不确定。因此冒泡排序总的平均时间复杂度为 O(n^2)。</li><li>算法适用于少量数据的排序。</li><li>是稳定的排序方法。</li></ul><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i = <span class="number">1</span> to n <span class="keyword">do</span></span><br><span class="line"><span class="keyword">for</span> j = i + <span class="number">1</span> to n <span class="keyword">do</span></span><br><span class="line"><span class="keyword">if</span> A[i] &gt; A[j] then</span><br><span class="line">swap A[i] and A[j]</span><br></pre></td></tr></table></figure><h2 id="Bug-满满的“数组升序排序”"><a href="#Bug-满满的“数组升序排序”" class="headerlink" title="Bug 满满的“数组升序排序”"></a>Bug 满满的“数组升序排序”</h2><p>这个方法第一次见于<a href="https://mp.weixin.qq.com/s/_N_vbYEisNJ7yddaRjgZdQ">《比冒泡算法还简单的排序算法：看起来满是bug的程序，居然是对的》</a>。伪代码如下。这个代码相对于冒泡排序看起来有两个地方写错了，一个是判断时的小于号，一个是第二个 for 循环中的开始项。但是这个算法竟然可以惊讶地得到正确的结果。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i = <span class="number">1</span> to n <span class="keyword">do</span></span><br><span class="line"><span class="keyword">for</span> j = <span class="number">1</span> to n <span class="keyword">do</span></span><br><span class="line"><span class="keyword">if</span> A[i] &lt; A[j] then</span><br><span class="line">swap A[i] and A[j]</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-    <summary type="html">&lt;!-- omit in toc --&gt;
-&lt;p&gt;最近看了一篇比较有趣的文章
-&lt;a href=&quot;https://mp.weixin.qq.com/s/_N_vbYEisNJ7yddaRjgZdQ&quot;&gt;《比冒泡算法还简单的排序算法：看起来满是bug的程序，居然是对的》&lt;/a&gt;，看了半天才看懂。
-发现自己其实已经不太记得各种排序方法了，此处做一个复习总结。
-（给自己看的笔记也不会很详细，毕竟大部分也都实现过，这里主要记录intuition。）
-主要参考了这篇知乎的博文，&lt;a href=&quot;https://zhuanlan.zhihu.com/p/335048580&quot;&gt;《八大经典排序算法详解》&lt;/a&gt;。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Computer Science and Engineering" scheme="https://blog.superui.cc/categories/computer-science-engineering/"/>
-    
-    
-    <category term="sorting" scheme="https://blog.superui.cc/tags/sorting/"/>
-    
-    <category term="algorithms" scheme="https://blog.superui.cc/tags/algorithms/"/>
     
   </entry>
   
