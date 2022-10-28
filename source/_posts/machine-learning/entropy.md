@@ -1,9 +1,9 @@
 ---
-title: 交叉熵小结
-cover: /gallery/covers/cross-entropy.jpg
+title: 信息论以及机器学习中的熵
+cover: /gallery/covers/entropy.jpg
 toc: true
 date: 2021-08-09 21:54:55
-updated: 2022-03-24 23:40:00
+updated: 2022-10-28 18:00:00
 category:
 - Machine Learning
 tags:
@@ -17,12 +17,13 @@ mathjax: true
 ---
 <!-- omit in toc -->
 
-这里对机器学习中常用到的交叉熵做一个总结。
-已经是第三次更新本文，每次都能发现之前的理解有疏漏和不清晰的地方，希望对于这一个知识点能掌握清楚。
+这里对机器学习中常用到的信息论知识点做一个总结。
+第四次更新本文，每次都能发现之前的理解有疏漏和不清晰的地方。
+这次更新本文为两部分，信息论中的熵 & 机器学习中的熵，主要包含相关的定义和何如理解这些概念。
 
 <!-- more -->
 
-# 信息论中的交叉熵 -- 编码的视角
+# 信息论中的熵 -- 编码的视角
 
 ## 信息编码
 
@@ -64,9 +65,49 @@ $$
 相对熵又称为 KL 散度，是两个概率分布 $P$ 和 $Q$ 差别的一种非对称性度量。
 其表示使用基于分布 $Q$ 的编码表来编码服从分布 $P$ 的样本（相比起用 $P$ 自己的分布来编码）所需的额外的平均比特数。
 
-# 机器学习中的交叉熵 -- 应用与实现
+## 联合熵
 
-## 作为损失函数使用
+Joint entropy，联合分布的熵。
+那么对应的 $H(X)$ 和 $H(Y)$ 可被称作边缘熵。
+$$
+H(X, Y)=\sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} p(x, y) \log \left(\frac{1}{p(x, y)}\right)
+$$
+
+## 条件熵
+
+Conditional entropy，以条件概率计算的熵。
+
+$$
+H(Y \mid X)=\sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} p(x, y) \log \left(\frac{1}{p(y \mid x)}\right)
+$$
+
+由贝叶斯定理 $p(x, y)=p(y \mid x) p(x)$ 可得条件熵和联合熵关系式：
+
+$$
+H(X, Y)=H(X)+H(Y \mid X)=H(Y)+H(X \mid Y)=H(Y, X)
+$$
+
+## 互信息
+
+Mutual information 指两个集合之间的相关性，定义是随机变量 $(X,Y)$ 的联合分布与 $X$ 和 $Y$ 的边缘分布的乘积之间的差异，其具有对称性。
+
+$$
+I(X ; Y)=D_{\mathrm{KL}}(p(x, y) \| p(x) \otimes p(y))
+$$
+
+其可以理解为在获得一个随机变量的信息之后，观察另一个随机变量所获得的“信息量”（单位通常为比特）。
+也可以理解为不确定性的减少量，即 $Y$ 中包含多少 $X$ 中的信息。
+
+$$
+I(X ; Y)=H(X)-H(X \mid Y)=H(X)+H(Y)-H(X, Y)=H(Y)-H(Y \mid X)=I(Y ; X)
+$$
+
+<div style="width:60%;margin:auto">{% asset_img entropy.png 熵相关的 Venn 图%}</div>
+
+
+# 机器学习中的熵 -- 应用与实现
+
+## 作为损失函数使用的交叉墒
 
 机器学习中，设计损失函数的思想就是考虑我们预测分布与真实分布的差异。
 在这个情况下，相对熵是一个不错的选择。
@@ -138,4 +179,5 @@ $$
 - [Kullback–Leibler divergence - From Wikipedia, the free encyclopedia](https://en.wikipedia.org/wiki/Kullback–Leibler_divergence)
 - [Information theory - From Wikipedia, the free encyclopedia](https://en.wikipedia.org/wiki/Information_theory)
 - [Softmax以及Cross Entropy Loss求导](https://zhuanlan.zhihu.com/p/131647655)
+- [互信息](https://zh.m.wikipedia.org/zh-hans/互信息)
 - Yu Zhang's Blog
