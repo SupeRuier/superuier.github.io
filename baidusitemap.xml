@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.superui.cc/machine-learning/entropy/</loc>
+    <lastmod>2022-10-28</lastmod>
+  </url>
+  <url>
     <loc>https://blog.superui.cc/machine-learning/lstm/</loc>
     <lastmod>2022-10-27</lastmod>
   </url>
@@ -51,10 +55,6 @@
   <url>
     <loc>https://blog.superui.cc/math/distribution-distance/</loc>
     <lastmod>2022-03-26</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.superui.cc/machine-learning/cross-entropy/</loc>
-    <lastmod>2022-03-24</lastmod>
   </url>
   <url>
     <loc>https://blog.superui.cc/knowledge-from-growth/sugar-salt/</loc>
