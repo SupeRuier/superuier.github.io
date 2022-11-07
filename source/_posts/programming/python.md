@@ -2,7 +2,7 @@
 title: Python
 cover: /gallery/covers/python.jpeg
 date: 2020-12-15 12:56:03
-updated: 2022-03-16 16:00:00
+updated: 2022-11-07 16:00:00
 categories:
 - Programming
 tags: Python
@@ -125,3 +125,19 @@ except Exception as e:
 所以在习惯上还是尽量使用 json 文件传参数。
 但是如果使用命令行进行调试时，还是需要输入。
 所以目前的解决方案是在 argparse 中默认设置为 False，传入 True 则覆盖。
+
+# 一些常见的报错
+
+有一些经常遇到的报错，在此记录解决方案。
+
+## ModuleNotFoundError: No module named 'xxx'
+
+这个报错经常在服务器上调用子文件夹中的结果分析软件时得到，通常的原因是因为自建的module包所在路径不在 PYTHONPATH 下，此时把根目录路径加入即可。
+参考此[博客链接](https://www.cnblogs.com/hi3254014978/p/15202910.html)。
+
+```python
+import sys
+import os
+# 把当前文件所在文件夹的父文件夹路径加入到 PYTHONPATH
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+```
