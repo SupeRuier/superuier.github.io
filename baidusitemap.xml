@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.superui.cc/programming/pytorch/</loc>
+    <lastmod>2022-12-16</lastmod>
+  </url>
+  <url>
     <loc>https://blog.superui.cc/math/newtons-method/</loc>
     <lastmod>2022-11-28</lastmod>
   </url>
@@ -63,10 +67,6 @@
   <url>
     <loc>https://blog.superui.cc/reading-note/more-money-than-god/</loc>
     <lastmod>2022-05-15</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.superui.cc/programming/pytorch/</loc>
-    <lastmod>2022-04-11</lastmod>
   </url>
   <url>
     <loc>https://blog.superui.cc/math/distribution-distance/</loc>
