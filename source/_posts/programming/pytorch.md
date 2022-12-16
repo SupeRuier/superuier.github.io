@@ -1,7 +1,7 @@
 ---
 title: Pytorch 踩坑
 date: 2020-12-09 14:55:50
-updated: 2022-04-11 10:45:00
+updated: 2022-12-16 20:30:00
 cover: /gallery/covers/pytorch.png
 categories:
 - Programming
@@ -16,10 +16,10 @@ tags:
 
 - [1. 用法](#1-用法)
   - [1.1. 随机种子](#11-随机种子)
-  - [1.2. zero_grad optimizer or net？](#12-zero_grad-optimizer-or-net)
+  - [1.2. zero\_grad optimizer or net？](#12-zero_grad-optimizer-or-net)
   - [1.3. 初始化网络](#13-初始化网络)
   - [1.4. nn.module 中 `__call__` vs `forward`](#14-nnmodule-中-__call__-vs-forward)
-  - [1.5. NLLLoss & CrossEntropyLoss](#15-nllloss--crossentropyloss)
+  - [1.5. NLLLoss \& CrossEntropyLoss](#15-nllloss--crossentropyloss)
   - [1.6. tensor 非 contiguous 导致无法使用 view()](#16-tensor-非-contiguous-导致无法使用-view)
   - [1.7. pytorch 中 hook 的使用](#17-pytorch-中-hook-的使用)
   - [1.8. 查看某一层梯度](#18-查看某一层梯度)
@@ -30,11 +30,13 @@ tags:
   - [1.12. 对 BatchNorm 的参数进行固定](#112-对-batchnorm-的参数进行固定)
   - [1.13. 对使用线程数进行固定](#113-对使用线程数进行固定)
 - [2. 设置](#2-设置)
-  - [2.1. Dataloader 中的 num_workers 造成训练循环缓慢](#21-dataloader-中的-num_workers-造成训练循环缓慢)
+  - [2.1. Dataloader 中的 num\_workers 造成训练循环缓慢](#21-dataloader-中的-num_workers-造成训练循环缓慢)
 - [3. 报错](#3-报错)
   - [3.1. RuntimeError: CUDA error: device-side assert triggered](#31-runtimeerror-cuda-error-device-side-assert-triggered)
   - [3.2. RuntimeError: CUDA out of memory](#32-runtimeerror-cuda-out-of-memory)
   - [3.3. RuntimeError: Function 'MulBackward0' returned nan values in its 0th output.](#33-runtimeerror-function-mulbackward0-returned-nan-values-in-its-0th-output)
+- [4. 一些异常情况](#4-一些异常情况)
+  - [4.1. `loss.backward()` 运行时间过长](#41-lossbackward-运行时间过长)
 
 
 # 1. 用法
@@ -315,3 +317,24 @@ def calculate_entropy(y_softmax):
     entropy = - torch.sum(y_softmax * torch.log(y_softmax + 1e-6), dim = 1) # Avoid gradient explode.
     return entropy
 ```
+
+# 4. 一些异常情况
+
+## 4.1. `loss.backward()` 运行时间过长
+
+近期在服务器上迁移代码时发现同样的一句 `loss.backward()` 在 Titan RTX 和 A30 的服务器上运行速度相差数倍，在 A30 上反而更慢，令人诧异。
+对比了不同服务器上的 pytorch 版本，cudatoolkit 版本，以及数据集和模型情况，发现均为同样的设定，并无出错。
+此外速度变慢仅仅是出现在一个 NLP 的原始文本数据集上，其他的图像数据集则并无问题。
+
+经过一番搜寻，发现可能是 cudnn 的问题。
+首先是在一个 "The speed of pytorch with cudatoolkit 11.0 is slower than cudatoolkit 10.2" 的 issue 中发现了一个人在 `cudnn.enabled=True` 的情况下运行更快。
+又在一个 "Convolution operations are extremely slow on RTX 30 series GPU" 的 issue 中发现了 `torch.backends.cudnn.benchmark=True` 语句。
+之前并未了解 cudnn 的用处，也并不知道当下是什么版本，于是查询了 `torch.backends.cudnn.benchmark=True` 的作用。
+发现如果该项设置为 True 时，cuDNN使用的非确定性算法就会自动寻找最适合当前配置的高效算法，来优化运行效率。
+但是如果网络的输入数据在每次 iteration 都变化的话，会导致 cnDNN 每次都会去寻找一遍最优配置，这样反而会降低运行效率，对于文本数据而言正是此情况。
+于是在该数据集上需要将这一项禁用（默认启用），禁用之后速度正常。
+
+参考：
+- [The speed of pytorch with cudatoolkit 11.0 is slower than cudatoolkit 10.2](https://github.com/pytorch/pytorch/issues/47908)
+- [Convolution operations are extremely slow on RTX 30 series GPU](https://github.com/pytorch/pytorch/issues/47039)
+- [pytorch torch.backends.cudnn设置作用](https://www.cnblogs.com/wanghui-garcia/p/11514502.html)
