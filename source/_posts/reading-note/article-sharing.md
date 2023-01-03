@@ -4,6 +4,7 @@ toc: false
 date: 2021-07-28 13:22:47
 updated: 2021-10-09 15:11:00
 index_img: /gallery/covers/article-sharing.jpg
+banner_img: /gallery/covers/article-sharing.jpg
 categories:
 - Reading Note
 tags: 

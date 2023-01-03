@@ -3,6 +3,7 @@ title: Pytorch 踩坑
 date: 2020-12-09 14:55:50
 updated: 2022-12-16 20:30:00
 index_img: /gallery/covers/pytorch.png
+banner_img: /gallery/covers/pytorch.png
 categories:
 - Programming
 tags: 

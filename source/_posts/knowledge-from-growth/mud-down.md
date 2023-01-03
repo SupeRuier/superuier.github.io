@@ -3,6 +3,7 @@ title: 摸爬滚打
 date: 2020-12-09 16:44:50
 updated: 2021-08-15 00:59:00
 index_img: /gallery/covers/mud-down.jpg
+banner_img: /gallery/covers/mud-down.jpg
 categories:
 - Knowledge from Growth
 tags: 感悟总结

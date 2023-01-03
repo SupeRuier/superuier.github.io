@@ -1,6 +1,7 @@
 ---
 title: 距离矩阵
 index_img: /gallery/covers/distance-matrix.jpeg
+banner_img: /gallery/covers/distance-matrix.jpeg
 date: 2021-11-05 16:48:00
 updated:  2021-11-05 16:48:00
 category: 

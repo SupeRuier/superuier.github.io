@@ -1,6 +1,7 @@
 ---
 title: Numpy 相关
 index_img: /gallery/covers/numpy.png
+banner_img: /gallery/covers/numpy.png
 toc: true
 date: 2021-08-11 14:07:55
 updated: 2021-08-11 14:07:55

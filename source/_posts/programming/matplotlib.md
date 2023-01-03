@@ -1,6 +1,7 @@
 ---
 title: Matplotlib 学习笔记
 index_img: /gallery/covers/matplotlib.jpeg
+banner_img: /gallery/covers/matplotlib.jpeg
 date: 2021-09-24 15:00:03
 updated: 2021-09-24 15:00:03
 categories:

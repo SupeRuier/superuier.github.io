@@ -1,6 +1,7 @@
 ---
 title: Principles for Academic Writing
-index_img: /gallery/covers/academic-paper-writing.jpg
+banner_img: /gallery/covers/academic-paper-writing.jpg
+banner_img: /gallery/covers/academic-paper-writing.jpg
 toc: false
 date: 2021-06-10 16:48:24
 updated: 2021-09-10 16:48:24

@@ -1,6 +1,7 @@
 ---
 title: 再次学习强化学习的笔记
 index_img: /gallery/covers/re-learn-RL.jpg
+banner_img: /gallery/covers/re-learn-RL.jpg
 date: 2022-10-14 14:00:00
 updated: 2022-10-14 14:00:00
 category: 

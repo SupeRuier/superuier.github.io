@@ -3,6 +3,7 @@ title: 超级 Rui 的 2022 年
 date: 2023-01-03 02:00:00
 updated: 2023-01-03 02:00:00
 index_img: /gallery/covers/2022-year-report.jpg
+banner_img: /gallery/covers/2022-year-report.jpg
 toc: true
 categories:
 - Life

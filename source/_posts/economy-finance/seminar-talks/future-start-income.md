@@ -5,6 +5,7 @@ date: 2022-02-20 17:30:00
 updated: 2022-02-20 17:30:00
 category: Economy & Finance
 index_img: /gallery/covers/future-start-income.jpeg
+banner_img: /gallery/covers/future-start-income.jpeg
 tags: 翟东升
 ---
 <!-- omit in toc -->

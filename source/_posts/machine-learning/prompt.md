@@ -1,6 +1,7 @@
 ---
 title: Prompt 学习记录
 index_img: /gallery/covers/prompt.png
+banner_img: /gallery/covers/prompt.png
 date: 2021-08-11 17:02:00
 updated:  2021-08-11 17:02:00
 category: 

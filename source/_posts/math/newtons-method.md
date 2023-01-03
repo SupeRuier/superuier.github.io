@@ -1,6 +1,7 @@
 ---
 title: 牛顿法（Newton's method）学习
 index_img: /gallery/covers/newtons-method.png
+banner_img: /gallery/covers/newtons-method.png
 toc: true
 date: 2022-11-28 20:00:00
 updated: 2022-11-28 20:00:00

@@ -1,6 +1,7 @@
 ---
 title: 排序算法
 index_img: /gallery/covers/sorting.jpg
+banner_img: /gallery/covers/sorting.jpg
 toc: true
 date: 2021-10-08 19:30:00
 updated: 2021-10-08 19:30:00

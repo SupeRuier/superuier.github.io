@@ -2,6 +2,7 @@
 title: 浪潮之巅
 date: 2022-6-14 23:10:00
 index_img: /gallery/covers/top-of-the-wave.jpeg
+banner_img: /gallery/covers/top-of-the-wave.jpeg
 toc: true
 categories:
 - Reading Note

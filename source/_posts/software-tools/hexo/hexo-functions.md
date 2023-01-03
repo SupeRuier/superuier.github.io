@@ -2,6 +2,7 @@
 title: Hexo常用功能说明
 date: 2020-11-13
 index_img: /gallery/covers/hexo-functions.jpg
+banner_img: /gallery/covers/hexo-functions.jpg
 category: 
 - Software Tools
 tag: 

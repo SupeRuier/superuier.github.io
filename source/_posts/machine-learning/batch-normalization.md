@@ -1,6 +1,7 @@
 ---
 title: Batch Normalization
 index_img: /gallery/covers/batch-norm.jpg
+banner_img: /gallery/covers/batch-norm.jpg
 toc: true
 date: 2021-09-03 15:00:00
 updated: 2021-09-03 15:00:00

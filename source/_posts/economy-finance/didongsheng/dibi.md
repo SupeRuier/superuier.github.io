@@ -4,6 +4,7 @@ toc: false
 date: 2021-07-15 23:46:57
 updated: 2021-07-15 23:46:57
 index_img: /gallery/covers/dibi.jpg
+banner_img: /gallery/covers/dibi.jpg
 category: 
 - Economy & Finance
 tags: 翟东升

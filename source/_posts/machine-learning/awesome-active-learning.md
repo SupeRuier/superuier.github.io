@@ -1,6 +1,7 @@
 ---
 title: Awesome Active Learning
-index_img: /gallery/covers/awesome-active-learning.jpeg
+banner_img: /gallery/covers/awesome-active-learning.jpeg
+banner_img: /gallery/covers/awesome-active-learning.jpeg
 date: 2022-07-19 13:45:00
 updated: 2022-07-19 13:45:00
 category: 

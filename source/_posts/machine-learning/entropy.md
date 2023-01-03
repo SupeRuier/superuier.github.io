@@ -1,6 +1,7 @@
 ---
 title: 信息论以及机器学习中的熵
 index_img: /gallery/covers/entropy.jpg
+banner_img: /gallery/covers/entropy.jpg
 toc: true
 date: 2021-08-09 21:54:55
 updated: 2022-10-28 18:00:00

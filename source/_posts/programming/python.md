@@ -1,6 +1,7 @@
 ---
 title: Python
 index_img: /gallery/covers/python.jpeg
+banner_img: /gallery/covers/python.jpeg
 date: 2020-12-15 12:56:03
 updated: 2022-11-07 16:00:00
 categories:

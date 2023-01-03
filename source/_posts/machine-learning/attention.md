@@ -1,6 +1,7 @@
 ---
 title: Attention 和 Transformer
 index_img: /gallery/covers/attention.jpg
+banner_img: /gallery/covers/attention.jpg
 toc: true
 date: 2022-09-30 16:00:00
 updated: 2022-09-30 16:00:00

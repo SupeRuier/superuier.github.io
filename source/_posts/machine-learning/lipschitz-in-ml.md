@@ -1,6 +1,7 @@
 ---
 title: 机器学习中的 Lipschitz Continuity
 index_img: /gallery/covers/lipschitz.png
+banner_img: /gallery/covers/lipschitz.png
 toc: true
 date: 2022-11-07 18:00:00
 updated: 2022-11-07 18:00:00

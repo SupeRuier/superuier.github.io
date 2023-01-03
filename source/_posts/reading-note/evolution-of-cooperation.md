@@ -2,6 +2,7 @@
 title: 合作的进化
 date: 2021-7-26 23:44:00
 index_img: /gallery/covers/evolution-of-cooperation.jpg
+banner_img: /gallery/covers/evolution-of-cooperation.jpg
 toc: true
 categories:
 - Reading Note

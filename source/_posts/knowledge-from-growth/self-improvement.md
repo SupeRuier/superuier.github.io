@@ -2,6 +2,7 @@
 title: 自我提升
 date: 2020-12-09 16:44:50
 index_img: /gallery/covers/self-improvement.jpg
+banner_img: /gallery/covers/self-improvement.jpg
 categories:
 - Knowledge from Growth
 tags: 感悟总结

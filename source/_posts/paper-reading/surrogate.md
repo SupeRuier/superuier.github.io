@@ -1,6 +1,7 @@
 ---
 title: 代理模型辅助的演化计算
 index_img: /gallery/covers/surrogate.jpg
+banner_img: /gallery/covers/surrogate.jpg
 toc: true
 date: 2021-08-19 20:00:00
 updated: 2021-08-19 20:00:00

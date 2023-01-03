@@ -2,6 +2,7 @@
 title: 中国为什么有前途
 date: 2021-08-26 02:04:00
 index_img: /gallery/covers/china-bold-future.png
+banner_img: /gallery/covers/china-bold-future.png
 toc: true
 categories:
 - Reading Note

@@ -3,6 +3,7 @@ title: Gaussian Process
 date: 2021-07-21 16:34:53
 updated: 2022-03-08 20:46:00
 index_img: /gallery/covers/gaussian-process.png
+banner_img: /gallery/covers/gaussian-process.png
 category: 
 - Machine Learning
 toc: true

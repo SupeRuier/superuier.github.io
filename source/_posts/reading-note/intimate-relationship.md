@@ -2,6 +2,7 @@
 title: 亲密关系
 date: 2020-12-05 13:50:50
 index_img: /gallery/covers/intimate-relationship.jpg
+banner_img: /gallery/covers/intimate-relationship.jpg
 categories:
 - Reading Note
 tags: 读书

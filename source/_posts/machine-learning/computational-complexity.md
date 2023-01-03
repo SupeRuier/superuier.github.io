@@ -1,6 +1,7 @@
 ---
 title: 深度神经网络模型复杂度
 index_img: /gallery/covers/computational-complexity.jpg
+banner_img: /gallery/covers/computational-complexity.jpg
 date: 2022-10-20 13:00:00
 updated: 2022-10-20 13:00:00
 category: 
