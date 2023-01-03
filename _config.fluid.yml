@@ -350,7 +350,7 @@ navbar:
     - { key: "category", link: "/categories/", icon: "iconfont icon-category-fill" }
     - { key: "tag", link: "/tags/", icon: "iconfont icon-tags-fill" }
     - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
-    #- { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
+    - { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
 
 # 搜索功能，基于 hexo-generator-search 插件，若已安装其他搜索插件请关闭此功能，以避免生成多余的索引文件
 # Search feature, based on hexo-generator-search. If you have installed other search plugins, please disable this feature to avoid generating redundant index files
@@ -882,19 +882,6 @@ giscus:
   data_lang: zh-CN
   crossorigin: anonymous
 
-giscus:
-  enable: true
-  data_repo: SupeRuier/blog-giscus
-  data_repo_id: R_kgDOHC5FJQ
-  data_category: Announcements
-  data_category_id: DIC_kwDOHC5FJc4CON5R
-  data_mapping: pathname
-  data_reactions_enabled: 1
-  data_emit_metadata: 0
-  data_input_position: bottom
-  data_theme: light
-  data_lang: zh-CN
-  crossorigin: anonymous
 #---------------------------
 # 归档页
 # Archive Page
@@ -931,7 +918,7 @@ category:
 
   # 单个分类中折叠展示文章数的最大值，超过限制会显示 More，0 则不限制
   # The maximum number of posts in a single category. If the limit is exceeded, it will be displayed More. If 0 no limit
-  post_limit: 10
+  post_limit: 0
 
 
 #---------------------------
@@ -945,7 +932,7 @@ tag:
   banner_mask_alpha: 0.3
   tagcloud:
     min_font: 15
-    max_font: 30
+    max_font: 15
     unit: px
     start_color: "#BBBBEE"
     end_color: "#337ab7"
@@ -1011,21 +998,15 @@ links:
   # Member item of page
   items:
     - {
-      title: "Fluid Blog",
-      intro: "主题博客",
-      link: "https://hexo.fluid-dev.com/",
+      title: "Yu's Blog",
+      intro: "偷窥俺的师兄",
+      link: "https://yzhang-gh.github.io/notes/",
       avatar: "/img/favicon.png"
     }
     - {
-      title: "Fluid Docs",
-      intro: "主题使用指南",
-      link: "https://hexo.fluid-dev.com/docs/",
-      avatar: "/img/favicon.png"
-    }
-    - {
-      title: "Fluid Repo",
-      intro: "主题 GitHub 仓库",
-      link: "https://github.com/fluid-dev/hexo-theme-fluid",
+      title: "Metaron",
+      intro: "偷窥俺的师兄",
+      link: "https://blog.metaron.xyz",
       avatar: "/img/favicon.png"
     }
 
