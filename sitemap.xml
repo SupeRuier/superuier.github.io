@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.superui.cc/links/index.html</loc>
+    
+    <lastmod>2023-01-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.superui.cc/about/index.html</loc>
     
     <lastmod>2023-01-03</lastmod>
@@ -650,15 +659,6 @@
   </url>
   
   <url>
-    <loc>https://blog.superui.cc/blog-general-info/about-me/</loc>
-    
-    <lastmod>2018-12-31</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.superui.cc/blog-general-info/gallery/</loc>
     
     <lastmod>2018-12-31</lastmod>
@@ -671,15 +671,6 @@
     <loc>https://blog.superui.cc/blog-general-info/message-board/</loc>
     
     <lastmod>2018-12-31</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.superui.cc/blog-general-info/friends/</loc>
-    
-    <lastmod>2017-12-31</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

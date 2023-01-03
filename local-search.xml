@@ -1889,19 +1889,6 @@
   
   
   <entry>
-    <title>关于“我”</title>
-    <link href="/blog-general-info/about-me/"/>
-    <url>/blog-general-info/about-me/</url>
-    
-    <content type="html"><![CDATA[<blockquote><p>一些关于“我”的事情。</p><p>或许都是一些个人喜好以及一些浅层的标签。</p></blockquote><ul><li>上世纪九十年代中期人。</li><li>处女座（上升狮子）+ ENTP-A（同时也和 INTP 反复横跳）。</li><li>爱好🏀📸️。</li><li>拖延症（在改）。</li><li>有些自我（在改，学习换位思考）。</li><li>有一只猫。</li></ul>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>有幸拍到的照片</title>
     <link href="/blog-general-info/gallery/"/>
     <url>/blog-general-info/gallery/</url>
@@ -1920,19 +1907,6 @@
     <url>/blog-general-info/message-board/</url>
     
     <content type="html"><![CDATA[<p>有什么想对超级Rui说的话就写下来吧！</p>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>友情链接</title>
-    <link href="/blog-general-info/friends/"/>
-    <url>/blog-general-info/friends/</url>
-    
-    <content type="html"><![CDATA[<!-- <article class="message message-immersive is-primary"><div class="message-body"><i class="fas fa-globe-americas mr-2"></i> <b>交换友链（示例）</b><br>网站名称: 超级Rui<br>网站icon: https://blog.superui.cc/head.jpg <br>网站地址: https://blog.superui.cc/images/avatar.png<br>网站描述(长度:1-20): 埋头苦干的 Rui</div></article> --><div class="content-half">  <div class="box box-half">    <a target="_blank" rel="noopener" href="https://yzhang-gh.github.io/notes/">      <article class="media">        <div class="media-left">          <div class="image is-64x64">            <img class="is-rounded" src="https://avatars.githubusercontent.com/u/7588612?v=4" alt="">          </div>        </div>        <div class="media-content">          <div class="content">            <strong class="has-text-success">Yu Zhang</strong>              <br>              <span>偷窥俺的师兄</span>          </div>        </div>      </article>    </a>  </div>  <div class="box-interval"></div>    <div class="box box-half">    <a target="_blank" rel="noopener" href="https://blog.metaron.xyz">      <article class="media">        <div class="media-left">          <div class="image is-64x64">            <img class="is-rounded" src="https://blog.metaron.xyz/images/metaron.jpg" alt="">          </div>        </div>        <div class="media-content">          <div class="content">            <strong class="has-text-success">Metaron</strong>              <br>              <span>偷窥俺的师弟</span>          </div>        </div>      </article>    </a>  </div></div>]]></content>
     
     
     
