@@ -705,7 +705,7 @@ post:
     specific: true
 
     # Options: mathjax | katex
-    engine: mathjax
+    engine: katex
 
   # 流程图，基于 mermaid-js，具体请见：https://hexo.fluid-dev.com/docs/guide/#mermaid-流程图
   # Flow chart, based on mermaid-js, see: https://hexo.fluid-dev.com/docs/en/guide/#mermaid
@@ -1028,10 +1028,7 @@ links:
     # Options: utterances | disqus | gitalk | valine | waline | changyan | livere | remark42 | twikoo | cusdis | giscus
     type: giscus
 
-# 针对使用 katex 时，配置以下插件
-markdown:
-  plugins:
-    - "@traptitech/markdown-it-katex"
+
 
 
 #---------------------------

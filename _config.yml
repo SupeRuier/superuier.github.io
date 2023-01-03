@@ -35,9 +35,13 @@ post_asset_folder: true
 #   breaks: false
 #   prependRoot: true
 #   postAsset: true
-kramed:
-  gfm: true
-  breaks: false
+# kramed:
+#   gfm: true
+#   breaks: false
+# fluid 中使用 katex 时，配置以下插件
+markdown:
+  plugins:
+    - "@traptitech/markdown-it-katex"
 relative_link: false
 future: true
 highlight:
