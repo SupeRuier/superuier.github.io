@@ -3,7 +3,7 @@ title: 好文阅读转载
 toc: false
 date: 2021-07-28 13:22:47
 updated: 2021-10-09 15:11:00
-cover: /gallery/covers/article-sharing.jpg
+index_img: /gallery/covers/article-sharing.jpg
 categories:
 - Reading Note
 tags: 

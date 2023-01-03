@@ -2,7 +2,7 @@
 title: 腾讯云相关记录
 date: 2021-07-22 14:51:00
 updated: 2021-08-05 20:11:00
-cover: /gallery/covers/tencent-cloud-hexo.png
+index_img: /gallery/covers/tencent-cloud-hexo.png
 category: 
 - Software Tools
 tags:

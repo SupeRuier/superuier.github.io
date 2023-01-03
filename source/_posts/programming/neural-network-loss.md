@@ -1,6 +1,6 @@
 ---
 title: 神经网络损失函数
-cover: /gallery/covers/neural-network-loss.jpg
+index_img: /gallery/covers/neural-network-loss.jpg
 toc: true
 date: 2021-07-30 15:16:55
 updated: 2021-08-02 20:11:55

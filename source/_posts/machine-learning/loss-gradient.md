@@ -1,6 +1,6 @@
 ---
 title: 训练集样本对于测试集 loss 的影响
-cover: /gallery/covers/loss-gradient.jpg
+index_img: /gallery/covers/loss-gradient.jpg
 toc: true
 date: 2022-11-21 18:00:00
 updated: 2022-11-21 18:00:00

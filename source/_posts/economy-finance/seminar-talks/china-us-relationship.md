@@ -4,7 +4,7 @@ toc: false
 date: 2021-11-14 12:39:46
 updated: 2021-11-14 12:39:46
 category: Economy & Finance
-cover: /gallery/covers/china-us-relationship.jpeg
+index_img: /gallery/covers/china-us-relationship.jpeg
 tags: 翟东升
 ---
 <!-- omit in toc -->

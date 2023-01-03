@@ -1,6 +1,6 @@
 ---
 title: 早停与验证集损失
-cover: /gallery/covers/early-stopping.png
+index_img: /gallery/covers/early-stopping.png
 toc: true
 date: 2021-08-10 14:32:55
 updated: 2021-08-10 14:32:55

@@ -1,6 +1,6 @@
 ---
 title: 主动学习(Active Learning)，看这一篇就够了
-cover: /gallery/covers/al-all-in-one.jpg
+index_img: /gallery/covers/al-all-in-one.jpg
 date: 2022-07-19 12:00:00
 updated: 2022-07-19 12:00:00
 category: 

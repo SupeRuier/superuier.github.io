@@ -1,6 +1,6 @@
 ---
 title: Latex 图片表格排版记录
-cover: /gallery/covers/latex.png
+index_img: /gallery/covers/latex.png
 toc: true
 date: 2021-08-30 11:00:00
 updated: 2022-05-30 11:00:00

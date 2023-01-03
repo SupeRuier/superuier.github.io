@@ -4,7 +4,7 @@ toc: false
 date: 2022-02-26 14:18:00
 updated: 2022-02-26 14:18:00
 category: Economy & Finance
-cover: /gallery/covers/dance-dragon.jpeg
+index_img: /gallery/covers/dance-dragon.jpeg
 tags: 辩论
 ---
 <!-- omit in toc -->

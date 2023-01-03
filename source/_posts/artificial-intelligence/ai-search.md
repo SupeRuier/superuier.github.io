@@ -2,7 +2,7 @@
 title: 人工智能的中的搜索
 date: 2021-09-27 16:00:00
 updated: 2021-09-29 13:00:00
-cover: /gallery/covers/ai-search.jpeg
+index_img: /gallery/covers/ai-search.jpeg
 categories:
 - Artificial Intelligence
 tags: 

@@ -1,6 +1,6 @@
 ---
 title: 深度主动学习批判文章阅读
-# cover: /gallery/covers/
+# index_img: /gallery/covers/
 toc: true
 date: 2021-08-12 14:51:10
 updated: 2021-08-12 14:51:10

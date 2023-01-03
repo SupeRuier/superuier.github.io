@@ -3,7 +3,7 @@ title: 杠杆率无法衡量经济风险
 toc: false
 date: 2021-07-15 23:46:57
 updated: 2021-07-15 23:46:57
-cover: /gallery/covers/dibi.jpg
+index_img: /gallery/covers/dibi.jpg
 category: 
 - Economy & Finance
 tags: 翟东升

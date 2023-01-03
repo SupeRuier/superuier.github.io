@@ -1,7 +1,7 @@
 ---
 title: 富可敌国
 date: 2022-5-15 17:00:00
-cover: /gallery/covers/more-money-than-god.jpeg
+index_img: /gallery/covers/more-money-than-god.jpeg
 toc: true
 categories:
 - Reading Note

@@ -2,7 +2,7 @@
 title: 翟东升政经启翟系列视频
 date: 2021-06-15 11:00:00
 updated: 2021-07-13 00:24:00
-cover: /gallery/covers/zjqd.jpg
+index_img: /gallery/covers/zjqd.jpg
 category: 
 - Economy & Finance
 sidebar:

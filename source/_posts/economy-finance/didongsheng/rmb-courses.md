@@ -2,7 +2,7 @@
 title: 翟东升人民币国际化课程
 date: 2021-06-07
 updated: 2021-08-19 12:37:37
-cover: /gallery/covers/rmb-courses.jpg
+index_img: /gallery/covers/rmb-courses.jpg
 category: 
 - Economy & Finance
 toc: true

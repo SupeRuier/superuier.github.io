@@ -1,6 +1,6 @@
 ---
 title: 有幸拍到的照片
-cover: /gallery/covers/gallery.jpg
+index_img: /gallery/covers/gallery.jpg
 toc: false
 date: 2019-01-01 00:00
 updated: 2019-01-01 00:00

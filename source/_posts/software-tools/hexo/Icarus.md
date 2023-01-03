@@ -1,6 +1,6 @@
 ---
 title: Icarus 主题设置
-cover: /gallery/covers/icarus.png
+index_img: /gallery/covers/icarus.png
 date: 2020-11-24 19:46:26
 updated: 2022-03-23 13:55:00
 category: 

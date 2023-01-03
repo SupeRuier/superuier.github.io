@@ -2,7 +2,7 @@
 title: 糖盐
 date: 2021-01-21 19:44:50
 updated: 2022-03-23 14:00:00
-cover: /gallery/covers/sugar-salt.jpg
+index_img: /gallery/covers/sugar-salt.jpg
 categories:
 - Knowledge from Growth
 tags: 感悟总结

@@ -2,7 +2,7 @@
 title: 人工智能的基本概念
 date: 2021-09-07 17:00:00
 updated: 2021-09-07 17:00:00
-cover: /gallery/covers/ai-basics.jpg
+index_img: /gallery/covers/ai-basics.jpg
 categories:
 - Artificial Intelligence
 tags: AI

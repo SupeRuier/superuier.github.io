@@ -2,7 +2,7 @@
 title: 约束满足问题（CSPs）
 date: 2021-10-19 15:50:00
 updated: 2021-10-19 15:50:00
-cover: /gallery/covers/csp.jpeg
+index_img: /gallery/covers/csp.jpeg
 categories:
 - Artificial Intelligence
 tags: 

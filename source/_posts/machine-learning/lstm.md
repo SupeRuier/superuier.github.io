@@ -1,6 +1,6 @@
 ---
 title: LSTM
-cover: /gallery/covers/lstm.jpg
+index_img: /gallery/covers/lstm.jpg
 toc: true
 date: 2022-10-27 21:00:00
 updated: 2022-10-27 21:00:00

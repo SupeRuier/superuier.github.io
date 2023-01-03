@@ -2,7 +2,7 @@
 title: 分布间距离度量
 date: 2022-03-26 16:00:00
 updated: 2022-03-26 16:00:00
-cover: /gallery/covers/distribution-distance.png
+index_img: /gallery/covers/distribution-distance.png
 category: 
 - Math
 toc: true

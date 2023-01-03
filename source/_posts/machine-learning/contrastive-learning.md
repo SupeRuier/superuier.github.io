@@ -1,6 +1,6 @@
 ---
 title: Contrastive Learning 学习记录
-cover: /gallery/covers/contrastive-learning.jpg
+index_img: /gallery/covers/contrastive-learning.jpg
 date: 2021-09-30 14:02:00
 updated:  2021-09-30 14:02:00
 category: 

@@ -1,6 +1,6 @@
 ---
 title: 关于“我”
-cover: /gallery/covers/about-me.jpg
+index_img: /gallery/covers/about-me.jpg
 toc: false
 date: 2019-01-01 00:00
 updated: 2019-01-01 00:00

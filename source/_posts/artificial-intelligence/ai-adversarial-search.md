@@ -2,7 +2,7 @@
 title: 对抗搜索问题和 Minimax 算法
 date: 2021-10-12 11:30:00
 updated: 2021-10-12 11:30:00
-cover: /gallery/covers/ai-adversarial-search.jpeg
+index_img: /gallery/covers/ai-adversarial-search.jpeg
 categories:
 - Artificial Intelligence
 tags: 

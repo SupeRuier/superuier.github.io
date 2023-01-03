@@ -3,7 +3,7 @@ title: 原则读书笔记
 toc: true
 date: 2021-10-21 13:00:00
 updated: 2021-10-21 13:00:00
-cover: /gallery/covers/principles.jpeg
+index_img: /gallery/covers/principles.jpeg
 categories:
 - Reading Note
 tags: 

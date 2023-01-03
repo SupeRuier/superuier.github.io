@@ -2,7 +2,7 @@
 title: 人工智能中的逻辑
 date: 2021-11-24 21:30:00
 updated: 2021-11-24 21:30:00
-cover: /gallery/covers/ai-logic.jpg
+index_img: /gallery/covers/ai-logic.jpg
 categories:
 - Artificial Intelligence
 tags: 

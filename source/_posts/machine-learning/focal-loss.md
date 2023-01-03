@@ -1,6 +1,6 @@
 ---
 title: Focal Loss
-cover: /gallery/covers/focal_loss.jpg
+index_img: /gallery/covers/focal_loss.jpg
 toc: true
 date: 2022-09-21 15:00:00
 updated: 2022-09-21 15:00:00

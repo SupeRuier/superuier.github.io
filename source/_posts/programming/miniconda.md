@@ -1,6 +1,6 @@
 ---
 title: Miniconda
-cover: /gallery/covers/conda.png
+index_img: /gallery/covers/conda.png
 date: 2020-12-04 20:18:50
 updated: 2021-08-19 17:22:50
 categories:

@@ -1,7 +1,7 @@
 ---
 title: 乌合之众
 date: 2022-02-06 15:00:00
-cover: /gallery/covers/the-crowd.jpeg
+index_img: /gallery/covers/the-crowd.jpeg
 toc: true
 categories:
 - Reading Note
