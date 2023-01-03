@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          2k 字
         
       </span>
     
@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2022年3月8日 晚上
+                    本文最后更新于：10 个月前
                   
                 
               </p>
@@ -310,44 +310,53 @@
 <li><a target="_blank" rel="noopener" href="http://sirlis.cn/deep-learning-gaussian-process">深度学习基础（高斯过程）</a></li>
 </ul>
 <hr>
-<h2 id="模型的理解"><a href="#模型的理解" class="headerlink" title="模型的理解"></a>模型的理解</h2><p>高斯分布一般用来做回归。
-其原理是把回归当成一个采样过程。
-在 $k$ 个测试样本上预测的情况，可以想象成在一个 $k$ 维的高斯分布下进行采样。
-在每个维度上的采样结果可以当作在这个样本上的预测值。
+<h2 id="模型的理解">模型的理解</h2>
+<p>高斯分布一般用来做回归。<br>
+其原理是把回归当成一个采样过程。<br>
+在 $k$ 个测试样本上预测的情况，可以想象成在一个 $k$ 维的高斯分布下进行采样。<br>
+在每个维度上的采样结果可以当作在这个样本上的预测值。<br>
 所以说回归问题转化为如何构建这个 $k$ 维的高斯分布，一旦构建完成则可以用来回归预测。</p>
 <p>直接对预测数据 $X^\ast$ 构建这个先验分布$P(f(X^\ast))$是困难的，所以说在有训练数据$Y$的情况下，我们期望找到的是一个后验概率分布$P(f(X^\ast)|Y)$。</p>
 <hr>
-<h2 id="多变量高斯分布"><a href="#多变量高斯分布" class="headerlink" title="多变量高斯分布"></a>多变量高斯分布</h2><p>我们先从多变量高斯分布说起，介绍其形式和性质。</p>
-<h3 id="1-先验分布"><a href="#1-先验分布" class="headerlink" title="1. 先验分布"></a>1. 先验分布</h3><p>对于一个先验分布是高斯分布的一组随机变量 $X \sim \mathcal{N}(\mu,\,\Sigma)$， $X$ 可以由两部分组成 $X_a$ 和 $X_b$，代表原始随机变量的子集，维度为 $|X_a|+|X_b| = p + q$。</p>
+<h2 id="多变量高斯分布">多变量高斯分布</h2>
+<p>我们先从多变量高斯分布说起，介绍其形式和性质。</p>
+<h3 id="1-先验分布">1. 先验分布</h3>
+<p>对于一个先验分布是高斯分布的一组随机变量 $X \sim \mathcal{N}(\mu,,\Sigma)$， $X$ 可以由两部分组成 $X_a$ 和 $X_b$，代表原始随机变量的子集，维度为 $|X_a|+|X_b| = p + q$。</p>
 <p>具体来说，</p>
-<script type="math/tex; mode=display">X=\begin{bmatrix}X_a\\X_b\end{bmatrix}_{p+q}\quad\mu=\begin{bmatrix}\mu_a\\\mu_b\end{bmatrix}_{p+q}\quad \Sigma=\begin{bmatrix}\Sigma_{aa}&\Sigma_{ab}\\\Sigma_{ba}&\Sigma_{bb}\end{bmatrix}_{p + q, p + q}</script><p>其中 $\mu$ 和 $\Sigma$ 是对应的均值和方差。</p>
+<p>$$X=\begin{bmatrix}X_a\X_b\end{bmatrix}<em>{p+q}\quad\mu=\begin{bmatrix}\mu_a\\mu_b\end{bmatrix}</em>{p+q}\quad \Sigma=\begin{bmatrix}\Sigma_{aa}&amp;\Sigma_{ab}\\Sigma_{ba}&amp;\Sigma_{bb}\end{bmatrix}_{p + q, p + q}$$</p>
+<p>其中 $\mu$ 和 $\Sigma$ 是对应的均值和方差。</p>
 <ol>
 <li>均值 $\mu$，一般在数据归一化的情况下，先验均值可以设为 0 函数。</li>
 <li>对于协方差矩阵 $\Sigma$，则可以用核函数来生成。</li>
 </ol>
 <blockquote>
-<p>核函数，一般用来表示一种距离的度量，这里用现有样本的特征 $x$ 建立随机变量间的距离，再用其作为每个维度之间的协方差。
-此处的核函数有多种选择方式，同时也可以组合起来使用。
-通过不同核函数的选择可以起到添加先验知识的作用。
+<p>核函数，一般用来表示一种距离的度量，这里用现有样本的特征 $x$ 建立随机变量间的距离，再用其作为每个维度之间的协方差。<br>
+此处的核函数有多种选择方式，同时也可以组合起来使用。<br>
+通过不同核函数的选择可以起到添加先验知识的作用。<br>
 通过这一个步骤可以建立起联合分布的高斯分布表达式。</p>
 </blockquote>
-<h3 id="2-通过先验分布得到后验分布"><a href="#2-通过先验分布得到后验分布" class="headerlink" title="2. 通过先验分布得到后验分布"></a>2. 通过先验分布得到后验分布</h3><p>此时我们可以通过条件作用 conditioning 从 $P(X_a,X_b)$ 得到 $P(X_b|X_a)$。
-这样是从一个维度为$|X_a|+|X_b|$的高斯分布得到一个维度为维度为 $|X_b|$ 的高斯分布。
+<h3 id="2-通过先验分布得到后验分布">2. 通过先验分布得到后验分布</h3>
+<p>此时我们可以通过条件作用 conditioning 从 $P(X_a,X_b)$ 得到 $P(X_b|X_a)$。<br>
+这样是从一个维度为$|X_a|+|X_b|$的高斯分布得到一个维度为维度为 $|X_b|$ 的高斯分布。<br>
 条件作用之后均值和标准差会发生变化，依据高斯分布的性质可以得到以下条件分布，</p>
-<script type="math/tex; mode=display">X_b|X_a\sim N(\mu_{b|a},\Sigma_{b|a})</script><p>其中，
-$\mu<em>{b|a}=\Sigma</em>{ba}\Sigma^{-1}<em>{aa}(X_a-\mu_a)+\mu_b$，
-$\Sigma</em>{b|a}=\Sigma<em>{bb}-\Sigma</em>{ba}\Sigma^{-1}<em>{aa}\Sigma</em>{ab}$。</p>
-<p>直观上讲，训练点是为候选的函数设了一个限定范围，所得到的函数需要通过训练点。
+<p>$$X_b|X_a\sim N(\mu_{b|a},\Sigma_{b|a})$$</p>
+<p>其中，<br>
+$\mu_{b|a}=\Sigma_{ba}\Sigma^{-1}<em>{aa}(X_a-\mu_a)+\mu_b$，<br>
+$\Sigma</em>{b|a}=\Sigma_{bb}-\Sigma_{ba}\Sigma^{-1}<em>{aa}\Sigma</em>{ab}$。</p>
+<p>直观上讲，训练点是为候选的函数设了一个限定范围，所得到的函数需要通过训练点。<br>
 所以在结果中，靠近训练数据点的区域预测不确定性会小，离得越远，不确定性越大。</p>
 <p>至此，当我们确定了样本（$X_a$）之后，就可以得到其回归值（$X_b$）的高斯分布，并取 $\mu_b$ 作为预测得到的回归值。</p>
 <hr>
-<h2 id="高斯过程"><a href="#高斯过程" class="headerlink" title="高斯过程"></a>高斯过程</h2><p>对于观测点 $X$（训练点，注意这里的 $X$ 和上一小节的不同，这里是表示样本的特征）与其对应值 $Y$，所有的非观测点（测试点） $X^\ast$ 的值定义为 $f(X^\ast)$。
-我们对预测值 $Y$ 构建多维高斯分布。
-这里我们把均值向量替换为均值函数。
+<h2 id="高斯过程">高斯过程</h2>
+<p>对于观测点 $X$（训练点，注意这里的 $X$ 和上一小节的不同，这里是表示样本的特征）与其对应值 $Y$，所有的非观测点（测试点） $X^\ast$ 的值定义为 $f(X^\ast)$。<br>
+我们对预测值 $Y$ 构建多维高斯分布。<br>
+这里我们把均值向量替换为均值函数。<br>
 那么有，</p>
-<script type="math/tex; mode=display">\begin{bmatrix}Y\\f(X^\ast)\end{bmatrix}\sim N(\begin{bmatrix}\mu(X)\\\mu(X^\ast)\end{bmatrix}，\begin{bmatrix}k(X,X)& k(X,X^\ast)\\k(X^\ast,X)&k(X^\ast,X^\ast)\end{bmatrix})</script><p>同样的我们可以得到条件分布，</p>
-<script type="math/tex; mode=display">P(f(X^\ast)|Y,X^\ast,X) \sim N(\mu^\ast,k^\ast)</script><p>其中, $\mu^\ast=k(X^\ast,X)k(X,X)^{-1}(Y-\mu(X))+\mu(X^\ast)$，$k^\ast=k(X^\ast,X^\ast)-k(X^\ast,X)k(X,X)^{-1}k(X,X^\ast)$。</p>
-<p>一般在数据归一化的情况下，先验均值 $\mu(X)$ 和 $\mu(X^\ast)$ 可以设为 0 函数。
+<p>$$\begin{bmatrix}Y\f(X^\ast)\end{bmatrix}\sim N(\begin{bmatrix}\mu(X)\\mu(X^\ast)\end{bmatrix}，\begin{bmatrix}k(X,X)&amp; k(X,X^\ast)\k(X^\ast,X)&amp;k(X^\ast,X^\ast)\end{bmatrix})$$</p>
+<p>同样的我们可以得到条件分布，</p>
+<p>$$P(f(X^\ast)|Y,X^\ast,X) \sim N(\mu^\ast,k^\ast)$$</p>
+<p>其中, $\mu^\ast=k(X^\ast,X)k(X,X)^{-1}(Y-\mu(X))+\mu(X^\ast)$，$k^\ast=k(X^\ast,X^\ast)-k(X^\ast,X)k(X,X)^{-1}k(X,X^\ast)$。</p>
+<p>一般在数据归一化的情况下，先验均值 $\mu(X)$ 和 $\mu(X^\ast)$ 可以设为 0 函数。<br>
 在 <code>sklearn</code> 中，可以通过调节参数 <code>normalize_y=True</code> 实现。</p>
 
                 

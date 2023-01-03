@@ -235,7 +235,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          771 字
+          779 字
         
       </span>
     
@@ -290,36 +290,45 @@
               <div class="markdown-body">
                 
                 <!-- omit in toc -->
-<p>牛顿法是一种在实数域和复数域上迭代近似求解方程的方法。
+<p>牛顿法是一种在实数域和复数域上迭代近似求解方程的方法。<br>
 此处做一个简单的学习。</p>
 <span id="more"></span>
-<h2 id="牛顿法能做什么？直观上怎么做的？"><a href="#牛顿法能做什么？直观上怎么做的？" class="headerlink" title="牛顿法能做什么？直观上怎么做的？"></a>牛顿法能做什么？直观上怎么做的？</h2><p>一般来说，牛顿法主要用在两个方面:</p>
+<h2 id="牛顿法能做什么？直观上怎么做的？">牛顿法能做什么？直观上怎么做的？</h2>
+<p>一般来说，牛顿法主要用在两个方面:</p>
 <ol>
 <li>求方程的根：通过当前解与函数的切线在 x 轴的交点迭代更新解值，以求得方程的解。</li>
 <li>最优化：最优化问题通常可以理解为求函数导数的解（导数值为0），则可以使用 1 中求方程的根的方法。</li>
 </ol>
 <p>一个简单的过程示意图如下所示：</p>
 <div style="width:60%;margin:auto"><img src="/math/newtons-method/example.gif" srcset="/img/loading.gif" lazyload class=""></div>
-
-<h2 id="具体来说怎么做？"><a href="#具体来说怎么做？" class="headerlink" title="具体来说怎么做？"></a>具体来说怎么做？</h2><p>求解方程时，迭代更新 $x$。</p>
-<script type="math/tex; mode=display">
-x_{n+1}=x_n-\frac{f\left(x_n\right)}{f^{\prime}\left(x_n\right)}</script><p>最优化时，迭代更新 $x$。</p>
-<script type="math/tex; mode=display">
-x_{n+1}=x_n-\frac{f^{\prime}\left(x_n\right)}{f^{\prime \prime}\left(x_n\right)}</script><h2 id="有什么特点？"><a href="#有什么特点？" class="headerlink" title="有什么特点？"></a>有什么特点？</h2><p>牛顿法最突出的优点是收敛速度快，具有局部二阶收敛性。
-通俗来说梯度下降法每次只从你当前所处位置选一个坡度最大的方向走一步，而牛顿法在选择方向时，不仅会考虑坡度是否够大，还会考虑你走了一步之后，坡度是否会变得更大。
+<h2 id="具体来说怎么做？">具体来说怎么做？</h2>
+<p>求解方程时，迭代更新 $x$。</p>
+<p>$$<br>
+x_{n+1}=x_n-\frac{f\left(x_n\right)}{f^{\prime}\left(x_n\right)}<br>
+$$</p>
+<p>最优化时，迭代更新 $x$。</p>
+<p>$$<br>
+x_{n+1}=x_n-\frac{f^{\prime}\left(x_n\right)}{f^{\prime \prime}\left(x_n\right)}<br>
+$$</p>
+<h2 id="有什么特点？">有什么特点？</h2>
+<p>牛顿法最突出的优点是收敛速度快，具有局部二阶收敛性。<br>
+通俗来说梯度下降法每次只从你当前所处位置选一个坡度最大的方向走一步，而牛顿法在选择方向时，不仅会考虑坡度是否够大，还会考虑你走了一步之后，坡度是否会变得更大。<br>
 所以，可以说牛顿法比梯度下降法看得更远一点，能更快地走到最底部。</p>
-<h2 id="有什么局限性？"><a href="#有什么局限性？" class="headerlink" title="有什么局限性？"></a>有什么局限性？</h2><ol>
+<h2 id="有什么局限性？">有什么局限性？</h2>
+<ol>
 <li>基本牛顿法初始点需要足够“靠近”极小点，否则有可能导致算法不收敛。这样就引入了全局牛顿法。</li>
-<li>在牛顿法的迭代中，需要计算海森矩阵（函数的二阶导数）的逆矩阵，这一计算比较复杂，这样就引入了拟牛顿法，用一个矩阵来替代。<ul>
+<li>在牛顿法的迭代中，需要计算海森矩阵（函数的二阶导数）的逆矩阵，这一计算比较复杂，这样就引入了拟牛顿法，用一个矩阵来替代。
+<ul>
 <li>DFP(Davidon-Fletcher-Powell)算法(DFP algorithm)</li>
 <li>BFGS(Broyden-Fletcher-Goldfard-Shano)算法(BFGS algorithm)</li>
 <li>Broyden类算法(Broyden’s algorithm)</li>
 </ul>
 </li>
 </ol>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<h2 id="Reference">Reference</h2>
+<ol>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/37524275">梯度下降法、牛顿法和拟牛顿法 - Eureka的文章 - 知乎</a></li>
-<li><a target="_blank" rel="noopener" href="https://zh.m.wikipedia.org/zh-hans/牛顿法">牛顿法</a></li>
+<li><a target="_blank" rel="noopener" href="https://zh.m.wikipedia.org/zh-hans/%E7%89%9B%E9%A1%BF%E6%B3%95">牛顿法</a></li>
 </ol>
 
                 
@@ -488,6 +497,12 @@ x_{n+1}=x_n-\frac{f^{\prime}\left(x_n\right)}{f^{\prime \prime}\left(x_n\right)}
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -681,6 +696,49 @@ x_{n+1}=x_n-\frac{f^{\prime}\left(x_n\right)}{f^{\prime \prime}\left(x_n\right)}
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

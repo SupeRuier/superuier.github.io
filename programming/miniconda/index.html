@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2021年8月19日 下午
+                    本文最后更新于：1 年前
                   
                 
               </p>
@@ -298,31 +298,34 @@
             
               <div class="markdown-body">
                 
-                <p>Miniconda 与 Anaconda 为 conda 的发行版，主要用于包管理，其中 miniconda 更轻量级。
+                <p>Miniconda 与 Anaconda 为 conda 的发行版，主要用于包管理，其中 miniconda 更轻量级。<br>
 由于日常使用总是会忘记，所以此处记录一些常用的命令。</p>
 <span id="more"></span>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>首先从清华源下载安装包并安装。</p>
+<h2 id="安装">安装</h2>
+<p>首先从清华源下载安装包并安装。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda2-4.5.11-Linux-x86_64.sh<br>bash Miniconda2-4.5.11-Linux-x86_64.sh<br><span class="hljs-built_in">source</span> ~/.bashrc<br></code></pre></td></tr></table></figure>
-<p>Conda 默认的软件源在国外,速度非常的慢,我们可以将其更换为<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/">清华源</a>。
+<p>Conda 默认的软件源在国外,速度非常的慢,我们可以将其更换为<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/">清华源</a>。<br>
 可以直接在<code>.condarc</code>中添加</p>
 <figure class="highlight bash"><figcaption><span>.condarc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">- https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/<br>- https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/<br>- https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/<br>- https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/<br></code></pre></td></tr></table></figure>
-<p>之后需要使用 <code>conda clean -i</code> 清除索引缓存，保证用的是镜像站提供的索引。]
+<p>之后需要使用 <code>conda clean -i</code> 清除索引缓存，保证用的是镜像站提供的索引。]<br>
 注意有的时候会显示 url 错误， 此时换成 https 可能会解决问题。</p>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="对环境更改"><a href="#对环境更改" class="headerlink" title="对环境更改"></a>对环境更改</h3><p>创建所需要环境，一般有三种情况。</p>
+<h2 id="配置">配置</h2>
+<h3 id="对环境更改">对环境更改</h3>
+<p>创建所需要环境，一般有三种情况。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 创建新环境</span><br>conda create -n py3.8 python=3.8<br><span class="hljs-comment"># 克隆环境</span><br>conda create --name myclone --<span class="hljs-built_in">clone</span> myenv<br><span class="hljs-comment"># 直接从 yaml 文件生成新环境</span><br>conda <span class="hljs-built_in">env</span> create -f environment.yml<br></code></pre></td></tr></table></figure>
-<p>激活环境
+<p>激活环境</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda activate py3.8<br></code></pre></td></tr></table></figure>
-然后下载所需软件包
+<p>然后下载所需软件包</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda install XXX<br></code></pre></td></tr></table></figure>
-退出环境
+<p>退出环境</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda deactivate py3.8<br></code></pre></td></tr></table></figure>
-删除环境
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda remove --name myenv --all<br></code></pre></td></tr></table></figure></p>
-<h3 id="批量导入导出组件"><a href="#批量导入导出组件" class="headerlink" title="批量导入导出组件"></a>批量导入导出组件</h3><p>导出导入 yml 文件。</p>
+<p>删除环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda remove --name myenv --all<br></code></pre></td></tr></table></figure>
+<h3 id="批量导入导出组件">批量导入导出组件</h3>
+<p>导出导入 yml 文件。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda <span class="hljs-built_in">env</span> <span class="hljs-built_in">export</span> --no-builds &gt; environment.yml<br>conda <span class="hljs-built_in">env</span> create -f environment.yml<br>conda <span class="hljs-built_in">env</span> create -f environment.yml -n new_env_name <span class="hljs-comment"># 新名称</span><br>conda <span class="hljs-built_in">env</span> update --file environment.yml <span class="hljs-comment"># 用于对当前环境更新</span><br></code></pre></td></tr></table></figure>
-<p>导出导入 txt 文件：
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda list -e &gt; requirements.txt<br>conda create --name py3.8 --file requirements.txt <span class="hljs-comment"># 顺便创建环境</span><br>conda install --<span class="hljs-built_in">yes</span> --file requirements.txt <span class="hljs-comment"># 不创建新环境</span><br></code></pre></td></tr></table></figure></p>
-
+<p>导出导入 txt 文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda list -e &gt; requirements.txt<br>conda create --name py3.8 --file requirements.txt <span class="hljs-comment"># 顺便创建环境</span><br>conda install --<span class="hljs-built_in">yes</span> --file requirements.txt <span class="hljs-comment"># 不创建新环境</span><br></code></pre></td></tr></table></figure>
                 
               </div>
             

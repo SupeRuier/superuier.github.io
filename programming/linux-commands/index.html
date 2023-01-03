@@ -204,7 +204,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/images/default.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -289,18 +289,22 @@
                 
                 <p>常用到的 linux 命令语句</p>
 <span id="more"></span>
-<h2 id="进程相关"><a href="#进程相关" class="headerlink" title="进程相关"></a>进程相关</h2><p>使用 <code>ps</code> 使得命令查询任务。</p>
+<h2 id="进程相关">进程相关</h2>
+<p>使用 <code>ps</code> 使得命令查询任务。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># user&#x27;s running processes</span><br>ps r -ef | grep username<br></code></pre></td></tr></table></figure>
 <p>终止进程</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">kill</span> PID<br></code></pre></td></tr></table></figure>
 <p>高级终止</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 将用户colin115下的所有进程名以av_开头的进程终止:</span><br>ps -u colin115 |  awk <span class="hljs-string">&#x27;/av_/ &#123;print &quot;kill -9 &quot; $1&#125;&#x27;</span> | sh<br><span class="hljs-comment"># 将用户colin115下所有进程名中包含HOST的进程终止</span><br>ps -fe| grep colin115 | grep HOST |awk <span class="hljs-string">&#x27;&#123;print $2&#125;&#x27;</span> | xargs <span class="hljs-built_in">kill</span> -9;<br></code></pre></td></tr></table></figure>
-<p>后台进程
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 置于后台</span><br>ctrl+Z<br><span class="hljs-comment"># 重新拉到前台</span><br><span class="hljs-built_in">fg</span><br><span class="hljs-comment"># 查询后台进程</span><br><span class="hljs-built_in">jobs</span><br><span class="hljs-comment"># 删除进程，使用 job 查询到的任务号</span><br><span class="hljs-built_in">kill</span> %1 <br></code></pre></td></tr></table></figure></p>
-<h3 id="后台运行"><a href="#后台运行" class="headerlink" title="后台运行"></a>后台运行</h3><p>使用 <code>nohup</code> 使得命令后台运行，同时断网和关闭终端都不会终止任务，适合用来作为任务提交方式。</p>
+<p>后台进程</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 置于后台</span><br>ctrl+Z<br><span class="hljs-comment"># 重新拉到前台</span><br><span class="hljs-built_in">fg</span><br><span class="hljs-comment"># 查询后台进程</span><br><span class="hljs-built_in">jobs</span><br><span class="hljs-comment"># 删除进程，使用 job 查询到的任务号</span><br><span class="hljs-built_in">kill</span> %1 <br></code></pre></td></tr></table></figure>
+<h3 id="后台运行">后台运行</h3>
+<p>使用 <code>nohup</code> 使得命令后台运行，同时断网和关闭终端都不会终止任务，适合用来作为任务提交方式。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">nohup</span> /root/start.sh &amp;<br></code></pre></td></tr></table></figure>
 <p>此外，python 中自带的 <code>subprocess.popen()</code> 方法同样可以起到后台运行命令且关闭终端不退出的作用，所以不必要使用 <code>nohup</code>。</p>
-<h2 id="文件处理"><a href="#文件处理" class="headerlink" title="文件处理"></a>文件处理</h2><h3 id="解压缩"><a href="#解压缩" class="headerlink" title="解压缩"></a>解压缩</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 对于 zip 文件</span><br>unzip compressed.zip<br><span class="hljs-comment"># 对于 tar.gz 文件</span><br>tar -xvzf compressed.tar.gz<br></code></pre></td></tr></table></figure>
+<h2 id="文件处理">文件处理</h2>
+<h3 id="解压缩">解压缩</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 对于 zip 文件</span><br>unzip compressed.zip<br><span class="hljs-comment"># 对于 tar.gz 文件</span><br>tar -xvzf compressed.tar.gz<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -400,8 +404,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/knowledge-from-growth/mud-down/" title="摸爬滚打">
-                        <span class="hidden-mobile">摸爬滚打</span>
+                      <a href="/knowledge-from-growth/self-improvement/" title="自我提升">
+                        <span class="hidden-mobile">自我提升</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

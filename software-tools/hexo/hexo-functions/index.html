@@ -292,28 +292,33 @@
                 
                 <p>本文档会用作Hexo基本用法记录演示。</p>
 <span id="more"></span>
-<h2 id="新建博文"><a href="#新建博文" class="headerlink" title="新建博文"></a>新建博文</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+<h2 id="新建博文">新建博文</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h2 id="Generate-static-files-Run-server"><a href="#Generate-static-files-Run-server" class="headerlink" title="Generate static files + Run server"></a>Generate static files + Run server</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo clean <span class="hljs-comment"># Clean local files</span><br>$ hexo generate <span class="hljs-comment"># Generate static files</span><br>$ hexo server <span class="hljs-comment"># Build local server</span><br></code></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a>
+<h2 id="Generate-static-files-Run-server">Generate static files + Run server</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo clean <span class="hljs-comment"># Clean local files</span><br>$ hexo generate <span class="hljs-comment"># Generate static files</span><br>$ hexo server <span class="hljs-comment"># Build local server</span><br></code></pre></td></tr></table></figure>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a><br>
 More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h2 id="远端部署-use-Gitbuh-Action"><a href="#远端部署-use-Gitbuh-Action" class="headerlink" title="远端部署 (use Gitbuh Action)"></a>远端部署 (use Gitbuh Action)</h2><p>The procedure is in <code>.github/workflows/deploy.yml</code></p>
+<h2 id="远端部署-use-Gitbuh-Action">远端部署 (use Gitbuh Action)</h2>
+<p>The procedure is in <code>.github/workflows/deploy.yml</code></p>
 <p>When this local git folder has been uploaded to github, the <code>deploy.yml</code> would be executed.</p>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<h2 id="文章折叠"><a href="#文章折叠" class="headerlink" title="文章折叠"></a>文章折叠</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- more --&gt;</span><br></code></pre></td></tr></table></figure>
-<h2 id="文章间引用"><a href="#文章间引用" class="headerlink" title="文章间引用"></a>文章间引用</h2><p>站内文章引用语法如下。</p>
+<h2 id="文章折叠">文章折叠</h2>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- more --&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="文章间引用">文章间引用</h2>
+<p>站内文章引用语法如下。</p>
 <figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name">post_link</span> file_name Title_of_link %&#125;</span><br></code></pre></td></tr></table></figure>
-<h2 id="Insert-figures"><a href="#Insert-figures" class="headerlink" title="Insert figures"></a>Insert figures</h2><p>不同于markdown的图片引用方法，Hexo有着自己的语法。
+<h2 id="Insert-figures">Insert figures</h2>
+<p>不同于markdown的图片引用方法，Hexo有着自己的语法。<br>
 图片文件夹位于<code>_post</code>目录下</p>
 <figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name">asset_img</span> test.jpg%&#125;</span><br></code></pre></td></tr></table></figure>
 <img src="/software-tools/hexo/hexo-functions/test.jpg" srcset="/img/loading.gif" lazyload class="">
-<p>同时可以自定义图片大小。
+<p>同时可以自定义图片大小。<br>
 语法与html语法相同。</p>
 <figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width:70%;margin:auto&quot;</span>&gt;</span></span><span class="hljs-template-tag">&#123;% <span class="hljs-name">asset_img</span> test.jpg%&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
 <div style="width:70%;margin:auto"><img src="/software-tools/hexo/hexo-functions/test.jpg" srcset="/img/loading.gif" lazyload class=""></div>
-
-<p>markdown的语法需要配置之后才可以使用，具体配置的方法见<a href="/software-tools/hexo/hexo-trials/" title="这篇文章">这篇文章</a>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">![<span class="hljs-keyword">Test</span>](<span class="hljs-keyword">test</span>.jpg)<br></code></pre></td></tr></table></figure></p>
+<p>markdown的语法需要配置之后才可以使用，具体配置的方法见<a href="/software-tools/hexo/hexo-trials/" title="这篇文章">这篇文章</a></p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">![<span class="hljs-keyword">Test</span>](<span class="hljs-keyword">test</span>.jpg)<br></code></pre></td></tr></table></figure>
 <p><img src="test.jpg" srcset="/img/loading.gif" lazyload alt="Test"></p>
 
                 

@@ -206,7 +206,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/images/default.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -292,17 +292,19 @@
                 <!-- omit in toc -->
 <p>本篇Blog用于记录参加的讲座，不定期更新。</p>
 <span id="more"></span>
-<h1 id="搜索引擎的技术趋势和精准度提高【常毅】"><a href="#搜索引擎的技术趋势和精准度提高【常毅】" class="headerlink" title="搜索引擎的技术趋势和精准度提高【常毅】"></a>搜索引擎的技术趋势和精准度提高【常毅】</h1><p><br></p>
-<p><strong>主讲人</strong>：常毅教授，吉林大学人工智能学院院长
+<h1>搜索引擎的技术趋势和精准度提高【常毅】</h1>
+<br>
+<p><strong>主讲人</strong>：常毅教授，吉林大学人工智能学院院长<br>
 <strong>日期</strong>：2020/11/23</p>
-<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h2><p><strong>搜索引擎架构</strong>：</p>
+<h2 id="1-Introduction">1. Introduction</h2>
+<p><strong>搜索引擎架构</strong>：</p>
 <ul>
 <li>网页爬虫</li>
 <li>倒排索引（word &gt; document 拿空间换时间的一个过程）</li>
 <li>网页检索&amp;网页排序（0.2s内）</li>
 </ul>
 <p><strong>PageRank 算法</strong>：</p>
-<p>Google最先提出的一种网页排名算法。
+<p>Google最先提出的一种网页排名算法。<br>
 大众一般误认为google精准是仅仅是因为PageRank这一项技术，事实上是因为其很多黑科技的结合。</p>
 <p><strong>搜索引擎进化史</strong>：</p>
 <ul>
@@ -313,13 +315,15 @@
 </ul>
 <p>搜索引擎后发劣势（追赶者很难超越）：用户数据积累较少导致效果较差。</p>
 <p>深度学习在搜索引擎里的优势远远小于我们所期待的（至少在2016年）。</p>
-<h2 id="2-Web-search-ranking-review"><a href="#2-Web-search-ranking-review" class="headerlink" title="2. Web search ranking review"></a>2. Web search ranking review</h2><p><strong>排序问题的变换</strong>：</p>
+<h2 id="2-Web-search-ranking-review">2. Web search ranking review</h2>
+<p><strong>排序问题的变换</strong>：</p>
 <ul>
 <li>pointwise：退化为回归问题，用gradient boosting类回归</li>
 <li>pairwise：排错对数越来越少</li>
 <li>listwise</li>
 </ul>
-<h2 id="3-Yahoo-web-search-ranking-practice"><a href="#3-Yahoo-web-search-ranking-practice" class="headerlink" title="3. Yahoo web search ranking practice"></a>3. Yahoo web search ranking practice</h2><p>简要介绍了2015年KDD best paper的工作。
+<h2 id="3-Yahoo-web-search-ranking-practice">3. Yahoo web search ranking practice</h2>
+<p>简要介绍了2015年KDD best paper的工作。<br>
 这是一个系统性的工作，并不仅仅单一的提出了一个算法。</p>
 <p><strong>Practical challenges</strong>：</p>
 <ul>
@@ -327,20 +331,22 @@
 <li>Semantic gap between query and document</li>
 <li>Search queues follows a long tail distributions</li>
 </ul>
-<h3 id="3-1-排序学习的算法"><a href="#3-1-排序学习的算法" class="headerlink" title="3.1. 排序学习的算法"></a>3.1. 排序学习的算法</h3><p>2010 Yahoo learning rank challenge中前十名都是使用tree-based算法。
+<h3 id="3-1-排序学习的算法">3.1. 排序学习的算法</h3>
+<p>2010 Yahoo learning rank challenge中前十名都是使用tree-based算法。<br>
 2010年得出的结果中lambdaMart &gt; logisticRank。</p>
 <p>2015年KDD best paper中logisticRank则好于lambdaMart和2010年结果相悖。</p>
-<p>根据2015年的结果总结得出造成这一现象的原因是以前的community都或多或少忽略了”over 99% query-url pairs are bad”这一现象。</p>
-<h3 id="3-2-查询改写的方法"><a href="#3-2-查询改写的方法" class="headerlink" title="3.2. 查询改写的方法"></a>3.2. 查询改写的方法</h3><p>机器翻译需要平行语料库，需要以用户反馈来学习查询语料对训练翻译模型。</p>
-<p><strong>举个例子</strong>：
-<code>Tesla Price =&gt; How much is a Tesla</code></p>
+<p>根据2015年的结果总结得出造成这一现象的原因是以前的community都或多或少忽略了&quot;over 99% query-url pairs are bad&quot;这一现象。</p>
+<h3 id="3-2-查询改写的方法">3.2. 查询改写的方法</h3>
+<p>机器翻译需要平行语料库，需要以用户反馈来学习查询语料对训练翻译模型。</p>
+<p><strong>举个例子</strong>：<br>
+<code> Tesla Price =&gt; How much is a Tesla</code></p>
 <p>使用用户查询关键字与点击情况进行匹配。</p>
-<h3 id="3-3-Click-similarity-feature"><a href="#3-3-Click-similarity-feature" class="headerlink" title="3.3. Click similarity feature"></a>3.3. Click similarity feature</h3><p>当前存在很多feature types，如图所示：</p>
+<h3 id="3-3-Click-similarity-feature">3.3. Click similarity feature</h3>
+<p>当前存在很多feature types，如图所示：</p>
 <div style="width:60%; margin:auto"><img src="/computer-science-engineering/seminar-talk/201123feature_types.jpg" srcset="/img/loading.gif" lazyload class=""></div>
-
-<p>Click similarity feature是一种特征提取的方法。
+<p>Click similarity feature是一种特征提取的方法。<br>
 通过二分图对Query进行特征构建</p>
-<p>比deep learning效果好。
+<p>比deep learning效果好。<br>
 在特征提取的问题上DL不会dominant，<strong>为什么</strong>？</p>
 <ul>
 <li>Web search ranking is an ‘easy’ and well studies task -李航</li>

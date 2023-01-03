@@ -204,7 +204,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/images/default.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -288,8 +288,8 @@
               <div class="markdown-body">
                 
                 <!-- omit in toc -->
-<p>目前出现一些对深度主动学习批判的文章，结合自己的实践，深以为然，此处将其整理一下。
-同时这些文章也收录进了本人 <code>awesome-active-learning</code> 的仓库，详见<a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/subfields/deep_AL.md">此链接</a>。
+<p>目前出现一些对深度主动学习批判的文章，结合自己的实践，深以为然，此处将其整理一下。<br>
+同时这些文章也收录进了本人 <code>awesome-active-learning</code> 的仓库，详见<a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/subfields/deep_AL.md">此链接</a>。<br>
 在本文末尾，本人也提出了一些自己的看法。</p>
 <span id="more"></span>
 <p>文章列表：</p>
@@ -299,7 +299,9 @@
 <li>Effective Evaluation of Deep Active Learning on Image Classification Tasks [2021, Open Review]</li>
 </ul>
 <hr>
-<h1 id="文献概览"><a href="#文献概览" class="headerlink" title="文献概览"></a>文献概览</h1><h2 id="1-Parting-with-Illusions-about-Deep-Active-Learning-2019-Arxiv"><a href="#1-Parting-with-Illusions-about-Deep-Active-Learning-2019-Arxiv" class="headerlink" title="1. Parting with Illusions about Deep Active Learning [2019, Arxiv]"></a>1. Parting with Illusions about Deep Active Learning <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1912.05361">[2019, Arxiv]</a></h2><p>这篇文章指出当前主动学习没有考虑到半监督学习及数据增强等平行设定，于是他们在图像分类和语义分割上做了一个对比实验。
+<h1>文献概览</h1>
+<h2 id="1-Parting-with-Illusions-about-Deep-Active-Learning-2019-Arxiv">1. Parting with Illusions about Deep Active Learning <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1912.05361">[2019, Arxiv]</a></h2>
+<p>这篇文章指出当前主动学习没有考虑到半监督学习及数据增强等平行设定，于是他们在图像分类和语义分割上做了一个对比实验。<br>
 实验中对比到的内容包括：多种 SOTA 主动学习策略、加入数据增强模块的主动学习策略、加入半监督学习方法的主动学习策略、半监督学习策略。</p>
 <p>分类任务的结果:</p>
 <blockquote>
@@ -322,9 +324,10 @@
 <li>半监督学习的加入会大幅提升主动学习表现。</li>
 <li>很多 SOTA 的主动学习方法会比随机选取要差，尤其是当标记样本数很小时。</li>
 </ul>
-<h2 id="2-Towards-Robust-and-Reproducible-Active-Learning-Using-Neural-Networks-2020-Arxiv"><a href="#2-Towards-Robust-and-Reproducible-Active-Learning-Using-Neural-Networks-2020-Arxiv" class="headerlink" title="2. Towards Robust and Reproducible Active Learning Using Neural Networks [2020, Arxiv]"></a>2. Towards Robust and Reproducible Active Learning Using Neural Networks <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2002.09564">[2020, Arxiv]</a></h2><p>这篇文章指出在不同的主动学习文章中，作为基准的随机选取策略表现飘忽不定。
+<h2 id="2-Towards-Robust-and-Reproducible-Active-Learning-Using-Neural-Networks-2020-Arxiv">2. Towards Robust and Reproducible Active Learning Using Neural Networks <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2002.09564">[2020, Arxiv]</a></h2>
+<p>这篇文章指出在不同的主动学习文章中，作为基准的随机选取策略表现飘忽不定。<br>
 为了提高主动学习工作的可复现度和鲁棒性，这里对当前方法做一个公平的对比。</p>
-<p>同时本文指出，当前主动学习方法大多忽视了正则化对减小泛化误差的作用。
+<p>同时本文指出，当前主动学习方法大多忽视了正则化对减小泛化误差的作用。<br>
 所以作者也将不同的正则化项 (parameter norm penalty, random augmentation (RA), stochastic weighted averaging (SWA), and shake-shake (SS)) 加入了对比。</p>
 <p>图像分类任务的结果:</p>
 <blockquote>
@@ -340,7 +343,8 @@
 <blockquote>
 <ul>
 <li>基于这种相同 baseline 表现不一致的情况，强调主动学习的对比应当在一系列限定条件下施行。</li>
-<li>不同于 <code>Parting with Illusions about Deep Active Learning</code> 这篇文章，作者认为<ul>
+<li>不同于 <code>Parting with Illusions about Deep Active Learning</code> 这篇文章，作者认为
+<ul>
 <li>主动学习的表现提升仅在有限的的实验条件下才会出现</li>
 <li>这种基于随机选取的提升不具有统计学意义</li>
 <li>在加入正则化之后，这些对于随机选取策略的提升消失。</li>
@@ -362,7 +366,8 @@
 <li>训练、测试、标记、未标记、选取样本的编码应该被分享。</li>
 </ul>
 </blockquote>
-<h2 id="3-Effective-Evaluation-of-Deep-Active-Learning-on-Image-Classification-Tasks-2021-Open-Review"><a href="#3-Effective-Evaluation-of-Deep-Active-Learning-on-Image-Classification-Tasks-2021-Open-Review" class="headerlink" title="3. Effective Evaluation of Deep Active Learning on Image Classification Tasks [2021, Open Review]"></a>3. Effective Evaluation of Deep Active Learning on Image Classification Tasks <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2106.15324">[2021, Open Review]</a></h2><p><strong>个人认为这篇文章十分全面且实验到位。</strong>
+<h2 id="3-Effective-Evaluation-of-Deep-Active-Learning-on-Image-Classification-Tasks-2021-Open-Review">3. Effective Evaluation of Deep Active Learning on Image Classification Tasks <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2106.15324">[2021, Open Review]</a></h2>
+<p><strong>个人认为这篇文章十分全面且实验到位。</strong><br>
 本文指出了当前 AL 工作的一些问题：</p>
 <blockquote>
 <ol>
@@ -372,7 +377,7 @@
 <li>对 AL 在什么情形下能超过随机选取没有清晰的认知</li>
 </ol>
 </blockquote>
-<p>作者展示了一个统一的对于 SOTA 主动学习策略在图像分类下的复现，且在几个不同方面做出了分析。
+<p>作者展示了一个统一的对于 SOTA 主动学习策略在图像分类下的复现，且在几个不同方面做出了分析。<br>
 他们指出了一些重要但是目前不清楚的细节：</p>
 <blockquote>
 <ol>
@@ -398,7 +403,9 @@
 </ol>
 </blockquote>
 <hr>
-<h1 id="总结、讨论与个人看法"><a href="#总结、讨论与个人看法" class="headerlink" title="总结、讨论与个人看法"></a>总结、讨论与个人看法</h1><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这三篇文章都是对当前深度主动学习的批判与调研文，个人很钦佩这种刨根问底的态度。
+<h1>总结、讨论与个人看法</h1>
+<h2 id="总结">总结</h2>
+<p>这三篇文章都是对当前深度主动学习的批判与调研文，个人很钦佩这种刨根问底的态度。<br>
 首先这三篇文章有一些共性的结论：</p>
 <ol>
 <li>数据增强可以带来性能提升 [1,3]</li>
@@ -410,7 +417,8 @@
 <ol>
 <li>[2] 认为加入正则化之后，主动学习相对于随机选取的提升消失，不具有统计意义，但是 [1,3] 中数据增强后仍相对随机选取有提升。</li>
 </ol>
-<h2 id="个人看法"><a href="#个人看法" class="headerlink" title="个人看法"></a>个人看法</h2><p>就这三篇文章而言，背景是当前一大部分的深度主动学习仅考虑了<strong>主动学习的范畴</strong>而没有更多考虑<strong>深度学习的问题</strong>。</p>
+<h2 id="个人看法">个人看法</h2>
+<p>就这三篇文章而言，背景是当前一大部分的深度主动学习仅考虑了<strong>主动学习的范畴</strong>而没有更多考虑<strong>深度学习的问题</strong>。</p>
 <p>仅从主动学习范畴而言，这二十多年来，Pool-Based AL 的架构，评估方式都没有发生过太大变化：</p>
 <ul>
 <li>全监督式学习</li>
@@ -418,32 +426,33 @@
 <li>通过学习曲线评估不同策略</li>
 <li>以随机选取样本的监督式学习模型作为最基础的基线</li>
 </ul>
-<p>如果从传统模型来考虑，这个主动学习的范畴其实没有太大问题。
-但是近十年来，深度学习兴起，其实为主动学习带来了新的实现环境。
-之前的有关深度主动学习的调研（见<a href="/paper-reading/deep-AL-survey/" title="这篇笔记">这篇笔记</a>），其实已经指出了很多在深度模型中使用主动学习面临的挑战。
-其中第一条就是主动学习期望选取少量重要标记样本，而深度学习期望大量训练样本，两者之间有着矛盾。
+<p>如果从传统模型来考虑，这个主动学习的范畴其实没有太大问题。<br>
+但是近十年来，深度学习兴起，其实为主动学习带来了新的实现环境。<br>
+之前的有关深度主动学习的调研（见<a href="/paper-reading/deep-AL-survey/" title="这篇笔记">这篇笔记</a>），其实已经指出了很多在深度模型中使用主动学习面临的挑战。<br>
+其中第一条就是主动学习期望选取少量重要标记样本，而深度学习期望大量训练样本，两者之间有着矛盾。<br>
 所以在深度学习的框架下，不能仅仅考虑主动学习的范畴，也要结合深度学习的情况。</p>
 <p>深度学习在这十年的发展中，其实也苦于标记样本数目稀少，但是在深度学习的社区中，采用了一些其他的方式来解决此问题，并取得了十分不错的效果：</p>
 <ul>
 <li>数据增强</li>
-<li>利用未标记的样本<ul>
+<li>利用未标记的样本
+<ul>
 <li>半监督学习</li>
 <li>自监督学习</li>
 </ul>
 </li>
 <li>预训练</li>
 </ul>
-<p>所以目前来看，主动学习的范畴致力于用少量的标记样本达到与随机选取相同的表现，深度学习的这些方法致力于用已有的标记数据达到更好的表现。
-这两种角度其实是一件事情，放在主动学习评估的学习曲线中，就是横向比较和纵向比较。
-其实在评估时，绝大部分的主动学习工作，都是宣称前者但是采纳后者。
+<p>所以目前来看，主动学习的范畴致力于用少量的标记样本达到与随机选取相同的表现，深度学习的这些方法致力于用已有的标记数据达到更好的表现。<br>
+这两种角度其实是一件事情，放在主动学习评估的学习曲线中，就是横向比较和纵向比较。<br>
+其实在评估时，绝大部分的主动学习工作，都是宣称前者但是采纳后者。<br>
 换言之就是更侧重于纵向的比较（当然横向好就会带来纵向好毋庸置疑）。</p>
-<p>在这种情况下，<strong>许多深度主动学习仍然使用传统主动学习范畴就很不公平了</strong>。
-根本原因在于比较的基线方法是一个明明能获取大量未标记样本却只在少量标记样本上训练的模型。
-换句话说，当前的很多深度主动学习方法还是在虐菜，虐那些没有使用先进的深度学习方法且仅在少量标记样本上训练的神经网络的菜。
-再打个比方说，主动学习可以看作一种样本维度的提升方式，当前的很大一部分深度主动学习是在对像刀剑一样的武器上进行磨刀抛光提升，表明我磨的比你好。
-殊不知现在神经网络经过多年社区的贡献已经变成了诸葛神弩或者是火枪。
-所以说现在仍基于对刀剑提升的作为主动学习的评估已经过时了，磨好的刀是比不过未经提升的火枪的。
-只有在火枪上进行提升，才可能是当前深度主动学习需要考虑的方向，才是能带来实用价值的方向。
+<p>在这种情况下，<strong>许多深度主动学习仍然使用传统主动学习范畴就很不公平了</strong>。<br>
+根本原因在于比较的基线方法是一个明明能获取大量未标记样本却只在少量标记样本上训练的模型。<br>
+换句话说，当前的很多深度主动学习方法还是在虐菜，虐那些没有使用先进的深度学习方法且仅在少量标记样本上训练的神经网络的菜。<br>
+再打个比方说，主动学习可以看作一种样本维度的提升方式，当前的很大一部分深度主动学习是在对像刀剑一样的武器上进行磨刀抛光提升，表明我磨的比你好。<br>
+殊不知现在神经网络经过多年社区的贡献已经变成了诸葛神弩或者是火枪。<br>
+所以说现在仍基于对刀剑提升的作为主动学习的评估已经过时了，磨好的刀是比不过未经提升的火枪的。<br>
+只有在火枪上进行提升，才可能是当前深度主动学习需要考虑的方向，才是能带来实用价值的方向。<br>
 正式的说，就是<strong>如何在当前深度学习这些已经验证好用的通用方法下，进一步使用主动学习减少标记成本</strong>。</p>
 <p>目前来看，在策略设计之外，我们需要对主动学习的框架来进行调整，这些调整和主动学习策略的设计可以是正交的，并不一定互相影响：</p>
 <ol>

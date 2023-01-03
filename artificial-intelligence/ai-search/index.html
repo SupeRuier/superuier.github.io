@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2021年9月29日 下午
+                    本文最后更新于：1 年前
                   
                 
               </p>
@@ -300,10 +300,12 @@
                 
                 <p>人工智能中关于搜索的一些最基础的知识。</p>
 <span id="more"></span>
-<h2 id="AI-中的搜索"><a href="#AI-中的搜索" class="headerlink" title="AI 中的搜索"></a>AI 中的搜索</h2><p>对于一个 goal-based agent，搜索是使其找到一个动作或者一系列动作来达到目标。
-有很多例子，比如走迷宫，寻路问题，8-queen 问题等。
+<h2 id="AI-中的搜索">AI 中的搜索</h2>
+<p>对于一个 goal-based agent，搜索是使其找到一个动作或者一系列动作来达到目标。<br>
+有很多例子，比如走迷宫，寻路问题，8-queen 问题等。<br>
 一般来说包含树搜索和图搜索等。</p>
-<h2 id="对于考虑路径的搜索而言"><a href="#对于考虑路径的搜索而言" class="headerlink" title="对于考虑路径的搜索而言"></a>对于考虑路径的搜索而言</h2><p>评估策略需考虑以下四个维度：</p>
+<h2 id="对于考虑路径的搜索而言">对于考虑路径的搜索而言</h2>
+<p>评估策略需考虑以下四个维度：</p>
 <ul>
 <li>Completeness: Does it always find a solution if it exists?</li>
 <li>Time complexity: # nodes generated/expanded.</li>
@@ -312,7 +314,8 @@
 </ul>
 <p>存在两类搜索策略：</p>
 <ul>
-<li>Uniformed<ul>
+<li>Uniformed
+<ul>
 <li>Breadth-first search (BFS): Expand shallowest node</li>
 <li>Depth-first search (DFS): Expand deepest node</li>
 <li>Depth-limited search (DLS): Depth first with depth limit</li>
@@ -320,10 +323,11 @@
 <li>Uniform-cost search (UCS): Expand least cost node (the cost could be the length between nodes)</li>
 </ul>
 </li>
-<li>Informed<ul>
+<li>Informed
+<ul>
 <li>Greedy best-first search: Expand the node that appears to be closest to goal</li>
 <li>A* search: Minimize the total estimated solution cost (to middle node + node to goal；f=g+h). BFS mode.</li>
-<li>IDA<em>: IDS + A</em>. DLS mode. The cost of space is lower than A*.</li>
+<li>IDA*: IDS + A*. DLS mode. The cost of space is lower than A*.</li>
 </ul>
 </li>
 </ul>
@@ -335,11 +339,12 @@
 </ul>
 <p>UCS vs Greedy Best First vs A*:</p>
 <ul>
-<li>UCS：f(n) = g(n) </li>
-<li>Greedy Best First: f(n) = h(n) </li>
+<li>UCS：f(n) = g(n)</li>
+<li>Greedy Best First: f(n) = h(n)</li>
 <li>A*: f(n)=g(n)+h(n)</li>
 </ul>
-<h2 id="对于不考虑路径的搜索"><a href="#对于不考虑路径的搜索" class="headerlink" title="对于不考虑路径的搜索"></a>对于不考虑路径的搜索</h2><p>Local search: the path doesn’t matter</p>
+<h2 id="对于不考虑路径的搜索">对于不考虑路径的搜索</h2>
+<p>Local search: the path doesn’t matter</p>
 <ul>
 <li>Hill climbing</li>
 <li>Genetic algorithms</li>

@@ -205,7 +205,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/images/default.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -288,53 +288,64 @@
             
               <div class="markdown-body">
                 
-                <p>记录一篇深度主动学习的调研文章。
-2020年，这篇 survey 被挂在了 arxiv 上， 见此<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2009.00236">链接</a>。
+                <p>记录一篇深度主动学习的调研文章。<br>
+2020年，这篇 survey 被挂在了 arxiv 上， 见此<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2009.00236">链接</a>。<br>
 此篇 survey 全30页，引用189篇参考文献。</p>
 <span id="more"></span>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Background: A rich variety of related work has been published, DeepAL still lacks a unified classification framework.</p>
+<h2 id="Introduction">Introduction</h2>
+<p>Background: A rich variety of related work has been published, DeepAL still lacks a unified classification framework.</p>
 <p>Challenges of DeepAL:</p>
 <ul>
-<li>Insufficient data for label samples<ul>
+<li>Insufficient data for label samples
+<ul>
 <li>The labeled training samples provided by the classic AL are insufficient to support the training of traditional DL.</li>
 <li>The non-batch sample query method commonly used in AL is not applicable in the DL context.</li>
 </ul>
 </li>
-<li>Model uncertainty<ul>
+<li>Model uncertainty
+<ul>
 <li>The softmax response of the final output is unreliable as a measure of confidence, and the performance of this method will thus be even worse than that of random sampling. DL model can be too confident about the output results.</li>
 </ul>
 </li>
-<li>Processing pipeline inconsistency<ul>
+<li>Processing pipeline inconsistency
+<ul>
 <li>AL: fixed features + learned classifiers</li>
 <li>DL: learned features + learned classifiers</li>
 <li>Only fine-tuning the DL models in the AL framework, or treating them as two separate problems, may thus cause divergent issues.</li>
 </ul>
 </li>
 </ul>
-<h2 id="Approaches"><a href="#Approaches" class="headerlink" title="Approaches"></a>Approaches</h2><p>In general they summarized the corresponding approaches for the challenges.</p>
+<h2 id="Approaches">Approaches</h2>
+<p>In general they summarized the corresponding approaches for the challenges.</p>
 <ul>
-<li>Insufficient data for label samples<ul>
+<li>Insufficient data for label samples
+<ul>
 <li>data augmentation</li>
 <li>assigning pseudo-labels</li>
 <li>combine supervised and semi-supervised training</li>
 <li>batch sample</li>
 </ul>
 </li>
-<li>Model uncertainty<ul>
+<li>Model uncertainty
+<ul>
 <li>Bayesian deep learning</li>
 </ul>
 </li>
-<li>Processing pipeline inconsistency<ul>
+<li>Processing pipeline inconsistency
+<ul>
 <li>Modify the combined framework of AL and DL to make the proposed DeepAL model as general as possible</li>
 </ul>
 </li>
 </ul>
-<h2 id="Query-strategies"><a href="#Query-strategies" class="headerlink" title="Query strategies"></a>Query strategies</h2><p>Batch Mode DAL should be satisfied.
+<h2 id="Query-strategies">Query strategies</h2>
+<p>Batch Mode DAL should be satisfied.<br>
 The reference indexes are copied.</p>
 <ol>
-<li>Uncertainty-based and hybrid query strategies<ul>
+<li>Uncertainty-based and hybrid query strategies
+<ul>
 <li>directly use uncertainty sampling (non-batch) [9, 59, 114, 123]</li>
-<li>query batch sample set representative to the distribution [177:Exploration-P, 183:DBAL, 99:WI-DL]<ul>
+<li>query batch sample set representative to the distribution [177:Exploration-P, 183:DBAL, 99:WI-DL]
+<ul>
 <li>the richer the category content of the dataset, the larger the batch size, and the better the effect of diversity-based methods;</li>
 </ul>
 </li>
@@ -342,19 +353,22 @@ The reference indexes are copied.</p>
 <li>query batch sample set representative by adversarial method [146:WWAL, 150:VAAL, 81:TA-VAAL]</li>
 </ul>
 </li>
-<li>Deep Bayesian Active Learning <ul>
+<li>Deep Bayesian Active Learning
+<ul>
 <li>obtain the posterior distribution of network prediction [47:DBAL, 118:DEBAL, 28:DPEs, 114:ActiveLink]</li>
 <li>obtain the mutual information between the batch samples and the model parameters [84: BatchBALD]</li>
 <li>reconstructed the batch structure to optimize the sparse subset approximation [117:ACS-FW]</li>
 <li>other [54, 105, 126, 147, 175, 179]</li>
 </ul>
 </li>
-<li>Density-based Methods<ul>
+<li>Density-based Methods
+<ul>
 <li>core-set approach [49:FF-Active, 138:core-set]</li>
 <li>discriminative approach [35:Active Palmprint Recognition, 51:DAL]</li>
 </ul>
 </li>
-<li>Other <ul>
+<li>Other
+<ul>
 <li>RL approach [37]</li>
 <li>Adversarial examples[36:DFAL]</li>
 <li>ensemble [14]</li>
@@ -363,14 +377,16 @@ The reference indexes are copied.</p>
 </ul>
 </li>
 </ol>
-<h2 id="Model-training"><a href="#Model-training" class="headerlink" title="Model training"></a>Model training</h2><p>Normally accompanied with insufficient data (under the view of DAL).</p>
+<h2 id="Model-training">Model training</h2>
+<p>Normally accompanied with insufficient data (under the view of DAL).</p>
 <ol>
 <li>assigning pseudo-labels [166:CEAL]</li>
 <li>combine unsupervised feature learning [99:WI-DL]</li>
 <li>data augmentation [187:GAAL, 162:BGADL, 107:ARAL]</li>
 <li>add adversarial task [150:VAAL, 81:TA-VAAL]</li>
 </ol>
-<h2 id="DAL-on-the-generalization-of-the-model"><a href="#DAL-on-the-generalization-of-the-model" class="headerlink" title="DAL on the generalization of the model"></a>DAL on the generalization of the model</h2><ol>
+<h2 id="DAL-on-the-generalization-of-the-model">DAL on the generalization of the model</h2>
+<ol>
 <li>Use the final layer output to make query</li>
 <li>ALso use the middle layer output to make query [59:AL-MV, 178:LLAL, 182]</li>
 </ol>

@@ -235,7 +235,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          514 字
+          524 字
         
       </span>
     
@@ -292,13 +292,14 @@
                 <!-- omit in toc -->
 <p>在看 k-center 的时候发现自己对其距离矩阵的计算不是很清楚，于是在此记录。</p>
 <span id="more"></span>
-<h2 id="距离矩阵的计算及-Python-实现"><a href="#距离矩阵的计算及-Python-实现" class="headerlink" title="距离矩阵的计算及 Python 实现"></a>距离矩阵的计算及 Python 实现</h2><p>给定 $m\times n$ 矩阵 $X$, $X = [x<em>1, x_2,…,x_n]$，
-这里第 $i$ 列向量 $x_i$ 是 $m$ 维向量，任务是计算出一个 $n\times n$ 矩阵，使得：
-$D</em>{ij}=||x_i-x_j||^2$。</p>
+<h2 id="距离矩阵的计算及-Python-实现">距离矩阵的计算及 Python 实现</h2>
+<p>给定 $m\times n$ 矩阵 $X$, $X = [x_1, x_2,…,x_n]$，<br>
+这里第 $i$ 列向量 $x_i$ 是 $m$ 维向量，任务是计算出一个 $n\times n$ 矩阵，使得：<br>
+$D_{ij}=||x_i-x_j||^2$。</p>
 <p>具体的，$D_{ij} = (x_i - x_j)^T(x_i-x_j)=x^T_ix_i-2x^T_ix_j+x^T_jx_j$。</p>
-<p>用 Gram Matrix 表示，$D<em>{ij}=G</em>{ii}-2G<em>{ij}+G</em>{jj}$。</p>
-<p>放在矩阵的尺度来看，$D = H + K -2G$。
-其中，$H<em>{ij} = G</em>{ii}, K<em>{ij} = G</em>{jj}$。</p>
+<p>用 Gram Matrix 表示，$D_{ij}=G_{ii}-2G_{ij}+G_{jj}$。</p>
+<p>放在矩阵的尺度来看，$D = H + K -2G$。<br>
+其中，$H_{ij} = G_{ii}, K_{ij} = G_{jj}$。</p>
 <p>根据最后一个式子，计算的时候可以避免循环：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">compute_dist_matrix</span>(<span class="hljs-params">X</span>):<br>  m,n = X.shape<br>  G = np.dot(X.T, X)<br>  H = np.tile(np.diag(G), (n, <span class="hljs-number">1</span>)) <span class="hljs-comment"># Construct an array by repeating the number of times.</span><br>  <span class="hljs-keyword">return</span> H + H.T - <span class="hljs-number">2</span>*G<br></code></pre></td></tr></table></figure>
 <p>Reference:</p>

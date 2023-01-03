@@ -289,46 +289,54 @@
             
               <div class="markdown-body">
                 
-                <p>本文是对 Surrogate-assisted evolutionary computation: Recent advances and future challenges 这篇综述的阅读笔记。
+                <p>本文是对 Surrogate-assisted evolutionary computation: Recent advances and future challenges 这篇综述的阅读笔记。<br>
 这是一篇发表于2011年的关于在演化计算中如何应用辅助模型的综述。</p>
 <span id="more"></span>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>绝大部分的演化计算都假设存在一个可以为每一个个体提供 fitness value 的手段，或是模拟，或是实验，或是一个显式的 fitness function。
-但是有的时候，这个 fitness 的评估是非平凡的，例如当模拟或实验需要消耗大量成本。
+<h2 id="前言">前言</h2>
+<p>绝大部分的演化计算都假设存在一个可以为每一个个体提供 fitness value 的手段，或是模拟，或是实验，或是一个显式的 fitness function。<br>
+但是有的时候，这个 fitness 的评估是非平凡的，例如当模拟或实验需要消耗大量成本。<br>
 此时通过使用代理模型的演化计算方法来减少昂贵问题上使用演化计算时间成本。</p>
-<p>代理模型往往和真实的 fitness function 一起使用，以防演化计算被误引入代理模型提供的错误最优。
+<p>代理模型往往和真实的 fitness function 一起使用，以防演化计算被误引入代理模型提供的错误最优。<br>
 当问题越高维度，代理模型的构建难度就越大。</p>
-<h2 id="代理模型的策略"><a href="#代理模型的策略" class="headerlink" title="代理模型的策略"></a>代理模型的策略</h2><blockquote>
-<p>No analytical fitness function exists for accurately evaluating the fitness of a candidate solution. 
+<h2 id="代理模型的策略">代理模型的策略</h2>
+<blockquote>
+<p>No analytical fitness function exists for accurately evaluating the fitness of a candidate solution.<br>
 Instead, there are only more accurate and less accurate fitness estimation methods, which often trade off accuracy with computational costs.</p>
 </blockquote>
-<p>使用代理模型也需要权衡模型的效率和保真度。
-最初，一部分工作完全依赖代理模型进行演化搜索，但是代理模型引入的可能并不存在的最优会带来严重的问题。
+<p>使用代理模型也需要权衡模型的效率和保真度。<br>
+最初，一部分工作完全依赖代理模型进行演化搜索，但是代理模型引入的可能并不存在的最优会带来严重的问题。<br>
 代理模型几乎可以用在所有的演化计算步骤中来剔除差的结果，并且减少随机性：population initialization, cross-over, mutation, local search and fitness evaluations。</p>
 <p>根据代理模型的使用对象进行不同，可以将代理模型方法分类可以分为以下三类：</p>
 <ul>
-<li>Generalization based:<ul>
+<li>Generalization based:
+<ul>
 <li>surrogates are used for fitness evaluations in some of the generations, while in the rest of the generations, the real fitness function is used</li>
 </ul>
 </li>
-<li>Individual based:<ul>
+<li>Individual based:
+<ul>
 <li>the real-fitness function is used for fitness evaluations for some of the individuals in a generation</li>
 </ul>
 </li>
-<li>Population based:<ul>
+<li>Population based:
+<ul>
 <li>more than one subpopulation co-evolves, each using its own surrogate for fitness evaluations. Migration of individuals from one sub-population to another is allowed.</li>
 </ul>
 </li>
 </ul>
 <hr>
-<h2 id="单代理模型"><a href="#单代理模型" class="headerlink" title="单代理模型"></a>单代理模型</h2><p>我们假设与真实 fitness 函数交互费时，希望尽可能减少与真实函数交互。
-那么关键的问题就在于如何确定哪个个体是应该被重新评估的。
+<h2 id="单代理模型">单代理模型</h2>
+<p>我们假设与真实 fitness 函数交互费时，希望尽可能减少与真实函数交互。<br>
+那么关键的问题就在于如何确定哪个个体是应该被重新评估的。<br>
 我们需要考虑到以下三个方面。</p>
-<h3 id="1-选取重评估样本的标准"><a href="#1-选取重评估样本的标准" class="headerlink" title="1. 选取重评估样本的标准"></a>1. 选取重评估样本的标准</h3><p>不得不说这些选取的方式和<strong>主动学习</strong>极度相似。
+<h3 id="1-选取重评估样本的标准">1. 选取重评估样本的标准</h3>
+<p>不得不说这些选取的方式和<strong>主动学习</strong>极度相似。<br>
 选取具有以下特征的样本评估:</p>
 <ul>
 <li>potentially have a good fitness value</li>
 <li>representative</li>
-<li>large degree of uncertainty in approximation<ul>
+<li>large degree of uncertainty in approximation
+<ul>
 <li>fitness landscape around these solutions has not been well explored</li>
 <li>improve the approximation accuracy of the surrogate,</li>
 </ul>
@@ -339,9 +347,9 @@ Instead, there are only more accurate and less accurate fitness estimation metho
 <li>uncertainty is roughly set to be inversely proportional to the average distance to the closest data samples</li>
 <li>estimating the variance of the individual estimates given by an ensemble of surrogates</li>
 </ul>
-<h3 id="2-如何评估代理模型的好坏"><a href="#2-如何评估代理模型的好坏" class="headerlink" title="2. 如何评估代理模型的好坏"></a>2. 如何评估代理模型的好坏</h3><p>首先代理模型并不是需要严格和 fitness function 相同才可以发挥作用，在存在较大的预测错误时同样可以起到作用，如下图所示。</p>
+<h3 id="2-如何评估代理模型的好坏">2. 如何评估代理模型的好坏</h3>
+<p>首先代理模型并不是需要严格和 fitness function 相同才可以发挥作用，在存在较大的预测错误时同样可以起到作用，如下图所示。</p>
 <div style="width:90%;margin:auto"><img src="/paper-reading/surrogate/surrogate-error.png" srcset="/img/loading.gif" lazyload class=""></div>
-
 <p>一些常用的度量：</p>
 <ul>
 <li>mean squared error between the individual’s real fitness value and the predicted fitness</li>
@@ -350,43 +358,50 @@ Instead, there are only more accurate and less accurate fitness estimation metho
 <li>rank correlation: measure for the monotonic relation between the ranks of two variables</li>
 <li>continuous correlation between the surrogate and the original fitness function.</li>
 </ul>
-<h3 id="3-提升预测的准确性"><a href="#3-提升预测的准确性" class="headerlink" title="3. 提升预测的准确性"></a>3. 提升预测的准确性</h3><ul>
+<h3 id="3-提升预测的准确性">3. 提升预测的准确性</h3>
+<ul>
 <li>神经网络的正则化</li>
 <li>随着搜索更新模型</li>
 <li>建立一个地位的搜索空间</li>
 <li>评估时利用生成的中间数据</li>
 </ul>
 <hr>
-<h2 id="多代理模型"><a href="#多代理模型" class="headerlink" title="多代理模型"></a>多代理模型</h2><p>模型类别可能不同，模型保真度（fidelity）可能不同。
+<h2 id="多代理模型">多代理模型</h2>
+<p>模型类别可能不同，模型保真度（fidelity）可能不同。<br>
 此处根据对 fidelity 的掌控把多代理模型分为两类，同质（homogeneous）和异质（heterogeneous）多代理模型。</p>
 <blockquote>
-<p>By homogeneous multiple surrogates, the fidelity of the surrogates are not explicitly controlled, even if different types of surrogates are used. </p>
+<p>By homogeneous multiple surrogates, the fidelity of the surrogates are not explicitly controlled, even if different types of surrogates are used.</p>
 <p>On the contrary, heterogeneous surrogates vary in their fidelity due to an explicit control in model complexity or training data.</p>
 </blockquote>
 <ul>
-<li>同质（homogeneous）多代理模型<ul>
+<li>同质（homogeneous）多代理模型
+<ul>
 <li>多个模型可以提升预测质量，也可以帮助识别较大的预测错误。</li>
 <li>其经验有效性在多篇工作中得到证实。</li>
 </ul>
 </li>
-<li>异质（heterogeneous）多代理模型<ul>
+<li>异质（heterogeneous）多代理模型
+<ul>
 <li>其实是组合了一些列不同粒度的代理模型。</li>
 <li>这类工作提出的背景也是训练不同粒度的代理模型会有不同的成本，粒度越低成本越低。</li>
 </ul>
 </li>
 </ul>
 <hr>
-<h2 id="在昂贵问题之外更多的考虑"><a href="#在昂贵问题之外更多的考虑" class="headerlink" title="在昂贵问题之外更多的考虑"></a>在昂贵问题之外更多的考虑</h2><ol>
+<h2 id="在昂贵问题之外更多的考虑">在昂贵问题之外更多的考虑</h2>
+<ol>
 <li>Surrogates in interactive evolutionary computation</li>
 <li>Surrogated-assisted evolution for solving dynamic optimization</li>
 <li>Surrogates for robust optimization</li>
 <li>Surrogates for constrained optimization</li>
 </ol>
-<h2 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h2><p>代理模型的方法更多的是应用驱动。</p>
+<h2 id="实际应用">实际应用</h2>
+<p>代理模型的方法更多的是应用驱动。</p>
 <blockquote>
 <p>One intensively researched area is surrogate-assisted design optimization, such as turbine blades, airfoils, forging, vehicle crash tests, multi-processor systems-on-chip design and injection systems. Other applications include drug design, protein design, hydroinformatics and evolutionary robotics.</p>
 </blockquote>
-<h2 id="未来挑战"><a href="#未来挑战" class="headerlink" title="未来挑战"></a>未来挑战</h2><ol>
+<h2 id="未来挑战">未来挑战</h2>
+<ol>
 <li>Theoretic work</li>
 <li>Multi-level, multi-fidelity heterogeneous surrogates</li>
 <li>Surrogate-assisted combinatorial optimization</li>

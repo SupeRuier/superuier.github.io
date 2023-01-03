@@ -16,12 +16,12 @@
   <meta name="author" content="Superui">
   <meta name="keywords" content="">
   
-    <meta name="description" content="本文是对自己 Awesome-Active-Learning 项目的一个宣传及简要介绍，不定期更新。 An English Version Of This Post: Post not found: machine-learning&#x2F;awesome-active-learning Awesome Active Learning.">
+    <meta name="description" content="本文是对自己 Awesome-Active-Learning 项目的一个宣传及简要介绍，不定期更新。 An English Version Of This Post: Awesome Active Learning.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="主动学习(Active Learning)，看这一篇就够了">
 <meta property="og:url" content="https://blog.superui.cc/machine-learning/al-all-in-one/index.html">
 <meta property="og:site_name" content="Superui&#39;s Blog">
-<meta property="og:description" content="本文是对自己 Awesome-Active-Learning 项目的一个宣传及简要介绍，不定期更新。 An English Version Of This Post: Post not found: machine-learning&#x2F;awesome-active-learning Awesome Active Learning.">
+<meta property="og:description" content="本文是对自己 Awesome-Active-Learning 项目的一个宣传及简要介绍，不定期更新。 An English Version Of This Post: Awesome Active Learning.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.superui.cc/gallery/covers/al-all-in-one.jpg">
 <meta property="article:published_time" content="2022-07-19T04:00:00.000Z">
@@ -292,22 +292,25 @@
                 
                 <!-- omit in toc -->
 <p>本文是对自己 <a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning">Awesome-Active-Learning</a> 项目的一个宣传及简要介绍，不定期更新。</p>
-<p>An <strong>English Version</strong> Of This Post: <strong><a href="#">Post not found: machine-learning/awesome-active-learning Awesome Active Learning</a></strong>.</p>
+<p>An <strong>English Version</strong> Of This Post: <strong><a href="/machine-learning/awesome-active-learning/" title="Awesome Active Learning">Awesome Active Learning</a></strong>.</p>
 <span id="more"></span>
-<h2 id="0-写在最前"><a href="#0-写在最前" class="headerlink" title="0. 写在最前"></a>0. 写在最前</h2><p>在自己对主动学习（Active Learning）的学习和研究过程中，一直断断续续收集整理了很多不同方向的文章和研究进展，日积月累，整理的内容开始完善和系统化，于是将其开源成 <a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning">awesome active learning</a> 项目。</p>
-<p>对于该项目，我的初衷是：维护一个<strong>包含主动学习方方面面的知识库</strong>，这样研究者和工程师可以较快锁定相关工作并展开科研。 同时，也由于个人的力量有限，希望大家可以一起对主动学习的相关进展进行追踪梳理和总结。如发现遗漏或错误，或想要增补一些新的内容，欢迎大家在该项目下 pull request 或者通过邮件 ruihe.cs@gmail.com 联系我。
+<h2 id="0-写在最前">0. 写在最前</h2>
+<p>在自己对主动学习（Active Learning）的学习和研究过程中，一直断断续续收集整理了很多不同方向的文章和研究进展，日积月累，整理的内容开始完善和系统化，于是将其开源成 <a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning">awesome active learning</a> 项目。</p>
+<p>对于该项目，我的初衷是：维护一个<strong>包含主动学习方方面面的知识库</strong>，这样研究者和工程师可以较快锁定相关工作并展开科研。 同时，也由于个人的力量有限，希望大家可以一起对主动学习的相关进展进行追踪梳理和总结。如发现遗漏或错误，或想要增补一些新的内容，欢迎大家在该项目下 pull request 或者通过邮件 <a href="mailto:ruihe.cs@gmail.com">ruihe.cs@gmail.com</a> 联系我。<br>
 知识库的整体结构如下图所示，希望大家能在这个知识库项目中找到你需要的关于主动学习的一切信息。</p>
 <div style="width:100%;margin:auto"><img src="/machine-learning/al-all-in-one/repo-structure.png" srcset="/img/loading.gif" lazyload class=""></div>
-
 <p>​</p>
-<h3 id="0-1-关于本文"><a href="#0-1-关于本文" class="headerlink" title="0.1. 关于本文"></a>0.1. 关于本文</h3><p>本文旨在对主动学习（AL）领域从一个<strong>以问题为导向</strong>的角度，展开阐述当前主动学习的研究和应用。 此处的以问题为导向包含两个方面，一是指主动学习期望解决的实际问题，二是指主动学习应用中的技术问题。 本文的重点是对这些问题进行基本的描述和文献总结，从而让大家对主动学习的适用场景有一定的认识。 一些关于理论和技术上的分类也会有所提及，但是详细内容不会在本文中展开。
+<h3 id="0-1-关于本文">0.1. 关于本文</h3>
+<p>本文旨在对主动学习（AL）领域从一个<strong>以问题为导向</strong>的角度，展开阐述当前主动学习的研究和应用。 此处的以问题为导向包含两个方面，一是指主动学习期望解决的实际问题，二是指主动学习应用中的技术问题。 本文的重点是对这些问题进行基本的描述和文献总结，从而让大家对主动学习的适用场景有一定的认识。 一些关于理论和技术上的分类也会有所提及，但是详细内容不会在本文中展开。<br>
 此外，本文不涉及列举具体场景下具体算法的文献，若阁下对所描述的问题场景有兴趣，可以移步 github 项目并查阅相关文献列表。</p>
-<h3 id="0-2-推荐阅读的-Survey-Review"><a href="#0-2-推荐阅读的-Survey-Review" class="headerlink" title="0.2. 推荐阅读的 Survey/Review"></a>0.2. 推荐阅读的 Survey/Review</h3><p>作为一个相对成熟的领域，目前已有不少相关的文献综述和领域调研。 此处推荐以下两篇，其余的可以去我们的项目中查看完整的列表： </p>
+<h3 id="0-2-推荐阅读的-Survey-Review">0.2. 推荐阅读的 Survey/Review</h3>
+<p>作为一个相对成熟的领域，目前已有不少相关的文献综述和领域调研。 此处推荐以下两篇，其余的可以去我们的项目中查看完整的列表：</p>
 <ul>
-<li>Active Learning Literature Survey [<a target="_blank" rel="noopener" href="https://minds.wisconsin.edu/handle/1793/60660">2012</a>]：作者为 Burr Settles。这是最著名也是相对较早的一篇调研，至今已有数千次引用，初步了解可以看这一篇。 </li>
+<li>Active Learning Literature Survey [<a target="_blank" rel="noopener" href="https://minds.wisconsin.edu/handle/1793/60660">2012</a>]：作者为 Burr Settles。这是最著名也是相对较早的一篇调研，至今已有数千次引用，初步了解可以看这一篇。</li>
 <li>A Survey on Active Deep Learning: From Model-Driven to Data-Driven [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2101.09933.pdf">2020</a>]：较新的一篇文章，主要是在技术角度对主动学习的方法进行分类，个人认为这篇文章需要在对具体问题有足够清晰地了解之后再看，否则过早陷入对技术的纠结其实不利于对领域的认知。</li>
 </ul>
-<h3 id="0-3-项目关键章节传送门"><a href="#0-3-项目关键章节传送门" class="headerlink" title="0.3. 项目关键章节传送门"></a>0.3. 项目关键章节传送门</h3><p>对于一些 <strong>AL 的关键方向</strong>，我们在此设立传送门，可以直达我们项目中的相关章节（英文版）。</p>
+<h3 id="0-3-项目关键章节传送门">0.3. 项目关键章节传送门</h3>
+<p>对于一些 <strong>AL 的关键方向</strong>，我们在此设立传送门，可以直达我们项目中的相关章节（英文版）。</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/contents/pb_classification.md">主动学习策略分类</a>：在 Pool-based 场景下的主要方法分类。</li>
 <li><a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/contents/AL_combinations.md">AI 中的 AL</a>：用主动学习来尝试解决 AI 各问题下的标注/查询成本昂贵问题。</li>
@@ -316,17 +319,16 @@
 <li><a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/contents/intrinsic_issues.md">AL 内在的问题</a>：AL 这种选取模式带来的不可避免的问题。</li>
 <li><a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/contents/deep_AL.md">深度主动学习</a>：如何在深度神经网络上使用主动学习。</li>
 </ul>
-<h2 id="1-什么是主动学习？（若已有背景知识可跳过）"><a href="#1-什么是主动学习？（若已有背景知识可跳过）" class="headerlink" title="1. 什么是主动学习？（若已有背景知识可跳过）"></a>1. 什么是主动学习？（若已有背景知识可跳过）</h2><p>监督学习问题中，存在标记成本较为昂贵且标记难以大量获取的问题。 针对一些特定任务，只有行业专家才能为样本做上准确标记。在此问题背景下，主动学习（Active Learning, AL）尝试通过选择性的标记较少数据而训练出表现较好的模型。
-下面是从 Burr 的 Survey 中选取的一个简单的例子，图(c)中使用主动学习策略仅选取30个样本作为训练集训练出的逻辑回归模型即可达到90%的准确率，而图(b)中随机选取的30个样本训练出的模型却相对表现较差。</p>
+<h2 id="1-什么是主动学习？（若已有背景知识可跳过）">1. 什么是主动学习？（若已有背景知识可跳过）</h2>
+<p>监督学习问题中，存在标记成本较为昂贵且标记难以大量获取的问题。 针对一些特定任务，只有行业专家才能为样本做上准确标记。在此问题背景下，主动学习（Active Learning, AL）尝试通过选择性的标记较少数据而训练出表现较好的模型。<br>
+下面是从 Burr 的 Survey 中选取的一个简单的例子，图©中使用主动学习策略仅选取30个样本作为训练集训练出的逻辑回归模型即可达到90%的准确率，而图(b)中随机选取的30个样本训练出的模型却相对表现较差。</p>
 <div style="width:100%;margin:auto"><img src="/machine-learning/al-all-in-one/toy_example.jpg" srcset="/img/loading.gif" lazyload class="" title="在一个人造数据集上主动学习策略与随机选取的对比"></div>
-
-<p>从整个学习过程来看，在相同数目的标记样本下，主动学习选取的表现要好于随机选取的表现。这种可以描绘出整个学习过程的曲线也一般用于对主动学习方法进行评估。
+<p>从整个学习过程来看，在相同数目的标记样本下，主动学习选取的表现要好于随机选取的表现。这种可以描绘出整个学习过程的曲线也一般用于对主动学习方法进行评估。<br>
 ​</p>
 <div style="width:80%;margin:auto"><img src="/machine-learning/al-all-in-one/learning_curve.jpg" srcset="/img/loading.gif" lazyload class="" title="主动学习的学习曲线"></div>
-
-<p>主动学习最重要的假设是不同样本对于特定任务的重要程度不同，所以带来的表现提升也不全相同。
-选取较为重要的样本可以使当前模型以较少的标记样本数得到较好的表现。
-在这一过程中，主动学习的本质是对样本的重要性（/信息度/期望带来的表现等）等进行评估。
+<p>主动学习最重要的假设是不同样本对于特定任务的重要程度不同，所以带来的表现提升也不全相同。<br>
+选取较为重要的样本可以使当前模型以较少的标记样本数得到较好的表现。<br>
+在这一过程中，主动学习的本质是对样本的重要性（/信息度/期望带来的表现等）等进行评估。<br>
 绝大多数的工作都是围绕如何评估样本来展开。</p>
 <p>但是随着领域的发展，相关文献的增多，主动学习一词可能在强调不同的东西。<strong>总的来说，当我们谈起主动学习的时候，我们指的是</strong>：</p>
 <ul>
@@ -334,15 +336,16 @@
 <li>从<strong>策略</strong>的角度：以某种方式对未标记<strong>样本重要性的评估</strong>。</li>
 <li>从<strong>训练</strong>的角度：一种<strong>交互式</strong>的标记、训练、评估流程。</li>
 </ul>
-<h2 id="2-主动学习的问题-任务场景"><a href="#2-主动学习的问题-任务场景" class="headerlink" title="2. 主动学习的问题/任务场景"></a>2. 主动学习的问题/任务场景</h2><p>标记成本高昂的情况在很多任务下都存在，所以主动学习的潜在应用问题还是比较广泛的。本节，我们会对大部分主动学习涉及到的问题和任务场景进行简要介绍。</p>
-<h3 id="2-1-基础问题场景"><a href="#2-1-基础问题场景" class="headerlink" title="2.1 基础问题场景"></a>2.1 基础问题场景</h3><p>这里我们只讨论最基础的分类和回归问题。在这两类问题下，有着三种不同的主动学习场景： </p>
+<h2 id="2-主动学习的问题-任务场景">2. 主动学习的问题/任务场景</h2>
+<p>标记成本高昂的情况在很多任务下都存在，所以主动学习的潜在应用问题还是比较广泛的。本节，我们会对大部分主动学习涉及到的问题和任务场景进行简要介绍。</p>
+<h3 id="2-1-基础问题场景">2.1 基础问题场景</h3>
+<p>这里我们只讨论最基础的分类和回归问题。在这两类问题下，有着三种不同的主动学习场景：</p>
 <ul>
-<li>Pool-based scenario：此类场景通常提供一个未标记的数据池，主动学习策略在数据池中选取相应样本进行标记。 </li>
-<li>Stream-based scenario：此类场景中，数据以数据流的形式输入，主动学习策略需要确定对当前数据进行标记还是直接用现有模型预测。 </li>
+<li>Pool-based scenario：此类场景通常提供一个未标记的数据池，主动学习策略在数据池中选取相应样本进行标记。</li>
+<li>Stream-based scenario：此类场景中，数据以数据流的形式输入，主动学习策略需要确定对当前数据进行标记还是直接用现有模型预测。</li>
 <li>Query synthesis scenario：此类场景较为少见，一个未标记的数据池通常也被提供，但是主动学习策略并不是在数据池中挑选样本进行查询，而是自行生成新样本进行查询。</li>
 </ul>
 <p>所以我们就有了如下几个子问题：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -367,51 +370,55 @@
 </tr>
 </tbody>
 </table>
-</div>
-<p>其中目前据大多数的基础研究都是基于 pool-based classification，目前大多数的文献分类也是基于此问题而分类的。 此处我们以介绍清楚问题场景为主，具体对于每一个问题的具体方法，请参考：
+<p>其中目前据大多数的基础研究都是基于 pool-based classification，目前大多数的文献分类也是基于此问题而分类的。 此处我们以介绍清楚问题场景为主，具体对于每一个问题的具体方法，请参考：<br>
 <a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/contents/AL_problem.md">Basic AL Problem Settings</a></p>
-<h3 id="2-2-复杂问题场景"><a href="#2-2-复杂问题场景" class="headerlink" title="2.2 复杂问题场景"></a>2.2 复杂问题场景</h3><p>此处的复杂主要是指任务相较于简单的分类回归任务复杂。在机器学习的领域中，有不少衍生问题，包括但不限于多分类问题，多标签问题，多任务问题。作为监督学习问题，这些问题同样可以使用主动学习来缓解标记压力： </p>
+<h3 id="2-2-复杂问题场景">2.2 复杂问题场景</h3>
+<p>此处的复杂主要是指任务相较于简单的分类回归任务复杂。在机器学习的领域中，有不少衍生问题，包括但不限于多分类问题，多标签问题，多任务问题。作为监督学习问题，这些问题同样可以使用主动学习来缓解标记压力：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/contents/MCAL.md">Multi-class active learning</a>: 在分类任务中，每个样本的标签取值可以从多种取值里选取（不小于两种）。 </li>
-<li><a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/contents/MLAL.md">Multi-label active learning</a>: 在分类任务中，每个样本可以同时存在多个标签。 </li>
-<li><a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/contents/MTAL.md">Multi-task active learning</a>: 多个任务需要被同时处理，比如同时进行两个分类任务，或同时进行一个分类和一个回归任务。 </li>
-<li><a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/contents/MDAL.md">Multi-domain active learning</a>: 与多任务学习较为相似，多领域学习则是在不同的领域（数据分布/数据集）上学习相同的任务。 </li>
+<li><a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/contents/MCAL.md">Multi-class active learning</a>: 在分类任务中，每个样本的标签取值可以从多种取值里选取（不小于两种）。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/contents/MLAL.md">Multi-label active learning</a>: 在分类任务中，每个样本可以同时存在多个标签。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/contents/MTAL.md">Multi-task active learning</a>: 多个任务需要被同时处理，比如同时进行两个分类任务，或同时进行一个分类和一个回归任务。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/contents/MDAL.md">Multi-domain active learning</a>: 与多任务学习较为相似，多领域学习则是在不同的领域（数据分布/数据集）上学习相同的任务。</li>
 <li><a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/contents/MVAL.md">Multi-view/modal active learning</a>: 多视角或多模态学习中的样本可能会有不同形式的表征。比如不同角度拍摄的同一个物品，来源于同一视频的音轨和视轨等。</li>
 </ul>
 <p>针对这些问题，主动学习方法一般都会有特定的适配和修改，仅仅使用简单场景上的方法可能不会有较好的表现。</p>
-<h3 id="2-3-与其他-AI-领域结合的问题场景"><a href="#2-3-与其他-AI-领域结合的问题场景" class="headerlink" title="2.3 与其他 AI 领域结合的问题场景"></a>2.3 与其他 AI 领域结合的问题场景</h3><p>由于篇幅限制，主动学习与 AI 结合的领域和工作可以参见以下链接：
+<h3 id="2-3-与其他-AI-领域结合的问题场景">2.3 与其他 AI 领域结合的问题场景</h3>
+<p>由于篇幅限制，主动学习与 AI 结合的领域和工作可以参见以下链接：<br>
 <a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/contents/AL_combinations.md">AL Aids AI</a>。</p>
-<p>相较于之前提到的场景，AI 领域其实有不少更加复杂的问题。这些问题可能不能简单的用分类回归来表述，更多的时候是多种问题的结合。此类问题一般较为细致，定义也相对狭隘。针对这些具体问题，主动学习也有很多结合。 这些问题包括但不限于： </p>
+<p>相较于之前提到的场景，AI 领域其实有不少更加复杂的问题。这些问题可能不能简单的用分类回归来表述，更多的时候是多种问题的结合。此类问题一般较为细致，定义也相对狭隘。针对这些具体问题，主动学习也有很多结合。 这些问题包括但不限于：</p>
 <ul>
-<li>Computer Vision (CV)   <ul>
-<li>Image Segmentation   </li>
-<li>Object Detection </li>
+<li>Computer Vision (CV)
+<ul>
+<li>Image Segmentation</li>
+<li>Object Detection</li>
 </ul>
 </li>
-<li>Natural Language Processing (NLP)   <ul>
-<li>Sentence Classification   </li>
-<li>Named Entity Recognition </li>
+<li>Natural Language Processing (NLP)
+<ul>
+<li>Sentence Classification</li>
+<li>Named Entity Recognition</li>
 </ul>
 </li>
-<li>Domain adaptation/Transfer learning </li>
-<li>Metric learning/Pairwise comparison/Similarity learning </li>
-<li>One/Few/Zero-shot learning - Graph Processing </li>
+<li>Domain adaptation/Transfer learning</li>
+<li>Metric learning/Pairwise comparison/Similarity learning</li>
+<li>One/Few/Zero-shot learning - Graph Processing</li>
 <li>etc.</li>
 </ul>
-<h2 id="3-主动学习的技术角度的分类"><a href="#3-主动学习的技术角度的分类" class="headerlink" title="3. 主动学习的技术角度的分类"></a>3. 主动学习的技术角度的分类</h2><p>在上一节中我们以问题为导向介绍了绝大多数可以使用主动学习来解决的问题，可以说涵盖了大部分最重要的主动学习的相关工作。
-这一节的介绍并不是以问题为导向，而是从技术角度对现有方法进行分类。
-我们选用了两个角度： </p>
+<h2 id="3-主动学习的技术角度的分类">3. 主动学习的技术角度的分类</h2>
+<p>在上一节中我们以问题为导向介绍了绝大多数可以使用主动学习来解决的问题，可以说涵盖了大部分最重要的主动学习的相关工作。<br>
+这一节的介绍并不是以问题为导向，而是从技术角度对现有方法进行分类。<br>
+我们选用了两个角度：</p>
 <ul>
-<li>设计原理角度：希望读者对不同种策略有一定的认识。 </li>
+<li>设计原理角度：希望读者对不同种策略有一定的认识。</li>
 <li>适用模型角度：希望读者可以直接找到适用于自己模型的策略。</li>
 </ul>
-<h3 id="3-1-从设计原理上分类"><a href="#3-1-从设计原理上分类" class="headerlink" title="3.1 从设计原理上分类"></a>3.1 从设计原理上分类</h3><p>这个角度是目前大部分 review/survey 的分类角度。
-由于很多小问题中的相关文献较少，在我们的项目中，我们在对应的问题介绍下直接对相应方法作了简要分类。
-本文中，我们的分类主要作用于最常见和最广泛的 Pool-based Classification 场景。
-绝大多数著名的主动学习工作都是在此场景下进行的。
-同样的，这里我们只简述设计原理，具体的文献列表参见我们项目中的<a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/contents/pb_classification.md">这一章节</a>。
+<h3 id="3-1-从设计原理上分类">3.1 从设计原理上分类</h3>
+<p>这个角度是目前大部分 review/survey 的分类角度。<br>
+由于很多小问题中的相关文献较少，在我们的项目中，我们在对应的问题介绍下直接对相应方法作了简要分类。<br>
+本文中，我们的分类主要作用于最常见和最广泛的 Pool-based Classification 场景。<br>
+绝大多数著名的主动学习工作都是在此场景下进行的。<br>
+同样的，这里我们只简述设计原理，具体的文献列表参见我们项目中的<a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/contents/pb_classification.md">这一章节</a>。<br>
 在这里，我们把主动学习的设计原理（i.e.主动学习对样本的评估方法）分为五大类：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -444,49 +451,53 @@
 <tr>
 <td style="text-align:left">Others</td>
 <td style="text-align:left">有一些工作较难分类到上述的类别中</td>
+<td style="text-align:left"></td>
 </tr>
 </tbody>
 </table>
-</div>
-<p>此处我们也列出这几类方法之下的小类： </p>
+<p>此处我们也列出这几类方法之下的小类：</p>
 <ul>
-<li>Informativeness   <ul>
-<li>Uncertainty-based sampling   </li>
-<li>Disagreement-based sampling </li>
+<li>Informativeness
+<ul>
+<li>Uncertainty-based sampling</li>
+<li>Disagreement-based sampling</li>
 </ul>
 </li>
-<li>Expected Improvements </li>
-<li>Representativeness-impart sampling  <ul>
-<li>Cluster-based sampling  </li>
-<li>Density-based sampling   </li>
-<li>Alignment-based sampling   </li>
-<li>Expected loss on unlabeled data </li>
+<li>Expected Improvements</li>
+<li>Representativeness-impart sampling
+<ul>
+<li>Cluster-based sampling</li>
+<li>Density-based sampling</li>
+<li>Alignment-based sampling</li>
+<li>Expected loss on unlabeled data</li>
 </ul>
 </li>
 <li>Learn to Score</li>
 <li>Others</li>
 </ul>
-<p>此外，批选取的方法（batch active learning）也有众多研究，其与 representativeness-impart sampling 有一定的交叉，具体可以参阅以下链接：
+<p>此外，批选取的方法（batch active learning）也有众多研究，其与 representativeness-impart sampling 有一定的交叉，具体可以参阅以下链接：<br>
 <a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/contents/batch_mode.md">Batch mode</a></p>
-<h3 id="3-2-从适用模型上分类"><a href="#3-2-从适用模型上分类" class="headerlink" title="3.2 从适用模型上分类"></a>3.2 从适用模型上分类</h3><p>很多种主动学习选取策略都标榜自己是全模型通用（model-free）的，但是实际使用中，他们可能仅仅适用于一个或一类模型（model-dependent）。 
-此处我们总结了一些 model-dependent 的策略在特定模型上的工作。 
-由于业界的模型实在是过于多样，此处我们仅归纳了几类常用模型，且工作并不一定很全，之后这个章节也会更新。 
+<h3 id="3-2-从适用模型上分类">3.2 从适用模型上分类</h3>
+<p>很多种主动学习选取策略都标榜自己是全模型通用（model-free）的，但是实际使用中，他们可能仅仅适用于一个或一类模型（model-dependent）。<br>
+此处我们总结了一些 model-dependent 的策略在特定模型上的工作。<br>
+由于业界的模型实在是过于多样，此处我们仅归纳了几类常用模型，且工作并不一定很全，之后这个章节也会更新。<br>
 具体的文献列表请查阅我们项目中的<a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/contents/AL_technique_models.md">这一章节</a>。</p>
-<p>这里我们仅列出一些我们总结到的模型： </p>
+<p>这里我们仅列出一些我们总结到的模型：</p>
 <ul>
-<li>SVM/LR </li>
-<li>Bayesian/Probabilistic Models </li>
-<li>Gaussian Progress </li>
-<li>Decision Trees </li>
+<li>SVM/LR</li>
+<li>Bayesian/Probabilistic Models</li>
+<li>Gaussian Progress</li>
+<li>Decision Trees</li>
 <li>Neural Network</li>
 </ul>
-<p>此外，如何设计适用于神经网络的主动学习策略和框架也是一个比较重要的问题。我们也对相关的深度主动学习进行了调研，详情请查阅以下链接：
+<p>此外，如何设计适用于神经网络的主动学习策略和框架也是一个比较重要的问题。我们也对相关的深度主动学习进行了调研，详情请查阅以下链接：<br>
 <a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/contents/deep_AL.md">AL with Models</a></p>
-<h2 id="4-将-AL-应用时的实际考虑"><a href="#4-将-AL-应用时的实际考虑" class="headerlink" title="4. 将 AL 应用时的实际考虑"></a>4. 将 AL 应用时的实际考虑</h2><p>我们之前讨论的是主动学习可以应用于什么问题场景，本节我们讨论的是实际应用主动学习的时候可能会遇到什么技术问题。 
-具体的内容列表请查阅我们项目中的这一章节：
+<h2 id="4-将-AL-应用时的实际考虑">4. 将 AL 应用时的实际考虑</h2>
+<p>我们之前讨论的是主动学习可以应用于什么问题场景，本节我们讨论的是实际应用主动学习的时候可能会遇到什么技术问题。<br>
+具体的内容列表请查阅我们项目中的这一章节：<br>
 <a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/contents/practical_considerations.md">Practical Considerations</a></p>
-<p>简要来说，大部分的主动学习工作对数据，标注专家，问题规模等都是有着一般性的假设。
-比如“在一个几千样本上的平衡分类问题中，可以通过询问一个准确率百分之百的标注专家来获得标注数据”。
+<p>简要来说，大部分的主动学习工作对数据，标注专家，问题规模等都是有着一般性的假设。<br>
+比如“在一个几千样本上的平衡分类问题中，可以通过询问一个准确率百分之百的标注专家来获得标注数据”。<br>
 但是这些假设在实际运用中可能并不总能保真，所以本节我们纳入了很多对实际问题的考虑。</p>
 <p>具体的考虑如下：</p>
 <ul>
@@ -501,29 +512,33 @@
 <li>More assumptions</li>
 </ul>
 <p>可以说在这些问题上的研究拉近了主动学习到实际运用的距离。</p>
-<h2 id="5-AL-的实际应用"><a href="#5-AL-的实际应用" class="headerlink" title="5. AL 的实际应用"></a>5. AL 的实际应用</h2><p>主动学习已经是一个较为成熟的技术，已经有很多研究工作将其应用于不同学科和领域。 这里我们将其分为两部分：科学研究应用和工业界应用。 具体的文献列表请查阅以下链接： 
+<h2 id="5-AL-的实际应用">5. AL 的实际应用</h2>
+<p>主动学习已经是一个较为成熟的技术，已经有很多研究工作将其应用于不同学科和领域。 这里我们将其分为两部分：科学研究应用和工业界应用。 具体的文献列表请查阅以下链接：<br>
 <a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/contents/AL_applications.md">AL Applications</a></p>
-<h3 id="5-1-科学研究应用"><a href="#5-1-科学研究应用" class="headerlink" title="5.1 科学研究应用"></a>5.1 科学研究应用</h3><p>目前的工作主要聚焦于以下几个学科： </p>
+<h3 id="5-1-科学研究应用">5.1 科学研究应用</h3>
+<p>目前的工作主要聚焦于以下几个学科：</p>
 <ul>
-<li>Biology </li>
-<li>Materials </li>
-<li>Astronomy </li>
+<li>Biology</li>
+<li>Materials</li>
+<li>Astronomy</li>
 <li>Chemistry</li>
-<li>Math and Statistics </li>
-<li>Geology </li>
+<li>Math and Statistics</li>
+<li>Geology</li>
 <li>Experiment Design / Experimental Condition Selection</li>
 </ul>
-<h3 id="5-2-工业界应用"><a href="#5-2-工业界应用" class="headerlink" title="5.2 工业界应用"></a>5.2 工业界应用</h3><p>工业界应用相对较广泛，此处列举几个较为常用的领域，其他内容请参阅我们的项目。 </p>
+<h3 id="5-2-工业界应用">5.2 工业界应用</h3>
+<p>工业界应用相对较广泛，此处列举几个较为常用的领域，其他内容请参阅我们的项目。</p>
 <ul>
 <li>Remote Sensing</li>
-<li>Medical Research  </li>
-<li>Drug Discovery </li>
-<li>Labeling System </li>
-<li>Spam Detection </li>
+<li>Medical Research</li>
+<li>Drug Discovery</li>
+<li>Labeling System</li>
+<li>Spam Detection</li>
 <li>etc.</li>
 </ul>
-<h2 id="6-相关资料"><a href="#6-相关资料" class="headerlink" title="6. 相关资料"></a>6. 相关资料</h2><h3 id="6-1-软件包"><a href="#6-1-软件包" class="headerlink" title="6.1 软件包"></a>6.1 软件包</h3><p>在github上已经有不少基于Python的主动学习软件包： </p>
-<div class="table-container">
+<h2 id="6-相关资料">6. 相关资料</h2>
+<h3 id="6-1-软件包">6.1 软件包</h3>
+<p>在github上已经有不少基于Python的主动学习软件包：</p>
 <table>
 <thead>
 <tr>
@@ -608,14 +623,15 @@
 </tr>
 </tbody>
 </table>
-</div>
-<h3 id="6-2-Tutorials"><a href="#6-2-Tutorials" class="headerlink" title="6.2 Tutorials"></a>6.2 Tutorials</h3><p>之前也有一些关于主动学习的研讨班内容： </p>
+<h3 id="6-2-Tutorials">6.2 Tutorials</h3>
+<p>之前也有一些关于主动学习的研讨班内容：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/Azure/active-learning-workshop">active-learning-workshop</a>: KDD 2018 Hands-on Tutorial: Active learning and transfer learning at scale with R and Python </li>
-<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=_Ql5vfOPxZU">Active Learning from Theory to Practice</a>: ICML 2019 Tutorial. </li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Azure/active-learning-workshop">active-learning-workshop</a>: KDD 2018 Hands-on Tutorial: Active learning and transfer learning at scale with R and Python</li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=_Ql5vfOPxZU">Active Learning from Theory to Practice</a>: ICML 2019 Tutorial.</li>
 <li><a target="_blank" rel="noopener" href="https://jacobgil.github.io/deeplearning/activelearning">Overview of Active Learning for Deep Learning</a>: Jacob Gildenblat.</li>
 </ul>
-<h3 id="6-3-领域内研究学者"><a href="#6-3-领域内研究学者" class="headerlink" title="6.3 领域内研究学者"></a>6.3 领域内研究学者</h3><p>参见我们的<a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning#8-groupsscholars">项目</a>，排名不分先后（有待补充） </p>
+<h3 id="6-3-领域内研究学者">6.3 领域内研究学者</h3>
+<p>参见我们的<a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning#8-groupsscholars">项目</a>，排名不分先后（有待补充）</p>
 
                 
               </div>
@@ -708,9 +724,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/reading-note/brief-world-history/" title="《世界简史》读书笔记">
+                      <a href="/machine-learning/awesome-active-learning/" title="Awesome Active Learning">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">《世界简史》读书笔记</span>
+                        <span class="hidden-mobile">Awesome Active Learning</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -785,6 +801,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -978,6 +1000,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

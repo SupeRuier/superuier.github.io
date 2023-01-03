@@ -292,7 +292,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2021年8月2日 晚上
+                    本文最后更新于：1 年前
                   
                 
               </p>
@@ -303,27 +303,39 @@
                 <!-- omit in toc -->
 <p>由于总是忘记一些 loss 的常用场景和区别，此处记录一些常用的神经网络 loss。</p>
 <span id="more"></span>
-<p>Pytorch <a target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/nn.html#loss-functions">官方文档</a>中有十余种 loss 函数，其中常用的主要是<code>CrossEntropyLoss</code>、<code>NLLLoss</code>、<code>MSELoss</code>等。
+<p>Pytorch <a target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/nn.html#loss-functions">官方文档</a>中有十余种 loss 函数，其中常用的主要是<code>CrossEntropyLoss</code>、<code>NLLLoss</code>、<code>MSELoss</code>等。<br>
 这里仅先对这些常用 loss 展开。</p>
-<h2 id="NLLLoss"><a href="#NLLLoss" class="headerlink" title="NLLLoss"></a>NLLLoss</h2><p>负对数损失，常用于分类任务。
-值得注意的是，这里的输入 <code>X</code> 需要已经包含对于相应类别的 log-probability。
+<h2 id="NLLLoss">NLLLoss</h2>
+<p>负对数损失，常用于分类任务。<br>
+值得注意的是，这里的输入 <code>X</code> 需要已经包含对于相应类别的 log-probability。<br>
 <strong>使用这个 loss 的时候需要在模型最后加入 <code>LogSoftmax</code> 层。</strong></p>
-<script type="math/tex; mode=display">
-l(X,y) = L = \{l_1,...,l_N\}^\top, \\
-l_n = -w_{y_n}X_{n,y_n},</script><p>其中 <code>X</code> 是输入，<code>y</code> 是目标，<code>w</code> 是类别的权重，<code>N</code> 是 batch size。</p>
+<p>$$<br>
+l(X,y) = L = {l_1,…,l_N}^\top, \<br>
+l_n = -w_{y_n}X_{n,y_n},<br>
+$$</p>
+<p>其中 <code>X</code> 是输入，<code>y</code> 是目标，<code>w</code> 是类别的权重，<code>N</code> 是 batch size。</p>
 <p>具体的计算例子可以看<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_22210253/article/details/85229988">这篇文章</a>。</p>
-<h2 id="CrossEntropyLoss"><a href="#CrossEntropyLoss" class="headerlink" title="CrossEntropyLoss"></a>CrossEntropyLoss</h2><p>交叉墒损失，同样常用于分类任务。
+<h2 id="CrossEntropyLoss">CrossEntropyLoss</h2>
+<p>交叉墒损失，同样常用于分类任务。<br>
 这个标准结合了 LogSoftmax 和 NLLLoss 两个部分。</p>
 <p>首相介绍一下 LogSoftmax，其包含 log 函数和 softmax 函数。</p>
-<script type="math/tex; mode=display">
-\operatorname{LogSoftmax}\left(x_{i}\right)=\log \left(\frac{\exp \left(x_{i}\right)}{\sum_{j} \exp \left(x_{j}\right)}\right)</script><p>对于交叉墒损失，值得注意的是，这里的输入 <code>X</code> 需要已经包含对每一个类，未经处理的 unformalized score。
+<p>$$<br>
+\operatorname{LogSoftmax}\left(x_{i}\right)=\log \left(\frac{\exp \left(x_{i}\right)}{\sum_{j} \exp \left(x_{j}\right)}\right)<br>
+$$</p>
+<p>对于交叉墒损失，值得注意的是，这里的输入 <code>X</code> 需要已经包含对每一个类，未经处理的 unformalized score。<br>
 <strong>换句话说，使用这个 loss 的时候不需要在模型最后加入 <code>Softmax</code> 层。</strong></p>
-<script type="math/tex; mode=display">
-\operatorname{loss}(x, \text { class })=-\log \left(\frac{\exp (x[\text { class }])}{\sum_{j} \exp (x[j])}\right)=-x[\text { class }]+\log \left(\sum_{j} \exp (x[j])\right)</script><p>对于加权的情况，</p>
-<script type="math/tex; mode=display">
-\operatorname{loss}(x, \text { class })=\text { weight }[\text { class }]\left(-x[\text { class }]+\log \left(\sum_{j} \exp (x[j])\right)\right)</script><p>最终的 loss 需要加权平均得到，</p>
-<script type="math/tex; mode=display">
-\operatorname{loss}(x, \text { class })=\text { weight }[\text { class }]\left(-x[\text { class }]+\log \left(\sum_{j} \exp (x[j])\right)\right)</script><p>其中 <code>x</code> 是输入，<code>class</code> 是目标类，<code>weight</code> 是类别的权重，<code>N</code> 是 batch size。</p>
+<p>$$<br>
+\operatorname{loss}(x, \text { class })=-\log \left(\frac{\exp (x[\text { class }])}{\sum_{j} \exp (x[j])}\right)=-x[\text { class }]+\log \left(\sum_{j} \exp (x[j])\right)<br>
+$$</p>
+<p>对于加权的情况，</p>
+<p>$$<br>
+\operatorname{loss}(x, \text { class })=\text { weight }[\text { class }]\left(-x[\text { class }]+\log \left(\sum_{j} \exp (x[j])\right)\right)<br>
+$$</p>
+<p>最终的 loss 需要加权平均得到，</p>
+<p>$$<br>
+\operatorname{loss}(x, \text { class })=\text { weight }[\text { class }]\left(-x[\text { class }]+\log \left(\sum_{j} \exp (x[j])\right)\right)<br>
+$$</p>
+<p>其中 <code>x</code> 是输入，<code>class</code> 是目标类，<code>weight</code> 是类别的权重，<code>N</code> 是 batch size。</p>
 
                 
               </div>
@@ -502,6 +514,12 @@ l_n = -w_{y_n}X_{n,y_n},</script><p>其中 <code>X</code> 是输入，<code>y</c
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -695,6 +713,49 @@ l_n = -w_{y_n}X_{n,y_n},</script><p>其中 <code>X</code> 是输入，<code>y</c
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

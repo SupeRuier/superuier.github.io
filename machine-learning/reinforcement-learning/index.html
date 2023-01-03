@@ -218,7 +218,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/images/default.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -247,7 +247,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.8k 字
+          7.9k 字
         
       </span>
     
@@ -304,67 +304,83 @@
                 <!-- omit in toc -->
 <p>总是会看到强化学习及模仿学习的内容，每次看完都会忘记，此处把之前的小笔记总结一下。</p>
 <span id="more"></span>
-<h1 id="基本术语-Terminologies"><a href="#基本术语-Terminologies" class="headerlink" title="基本术语 Terminologies"></a>基本术语 Terminologies</h1><p>以下术语在强化学习和模仿学习中都经常见到。</p>
+<h1>基本术语 Terminologies</h1>
+<p>以下术语在强化学习和模仿学习中都经常见到。</p>
 <ul>
 <li>agent: the intelligent individual</li>
-<li>environment: The agent is acting in an environment.  </li>
+<li>environment: The agent is acting in an environment.</li>
 <li>state: Current condition. The agent can stay in one of many states of the environment</li>
 <li>action: The agent chooses to take one of many actions under the certain states.</li>
 <li>reward: Once an action is taken, the environment delivers a reward as feedback.</li>
 <li>policy: Agents’ behavior.(s =&gt; a) The agent’s policy π provides the guideline on what is the optimal action to take in a certain state with the goal to maximize the total rewards.</li>
-<li>value: (s =&gt; value) Each state is associated with a value function V(s) predicting the expected amount of future rewards we are able to receive in this state by acting the corresponding policy. <ul>
+<li>value: (s =&gt; value) Each state is associated with a value function V(s) predicting the expected amount of future rewards we are able to receive in this state by acting the corresponding policy.
+<ul>
 <li>state-value of a state s is the expected return if we are in this state at time t.</li>
 <li>action-value (“Q-value”; Q as “Quality” I believe?) of a state-action pair is expected return if we are in this state at time t and take action a.</li>
 <li>A-value: The difference between action-value and state-value is the action advantage function (“A-value”):</li>
 </ul>
 </li>
-<li>model: Transition and reward. (s,a =&gt; s’ &amp; r) How the environment reacts to certain actions (we may or may not know). </li>
+<li>model: Transition and reward. (s,a =&gt; s’ &amp; r) How the environment reacts to certain actions (we may or may not know).</li>
 </ul>
-<h1 id="强化学习"><a href="#强化学习" class="headerlink" title="强化学习"></a>强化学习</h1><h2 id="1-马尔科夫决策过程"><a href="#1-马尔科夫决策过程" class="headerlink" title="1. 马尔科夫决策过程"></a>1. 马尔科夫决策过程</h2><p>In more formal terms, almost all the <strong>RL problems</strong> can be framed as <strong>Markov Decision Processes (MDPs)</strong>. 
-All states in MDP has “Markov” property, referring to the fact that the future only depends on the current state, not the history.
+<h1>强化学习</h1>
+<h2 id="1-马尔科夫决策过程">1. 马尔科夫决策过程</h2>
+<p>In more formal terms, almost all the <strong>RL problems</strong> can be framed as <strong>Markov Decision Processes (MDPs)</strong>.<br>
+All states in MDP has “Markov” property, referring to the fact that the future only depends on the current state, not the history.<br>
 The goal is to react on each state to <strong>maximize the total reward</strong>.</p>
 <div style="width:70%;margin:auto"><img src="/machine-learning/reinforcement-learning/MDP.png" srcset="/img/loading.gif" lazyload class="" title="MDP"></div>
-
-<p>如果所有 MDP 成分都已知，我们便可以较容易的训练出来一个 agent。
+<p>如果所有 MDP 成分都已知，我们便可以较容易的训练出来一个 agent。<br>
 但是现实情况是很多时候，我们的 agent 对 transition function $P$ 和 reward function $R$ 一无所知，所有的信息都来自于同环境的交互。</p>
-<h3 id="1-1-强化学习方法分类"><a href="#1-1-强化学习方法分类" class="headerlink" title="1.1. 强化学习方法分类"></a>1.1. 强化学习方法分类</h3><ol>
-<li>以是否对环境建模分类:<ul>
-<li>Doesn’t model the environment:<ul>
+<h3 id="1-1-强化学习方法分类">1.1. 强化学习方法分类</h3>
+<ol>
+<li>以是否对环境建模分类:
+<ul>
+<li>Doesn’t model the environment:
+<ul>
 <li>Model-free RL: Doesn’t need to know the transition function (“model”), neither the real function nor a learned function.</li>
 </ul>
 </li>
-<li>Model the environment:<ul>
+<li>Model the environment:
+<ul>
 <li>Model-based RL: Need to know the transition function (“model”), either the real function or a learned function.</li>
 <li>Inverse reinforcement learning: Need to learn a value function for a state. (Imitation learning)</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>以行动策略和评估策略是否相同分类：<ul>
+<li>以行动策略和评估策略是否相同分类：
+<ul>
 <li>On-policy: Use the deterministic outcomes or samples from the target policy to train the algorithm. 行动策略和评估策略相同</li>
 <li>Off-policy: Training on a distribution of transitions or episodes produced by a different behavior policy rather than that produced by the target policy. 行动策略和评估策略不同</li>
 </ul>
 </li>
 </ol>
-<h3 id="1-2-对价值函数进行评估和分解"><a href="#1-2-对价值函数进行评估和分解" class="headerlink" title="1.2. 对价值函数进行评估和分解"></a>1.2. 对价值函数进行评估和分解</h3><p>强化学习的目标是可以使最终价值最大化，所以需要对其进行评估。</p>
+<h3 id="1-2-对价值函数进行评估和分解">1.2. 对价值函数进行评估和分解</h3>
+<p>强化学习的目标是可以使最终价值最大化，所以需要对其进行评估。</p>
 <p>Bellman equations refer to a set of equations that decompose the value function into the immediate reward plus the discounted future values.</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-V_{\pi}(s) &= \sum_{a \in \mathcal{A}} \pi(a \vert s) Q_{\pi}(s, a) \\
-Q_{\pi}(s, a) &= R(s, a) + \gamma \sum_{s' \in \mathcal{S}} P_{ss'}^a V_{\pi} (s') \\
-V_{\pi}(s) &= \sum_{a \in \mathcal{A}} \pi(a \vert s) \big( R(s, a) + \gamma \sum_{s' \in \mathcal{S}} P_{ss'}^a V_{\pi} (s') \big) \\
-Q_{\pi}(s, a) &= R(s, a) + \gamma \sum_{s' \in \mathcal{S}} P_{ss'}^a \sum_{a' \in \mathcal{A}} \pi(a' \vert s') Q_{\pi} (s', a')
-\end{aligned}</script><h2 id="2-Common-Approaches"><a href="#2-Common-Approaches" class="headerlink" title="2. Common Approaches"></a>2. Common Approaches</h2><div style="width:80%;margin:auto"><img src="/machine-learning/reinforcement-learning/taxonomy.png" srcset="/img/loading.gif" lazyload class="" title="Taxonomy"></div>
-
-<h3 id="2-1-Dynamic-Programming"><a href="#2-1-Dynamic-Programming" class="headerlink" title="2.1. Dynamic Programming"></a>2.1. Dynamic Programming</h3><p>When the model is fully known, following Bellman equations, we can use Dynamic Programming (DP) to iteratively evaluate value functions and improve policy. The policy would greedy based on the Q-value. Iteratively update the state value and the Q-value.</p>
+<p>$$<br>
+\begin{aligned}<br>
+V_{\pi}(s) &amp;= \sum_{a \in \mathcal{A}} \pi(a \vert s) Q_{\pi}(s, a) \<br>
+Q_{\pi}(s, a) &amp;= R(s, a) + \gamma \sum_{s’ \in \mathcal{S}} P_{ss’}^a V_{\pi} (s’) \<br>
+V_{\pi}(s) &amp;= \sum_{a \in \mathcal{A}} \pi(a \vert s) \big( R(s, a) + \gamma \sum_{s’ \in \mathcal{S}} P_{ss’}^a V_{\pi} (s’) \big) \<br>
+Q_{\pi}(s, a) &amp;= R(s, a) + \gamma \sum_{s’ \in \mathcal{S}} P_{ss’}^a \sum_{a’ \in \mathcal{A}} \pi(a’ \vert s’) Q_{\pi} (s’, a’)<br>
+\end{aligned}<br>
+$$</p>
+<h2 id="2-Common-Approaches">2. Common Approaches</h2>
+<div style="width:80%;margin:auto"><img src="/machine-learning/reinforcement-learning/taxonomy.png" srcset="/img/loading.gif" lazyload class="" title="Taxonomy"></div>
+<h3 id="2-1-Dynamic-Programming">2.1. Dynamic Programming</h3>
+<p>When the model is fully known, following Bellman equations, we can use Dynamic Programming (DP) to iteratively evaluate value functions and improve policy. The policy would greedy based on the Q-value. Iteratively update the state value and the Q-value.</p>
 <p>Generalized Policy Iteration (GPI) adaptive dynamic process</p>
-<script type="math/tex; mode=display">
-\pi_0 \xrightarrow[]{\text{evaluation}} V_{\pi_0} \xrightarrow[]{\text{improve}}
-\pi_1 \xrightarrow[]{\text{evaluation}} V_{\pi_1} \xrightarrow[]{\text{improve}}
-\pi_2 \xrightarrow[]{\text{evaluation}} \dots \xrightarrow[]{\text{improve}}
-\pi_* \xrightarrow[]{\text{evaluation}} V_*</script><h3 id="2-2-Monte-Carlo-Methods"><a href="#2-2-Monte-Carlo-Methods" class="headerlink" title="2.2. Monte-Carlo Methods"></a>2.2. Monte-Carlo Methods</h3><p>Model-free method.
+<p>$$<br>
+\pi_0 \xrightarrow[]{\text{evaluation}} V_{\pi_0} \xrightarrow[]{\text{improve}}<br>
+\pi_1 \xrightarrow[]{\text{evaluation}} V_{\pi_1} \xrightarrow[]{\text{improve}}<br>
+\pi_2 \xrightarrow[]{\text{evaluation}} \dots \xrightarrow[]{\text{improve}}<br>
+\pi_* \xrightarrow[]{\text{evaluation}} V_*<br>
+$$</p>
+<h3 id="2-2-Monte-Carlo-Methods">2.2. Monte-Carlo Methods</h3>
+<p>Model-free method.<br>
 It learns from episodes of raw experience without modeling the environmental dynamics and computes the observed mean return as an approximation of the expected return</p>
-<h3 id="2-3-Temporal-Difference-Learning"><a href="#2-3-Temporal-Difference-Learning" class="headerlink" title="2.3. Temporal-Difference Learning"></a>2.3. Temporal-Difference Learning</h3><p>TD Learning is model-free and learns from episodes of experience. 
+<h3 id="2-3-Temporal-Difference-Learning">2.3. Temporal-Difference Learning</h3>
+<p>TD Learning is model-free and learns from episodes of experience.<br>
 However, TD learning can learn from <strong>incomplete</strong> episodes and hence we don’t need to track the episode up to termination.</p>
 <p>主要思想是将效用估计朝着理想均衡方向调整:</p>
 <ul>
@@ -372,29 +388,35 @@ However, TD learning can learn from <strong>incomplete</strong> episodes and hen
 <li>ADP调整一个状态与可能出现的的后继状态相一致</li>
 <li>TD可视为对ADP的一个粗略有效的一阶近似</li>
 </ul>
-<script type="math/tex; mode=display">
-\begin{aligned}
-V(S_t) &\leftarrow (1- \alpha) V(S_t) + \alpha G_t \\
-V(S_t) &\leftarrow V(S_t) + \alpha (G_t - V(S_t)) \\
-V(S_t) &\leftarrow V(S_t) + \alpha (R_{t+1} + \gamma V(S_{t+1}) - V(S_t)) \\
-Q(S_t, A_t) &\leftarrow Q(S_t, A_t) + \alpha (R_{t+1} + \gamma Q(S_{t+1}, A_{t+1}) - Q(S_t, A_t))
-\end{aligned}</script><p>To learn optimal policy:</p>
+<p>$$<br>
+\begin{aligned}<br>
+V(S_t) &amp;\leftarrow (1- \alpha) V(S_t) + \alpha G_t \<br>
+V(S_t) &amp;\leftarrow V(S_t) + \alpha (G_t - V(S_t)) \<br>
+V(S_t) &amp;\leftarrow V(S_t) + \alpha (R_{t+1} + \gamma V(S_{t+1}) - V(S_t)) \<br>
+Q(S_t, A_t) &amp;\leftarrow Q(S_t, A_t) + \alpha (R_{t+1} + \gamma Q(S_{t+1}, A_{t+1}) - Q(S_t, A_t))<br>
+\end{aligned}<br>
+$$</p>
+<p>To learn optimal policy:</p>
 <ul>
-<li>SARSA: On-Policy TD control<ul>
+<li>SARSA: On-Policy TD control
+<ul>
 <li>“SARSA” refers to the procedure for updating the Q-value.</li>
 <li>Same routine of GPI.</li>
 <li>In each step of SARSA, we need to choose the next action according to the current policy.</li>
 </ul>
 </li>
-<li>Q-Learning: Off-policy TD control<ul>
+<li>Q-Learning: Off-policy TD control
+<ul>
 <li>The key difference from SARSA is that Q-learning does not follow the current policy to pick the second action (off-policy).</li>
 <li>Q-learning may suffer from instability and divergence when combined with an nonlinear Q-value function approximation</li>
 </ul>
 </li>
-<li>Deep Q-Network<ul>
-<li>It quickly becomes computationally infeasible to memorize Q-table when the state and action space are large. </li>
+<li>Deep Q-Network
+<ul>
+<li>It quickly becomes computationally infeasible to memorize Q-table when the state and action space are large.</li>
 <li>Use functions (i.e. a machine learning model) to approximate Q values and this is called function approximation.</li>
-<li>greatly improve and stabilize the training procedure of Q-learning by two innovative mechanisms:<ul>
+<li>greatly improve and stabilize the training procedure of Q-learning by two innovative mechanisms:
+<ul>
 <li>Experience Replay: improves data efficiency, removes correlations in the observation sequences, and smooths over changes in the data distribution.</li>
 <li>Periodically Updated Target: only periodically updated, overcomes the short-term oscillations</li>
 </ul>
@@ -402,31 +424,35 @@ Q(S_t, A_t) &\leftarrow Q(S_t, A_t) + \alpha (R_{t+1} + \gamma Q(S_{t+1}, A_{t+1
 </ul>
 </li>
 </ul>
-<h3 id="2-4-Combining-TD-and-MC-Learning"><a href="#2-4-Combining-TD-and-MC-Learning" class="headerlink" title="2.4. Combining TD and MC Learning"></a>2.4. Combining TD and MC Learning</h3><p>In TD learning, we only trace one step further down the action chain when calculating the TD target. One can easily extend it to take multiple steps to estimate the return.</p>
+<h3 id="2-4-Combining-TD-and-MC-Learning">2.4. Combining TD and MC Learning</h3>
+<p>In TD learning, we only trace one step further down the action chain when calculating the TD target. One can easily extend it to take multiple steps to estimate the return.</p>
 <div style="width:90%;margin:auto"><img src="/machine-learning/reinforcement-learning/TD_MC_DP_backups.png" srcset="/img/loading.gif" lazyload class=""></div>
-
-<h3 id="2-5-Policy-Gradient"><a href="#2-5-Policy-Gradient" class="headerlink" title="2.5. Policy Gradient"></a>2.5. Policy Gradient</h3><p>All the methods we have introduced above aim to learn the state/action value function and then to select actions accordingly. Policy Gradient methods instead learn the policy directly with a parameterized function.</p>
+<h3 id="2-5-Policy-Gradient">2.5. Policy Gradient</h3>
+<p>All the methods we have introduced above aim to learn the state/action value function and then to select actions accordingly. Policy Gradient methods instead learn the policy directly with a parameterized function.</p>
 <ul>
 <li>Measure the quality of a policy with the policy score function.</li>
 <li>Use policy gradient ascent to find the best parameter that improves the policy.</li>
 </ul>
-<h3 id="2-6-Asynchronous-Advantage-Actor-Critic-A3C"><a href="#2-6-Asynchronous-Advantage-Actor-Critic-A3C" class="headerlink" title="2.6. Asynchronous Advantage Actor-Critic (A3C)"></a>2.6. Asynchronous Advantage Actor-Critic (A3C)</h3><ul>
+<h3 id="2-6-Asynchronous-Advantage-Actor-Critic-A3C">2.6. Asynchronous Advantage Actor-Critic (A3C)</h3>
+<ul>
 <li>Asynchronous: Several agents are trained in it’s own copy of the environment and the model form these agent’s are gathered in a master agent. The reason behind this idea, is that the experience of each agent is independent of the experience of the others. In this way the overall experience available for training becomes more diverse.</li>
 <li>Advantage: Similarly to PG where the update rule used the dicounted returns from a set of experiences in order to tell the agent which actions were “good” or “bad”.</li>
 <li>Actor-critic: combines the benefits of both approaches from policy-iteration method as PG and value-iteration method as Q-learning (See below). The network will estimate both a value function V(s) (how good a certain state is to be in) and a policy π(s). Agent uses the value estimate (the critic) to update the policy (the actor) more intelligently than traditional policy gradient methods.</li>
 </ul>
 <div style="width:70%;margin:auto"><img src="/machine-learning/reinforcement-learning/a3c.png" srcset="/img/loading.gif" lazyload class=""></div>
-
-<h2 id="3-Known-Problems"><a href="#3-Known-Problems" class="headerlink" title="3. Known Problems"></a>3. Known Problems</h2><ul>
+<h2 id="3-Known-Problems">3. Known Problems</h2>
+<ul>
 <li>Exploration-Exploitation Dilemma</li>
 <li>Deadly Triad Issue: off-policy, nonlinear function approximation, and bootstrapping are combined in one RL algorithm, the training could be unstable and hard to converge.</li>
 </ul>
-<h1 id="模仿学习"><a href="#模仿学习" class="headerlink" title="模仿学习"></a>模仿学习</h1><h2 id="1-背景"><a href="#1-背景" class="headerlink" title="1. 背景"></a>1. 背景</h2><p>Background:</p>
+<h1>模仿学习</h1>
+<h2 id="1-背景">1. 背景</h2>
+<p>Background:</p>
 <ul>
-<li>Given: demonstrations or demonstrator </li>
+<li>Given: demonstrations or demonstrator</li>
 <li>Goal: train a policy to mimic demonstrations</li>
 </ul>
-<p>Intuition: </p>
+<p>Intuition:</p>
 <ul>
 <li>人们并不总是知道执行某项任务所获得的报酬</li>
 <li>但是人们可能会知道“做什么是正确的事情（最佳策略）</li>
@@ -435,20 +461,21 @@ Q(S_t, A_t) &\leftarrow Q(S_t, A_t) + \alpha (R_{t+1} + \gamma Q(S_{t+1}, A_{t+1
 <ul>
 <li>Produce trajectory $\mathcal{T}=(s_0,a_0,s_1,a_1,…)$</li>
 </ul>
-<h2 id="2-模仿学习分类"><a href="#2-模仿学习分类" class="headerlink" title="2. 模仿学习分类"></a>2. 模仿学习分类</h2><ul>
-<li>Behavior cloning </li>
+<h2 id="2-模仿学习分类">2. 模仿学习分类</h2>
+<ul>
+<li>Behavior cloning</li>
 <li>Direct policy learning (multiple step BC)</li>
 <li>Inverse reinforcement learning (assume learning R is statistically easier)</li>
 </ul>
 <div style="width:70%;margin:auto"><img src="/machine-learning/reinforcement-learning/IL_types_1.png" srcset="/img/loading.gif" lazyload class="" title="Imitation learning types 1"></div>
 <div style="width:70%;margin:auto"><img src="/machine-learning/reinforcement-learning/IL_types_2.png" srcset="/img/loading.gif" lazyload class="" title="Imitation learning types 2"></div>
-
-<h3 id="2-1-Behavioral-Cloning-simplest-Imitation-Learning-setting"><a href="#2-1-Behavioral-Cloning-simplest-Imitation-Learning-setting" class="headerlink" title="2.1. Behavioral Cloning (simplest Imitation Learning setting)"></a>2.1. Behavioral Cloning (simplest Imitation Learning setting)</h3><p>Treat experts’ states-actions pairs i.i.d and as training example use supervised learning (from state to action).
+<h3 id="2-1-Behavioral-Cloning-simplest-Imitation-Learning-setting">2.1. Behavioral Cloning (simplest Imitation Learning setting)</h3>
+<p>Treat experts’ states-actions pairs i.i.d and as training example use supervised learning (from state to action).<br>
 Distribution provided exogenously.</p>
 <p>When to use BC?</p>
 <div style="width:70%;margin:auto"><img src="/machine-learning/reinforcement-learning/BC.png" srcset="/img/loading.gif" lazyload class="" title="BC"></div>
-
-<h3 id="2-2-Direct-Policy-Learning"><a href="#2-2-Direct-Policy-Learning" class="headerlink" title="2.2. Direct Policy Learning"></a>2.2. Direct Policy Learning</h3><p>Learning reduction: Reduce “harder” learning problem to “easier” one</p>
+<h3 id="2-2-Direct-Policy-Learning">2.2. Direct Policy Learning</h3>
+<p>Learning reduction: Reduce “harder” learning problem to “easier” one</p>
 <p>Idea:</p>
 <ul>
 <li>Construct a sequence of distributions or sequence of supervised learning problems.</li>
@@ -456,18 +483,17 @@ Distribution provided exogenously.</p>
 </ul>
 <div style="width:70%;margin:auto"><img src="/machine-learning/reinforcement-learning/DPL_example.png" srcset="/img/loading.gif" lazyload class="" title="DPL_example"></div>
 <div style="width:70%;margin:auto"><img src="/machine-learning/reinforcement-learning/IL_sequential.png" srcset="/img/loading.gif" lazyload class="" title="Sequential process"></div>
-
-<h3 id="2-3-Inverse-reinforcement-learning"><a href="#2-3-Inverse-reinforcement-learning" class="headerlink" title="2.3. Inverse reinforcement learning"></a>2.3. Inverse reinforcement learning</h3><p>Inverse RL指我们需要对环境的reward进行建模。
+<h3 id="2-3-Inverse-reinforcement-learning">2.3. Inverse reinforcement learning</h3>
+<p>Inverse RL指我们需要对环境的reward进行建模。<br>
 RL与IRL的对比如下图所示：</p>
 <div style="width:70%;margin:auto"><img src="/machine-learning/reinforcement-learning/RL_IRL.png" srcset="/img/loading.gif" lazyload class="" title="RL-IRL"></div>
-
-<p>In a traditional RL setting, the goal is to learn a decision process to produce behavior that maximizes some predefined reward function. 
-Inverse reinforcement learning (IRL), flips the problem and instead attempts to extract the reward function from the observed behavior of an agent.
+<p>In a traditional RL setting, the goal is to learn a decision process to produce behavior that maximizes some predefined reward function.<br>
+Inverse reinforcement learning (IRL), flips the problem and instead attempts to extract the reward function from the observed behavior of an agent.<br>
 IRL seeks the reward functions that ‘explains’ the demonstrations.</p>
 <p>此时同样存在是否依赖 transition function 的情况</p>
 <div style="width:70%;margin:auto"><img src="/machine-learning/reinforcement-learning/InverseRL.png" srcset="/img/loading.gif" lazyload class="" title="InverseRL"></div>
-
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<h1>References</h1>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Reinforcement_learning">https://en.wikipedia.org/wiki/Reinforcement_learning</a></li>
 <li><a target="_blank" rel="noopener" href="https://medium.com/@SmartLabAI/reinforcement-learning-algorithms-an-intuitive-overview-904e2dff5bbc">https://medium.com/@SmartLabAI/reinforcement-learning-algorithms-an-intuitive-overview-904e2dff5bbc</a></li>
 <li><a target="_blank" rel="noopener" href="https://lilianweng.github.io/lil-log/2018/02/19/a-long-peek-into-reinforcement-learning.html">https://lilianweng.github.io/lil-log/2018/02/19/a-long-peek-into-reinforcement-learning.html</a></li>
@@ -645,6 +671,12 @@ IRL seeks the reward functions that ‘explains’ the demonstrations.</p>
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -838,6 +870,49 @@ IRL seeks the reward functions that ‘explains’ the demonstrations.</p>
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

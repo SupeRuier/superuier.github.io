@@ -204,7 +204,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/images/default.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -287,7 +287,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2021年7月21日 晚上
+                    本文最后更新于：1 年前
                   
                 
               </p>
@@ -297,14 +297,20 @@
                 
                 <p>本文记录使用Hexo中遇到的很多坑，以后可能会重复遇到，记录在此，以观后效。</p>
 <span id="more"></span>
-<h2 id="功能-amp-支持"><a href="#功能-amp-支持" class="headerlink" title="功能&amp;支持"></a>功能&amp;支持</h2><h3 id="Markdown-image-insertion-grammar-support"><a href="#Markdown-image-insertion-grammar-support" class="headerlink" title="Markdown image insertion grammar support"></a>Markdown image insertion grammar support</h3><p>具体配置的方法</p>
+<h2 id="功能-支持">功能&amp;支持</h2>
+<h3 id="Markdown-image-insertion-grammar-support">Markdown image insertion grammar support</h3>
+<p>具体配置的方法</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-string">_config.yml</span><br><br><span class="hljs-attr">post_asset_folder:</span> <span class="hljs-literal">true</span><br><span class="hljs-attr">marked:</span><br>  <span class="hljs-attr">prependRoot:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">postAsset:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
-<h2 id="运行-amp-测试坑"><a href="#运行-amp-测试坑" class="headerlink" title="运行&amp;测试坑"></a>运行&amp;测试坑</h2><h3 id="Local-server"><a href="#Local-server" class="headerlink" title="Local server"></a>Local server</h3><p>存在local server无法打开或打开极慢，但是GitHub Action正常部署的情况。
-此时使用全局代理可解决。
-经查原因为在编译HTML时，难以获取all.css文件，fontawesome.com需要代理访问。
+<h2 id="运行-测试坑">运行&amp;测试坑</h2>
+<h3 id="Local-server">Local server</h3>
+<p>存在local server无法打开或打开极慢，但是GitHub Action正常部署的情况。<br>
+此时使用全局代理可解决。<br>
+经查原因为在编译HTML时，难以获取all.css文件，fontawesome.com需要代理访问。<br>
 将该网站加入代理规则即可解决。</p>
-<h2 id="写作排版坑"><a href="#写作排版坑" class="headerlink" title="写作排版坑"></a>写作排版坑</h2><h3 id="公式支持"><a href="#公式支持" class="headerlink" title="公式支持"></a>公式支持</h3><p>使用 <code>\\</code> 时不换行，原因是hexo使用的markdown引擎造成的。
-其将第一个 <code>\</code> 识别为转义符号。
+<h2 id="写作排版坑">写作排版坑</h2>
+<h3 id="公式支持">公式支持</h3>
+<p>使用 <code>\\</code> 时不换行，原因是hexo使用的markdown引擎造成的。<br>
+其将第一个 <code>\</code> 识别为转义符号。<br>
 解决方法是换一个引擎，如下：</p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ada">npm uninstall <span class="hljs-comment">--save hexo-renderer-marked</span><br>npm install <span class="hljs-comment">--save hexo-renderer-kramed</span><br></code></pre></td></tr></table></figure>
 <p>参考：</p>
@@ -312,11 +318,12 @@
 <li><a target="_blank" rel="noopener" href="https://jdhao.github.io/2017/10/06/hexo-markdown-latex-equation/">https://jdhao.github.io/2017/10/06/hexo-markdown-latex-equation/</a></li>
 <li><a target="_blank" rel="noopener" href="https://lanlan2017.github.io/blog/eb86e892/">https://lanlan2017.github.io/blog/eb86e892/</a></li>
 </ul>
-<h3 id="行内公式无法编译"><a href="#行内公式无法编译" class="headerlink" title="行内公式无法编译"></a>行内公式无法编译</h3><p>换用 kramed 作为 markdown 的渲染引擎之后，行内公式有时无法渲染。
-一般情况下是因为其对 $\ast$ 和 $_$ 的支持有些不同。
+<h3 id="行内公式无法编译">行内公式无法编译</h3>
+<p>换用 kramed 作为 markdown 的渲染引擎之后，行内公式有时无法渲染。<br>
+一般情况下是因为其对 $\ast$ 和 $_$ 的支持有些不同。<br>
 在行内公式时优先会考虑 markdown 语法（这两个符号会优先认为是在定义<em>斜体</em>），其次才是公式支持，所以这种情况下无法编译。</p>
-<p>解决方法是对文件 <code>/node_modules/kramed/lib/rules/inline.js</code> 进行修改。
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//  em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span><br><span class="hljs-attr">em</span>: <span class="hljs-regexp">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span>,<br></code></pre></td></tr></table></figure></p>
+<p>解决方法是对文件 <code>/node_modules/kramed/lib/rules/inline.js</code> 进行修改。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//  em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span><br><span class="hljs-attr">em</span>: <span class="hljs-regexp">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span>,<br></code></pre></td></tr></table></figure>
 <p>这样可以解决下划线的问题。同时 markdown 中星号使用 <code>\ast</code> 代替。</p>
 <p>此外在部署的时候同时记得将远程的文件替换或修改即可。</p>
 <p>参考：</p>

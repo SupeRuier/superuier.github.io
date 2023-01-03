@@ -204,7 +204,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/images/default.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -233,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          761 字
+          762 字
         
       </span>
     
@@ -289,28 +289,32 @@
                 
                 <p>在服务器上使用cuda遇到一些问题，在此记录。</p>
 <span id="more"></span>
-<h2 id="在-torch-cuda-is-available-返回-False"><a href="#在-torch-cuda-is-available-返回-False" class="headerlink" title="在 torch.cuda.is_available() 返回 False"></a>在 torch.cuda.is_available() 返回 False</h2><p>最主要的问题是在 python 中输入<code>torch.cuda.is_available()</code>时，返回 False。
-猜测应该是某种版本不匹配造成的问题。
+<h2 id="在-torch-cuda-is-available-返回-False">在 torch.cuda.is_available() 返回 False</h2>
+<p>最主要的问题是在 python 中输入<code>torch.cuda.is_available()</code>时，返回 False。<br>
+猜测应该是某种版本不匹配造成的问题。<br>
 于是先查询版本。</p>
-<p>通过<code>nvidia-smi</code> 查询到的版本为 <code>CUDA Version: 11.0</code>， 和我安装的pytorch对应的cuda10.0不兼容。
+<p>通过<code>nvidia-smi</code> 查询到的版本为 <code>CUDA Version: 11.0</code>， 和我安装的pytorch对应的cuda10.0不兼容。<br>
 于是下载对应版本即可解决，注意与 python 发行版的冲突。(下载贼慢)</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">conda</span> install pytorch torchvision cudatoolkit=<span class="hljs-number">11</span>.<span class="hljs-number">0</span> -c pytorch<br></code></pre></td></tr></table></figure>
-<h2 id="查询版本"><a href="#查询版本" class="headerlink" title="查询版本"></a>查询版本</h2><p>查询版本有<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44023916/article/details/107256522">三种方法</a>。</p>
+<h2 id="查询版本">查询版本</h2>
+<p>查询版本有<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44023916/article/details/107256522">三种方法</a>。</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">nvidia-smi</span><br></code></pre></td></tr></table></figure>
-<p>这个命令既可以查cuda的驱动API版本，也可以查看GPU运行状态。
-查询到的版本为：
-<code>NVIDIA-SMI 450.57  Driver Version: 450.57  CUDA Version: 11.0</code>。<br>最终需要匹配的版本以此命令为准。</p>
+<p>这个命令既可以查cuda的驱动API版本，也可以查看GPU运行状态。<br>
+查询到的版本为：<br>
+<code>NVIDIA-SMI 450.57  Driver Version: 450.57  CUDA Version: 11.0 </code>。<br>
+最终需要匹配的版本以此命令为准。</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">cat <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/cuda/</span>version.txt<br></code></pre></td></tr></table></figure>
 <p><code>CUDA Version 10.0.130</code></p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">nvcc <span class="hljs-comment">--version</span><br></code></pre></td></tr></table></figure>
 <p><code>Cuda compilation tools, release 10.0, V10.0.130</code></p>
 <p>有时会显示command not found，解决方法<a href="#nvcc---version-command-not-found">见此</a>。</p>
-<h2 id="nvcc-—version-command-not-found"><a href="#nvcc-—version-command-not-found" class="headerlink" title="nvcc —version command not found"></a>nvcc —version command not found</h2><p>首先查看
+<h2 id="nvcc-version-command-not-found">nvcc --version command not found</h2>
+<p>首先查看</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> /usr/local/cuda/bin<br></code></pre></td></tr></table></figure>
-存在nvcc命令，此时配置环境变量即可。</p>
+<p>存在nvcc命令，此时配置环境变量即可。</p>
 <figure class="highlight bash"><figcaption><span>.bashrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> PATH=/usr/local/cuda/bin:<span class="hljs-variable">$PATH</span><br><span class="hljs-built_in">export</span> LD_LIBRARY_PATH=/usr/local/cuda/lib64:<span class="hljs-variable">$LD_LIBRARY_PATH</span><br></code></pre></td></tr></table></figure>
-<p>然后更新配置文件。
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ~/.bashrc<br></code></pre></td></tr></table></figure></p>
+<p>然后更新配置文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ~/.bashrc<br></code></pre></td></tr></table></figure>
 
                 
               </div>

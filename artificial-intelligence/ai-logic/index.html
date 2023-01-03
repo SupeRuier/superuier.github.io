@@ -290,11 +290,12 @@
             
               <div class="markdown-body">
                 
-                <p>将逻辑作为基于知识的 Agent 的一类通用表示，这样的 Agent 通过对信息的组合和再组合以适应各种用途。
+                <p>将逻辑作为基于知识的 Agent 的一类通用表示，这样的 Agent 通过对信息的组合和再组合以适应各种用途。<br>
 本文一部分参考了这位同学的<a target="_blank" rel="noopener" href="https://blog.csdn.net/rectsuly/article/details/73104723">笔记</a>。</p>
 <span id="more"></span>
 <p>Logics: formal languages for representing knowledge to extract conclusions</p>
-<h1 id="基于知识的-Agent"><a href="#基于知识的-Agent" class="headerlink" title="基于知识的 Agent"></a>基于知识的 Agent</h1><ul>
+<h1>基于知识的 Agent</h1>
+<ul>
 <li>知识库（KB）：基于知识的 Agent 的核心部件。是一个“语句”集合。</li>
 <li>语句（sentence）：用知识表示语言表达，表示了关于世界的某些断言。</li>
 <li>公理：当某语句是直接给定而不是推导得到的时候，我们将其称为公理。</li>
@@ -302,16 +303,18 @@
 <p>每次调用 Agent 程序，他做三件事：</p>
 <ol>
 <li>Agent TELL 知识库他所感知到的内容。</li>
-<li>Agent ASK 知识库应该执行什么行动。<ul>
+<li>Agent ASK 知识库应该执行什么行动。
+<ul>
 <li>在此过程中可能会对于世界的当前状态，可能行动队列进行大量推理。</li>
 </ul>
 </li>
 <li>Agent TELL 知识库他采取的行动，并执行该行动。</li>
 </ol>
-<h1 id="逻辑知识与概念"><a href="#逻辑知识与概念" class="headerlink" title="逻辑知识与概念"></a>逻辑知识与概念</h1><p>逻辑：一种形式语言，可以表示能得出结论的信息 </p>
+<h1>逻辑知识与概念</h1>
+<p>逻辑：一种形式语言，可以表示能得出结论的信息</p>
 <ul>
-<li>语法（Syntax）：定义了语言中的句子 </li>
-<li>语义（Semantics）：定义了句子的意思，即语义定义了每个语句关于每个可能世界的真值 </li>
+<li>语法（Syntax）：定义了语言中的句子</li>
+<li>语义（Semantics）：定义了句子的意思，即语义定义了每个语句关于每个可能世界的真值</li>
 </ul>
 <p>蕴涵（Entailment）</p>
 <ul>
@@ -323,21 +326,24 @@
 <p>逻辑推理（inference）：</p>
 <ul>
 <li>如果推理算法 i 可以根据 KB 导出 $\alpha$，我们表示为：$KB |-_{i} \alpha$，读为“i 从 KB 导出 $\alpha$”</li>
-<li>KB的所有推论集合是一个干草堆，α是针，蕴含=干草堆里的针，推理=找到它 </li>
-<li>对于推理算法 i：<ul>
+<li>KB的所有推论集合是一个干草堆，α是针，蕴含=干草堆里的针，推理=找到它</li>
+<li>对于推理算法 i：
+<ul>
 <li>可靠性 Sound：不会虚构事实，只导出语义蕴涵句。</li>
 <li>完备性 Completeness：可以生成任一蕴涵句。</li>
 </ul>
 </li>
 </ul>
-<h1 id="命题逻辑"><a href="#命题逻辑" class="headerlink" title="命题逻辑"></a>命题逻辑</h1><p>Syntax 语法：</p>
+<h1>命题逻辑</h1>
+<p>Syntax 语法：</p>
 <ul>
-<li>原子语句：命题符号P1，P2等是句子，代表一个或为真或为假的命题 </li>
-<li>复合句： <ul>
-<li>如果S是一个句子，则┐S也是一个句子（negation 非，否定式） </li>
-<li>如果S1和S2是句子，则S1∧S2是句子（conjunction 与，合取式） </li>
-<li>如果S1和S2是句子，则S1∨S2是句子（disjunction 或，析取式） </li>
-<li>如果S1和S2是句子，则S1=&gt;S2是句子（implication 蕴涵，蕴涵式） </li>
+<li>原子语句：命题符号P1，P2等是句子，代表一个或为真或为假的命题</li>
+<li>复合句：
+<ul>
+<li>如果S是一个句子，则┐S也是一个句子（negation 非，否定式）</li>
+<li>如果S1和S2是句子，则S1∧S2是句子（conjunction 与，合取式）</li>
+<li>如果S1和S2是句子，则S1∨S2是句子（disjunction 或，析取式）</li>
+<li>如果S1和S2是句子，则S1=&gt;S2是句子（implication 蕴涵，蕴涵式）</li>
 <li>如果S1和S2是句子，则S1&lt;=&gt;S2是句子（biconditional 当且仅当，双向蕴涵式）</li>
 </ul>
 </li>
@@ -348,14 +354,15 @@
 <li>可以用真值表总结</li>
 </ul>
 <div style="width:80%; margin:auto"><img src="/artificial-intelligence/ai-logic/truth-table.png" srcset="/img/loading.gif" lazyload class=""></div>
-
 <p>其中=&gt;的真值表比较令人困惑。</p>
 <ul>
-<li>不要用如果 P 那么 Q的思路来理解。<ul>
+<li>不要用如果 P 那么 Q的思路来理解。
+<ul>
 <li>命题逻辑不要求 P/Q 间的相关性或因果关系。</li>
 </ul>
 </li>
-<li>以“如果 P 为真，那我主张 Q 为真，否则无可奉告”来理解。<ul>
+<li>以“如果 P 为真，那我主张 Q 为真，否则无可奉告”来理解。
+<ul>
 <li>前提为假的任意蕴含都为真。</li>
 <li>该语句为假的唯一条件是 P 为真而 Q 为假。</li>
 </ul>
@@ -363,11 +370,10 @@
 </ul>
 <p>算符具有一定的运算性质（逻辑等价）：</p>
 <div style="width:80%; margin:auto"><img src="/artificial-intelligence/ai-logic/property.png" srcset="/img/loading.gif" lazyload class=""></div>
-
 <p>Implication 的几形式变换，真值可能会发生变换：</p>
 <div style="width:80%; margin:auto"><img src="/artificial-intelligence/ai-logic/implication.png" srcset="/img/loading.gif" lazyload class=""></div>
-
-<h2 id="推导和证明"><a href="#推导和证明" class="headerlink" title="推导和证明"></a>推导和证明</h2><p>下列表示意为，给定任何形式的上方语句，就可以推导出下方语句：</p>
+<h2 id="推导和证明">推导和证明</h2>
+<p>下列表示意为，给定任何形式的上方语句，就可以推导出下方语句：</p>
 <ul>
 <li>Modus Ponens: 假言推理原则 $\frac{\alpha \Rightarrow \beta, \quad \alpha}{\beta}$</li>
 <li>Modus Tollens: 假言推理原则 $\frac{\alpha \Rightarrow \beta, \quad \neg \beta}{\neg \alpha}$</li>
@@ -376,44 +382,53 @@
 <li>Disjunctive-syllogism: $\frac{\alpha \vee \beta, \quad \neg \alpha}{\beta}$</li>
 <li>Hypothetical-syllogism: $\frac{\alpha \Rightarrow \beta, \quad \beta \Rightarrow \gamma}{\alpha \Rightarrow \gamma}$</li>
 </ul>
-<p>Search for proofs is a more efficient way than enumerating models: </p>
+<p>Search for proofs is a more efficient way than enumerating models:</p>
 <ul>
 <li>Truth tables have an exponential number of models.</li>
 <li>The idea of inference is to repeat applying inference rules to the KB.</li>
 <li>Inference is sound, but how about completeness?</li>
 </ul>
-<h2 id="如何来保证完备性？"><a href="#如何来保证完备性？" class="headerlink" title="如何来保证完备性？"></a>如何来保证完备性？</h2><ul>
+<h2 id="如何来保证完备性？">如何来保证完备性？</h2>
+<ul>
 <li>Proof by resolution</li>
 <li>Forward or Backward chaining</li>
 </ul>
-<h3 id="归结（Resolution）"><a href="#归结（Resolution）" class="headerlink" title="归结（Resolution）"></a>归结（Resolution）</h3><p>类似于 Disjunctive-syllogism。
+<h3 id="归结（Resolution）">归结（Resolution）</h3>
+<p>类似于 Disjunctive-syllogism。<br>
 如果两个中必存在一个，而又不是第一个，则是第二个。</p>
 <p>单元归结（Unit resolution）</p>
-<script type="math/tex; mode=display">
-\frac{\ell_{1} \vee \cdots \vee \ell_{k} \quad m}{\ell_{1} \vee \cdots \vee \ell_{i-1} \vee \ell_{i+1} \vee \cdots \vee \ell_{k}}</script><p>全归结（Full resolution）</p>
-<script type="math/tex; mode=display">
-\frac{\ell_{1} \vee \cdots \vee \ell_{k} \quad m_{1} \vee \cdots \vee m_{n}}{\ell_{1} \vee \cdots \vee \ell_{i-1} \vee \ell_{i+1} \vee \cdots \vee \ell_{k} \vee m_{1} \vee \cdots \vee m_{j-1} \vee m_{j+1} \vee \cdots \vee m_{n}}</script><p>其中 $\ell<em>{i}$ 和 $m</em>{j}$ 是互补文字。</p>
-<h3 id="合取范式（CNF）"><a href="#合取范式（CNF）" class="headerlink" title="合取范式（CNF）"></a>合取范式（CNF）</h3><p>以子句的合取式表达的语句被称为合取范式或者 CNF， 合取式不易阅读，但其将成为归结过程的输入：</p>
+<p>$$<br>
+\frac{\ell_{1} \vee \cdots \vee \ell_{k} \quad m}{\ell_{1} \vee \cdots \vee \ell_{i-1} \vee \ell_{i+1} \vee \cdots \vee \ell_{k}}<br>
+$$</p>
+<p>全归结（Full resolution）</p>
+<p>$$<br>
+\frac{\ell_{1} \vee \cdots \vee \ell_{k} \quad m_{1} \vee \cdots \vee m_{n}}{\ell_{1} \vee \cdots \vee \ell_{i-1} \vee \ell_{i+1} \vee \cdots \vee \ell_{k} \vee m_{1} \vee \cdots \vee m_{j-1} \vee m_{j+1} \vee \cdots \vee m_{n}}<br>
+$$</p>
+<p>其中 $\ell_{i}$ 和 $m_{j}$ 是互补文字。</p>
+<h3 id="合取范式（CNF）">合取范式（CNF）</h3>
+<p>以子句的合取式表达的语句被称为合取范式或者 CNF， 合取式不易阅读，但其将成为归结过程的输入：</p>
 <ul>
 <li>消去等价词</li>
 <li>消去蕴含次</li>
 <li>否定词只出现在文字前边（而不是括号前面）</li>
 </ul>
-<h3 id="归结算法"><a href="#归结算法" class="headerlink" title="归结算法"></a>归结算法</h3><p>为了证明 $KB |= \alpha$，需要证明 $(KB \wedge \neg\alpha)$是不可满足的，通过推倒矛盾来证明。</p>
+<h3 id="归结算法">归结算法</h3>
+<p>为了证明 $KB |= \alpha$，需要证明 $(KB \wedge \neg\alpha)$是不可满足的，通过推倒矛盾来证明。</p>
 <ul>
 <li>先将 $(KB \wedge \neg\alpha)$ 转化为 CNF。</li>
-<li>对子句运用归结规则，产生新子句，如果其尚未出现过，则将其加入子句集，直到：<ul>
+<li>对子句运用归结规则，产生新子句，如果其尚未出现过，则将其加入子句集，直到：
+<ul>
 <li>没有可以添加的新语句。</li>
 <li>两个子句归结出空子句，等价于 False。（函数返回 True）</li>
 </ul>
 </li>
 </ul>
 <div style="width:80%; margin:auto"><img src="/artificial-intelligence/ai-logic/pl-resolution.png" srcset="/img/loading.gif" lazyload class=""></div>
-
 <blockquote>
 <p><strong>基本归结定理</strong>：如果子句集是不可满足的，那么这些子句的归结闭包包含空子句。</p>
 </blockquote>
-<h3 id="Forward-or-Backward-chaining"><a href="#Forward-or-Backward-chaining" class="headerlink" title="Forward or Backward chaining"></a>Forward or Backward chaining</h3><p>前向链接 Forward Chaining：</p>
+<h3 id="Forward-or-Backward-chaining">Forward or Backward chaining</h3>
+<p>前向链接 Forward Chaining：</p>
 <ul>
 <li>判断单个命题词是否被限定子句的知识库所蕴含。</li>
 <li>这个算法运行的时间是线性的。</li>
@@ -425,18 +440,18 @@
 <li>这个算法运行的时间也是线性的。</li>
 <li>goal-driven</li>
 </ul>
-<h3 id="DPLL-Algorithm"><a href="#DPLL-Algorithm" class="headerlink" title="DPLL Algorithm"></a>DPLL Algorithm</h3><ul>
+<h3 id="DPLL-Algorithm">DPLL Algorithm</h3>
+<ul>
 <li>Check the satisfiablity of a sentence in propositional logic.</li>
 <li>类似 backtracking 但是运用了很多启发式的技术，例如早停、纯符号启发式、单元子句启发式等。</li>
 </ul>
 <div style="width:80%; margin:auto"><img src="/artificial-intelligence/ai-logic/DPLL.png" srcset="/img/loading.gif" lazyload class=""></div>
-
-
-<h1 id="一阶逻辑-First-Order-Logic（FOL）"><a href="#一阶逻辑-First-Order-Logic（FOL）" class="headerlink" title="一阶逻辑 First Order Logic（FOL）"></a>一阶逻辑 First Order Logic（FOL）</h1><p>可以作为 Propositional Logic 的替代。
+<h1>一阶逻辑 First Order Logic（FOL）</h1>
+<p>可以作为 Propositional Logic 的替代。<br>
 （命题逻辑表达能力很弱。）</p>
 <div style="width:80%; margin:auto"><img src="/artificial-intelligence/ai-logic/FOL.png" srcset="/img/loading.gif" lazyload class=""></div>
-
-<h1 id="总结-Summary"><a href="#总结-Summary" class="headerlink" title="总结 Summary"></a>总结 Summary</h1><div style="width:80%; margin:auto"><img src="/artificial-intelligence/ai-logic/summary.png" srcset="/img/loading.gif" lazyload class=""></div>
+<h1>总结 Summary</h1>
+<div style="width:80%; margin:auto"><img src="/artificial-intelligence/ai-logic/summary.png" srcset="/img/loading.gif" lazyload class=""></div>
 
                 
               </div>
