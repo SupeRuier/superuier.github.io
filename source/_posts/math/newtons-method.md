@@ -10,6 +10,7 @@ category:
 tags:
 - optimization
 
+math: true
 ---
 <!-- omit in toc -->
 

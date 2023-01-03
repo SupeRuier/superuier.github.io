@@ -11,7 +11,7 @@ tags:
 - machine-learning
 - reinforcement-learning
 
-mathjax: true
+math: true
 ---
 <!-- omit in toc -->
 

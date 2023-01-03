@@ -12,7 +12,7 @@ tags:
 - deep-learning
 - high-performance-computing
 
-mathjax: true
+math: true
 ---
 <!-- omit in toc -->
 

@@ -10,7 +10,7 @@ tags:
 - reinforcement-learning
 - imitation-learning
 
-mathjax: true
+math: true
 ---
 <!-- omit in toc -->
 

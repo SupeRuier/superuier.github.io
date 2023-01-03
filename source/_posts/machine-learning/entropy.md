@@ -14,7 +14,7 @@ tags:
 - entropy
 - info-theory
 
-mathjax: true
+math: true
 ---
 <!-- omit in toc -->
 
@@ -37,7 +37,9 @@ mathjax: true
 
 对于一个随机变量 $X$ 进行编码，考虑到每个事件 $x$ 出现的概率 $p(x)$ 和编码长度 $\log \left({p(x)}\right)$，对随机变量的编码可以由对每个事件编码的期望得到，这个期望就是信息熵：
 
-$$H(X)=\mathbb{E}_{X}[I(x)]= - \sum_{x \in X} p(x) \log {p(x)}$$
+$$
+H(X)=\mathbb{E}_{X}[I(x)]= - \sum_{x \in X} p(x) \log {p(x)}
+$$
 
 在信息编码中，当我们用少于信息熵长度的比特编码时，一定有资讯的损失，所以信息熵被称为理论最优编码长度。
 对于随机变量 $X$ 而言，信息熵是其不确定性的度量，也可以看作是信息量的期望：

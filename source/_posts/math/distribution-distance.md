@@ -13,6 +13,7 @@ tags:
 - KL-divergence
 - JS-divergence
 
+math: true
 ---
 <!-- omit in toc -->
 

@@ -12,7 +12,7 @@ tags:
 - machine-learning
 - loss
 
-mathjax: true
+math: true
 ---
 <!-- omit in toc -->
 

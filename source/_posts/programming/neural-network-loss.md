@@ -13,7 +13,7 @@ tags:
 - neural-network
 - machine-learning
 
-mathjax: true
+math: true
 ---
 <!-- omit in toc -->
 

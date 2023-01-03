@@ -12,7 +12,7 @@ tags:
 - contrastive-learning
 - self-supervised-learning
 
-mathjax: true
+math: true
 ---
 <!-- omit in toc -->
 

@@ -11,7 +11,7 @@ tags:
 - machine-learning
 - active-learning
 
-mathjax: true
+math: true
 ---
 <!-- omit in toc -->
 

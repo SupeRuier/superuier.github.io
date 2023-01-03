@@ -12,7 +12,7 @@ tags:
 - nlp
 - few-shot-learning
 
-mathjax: true
+math: true
 ---
 <!-- omit in toc -->
 

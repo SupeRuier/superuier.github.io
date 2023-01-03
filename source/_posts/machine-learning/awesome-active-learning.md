@@ -1,6 +1,6 @@
 ---
 title: Awesome Active Learning
-banner_img: /gallery/covers/awesome-active-learning.jpeg
+index_img: /gallery/covers/awesome-active-learning.jpeg
 banner_img: /gallery/covers/awesome-active-learning.jpeg
 date: 2022-07-19 13:45:00
 updated: 2022-07-19 13:45:00
@@ -11,7 +11,7 @@ tags:
 - machine-learning
 - active-learning
 
-mathjax: true
+math: true
 ---
 <!-- omit in toc -->
 
@@ -27,7 +27,7 @@ The whole repository is constructed in a **problem-orientated** approach, which 
 At the mean time, the techniques are discussed under the corresponding problem settings.
 
 Specifically, this repository includes:
-- [1. What is Active Learning?](#1-what-is-active-learning) 
+- [1. What is AL?](#1-what-is-al)
 - [2. Reviews/Surveys/Benchmarks](#2-reviewssurveysbenchmarks)
 - [3. Problem Settings](#3-problem-settings)
   - [3.1. Basic Problem Settings (Three basic scenarios)](#31-basic-problem-settings-three-basic-scenarios)
@@ -37,6 +37,8 @@ Specifically, this repository includes:
 - [5. Practical Considerations to Apply AL](#5-practical-considerations-to-apply-al)
 - [6. Real-World Applications of AL](#6-real-world-applications-of-al)
 - [7. Resources](#7-resources)
+  - [7.1. Software Packages/Libraries](#71-software-packageslibraries)
+  - [7.2. Tutorials](#72-tutorials)
 - [8. Groups/Scholars](#8-groupsscholars)
 
 The hierarchical structure of this repository is shown in the following figure, and **you can find the paper-list in the corresponding sub-pages**:
