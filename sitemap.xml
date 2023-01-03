@@ -128,15 +128,6 @@
   </url>
   
   <url>
-    <loc>https://blog.superui.cc/machine-learning/awesome-active-learning/</loc>
-    
-    <lastmod>2022-07-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.superui.cc/machine-learning/al-all-in-one/</loc>
     
     <lastmod>2022-07-19</lastmod>
@@ -329,15 +320,6 @@
     <loc>https://blog.superui.cc/programming/matplotlib/</loc>
     
     <lastmod>2021-09-24</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.superui.cc/research/academic-paper-writing/</loc>
-    
-    <lastmod>2021-09-10</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1049,13 +1031,6 @@
   </url>
   
   <url>
-    <loc>https://blog.superui.cc/tags/Research/</loc>
-    <lastmod>2023-01-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.superui.cc/tags/%E7%BF%9F%E4%B8%9C%E5%8D%87/</loc>
     <lastmod>2023-01-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -1192,13 +1167,6 @@
   
   <url>
     <loc>https://blog.superui.cc/categories/reading-note/</loc>
-    <lastmod>2023-01-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.superui.cc/categories/research/</loc>
     <lastmod>2023-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
