@@ -186,6 +186,18 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/board/">
+                <i class="iconfont icon-cliplist"></i>
+                <span>留言板</span>
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
@@ -238,7 +250,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          700 字
+          710 字
         
       </span>
     
@@ -316,12 +328,12 @@ LSTM 的结构如下图所示。<br>
 <div style="width:60%;margin:auto"><img src="/machine-learning/lstm/LSTM3-focus-f.png" srcset="/img/loading.gif" lazyload class="" title="遗忘门"></div>
 <p>输入门决定保存哪些新信息进入细胞状态。</p>
 <div style="width:60%;margin:auto"><img src="/machine-learning/lstm/LSTM3-focus-i.png" srcset="/img/loading.gif" lazyload class="" title="输入门"></div>
-<p>旧的状态 $C_{t-1}$ 先 forget 再 input 得到新的状态 $C_t$。</p>
+<p>旧的状态 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">C_{t-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8917em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span></span></span></span> 先 forget 再 input 得到新的状态 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">C_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。</p>
 <div style="width:60%;margin:auto"><img src="/machine-learning/lstm/LSTM3-focus-C.png" srcset="/img/loading.gif" lazyload class="" title="细胞状态更新"></div>
 <p>输出一个“过滤”后的细胞状态。</p>
 <div style="width:60%;margin:auto"><img src="/machine-learning/lstm/LSTM3-focus-o.png" srcset="/img/loading.gif" lazyload class="" title="输出门"></div>
 <h3 id="模型训练">模型训练</h3>
-<p>先由正向传播，算出最终的损失 $J$，再反向计算梯度即可。<br>
+<p>先由正向传播，算出最终的损失 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi></mrow><annotation encoding="application/x-tex">J</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.09618em;">J</span></span></span></span>，再反向计算梯度即可。<br>
 详细的正向过程可见【2】。<br>
 反向过程可见【3】。<br>
 值得注意的是，反向过程的梯度更新需要考虑每一个时间步的输出。</p>
