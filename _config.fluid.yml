@@ -1028,6 +1028,12 @@ links:
       link: "https://blog.metaron.xyz",
       avatar: "/img/favicon.png"
     }
+    - {
+      title: "Cosmo's Blog",
+      intro: "偷窥俺的师弟",
+      link: "https://daizy.cc/",
+      avatar: "/img/favicon.png"
+    }
 
   # 当成员头像加载失败时，替换为指定图片
   # When the member avatar fails to load, replace the specified image
