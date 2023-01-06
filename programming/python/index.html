@@ -309,8 +309,8 @@
             
               <div class="markdown-body">
                 
-                <p>这里是个人的 Python 学习笔记。<br>
-记录一些常用到但是总忘记的的 Python 知识/语句。<br>
+                <p>这里是个人的 Python 学习笔记。
+记录一些常用到但是总忘记的的 Python 知识/语句。
 也写一下自己有且被解决的疑问。</p>
 <span id="more"></span>
 <h1>用法</h1>
@@ -329,8 +329,8 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">## Basics             ## use &quot;·&quot; to visualize whitespace</span><br><span class="hljs-string">&quot;&#123;&#125; &#123;&#125;&quot;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)  <span class="hljs-comment">## &quot;1·2&quot;</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;<span class="hljs-number">1</span>&#125;</span> <span class="hljs-subst">&#123;<span class="hljs-number">2</span>&#125;</span>&quot;</span>            <span class="hljs-comment">## &quot;1·2&quot;</span><br><br><span class="hljs-comment">## Padding and alignment</span><br>a = <span class="hljs-string">&quot;test&quot;</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;a:<span class="hljs-number">10</span>&#125;</span>&quot;</span>             <span class="hljs-comment">## &quot;test······&quot;</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;a:&lt;<span class="hljs-number">10</span>&#125;</span>&quot;</span>            <span class="hljs-comment">## &quot;test······&quot;</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;a:&gt;<span class="hljs-number">10</span>&#125;</span>&quot;</span>            <span class="hljs-comment">## &quot;······test&quot;</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;a:^<span class="hljs-number">10</span>&#125;</span>&quot;</span>            <span class="hljs-comment">## &quot;···test···&quot;</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;a:_&lt;<span class="hljs-number">10</span>&#125;</span>&quot;</span>           <span class="hljs-comment">## &quot;test______&quot;</span><br><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;a!s&#125;</span>&quot;</span>              <span class="hljs-comment">## equals to f&quot;&#123;str(a)&#125;&quot;</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;a!r:<span class="hljs-number">10</span>&#125;</span>&quot;</span>           <span class="hljs-comment">## f&quot;&#123;repr(a):10&#125;&quot;</span><br><br><span class="hljs-comment">## Floats</span><br>b = <span class="hljs-number">0.5</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;b:<span class="hljs-number">5</span>&#125;</span>&quot;</span>              <span class="hljs-comment">## &quot;··0.5&quot; !!!</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;b:&lt;<span class="hljs-number">5</span>&#125;</span>&quot;</span>             <span class="hljs-comment">## &quot;0.5··&quot;</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;b!s:<span class="hljs-number">5</span>&#125;</span>&quot;</span>            <span class="hljs-comment">## &quot;0.5··&quot;</span><br><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;b:05&#125;</span>&quot;</span>             <span class="hljs-comment">## &quot;000.5&quot;</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;b:<span class="hljs-number">.3</span>f&#125;</span>&quot;</span>            <span class="hljs-comment">## &quot;0.500&quot;</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;b:<span class="hljs-number">.3</span>e&#125;</span>&quot;</span>            <span class="hljs-comment">## &quot;5.000e-01&quot;</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;b:<span class="hljs-number">.2</span>%&#125;</span>&quot;</span>            <span class="hljs-comment">## &quot;50.00%&quot;</span><br></code></pre></td></tr></table></figure>
 <p>Copy from Yu’s <a target="_blank" rel="noopener" href="https://yzhang-gh.github.io/notes/programming/python/python.html#%E4%BD%9C%E7%94%A8%E5%9F%9F-scope">blog</a>.</p>
 <h2 id="将-Traceback-信息保存到-log-文件中">将 Traceback 信息保存到 log 文件中</h2>
-<p>有时候要跑一个运行时间很长的文件，中间会创建 log 文件。<br>
-如果跑到一半报错终止，文件中却没有相应记录则很难追踪错误。<br>
+<p>有时候要跑一个运行时间很长的文件，中间会创建 log 文件。
+如果跑到一半报错终止，文件中却没有相应记录则很难追踪错误。
 所以需要加入报错信息。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> traceback<br><br><span class="hljs-keyword">try</span>:<br>    main() <span class="hljs-comment"># The code need to be executed.</span><br><span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>    logger.error(<span class="hljs-string">f&quot;Main program error: <span class="hljs-subst">&#123;e&#125;</span>&quot;</span>)<br>    logger.error(traceback.format_exc())<br></code></pre></td></tr></table></figure>
 <h2 id="的使用与补码"><code>~</code> 的使用与补码</h2>
@@ -348,28 +348,28 @@
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-meta prompt_">&gt;&gt;</span> ~<span class="hljs-number">5</span><br><span class="hljs-meta prompt_">&gt;&gt;</span> -<span class="hljs-number">6</span><br></code></pre></td></tr></table></figure>
 <h1>一些疑问及回答</h1>
 <h2 id="同一个可迭代对象的多个迭代器是否独立？">同一个可迭代对象的多个迭代器是否独立？</h2>
-<p>独立。<br>
-这问题其实是在问生成的两个迭代器是不是指向同一个内存。<br>
-这个显然是不同的。<br>
+<p>独立。
+这问题其实是在问生成的两个迭代器是不是指向同一个内存。
+这个显然是不同的。
 所以说用两个迭代器同时遍历一个列表，都会是从头开始。</p>
-<p>需要注意的是在 pytorch 中，遍历 dataloader 需要使用迭代器。<br>
-此时如果用两个迭代器，在第一次迭代生成的样本可能不同。<br>
+<p>需要注意的是在 pytorch 中，遍历 dataloader 需要使用迭代器。
+此时如果用两个迭代器，在第一次迭代生成的样本可能不同。
 这个其实是因为你在生成 dataloader 的时候可能传入 <code>shuffle = True</code>，所以在生成迭代器的时候会采用不同的顺序读区。</p>
 <h1>使用中的一些坑</h1>
 <h2 id="Terminal-传入-Boolean-类型的参数">Terminal 传入 Boolean 类型的参数</h2>
 <p>由于传入的参数以 string 解析，所以还需要对 string 进行判断。</p>
 <blockquote>
-<p>sys.argv provides you the string representation of cmd line params.<br>
-‘True’ and ‘False’ are both strings, and if a string has any content in it at all, the boolean representation is True.<br>
+<p>sys.argv provides you the string representation of cmd line params.
+‘True’ and ‘False’ are both strings, and if a string has any content in it at all, the boolean representation is True.
 You should simply change your condition to if test.lower() == ‘true’</p>
 </blockquote>
-<p>所以在习惯上还是尽量使用 json 文件传参数。<br>
-但是如果使用命令行进行调试时，还是需要输入。<br>
+<p>所以在习惯上还是尽量使用 json 文件传参数。
+但是如果使用命令行进行调试时，还是需要输入。
 所以目前的解决方案是在 argparse 中默认设置为 False，传入 True 则覆盖。</p>
 <h1>一些常见的报错</h1>
 <p>有一些经常遇到的报错，在此记录解决方案。</p>
 <h2 id="ModuleNotFoundError-No-module-named-‘xxx’">ModuleNotFoundError: No module named ‘xxx’</h2>
-<p>这个报错经常在服务器上调用子文件夹中的结果分析软件时得到，通常的原因是因为自建的module包所在路径不在 PYTHONPATH 下，此时把根目录路径加入即可。<br>
+<p>这个报错经常在服务器上调用子文件夹中的结果分析软件时得到，通常的原因是因为自建的module包所在路径不在 PYTHONPATH 下，此时把根目录路径加入即可。
 参考此<a target="_blank" rel="noopener" href="https://www.cnblogs.com/hi3254014978/p/15202910.html">博客链接</a>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys<br><span class="hljs-keyword">import</span> os<br><span class="hljs-comment"># 把当前文件所在文件夹的父文件夹路径加入到 PYTHONPATH</span><br>sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))<br></code></pre></td></tr></table></figure>
                 

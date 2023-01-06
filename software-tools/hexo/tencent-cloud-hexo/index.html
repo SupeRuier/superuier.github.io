@@ -314,13 +314,13 @@
 <span id="more"></span>
 <h1>腾讯云相关</h1>
 <h2 id="远程连接">远程连接</h2>
-<p>需要在本地使用 ssh 连接云端 root 账户或者普通账户。<br>
+<p>需要在本地使用 ssh 连接云端 root 账户或者普通账户。
 首先在腾讯云里 ubuntu 下管理员账户名为 ubuntu 而不是 root。</p>
-<p>第一次链接出现管理员账户无法使用密码和密钥连接其普通账户也无法使用密码登录的情况。<br>
-这时需要在腾讯云实例的控制台中对 ssh 进行相关设置。<br>
+<p>第一次链接出现管理员账户无法使用密码和密钥连接其普通账户也无法使用密码登录的情况。
+这时需要在腾讯云实例的控制台中对 ssh 进行相关设置。
 具体来说修改以下文件 <code>/etc/ssh/sshd_config</code>。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">PasswordAuthentication <span class="hljs-built_in">yes</span> <span class="hljs-comment"># 开启密码登录权限</span><br>PubkeyAuthentication <span class="hljs-built_in">yes</span> <span class="hljs-comment"># 使用密钥登录</span><br></code></pre></td></tr></table></figure>
-<p>之后重启服务 <code>sudo service sshd restart</code> 即可。<br>
+<p>之后重启服务 <code>sudo service sshd restart</code> 即可。
 之后使用 ssh 和下载好的密钥进行连接，详见<a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/1207/44643#.E4.BD.BF.E7.94.A8.E5.AF.86.E9.92.A5.E7.99.BB.E5.BD.95">官方文档</a>。</p>
 <h2 id="使用-nginx-部署-Server">使用 nginx 部署 Server</h2>
 <p>详见<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/108720935">这篇文档</a></p>
@@ -328,11 +328,11 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 首先使用 Nginx 命令的时候需要使用管理员权限。</span><br><span class="hljs-comment">## 开启服务器</span><br>sudo systemctl nginx<br><span class="hljs-comment">## 重新启动更新设置</span><br>sudo systemctl restart nginx.service <br></code></pre></td></tr></table></figure>
 <p>其中 Nginx 的配置文件位于 <code>/etc/nginx/nginx.conf</code>，更改过后重启即可。</p>
 <h2 id="服务器-SSL-证书安装部署">服务器 SSL 证书安装部署</h2>
-<p>可以参考腾讯云的<a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/400/35244">这篇文档</a>。<br>
-主要就是将证书上传再再 Nginx 中设置。<br>
+<p>可以参考腾讯云的<a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/400/35244">这篇文档</a>。
+主要就是将证书上传再再 Nginx 中设置。
 需要注意的是颁发证书对应的域名一定要和真是域名相同，不要少前缀。</p>
 <h2 id="本地-ssh-连接服务器长时间不操作断开问题">本地 ssh 连接服务器长时间不操作断开问题</h2>
-<p>具体来说修改以下文件 <code>~/.ssh/config</code>。<br>
+<p>具体来说修改以下文件 <code>~/.ssh/config</code>。
 增添以下内容。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">Host *<br>        <span class="hljs-comment"># 断开时重试连接的次数</span><br>        ServerAliveCountMax 5<br>        <span class="hljs-comment"># 每隔5秒自动发送一个空的请求以保持连接</span><br>        ServerAliveInterval 5<br></code></pre></td></tr></table></figure>
 <p>参考<a target="_blank" rel="noopener" href="https://www.pkslow.com/archives/ssh-keep-alive">这篇文章</a>。</p>
@@ -343,7 +343,7 @@
 <li><a target="_blank" rel="noopener" href="https://jimmysong.io/blog/github-webhook-website-auto-deploy/">使用 GitHub Webhook 实现静态网站自动化部署</a></li>
 <li><a target="_blank" rel="noopener" href="https://jelly.jd.com/article/6006b1025b6c6a01506c878a">使用Github的webhooks进行网站自动化部署</a></li>
 </ul>
-<p>然而事实是我这次并没有从 webhook 的方向来部署，而是从 github action 中 ssh 到服务器进行操作。<br>
+<p>然而事实是我这次并没有从 webhook 的方向来部署，而是从 github action 中 ssh 到服务器进行操作。
 具体的部署步骤放在服务器的 deploy 文件中。</p>
 
                 

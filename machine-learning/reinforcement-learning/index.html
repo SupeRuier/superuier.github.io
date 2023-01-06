@@ -338,11 +338,11 @@
 </ul>
 <h1>强化学习</h1>
 <h2 id="1-马尔科夫决策过程">1. 马尔科夫决策过程</h2>
-<p>In more formal terms, almost all the <strong>RL problems</strong> can be framed as <strong>Markov Decision Processes (MDPs)</strong>.<br>
-All states in MDP has “Markov” property, referring to the fact that the future only depends on the current state, not the history.<br>
+<p>In more formal terms, almost all the <strong>RL problems</strong> can be framed as <strong>Markov Decision Processes (MDPs)</strong>.
+All states in MDP has “Markov” property, referring to the fact that the future only depends on the current state, not the history.
 The goal is to react on each state to <strong>maximize the total reward</strong>.</p>
 <div style="width:70%;margin:auto"><img src="/machine-learning/reinforcement-learning/MDP.png" srcset="/img/loading.gif" lazyload class="" title="MDP"></div>
-<p>如果所有 MDP 成分都已知，我们便可以较容易的训练出来一个 agent。<br>
+<p>如果所有 MDP 成分都已知，我们便可以较容易的训练出来一个 agent。
 但是现实情况是很多时候，我们的 agent 对 transition function <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span> 和 reward function <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span> 一无所知，所有的信息都来自于同环境的交互。</p>
 <h3 id="1-1-强化学习方法分类">1.1. 强化学习方法分类</h3>
 <ol>
@@ -431,10 +431,10 @@ Q_{\pi}(s, a) &amp;= R(s, a) + \gamma \sum_{s&#x27; \in \mathcal{S}} P_{ss&#x27;
 -12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
  151.7 139 205zm0 0v40h399900v-40z'/></svg></span></span><span style="top:-2.578em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.122em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1757em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
 <h3 id="2-2-Monte-Carlo-Methods">2.2. Monte-Carlo Methods</h3>
-<p>Model-free method.<br>
+<p>Model-free method.
 It learns from episodes of raw experience without modeling the environmental dynamics and computes the observed mean return as an approximation of the expected return</p>
 <h3 id="2-3-Temporal-Difference-Learning">2.3. Temporal-Difference Learning</h3>
-<p>TD Learning is model-free and learns from episodes of experience.<br>
+<p>TD Learning is model-free and learns from episodes of experience.
 However, TD learning can learn from <strong>incomplete</strong> episodes and hence we don’t need to track the episode up to termination.</p>
 <p>主要思想是将效用估计朝着理想均衡方向调整:</p>
 <ul>
@@ -523,7 +523,7 @@ Q(S_t, A_t) &amp;\leftarrow Q(S_t, A_t) + \alpha (R_{t+1} + \gamma Q(S_{t+1}, A_
 <div style="width:70%;margin:auto"><img src="/machine-learning/reinforcement-learning/IL_types_1.png" srcset="/img/loading.gif" lazyload class="" title="Imitation learning types 1"></div>
 <div style="width:70%;margin:auto"><img src="/machine-learning/reinforcement-learning/IL_types_2.png" srcset="/img/loading.gif" lazyload class="" title="Imitation learning types 2"></div>
 <h3 id="2-1-Behavioral-Cloning-simplest-Imitation-Learning-setting">2.1. Behavioral Cloning (simplest Imitation Learning setting)</h3>
-<p>Treat experts’ states-actions pairs i.i.d and as training example use supervised learning (from state to action).<br>
+<p>Treat experts’ states-actions pairs i.i.d and as training example use supervised learning (from state to action).
 Distribution provided exogenously.</p>
 <p>When to use BC?</p>
 <div style="width:70%;margin:auto"><img src="/machine-learning/reinforcement-learning/BC.png" srcset="/img/loading.gif" lazyload class="" title="BC"></div>
@@ -537,11 +537,11 @@ Distribution provided exogenously.</p>
 <div style="width:70%;margin:auto"><img src="/machine-learning/reinforcement-learning/DPL_example.png" srcset="/img/loading.gif" lazyload class="" title="DPL_example"></div>
 <div style="width:70%;margin:auto"><img src="/machine-learning/reinforcement-learning/IL_sequential.png" srcset="/img/loading.gif" lazyload class="" title="Sequential process"></div>
 <h3 id="2-3-Inverse-reinforcement-learning">2.3. Inverse reinforcement learning</h3>
-<p>Inverse RL指我们需要对环境的reward进行建模。<br>
+<p>Inverse RL指我们需要对环境的reward进行建模。
 RL与IRL的对比如下图所示：</p>
 <div style="width:70%;margin:auto"><img src="/machine-learning/reinforcement-learning/RL_IRL.png" srcset="/img/loading.gif" lazyload class="" title="RL-IRL"></div>
-<p>In a traditional RL setting, the goal is to learn a decision process to produce behavior that maximizes some predefined reward function.<br>
-Inverse reinforcement learning (IRL), flips the problem and instead attempts to extract the reward function from the observed behavior of an agent.<br>
+<p>In a traditional RL setting, the goal is to learn a decision process to produce behavior that maximizes some predefined reward function.
+Inverse reinforcement learning (IRL), flips the problem and instead attempts to extract the reward function from the observed behavior of an agent.
 IRL seeks the reward functions that ‘explains’ the demonstrations.</p>
 <p>此时同样存在是否依赖 transition function 的情况</p>
 <div style="width:70%;margin:auto"><img src="/machine-learning/reinforcement-learning/InverseRL.png" srcset="/img/loading.gif" lazyload class="" title="InverseRL"></div>

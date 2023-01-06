@@ -306,8 +306,8 @@
 <span id="more"></span>
 <h2 id="随机数生成">随机数生成</h2>
 <p>为保证实验结果可复现，一般我们使用 <code>np.random.seed(number)</code> 来固定随机种子，之后可保证调用随机数生成器产生的结果相同。</p>
-<p>但是在项目规模较大，且需要导入其他包时，这种固定随机种子的办法可能会出现一定问题。<br>
-原因在于其他的包中，可能同样会设定其他的全局随机种子 <code>np.random.seed(other_number)</code>。<br>
+<p>但是在项目规模较大，且需要导入其他包时，这种固定随机种子的办法可能会出现一定问题。
+原因在于其他的包中，可能同样会设定其他的全局随机种子 <code>np.random.seed(other_number)</code>。
 导致之后生成的样本不是按照自己设定的随机种子来生成。</p>
 <blockquote>
 <p>“The preferred best practice for getting reproducible pseudorandom numbers is to instantiate a generator object with a seed and pass it around” — Robert Kern, <a target="_blank" rel="noopener" href="https://numpy.org/neps/nep-0019-rng-policy.html">NEP19</a>.</p>

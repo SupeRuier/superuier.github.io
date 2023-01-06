@@ -302,7 +302,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：19 天前
+                    本文最后更新于：21 天前
                   
                 
               </p>
@@ -358,12 +358,12 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">seed_torch</span>(<span class="hljs-params">seed=<span class="hljs-number">1029</span></span>):<br>	random.seed(seed)<br>	os.environ[<span class="hljs-string">&#x27;PYTHONHASHSEED&#x27;</span>] = <span class="hljs-built_in">str</span>(seed) <span class="hljs-comment"># 为了禁止hash随机化，使得实验可复现</span><br>	np.random.seed(seed)<br>	torch.manual_seed(seed)<br>	torch.cuda.manual_seed(seed)<br>	torch.cuda.manual_seed_all(seed) <span class="hljs-comment"># if you are using multi-GPU.</span><br>	torch.backends.cudnn.benchmark = <span class="hljs-literal">False</span><br>	torch.backends.cudnn.deterministic = <span class="hljs-literal">True</span><br><br>seed_torch()<br></code></pre></td></tr></table></figure>
 <h2 id="1-2-zero-grad-optimizer-or-net？">1.2. zero_grad optimizer or net？</h2>
 <blockquote>
-<p><code>model.zero_grad()</code> and <code>optimizer.zero_grad()</code> are the same IF all your model parameters are in that optimizer.<br>
-It is safer to call <code>model.zero_grad()</code> to make sure all grads are zero.<br>
+<p><code>model.zero_grad()</code> and <code>optimizer.zero_grad()</code> are the same IF all your model parameters are in that optimizer.
+It is safer to call <code>model.zero_grad()</code> to make sure all grads are zero.
 e.g. if you have two or more optimizers for one model.</p>
 </blockquote>
 <h2 id="1-3-初始化网络">1.3. 初始化网络</h2>
-<p>网络参数初始化会对模型表现产生影响，一般通过一些随机的方式初始化参数。具体的影响可以见<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25110150">这篇博文</a>。<br>
+<p>网络参数初始化会对模型表现产生影响，一般通过一些随机的方式初始化参数。具体的影响可以见<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25110150">这篇博文</a>。
 具体如何实现网络权重初始化，可以通过对模型每一层遍历赋值实现，参见如下代码。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">params = <span class="hljs-built_in">list</span>(net.parameters())<br>torch.nn.init.xavier_uniform(layer) <span class="hljs-keyword">for</span> layer <span class="hljs-keyword">in</span> params<br></code></pre></td></tr></table></figure>
 <h2 id="1-4-nn-module-中-call-vs-forward">1.4. nn.module 中 <code>__call__</code> vs <code>forward</code></h2>
@@ -381,8 +381,8 @@ e.g. if you have two or more optimizers for one model.</p>
 </blockquote>
 <p>那我们为什么要用 LogSoftmax 呢？</p>
 <blockquote>
-<p>因为在实现上，算log值更加便捷，如果直接计算指数值，可能会出现极大或者极其接近0的情况。<br>
-所以使用 LogSoftmax 的话数值稳定性可能会更好。<br>
+<p>因为在实现上，算log值更加便捷，如果直接计算指数值，可能会出现极大或者极其接近0的情况。
+所以使用 LogSoftmax 的话数值稳定性可能会更好。
 参考<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/358069078/answer/912691444">此链接</a>。</p>
 </blockquote>
 <h2 id="1-6-tensor-非-contiguous-导致无法使用-view">1.6. tensor 非 contiguous 导致无法使用 view()</h2>
@@ -394,20 +394,20 @@ e.g. if you have two or more optimizers for one model.</p>
 <p>Pytorch 中的 hook 为我们提供了一个较为方便的方式来访问网络某一层的输入与输出（前向的话返回 feature，反向的话返回梯度。）</p>
 <p>具体的使用方法，首先要在相应的层上打开前向或者反向的 hook：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># forward</span><br><span class="hljs-comment"># 定义 forward hook function</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">hook_fn_forward</span>(<span class="hljs-params">module, <span class="hljs-built_in">input</span>, output</span>):<br>    <span class="hljs-built_in">print</span>(module) <span class="hljs-comment"># 用于区分模块</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;input&#x27;</span>, <span class="hljs-built_in">input</span>) <span class="hljs-comment"># 首先打印出来</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;output&#x27;</span>, output)<br>    total_feat_out.append(output) <span class="hljs-comment"># 然后分别存入全局 list 中</span><br>    total_feat_in.append(<span class="hljs-built_in">input</span>)<br><br><span class="hljs-comment"># Add hook on the layer you want</span><br>modules = model.named_children() <span class="hljs-comment"># </span><br><span class="hljs-keyword">for</span> name, module <span class="hljs-keyword">in</span> modules:<br>    module.register_forward_hook(hook_fn_forward)<br><br><span class="hljs-comment">###############################################</span><br><span class="hljs-comment"># backward</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">hook_fn_backward</span>(<span class="hljs-params">module, grad_input, grad_output</span>):<br>    <span class="hljs-built_in">print</span>(module) <span class="hljs-comment"># 为了区分模块</span><br>    <span class="hljs-comment"># 为了符合反向传播的顺序，我们先打印 grad_output</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;grad_output&#x27;</span>, grad_output) <br>    <span class="hljs-comment"># 再打印 grad_input</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;grad_input&#x27;</span>, grad_input)<br>    <span class="hljs-comment"># 保存到全局变量</span><br>    total_grad_in.append(grad_input)<br>    total_grad_out.append(grad_output)<br><br>modules = model.named_children()<br><span class="hljs-keyword">for</span> name, module <span class="hljs-keyword">in</span> modules:<br>    module.register_backward_hook(hook_fn_backward)<br></code></pre></td></tr></table></figure>
-<p>注意 register 函数接受的是一个函数，会为传入的函数传递三个参数 module， grad_input， grad_output。<br>
+<p>注意 register 函数接受的是一个函数，会为传入的函数传递三个参数 module， grad_input， grad_output。
 这里的 input 和 output 都是以前向网络的方向来进行标记的。</p>
-<p>反向传播中对于线性模块：o=W*x+b ，它的输入端包括了W、x 和 b 三部分，因此 grad_input 就是一个包含三个元素的 tuple。<br>
+<p>反向传播中对于线性模块：o=W*x+b ，它的输入端包括了W、x 和 b 三部分，因此 grad_input 就是一个包含三个元素的 tuple。
 而在 forward hook 中，input 是 x，而不包括 W 和 b。</p>
 <p>详见这篇非常好的<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/75054200">讲解</a>。</p>
 <h2 id="1-8-查看某一层梯度">1.8. 查看某一层梯度</h2>
 <p>hook 是一种提取梯度的方法，同样的，还有其他方法可以提取梯度。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 一个全链接层举例</span><br><span class="hljs-built_in">list</span>(model.modules())[<span class="hljs-number">5</span>].weight.grad<br></code></pre></td></tr></table></figure>
 <h2 id="1-9-计算某一层梯度">1.9. 计算某一层梯度</h2>
-<p>其实如果使用 <code>loss.backward()</code> 然后再利用 hook来提取梯度会有一些耗费时间，因为反向传播是要从尾到头的，如果你只需要倒数几层的梯度的话，其实可以直接计算。<br>
+<p>其实如果使用 <code>loss.backward()</code> 然后再利用 hook来提取梯度会有一些耗费时间，因为反向传播是要从尾到头的，如果你只需要倒数几层的梯度的话，其实可以直接计算。
 <code>torch.autograd.grad</code> 方法提供了一个计算梯度的方式，可以看以下例子，此方法返回的对象是一个仅有一个元素的元组。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 计算梯度</span><br><span class="hljs-comment"># 如果需要多次计算的话记得保留计算图</span><br>grad= torch.autograd.grad(outputs=loss, inputs=W, retain_graph=<span class="hljs-literal">True</span>, only_inputs=<span class="hljs-literal">True</span>)[<span class="hljs-number">0</span>]<br></code></pre></td></tr></table></figure>
-<p>一般来说当我们计算每一个样本所引起的梯度时，可以将 batch_size 设为1，然后分别求梯度。<br>
-但是这样是比较费时的，所以可以使用 <code>autograd.grad</code> 中的 <code>is_grads_batched</code> 选项 (Pytorch 1.11 版本)。<br>
+<p>一般来说当我们计算每一个样本所引起的梯度时，可以将 batch_size 设为1，然后分别求梯度。
+但是这样是比较费时的，所以可以使用 <code>autograd.grad</code> 中的 <code>is_grads_batched</code> 选项 (Pytorch 1.11 版本)。
 在<a target="_blank" rel="noopener" href="https://github.com/pytorch/pytorch/blob/caa28ff4959c7cf7165dabf1ffae7c233b8e4b61/torch/autograd/__init__.py#L177">源代码</a>中对其这样描述：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">is_grads_batched (bool, optional): If ``True``, the first dimension of each tensor in ``grad_outputs`` will be interpreted as the batch dimension.</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br>grad= torch.autograd.grad(outputs=loss, inputs=W, retain_graph=<span class="hljs-literal">True</span>, only_inputs=<span class="hljs-literal">True</span>, is_grads_batched=<span class="hljs-literal">True</span>)[<span class="hljs-number">0</span>]<br></code></pre></td></tr></table></figure>
 <h2 id="1-10-计算梯度的时间">1.10. 计算梯度的时间</h2>
@@ -416,21 +416,21 @@ e.g. if you have two or more optimizers for one model.</p>
 <li>将 <code>batch_size</code> 设为1，然后使用 <code>torch.autograd.grad</code> 计算梯度。</li>
 <li>用非1的 <code>batch_size</code>，计算 loss 时，不 reduce，这样得出来的 loss 是一个向量。遍历这个向量，对向量中每一个tensor使用 <code>torch.autograd.grad</code> 计算梯度。</li>
 </ul>
-<p>但是发现一个问题。<br>
-在 batch 下，平均每个样本的前向时间是要远小于不使用 batch。<br>
-但是平均每个样本的后向时间是要远大于不使用 batch。<br>
+<p>但是发现一个问题。
+在 batch 下，平均每个样本的前向时间是要远小于不使用 batch。
+但是平均每个样本的后向时间是要远大于不使用 batch。
 （这里远小远大是指数量级）。</p>
-<p>推测原因为如果遍历向量的话的话，获得的 tensor 中 <code>grad_fn</code> 是 UnbindBackward 而不是 nlllossbackward。<br>
-所以尝试在计算 loss 之前就对样本进行遍历，但是其实时间上和遍历 loss 是一样的。<br>
-因为是用 loss 计算梯度是要使用之前的计算图，遍历网络输出会使遍历的每一个输出的 <code>grad_fn</code> 变化。<br>
+<p>推测原因为如果遍历向量的话的话，获得的 tensor 中 <code>grad_fn</code> 是 UnbindBackward 而不是 nlllossbackward。
+所以尝试在计算 loss 之前就对样本进行遍历，但是其实时间上和遍历 loss 是一样的。
+因为是用 loss 计算梯度是要使用之前的计算图，遍历网络输出会使遍历的每一个输出的 <code>grad_fn</code> 变化。
 用这种方式虽然看起来 loss 的 <code>grad_fn</code> 还是 nlllossbackward，但是在梯度的计算过程中还是会遇到 UnbindBackward。</p>
 <p>所以这个问题没有想到具体的解决方法，就选取了耗费时间相对较短的方法。</p>
 <h2 id="1-11-增加与删减维度">1.11. 增加与删减维度</h2>
-<p>有时在对批数据进行乘法等矩阵操作时，时常需要对数据进行升维降维。<br>
+<p>有时在对批数据进行乘法等矩阵操作时，时常需要对数据进行升维降维。
 此处记录一下操作流程。</p>
-<p>例如我们相对两个矩阵进行乘法，第一个矩阵唯度为[N, M]，第二个矩阵维度为[N, K]，其中 N 为该 batch 中样本数目。<br>
-我们期望通过得到一个维度为[N, M, K]的三维矩阵。<br>
-但是直接的矩阵相乘并不能起到升维的效果，所以在相乘之前要进行升维。<br>
+<p>例如我们相对两个矩阵进行乘法，第一个矩阵唯度为[N, M]，第二个矩阵维度为[N, K]，其中 N 为该 batch 中样本数目。
+我们期望通过得到一个维度为[N, M, K]的三维矩阵。
+但是直接的矩阵相乘并不能起到升维的效果，所以在相乘之前要进行升维。
 将两个矩阵分别升维到[N, M, 1]和[N, K, 1]。</p>
 <p>此处用到两个方法：</p>
 <ul>
@@ -441,7 +441,7 @@ e.g. if you have two or more optimizers for one model.</p>
 <h2 id="1-12-允许-batch-中的样本不等长">1.12. 允许 batch 中的样本不等长</h2>
 <p>一般情况下 pytorch 中，每个 batch 的每一个样本都是等长的，如果不等长的话会报错。</p>
 <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-symbol">RuntimeError:</span> each element in list of <span class="hljs-keyword">batch </span><span class="hljs-keyword">should </span><span class="hljs-keyword">be </span>of equal size<br></code></pre></td></tr></table></figure>
-<p>一般来说，这是因为 Dataloader 中的参数 <code>collate_fn</code> 的默认值为 torch 自定义的 <code>default_collate</code>，<code>collate_fn</code> 的作用就是对每个batch进行处理，而默认的 <code>default_collate </code>处理出错。<br>
+<p>一般来说，这是因为 Dataloader 中的参数 <code>collate_fn</code> 的默认值为 torch 自定义的 <code>default_collate</code>，<code>collate_fn</code> 的作用就是对每个batch进行处理，而默认的 <code>default_collate </code>处理出错。
 自定义的 <code>default_collate</code> 的作用是将列表中的元素变成 tensor 的形式，详见<a target="_blank" rel="noopener" href="https://blog.csdn.net/SWEDEN_1003/article/details/84343496">这篇文章</a>，同时源码见<a target="_blank" rel="noopener" href="https://github.com/pytorch/pytorch/blob/master/torch/utils/data/_utils/collate.py">这里</a>。</p>
 <p>所以这个时候的处理方式是自定义一个 <code>collate_fn</code>，并在其中使用 padding，将每个样本扩充至等长，使得变为 tensor 这一过程不出错。</p>
 <p>参考了<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44799217/article/details/115137820">这篇文章</a>。</p>
@@ -449,15 +449,15 @@ e.g. if you have two or more optimizers for one model.</p>
 <p>采用预训练模型的时候，其中经常包含 <code>BatchNorm</code> 层，在对模型进行改造的时候，有的时候会出现问题，这个时候就需要对 <code>BatchNorm</code> 层进行一个固定。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> m <span class="hljs-keyword">in</span> net.modules():<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(m, nn.BatchNorm2d):<br>        m.<span class="hljs-built_in">eval</span>()<br></code></pre></td></tr></table></figure>
 <h2 id="1-13-对使用线程数进行固定">1.13. 对使用线程数进行固定</h2>
-<p>自己在使用 Pytorch 的时候发现，有时候一个文件会占用很多的 CPU 核心。<br>
-当提交多个任务时，其会将所有 CPU 快速占满，且难以高效运用，导致影响所有的实验任务。<br>
-于是对单个任务的 CPU 使用加以限制成为了一个需求。<br>
+<p>自己在使用 Pytorch 的时候发现，有时候一个文件会占用很多的 CPU 核心。
+当提交多个任务时，其会将所有 CPU 快速占满，且难以高效运用，导致影响所有的实验任务。
+于是对单个任务的 CPU 使用加以限制成为了一个需求。
 此时可以使用以下命令来限制 torch 使用的线程数。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">torch.set_num_threads(<span class="hljs-number">1</span>) <br></code></pre></td></tr></table></figure>
 <h1>2. 设置</h1>
 <h2 id="2-1-Dataloader-中的-num-workers-造成训练循环缓慢">2.1. Dataloader 中的 num_workers 造成训练循环缓慢</h2>
-<p>在本地跑实验，一个简单的网络的训练，发现 Dataloader 中 num_workers 设置的数目越大，在 batch 中训练越耗时，表示莫名其妙。在我的情形下将其设为8要比将其设为0慢了百倍以上。<br>
-仔细看了一下 mini-batch 的训练过程并且记录了一下时间，发现主要的时间开销发生于 for 循环遍历 loader 之后退出循环时。<br>
+<p>在本地跑实验，一个简单的网络的训练，发现 Dataloader 中 num_workers 设置的数目越大，在 batch 中训练越耗时，表示莫名其妙。在我的情形下将其设为8要比将其设为0慢了百倍以上。
+仔细看了一下 mini-batch 的训练过程并且记录了一下时间，发现主要的时间开销发生于 for 循环遍历 loader 之后退出循环时。
 所还还是将其设为了0。</p>
 <p>造成这个的主要原因可能是 IO 耗时和模型前/后传耗时之间的 GAP 太大，导致进程间造成了阻塞</p>
 <ul>
@@ -467,7 +467,7 @@ e.g. if you have two or more optimizers for one model.</p>
 <h1>3. 报错</h1>
 <h2 id="3-1-RuntimeError-CUDA-error-device-side-assert-triggered">3.1. RuntimeError: CUDA error: device-side assert triggered</h2>
 <p>参考<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1686771">此篇文章</a>。</p>
-<p>一般来说这个报错存在于在 GPU 运行时，不易清晰定位到错误源，所以网络上大家给出的建议是去 CPU 上跑一下。<br>
+<p>一般来说这个报错存在于在 GPU 运行时，不易清晰定位到错误源，所以网络上大家给出的建议是去 CPU 上跑一下。
 这个错误出现的原因是数据中的类标记label和网络中的类标记label不匹配。包括但不限于以下几种问题。</p>
 <table>
 <thead>
@@ -490,34 +490,34 @@ e.g. if you have two or more optimizers for one model.</p>
 <p>解决方法只要找到矛盾发生的地方，对数据中类别的标签进行改动即可。当然有的时候也可能是网络格式写错。</p>
 <h2 id="3-2-RuntimeError-CUDA-out-of-memory">3.2. RuntimeError: CUDA out of memory</h2>
 <p>起因在于丢了49000张 mnist 数据进去没有分 batch，本来以为数据的大小只占了450m内存应该不会有问题，但是发现跑了一个前向就加了七八个g的显存，甚至一个模型直接把24g的显卡显存跑炸了。</p>
-<p>分析原因应该是因为 batch size 较大的时候，前向输入模型，在某一层计算时申请了很大的 tensor 导致消耗了成倍与数据大小的显存。<br>
+<p>分析原因应该是因为 batch size 较大的时候，前向输入模型，在某一层计算时申请了很大的 tensor 导致消耗了成倍与数据大小的显存。
 这个在小 batch 的情况下应该并不会有太大影响，所以说还是需要使用 batch。</p>
 <p>当然还是可以在需要的时候释放缓存，治标不治本。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">torch.cuda.empty_cache() <br></code></pre></td></tr></table></figure>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_38278334/article/details/105575403">这篇文章</a>简要介绍了 pytorch 的缓存机制。</p>
 <h2 id="3-3-RuntimeError-Function-‘MulBackward0’-returned-nan-values-in-its-0th-output">3.3. RuntimeError: Function ‘MulBackward0’ returned nan values in its 0th output.</h2>
-<p>其实很多类似的这种报错，只是 Function 不一样而已。<br>
-出现这种情况的原因是出现了梯度爆炸（gradient-explode），导致出现 NaN 值。<br>
+<p>其实很多类似的这种报错，只是 Function 不一样而已。
+出现这种情况的原因是出现了梯度爆炸（gradient-explode），导致出现 NaN 值。
 解决的方法是先定位，再处理。</p>
 <p>定位可以使用 <code>detect_anomaly</code>，找到报错位置。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">with</span> autograd.detect_anomaly():<br>    loss.backward()<br></code></pre></td></tr></table></figure>
-<p>处理的话方法不定，一般来说是需要让梯度不要过大。<br>
-有一些人提到可以减小学习率，但是这个治标不治本（到底多少才算小呢？）。<br>
-所以比较好的方法还是在容易出现梯度爆炸的地方进行处理。<br>
-一般来说容易出现梯度爆炸的地方是 <code>log</code> 函数中，在对概率求熵时出现。<br>
+<p>处理的话方法不定，一般来说是需要让梯度不要过大。
+有一些人提到可以减小学习率，但是这个治标不治本（到底多少才算小呢？）。
+所以比较好的方法还是在容易出现梯度爆炸的地方进行处理。
+一般来说容易出现梯度爆炸的地方是 <code>log</code> 函数中，在对概率求熵时出现。
 所以可以给概率值加上一个很小的数值，如下所示：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">calculate_entropy</span>(<span class="hljs-params">y_softmax</span>):<br>    entropy = - torch.<span class="hljs-built_in">sum</span>(y_softmax * torch.log(y_softmax + <span class="hljs-number">1e-6</span>), dim = <span class="hljs-number">1</span>) <span class="hljs-comment"># Avoid gradient explode.</span><br>    <span class="hljs-keyword">return</span> entropy<br></code></pre></td></tr></table></figure>
 <h1>4. 一些异常情况</h1>
 <h2 id="4-1-loss-backward-运行时间过长">4.1. <code>loss.backward()</code> 运行时间过长</h2>
-<p>近期在服务器上迁移代码时发现同样的一句 <code>loss.backward()</code> 在 Titan RTX 和 A30 的服务器上运行速度相差数倍，在 A30 上反而更慢，令人诧异。<br>
-对比了不同服务器上的 pytorch 版本，cudatoolkit 版本，以及数据集和模型情况，发现均为同样的设定，并无出错。<br>
+<p>近期在服务器上迁移代码时发现同样的一句 <code>loss.backward()</code> 在 Titan RTX 和 A30 的服务器上运行速度相差数倍，在 A30 上反而更慢，令人诧异。
+对比了不同服务器上的 pytorch 版本，cudatoolkit 版本，以及数据集和模型情况，发现均为同样的设定，并无出错。
 此外速度变慢仅仅是出现在一个 NLP 的原始文本数据集上，其他的图像数据集则并无问题。</p>
-<p>经过一番搜寻，发现可能是 cudnn 的问题。<br>
-首先是在一个 “The speed of pytorch with cudatoolkit 11.0 is slower than cudatoolkit 10.2” 的 issue 中发现了一个人在 <code>cudnn.enabled=True</code> 的情况下运行更快。<br>
-又在一个 “Convolution operations are extremely slow on RTX 30 series GPU” 的 issue 中发现了 <code>torch.backends.cudnn.benchmark=True</code> 语句。<br>
-之前并未了解 cudnn 的用处，也并不知道当下是什么版本，于是查询了 <code>torch.backends.cudnn.benchmark=True</code> 的作用。<br>
-发现如果该项设置为 True 时，cuDNN使用的非确定性算法就会自动寻找最适合当前配置的高效算法，来优化运行效率。<br>
-但是如果网络的输入数据在每次 iteration 都变化的话，会导致 cnDNN 每次都会去寻找一遍最优配置，这样反而会降低运行效率，对于文本数据而言正是此情况。<br>
+<p>经过一番搜寻，发现可能是 cudnn 的问题。
+首先是在一个 “The speed of pytorch with cudatoolkit 11.0 is slower than cudatoolkit 10.2” 的 issue 中发现了一个人在 <code>cudnn.enabled=True</code> 的情况下运行更快。
+又在一个 “Convolution operations are extremely slow on RTX 30 series GPU” 的 issue 中发现了 <code>torch.backends.cudnn.benchmark=True</code> 语句。
+之前并未了解 cudnn 的用处，也并不知道当下是什么版本，于是查询了 <code>torch.backends.cudnn.benchmark=True</code> 的作用。
+发现如果该项设置为 True 时，cuDNN使用的非确定性算法就会自动寻找最适合当前配置的高效算法，来优化运行效率。
+但是如果网络的输入数据在每次 iteration 都变化的话，会导致 cnDNN 每次都会去寻找一遍最优配置，这样反而会降低运行效率，对于文本数据而言正是此情况。
 于是在该数据集上需要将这一项禁用（默认启用），禁用之后速度正常。</p>
 <p>参考：</p>
 <ul>

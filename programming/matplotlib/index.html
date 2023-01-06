@@ -302,15 +302,15 @@
             
               <div class="markdown-body">
                 
-                <p>这里是个人的 Matplotlib 学习笔记。<br>
+                <p>这里是个人的 Matplotlib 学习笔记。
 记录一些作图的过程。</p>
 <span id="more"></span>
 <h1>用法</h1>
 <h2 id="减小空白边界">减小空白边界</h2>
-<p>由于使用 Latex 排版时需要严格控制图片位置、大小、排布方式，所以任何冗余的空间都是需要极力避免的。<br>
+<p>由于使用 Latex 排版时需要严格控制图片位置、大小、排布方式，所以任何冗余的空间都是需要极力避免的。
 在做图的时候可以直接将图片空白边界抹去。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">plt.savefig(<span class="hljs-string">&#x27;test.png&#x27;</span>, bbox_inches=<span class="hljs-string">&#x27;tight&#x27;</span>)<br></code></pre></td></tr></table></figure>
-<p>但是这个方法有一个问题就是多个图片的留白可能不一致，导致如果多子图放置于 latex 文档中会出现排版无法对齐的情况。<br>
+<p>但是这个方法有一个问题就是多个图片的留白可能不一致，导致如果多子图放置于 latex 文档中会出现排版无法对齐的情况。
 此时需要手动对边界进行设置。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">plt.subplots_adjust(left=<span class="hljs-number">0.12</span>, right=<span class="hljs-number">0.97</span>, top=<span class="hljs-number">0.98</span>, bottom=<span class="hljs-number">0.1</span>)<br></code></pre></td></tr></table></figure>
 

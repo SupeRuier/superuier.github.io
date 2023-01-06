@@ -303,10 +303,10 @@
               <div class="markdown-body">
                 
                 <!-- omit in toc -->
-<p>最近看了一篇比较有趣的文章<br>
-<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/_N_vbYEisNJ7yddaRjgZdQ">《比冒泡算法还简单的排序算法：看起来满是bug的程序，居然是对的》</a>，看了半天才看懂。<br>
-发现自己其实已经不太记得各种排序方法了，此处做一个复习总结。<br>
-（给自己看的笔记也不会很详细，毕竟大部分也都实现过，这里主要记录intuition。）<br>
+<p>最近看了一篇比较有趣的文章
+<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/_N_vbYEisNJ7yddaRjgZdQ">《比冒泡算法还简单的排序算法：看起来满是bug的程序，居然是对的》</a>，看了半天才看懂。
+发现自己其实已经不太记得各种排序方法了，此处做一个复习总结。
+（给自己看的笔记也不会很详细，毕竟大部分也都实现过，这里主要记录intuition。）
 主要参考了这篇知乎的博文，<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/335048580">《八大经典排序算法详解》</a>。</p>
 <span id="more"></span>
 <h2 id="鸽巢排序">鸽巢排序</h2>
@@ -366,9 +366,9 @@
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">for</span> i = <span class="hljs-number">1</span> to n <span class="hljs-keyword">do</span><br><span class="hljs-keyword">for</span> j = i + <span class="hljs-number">1</span> to n <span class="hljs-keyword">do</span><br><span class="hljs-keyword">if</span> A[i] &gt; A[j] then<br>swap A[i] and A[j]<br></code></pre></td></tr></table></figure>
 <h2 id="Bug-满满的“数组升序排序”">Bug 满满的“数组升序排序”</h2>
-<p>这个方法第一次见于<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/_N_vbYEisNJ7yddaRjgZdQ">《比冒泡算法还简单的排序算法：看起来满是bug的程序，居然是对的》</a>。<br>
-伪代码如下。<br>
-这个代码相对于冒泡排序看起来有两个地方写错了，一个是判断时的小于号，一个是第二个 for 循环中的开始项。<br>
+<p>这个方法第一次见于<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/_N_vbYEisNJ7yddaRjgZdQ">《比冒泡算法还简单的排序算法：看起来满是bug的程序，居然是对的》</a>。
+伪代码如下。
+这个代码相对于冒泡排序看起来有两个地方写错了，一个是判断时的小于号，一个是第二个 for 循环中的开始项。
 但是这个算法竟然可以惊讶地得到正确的结果。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">for</span> i = <span class="hljs-number">1</span> to n <span class="hljs-keyword">do</span><br><span class="hljs-keyword">for</span> j = <span class="hljs-number">1</span> to n <span class="hljs-keyword">do</span><br><span class="hljs-keyword">if</span> A[i] &lt; A[j] then<br>swap A[i] and A[j]<br></code></pre></td></tr></table></figure>
                 

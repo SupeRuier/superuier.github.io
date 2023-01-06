@@ -319,7 +319,7 @@
 <figure class="highlight yaml"><figcaption><span>_config.icarus.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">sidebar:</span><br>    <span class="hljs-attr">left:</span><br>        <span class="hljs-attr">sticky:</span> <span class="hljs-literal">false</span><br>    <span class="hljs-attr">right:</span><br>        <span class="hljs-attr">sticky:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
 <h2 id="样式更改">样式更改</h2>
 <h3 id="字体更改">字体更改</h3>
-<p>觉得自带 Ubuntu 字体太丑了。<br>
+<p>觉得自带 Ubuntu 字体太丑了。
 更改字体需要更改两个文件。</p>
 <p>这个文件是告诉浏览器使用哪个字体的。</p>
 <figure class="highlight yaml"><figcaption><span>/Users/rui/Documents/Note/node_modules/hexo-theme-icarus/include/style/base.styl</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-string">//</span> <span class="hljs-string">line</span> <span class="hljs-number">9</span><br><span class="hljs-string">$family-sans-serif</span> <span class="hljs-string">?=</span> <span class="hljs-string">&#x27;Open Sans&#x27;</span><span class="hljs-string">,</span> <span class="hljs-string">&#x27;Noto Serif SC&#x27;</span><span class="hljs-string">,</span> <span class="hljs-string">&#x27;Microsoft YaHei&#x27;</span><span class="hljs-string">,</span> <span class="hljs-string">sans-serif</span><br></code></pre></td></tr></table></figure>
@@ -332,7 +332,7 @@
 <li><a target="_blank" rel="noopener" href="http://81.70.200.6/2020/12/16/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%E4%B8%80%E6%8F%BD%E5%AD%90%E8%AE%B0%E5%BD%95/">博客相关问题一揽子记录</a></li>
 </ul>
 <h3 id="主题定制">主题定制</h3>
-<p>之后是一定会对主题进行定制的，但是近期没有时间，而且欠缺一些前端方面的知识。<br>
+<p>之后是一定会对主题进行定制的，但是近期没有时间，而且欠缺一些前端方面的知识。
 这里记录一些见过的对 lcarus 定制的连接，用于学习和获得灵感。</p>
 <p>List：</p>
 <ul>
@@ -343,7 +343,7 @@
 </ul>
 <h2 id="功能开启或添加">功能开启或添加</h2>
 <h3 id="加入博客评论区-Gitalk">加入博客评论区 Gitalk</h3>
-<p>有很多插件可供选择，这里我们使用了 Gitalk，本质上是在 Github 上面新开一个 Repo，然后在 issue 区记录评论，然后通过 OAuth App 读写并显示到博客中。<br>
+<p>有很多插件可供选择，这里我们使用了 Gitalk，本质上是在 Github 上面新开一个 Repo，然后在 issue 区记录评论，然后通过 OAuth App 读写并显示到博客中。
 具体的设置可以参见 Icarus 的<a target="_blank" rel="noopener" href="https://ppoffice.github.io/hexo-theme-icarus/Plugins/Comment/icarus%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97-%E7%94%A8%E6%88%B7%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/">用户评论插件</a>。</p>
 <p>插件设置好之后可能会出现一些问题：</p>
 <ul>
@@ -351,12 +351,12 @@
 <li><a target="_blank" rel="noopener" href="https://eminoda.github.io/2021/06/16/hexo-gitalk-comment-plugins-in-github-issue/">文章批量初始化</a>：我由于文章数较少，是一个一个手动初始化的，日后可能会需要用上批量初始化。</li>
 </ul>
 <h3 id="加入博客评论区-Giscus">加入博客评论区 Giscus</h3>
-<p>Icarus 并没有对 Giscus 的支持，所以还是要从 index 文件层面进行改动。<br>
-整体来说愿意与 Gitalk 比较相似，不过不是在 issue 区记录评论，而是在 discussion 区记录。<br>
+<p>Icarus 并没有对 Giscus 的支持，所以还是要从 index 文件层面进行改动。
+整体来说愿意与 Gitalk 比较相似，不过不是在 issue 区记录评论，而是在 discussion 区记录。
 回答可以按照层级展开，个人比较喜欢。</p>
 <p>首先访问 <a target="_blank" rel="noopener" href="https://giscus.app/zh-CN">Giscus 官网</a>，获取对应的 <code>html</code> 代码，如下所示</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://giscus.app/client.js&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">data-repo</span>=<span class="hljs-string">&quot;xxxxxxxxx&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">data-repo-id</span>=<span class="hljs-string">&quot;xxxxxxxxx&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">data-category</span>=<span class="hljs-string">&quot;xxxxxxxxx&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">data-category-id</span>=<span class="hljs-string">&quot;xxxxxxxxx&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">data-mapping</span>=<span class="hljs-string">&quot;pathname&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">data-reactions-enabled</span>=<span class="hljs-string">&quot;1&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">data-emit-metadata</span>=<span class="hljs-string">&quot;0&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">data-input-position</span>=<span class="hljs-string">&quot;bottom&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">data-theme</span>=<span class="hljs-string">&quot;light&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">data-lang</span>=<span class="hljs-string">&quot;zh-CN&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">crossorigin</span>=<span class="hljs-string">&quot;anonymous&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">async</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
-<p>之后只需要将其放到原有的主题中放置 comments 的地方，替换原有代码即可。<br>
+<p>之后只需要将其放到原有的主题中放置 comments 的地方，替换原有代码即可。
 在 Icarus 中对应的文件是 <code>node_modules/hexo-theme-icarus/layout/common/comment.jsx</code>。climbing</p>
 <p>参考了以下几篇文章：</p>
 <ul>

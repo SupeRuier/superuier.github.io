@@ -16,20 +16,21 @@
   <meta name="author" content="Superui">
   <meta name="keywords" content="">
   
-    <meta name="description" content="之前总是会断断续续看到一些自监督学习的工作&#x2F;想法。 同时也总是看到对比学习这个词，不明所以，所以对此进行一个简单的学习。 本文可以看作对《对比学习（Contrastive Learning）:研究进展精要》这片知乎文章的阅读笔记。">
+    <meta name="description" content="之前总是会断断续续看到一些自监督学习的工作&#x2F;想法。 同时也总是看到对比学习这个词，不明所以，所以对此进行一个简单的学习。 本文可以看作对《对比学习（Contrastive Learning）:研究进展精要》这篇知乎文章的阅读笔记。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Contrastive Learning 学习记录">
 <meta property="og:url" content="https://blog.superui.cc/machine-learning/contrastive-learning/index.html">
 <meta property="og:site_name" content="Superui&#39;s Blog">
-<meta property="og:description" content="之前总是会断断续续看到一些自监督学习的工作&#x2F;想法。 同时也总是看到对比学习这个词，不明所以，所以对此进行一个简单的学习。 本文可以看作对《对比学习（Contrastive Learning）:研究进展精要》这片知乎文章的阅读笔记。">
+<meta property="og:description" content="之前总是会断断续续看到一些自监督学习的工作&#x2F;想法。 同时也总是看到对比学习这个词，不明所以，所以对此进行一个简单的学习。 本文可以看作对《对比学习（Contrastive Learning）:研究进展精要》这篇知乎文章的阅读笔记。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.superui.cc/gallery/covers/contrastive-learning.jpg">
 <meta property="article:published_time" content="2021-09-30T06:02:00.000Z">
-<meta property="article:modified_time" content="2021-09-30T06:02:00.000Z">
+<meta property="article:modified_time" content="2023-01-06T04:00:00.000Z">
 <meta property="article:author" content="Superui">
 <meta property="article:tag" content="machine-learning">
 <meta property="article:tag" content="contrastive-learning">
 <meta property="article:tag" content="self-supervised-learning">
+<meta property="article:tag" content="triplet-loss">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.superui.cc/gallery/covers/contrastive-learning.jpg">
   
@@ -251,7 +252,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.5k 字
+          2.8k 字
         
       </span>
     
@@ -262,7 +263,7 @@
         
         
         
-          21 分钟
+          24 分钟
         
       </span>
     
@@ -302,17 +303,25 @@
             <!-- SEO header -->
             <h1 style="display: none">Contrastive Learning 学习记录</h1>
             
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：8 分钟后
+                  
+                
+              </p>
+            
             
               <div class="markdown-body">
                 
                 <!-- omit in toc -->
-<p>之前总是会断断续续看到一些自监督学习的工作/想法。<br>
-同时也总是看到对比学习这个词，不明所以，所以对此进行一个简单的学习。<br>
-本文可以看作对<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/367290573">《对比学习（Contrastive Learning）:研究进展精要》</a>这片知乎文章的阅读笔记。</p>
+<p>之前总是会断断续续看到一些自监督学习的工作/想法。
+同时也总是看到对比学习这个词，不明所以，所以对此进行一个简单的学习。
+本文可以看作对<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/367290573">《对比学习（Contrastive Learning）:研究进展精要》</a>这篇知乎文章的阅读笔记。</p>
 <span id="more"></span>
 <h1>背景</h1>
-<p>自监督学习有着从无标记样本中学习表征的能力。<br>
-比较出名的是自然语言模型 Bert 的预训练。<br>
+<p>自监督学习有着从无标记样本中学习表征的能力。
+比较出名的是自然语言模型 Bert 的预训练。
 对比学习是一种自监督学习的方式，主要用在图像领域。</p>
 <p>目前，对比学习貌似处于<strong>无明确定义、有指导原则</strong>的状态，它的指导原则是：通过自动构造相似实例和不相似实例，要求习得一个表示学习模型，通过这个模型，使得相似的实例在投影空间中比较接近，而不相似的实例在投影空间中距离比较远。</p>
 <p>对比学习的关键点：</p>
@@ -330,11 +339,11 @@
 </ul>
 <h1>几种分类</h1>
 <h2 id="基于负例：SimCLR">基于负例：SimCLR</h2>
-<p>首先我们需要构建正例和负例。<br>
-负例的话，同一个 batch 的其他样本可以当作此样本的负例。<br>
+<p>首先我们需要构建正例和负例。
+负例的话，同一个 batch 的其他样本可以当作此样本的负例。
 正例的话一般通过图像增强来实现，如下图所示。</p>
 <div style="width:100%;margin:auto"><img src="/machine-learning/contrastive-learning/augmentation.jpg" srcset="/img/loading.gif" lazyload class=""></div>
-<p>模型层面，SimCLR 具有上下两个 Branch，通过学到的表征来计算 Similarity。<br>
+<p>模型层面，SimCLR 具有上下两个 Branch，通过学到的表征来计算 Similarity。
 需要注意的是，相似度计算需要正则化。</p>
 <div style="width:100%;margin:auto"><img src="/machine-learning/contrastive-learning/SimCLR.jpg" srcset="/img/loading.gif" lazyload class=""></div>
 <p>其中的相似度损失使用 infoNCE，其中<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi></mrow><annotation encoding="application/x-tex">τ</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span></span></span></span>为温度参数：</p>
@@ -346,6 +355,15 @@
 <li>在 Moco 中并没有 Projector，在 SimCLR 加入 projector 后效果提升明显。</li>
 <li>SimCLR 论文中表示，Encoder后的特征表示，会有更多包含图像增强信息在内的细节特征，而这些细节信息经过Projector后，很多被过滤掉了。</li>
 </ul>
+<h3 id="Triplet-Loss">Triplet Loss</h3>
+<p>此处对 triplet loss 做一个相关学习。
+这项损失目的也是将正样本距离拉近，负样本距离拉远（但是对于一些难负样本，似乎还是主要拉近正样本）。
+其形式如下：</p>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>L</mi><mo>=</mo><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>d</mi><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">,</mo><mi>p</mi><mo stretchy="false">)</mo><mo>−</mo><mi>d</mi><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">,</mo><mi>n</mi><mo stretchy="false">)</mo><mo>+</mo><mi mathvariant="normal">margin</mi><mo>⁡</mo><mo separator="true">,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L=\max (d(a, p)-d(a, n)+\operatorname{margin}, 0)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">p</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mord mathrm">margin</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mclose">)</span></span></span></span></span></p>
+<p>其中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 分别为正负样本。
+Margin 是一个大于零的数，希望与正样本的距离至少比负样本的距离小一个 margin。
+这种 loss 一般用于人脸识别，细粒度分类等这种训练样本差异较小的个体识别任务。</p>
 <h2 id="基于负例：Moco-V2">基于负例：Moco V2</h2>
 <div style="width:100%;margin:auto"><img src="/machine-learning/contrastive-learning/moco-v2.jpg" srcset="/img/loading.gif" lazyload class=""></div>
 <p>其有以下特点：</p>
@@ -355,22 +373,22 @@
 <li>上分枝反向传播，下分枝使用移动平均机制更新参数。</li>
 </ul>
 <h2 id="基于对比聚类：SwAV">基于对比聚类：SwAV</h2>
-<p>通过上分枝预测下分枝打出的类别伪标记（由聚类得来），同时也要用下分枝预测上分枝。<br>
+<p>通过上分枝预测下分枝打出的类别伪标记（由聚类得来），同时也要用下分枝预测上分枝。
 具体损失函数采用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">z_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 和聚类 Prototype 中每个类中心向量的交叉熵表示。</p>
 <div style="width:100%;margin:auto"><img src="/machine-learning/contrastive-learning/SwAV.jpg" srcset="/img/loading.gif" lazyload class=""></div>
 <h2 id="基于不对称结构：BYOL">基于不对称结构：BYOL</h2>
 <div style="width:100%;margin:auto"><img src="/machine-learning/contrastive-learning/byol.jpg" srcset="/img/loading.gif" lazyload class=""></div>
-<p>Target 分枝结构类似 Moco V2对应下分枝的 Moving Average 动量更新方式。<br>
+<p>Target 分枝结构类似 Moco V2对应下分枝的 Moving Average 动量更新方式。
 Predictor 的存在保证了模型不坍缩（具体为何没有定论）。</p>
 <h2 id="基于冗余消除：Barlow-Twins">基于冗余消除：Barlow Twins</h2>
 <div style="width:100%;margin:auto"><img src="/machine-learning/contrastive-learning/barlow-twins.jpg" srcset="/img/loading.gif" lazyload class=""></div>
-<p>Barlow Twins 并没有去除向量的长度因素，它在Batch维度，对 Aug1 和 Aug2 里的正例分别做了类似 BN 的正则。<br>
-之后，顺着 Batch 维，对 Aug1 和 Aug2 两个正例表示矩阵做矩阵乘法，求出两者的互相关性矩阵（cross-correlation matrix），其损失函数定义在这个互相关矩阵<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span>上。<br>
+<p>Barlow Twins 并没有去除向量的长度因素，它在Batch维度，对 Aug1 和 Aug2 里的正例分别做了类似 BN 的正则。
+之后，顺着 Batch 维，对 Aug1 和 Aug2 两个正例表示矩阵做矩阵乘法，求出两者的互相关性矩阵（cross-correlation matrix），其损失函数定义在这个互相关矩阵<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span>上。
 希望互相关矩阵为对角元素为1的单位矩阵，增强元素间的独立性。</p>
 <h1>现状与展望</h1>
 <h2 id="现状">现状</h2>
-<p>BYOL，SwAV，DeepCluster-v2 都在 many-shot（ImageNet上学，再迁移到其他数据集） 和 few-shot 上取得了比较好的表现。<br>
-其中在 many-shot 上甚至超过有监督。<br>
+<p>BYOL，SwAV，DeepCluster-v2 都在 many-shot（ImageNet上学，再迁移到其他数据集） 和 few-shot 上取得了比较好的表现。
+其中在 many-shot 上甚至超过有监督。
 数据来源于这篇论文，“How Well Do Self-Supervised Models Transfer?”。</p>
 <h2 id="问题">问题</h2>
 <ol>
@@ -379,10 +397,10 @@ Predictor 的存在保证了模型不坍缩（具体为何没有定论）。</p>
 <li>对于复杂任务缺乏像素级学习能力：当下都是采用判别模型。</li>
 </ol>
 <h2 id="我的看法">我的看法</h2>
-<p>其实从2019年就已经陆陆续续见过很多自监督学习的工作了，一直也没有静下心来学习一下。<br>
+<p>其实从2019年就已经陆陆续续见过很多自监督学习的工作了，一直也没有静下心来学习一下。
 这次通过对这篇介绍性博文的学习，加上之前一些自己的见闻，也算是对这个自监督学习方向有了一个粗浅的理解。</p>
-<p>总的来说，自监督学习是希望在完全无标记的样本集中学习一个富有信息的表征。<br>
-由于无标记，所以在学习表征的过程中，我们需要创建一些辅助任务来帮助学习表征。<br>
+<p>总的来说，自监督学习是希望在完全无标记的样本集中学习一个富有信息的表征。
+由于无标记，所以在学习表征的过程中，我们需要创建一些辅助任务来帮助学习表征。
 这些辅助任务包括但不限于：</p>
 <ul>
 <li>某种填空（类似 bert 的预训练，图像中的补全）</li>
@@ -401,10 +419,15 @@ Predictor 的存在保证了模型不坍缩（具体为何没有定论）。</p>
 <li>背景上：自监督学习的出现背景还是存在大量未标记数据，其实也是在标记数据不足这个局限性下做的尝试。</li>
 <li>目的上：与其他研究领域尝试学模型不同，自监督学习的主要目的是在学表征。</li>
 </ul>
-<p>总的来说，我第一次见到这类方法的时候就觉得很直观且很巧妙，经过近年的发展，它的可用性已经得到了验证，个人认为在表征学习的这个道路上，自监督学习还是比较靠谱的。<br>
-但是放到具体的下游任务上，面临标记数据的匮乏时，用主动学习选取标注才是合理之选。<br>
-或许将来的可以实用的大模型都会包含一个离线的自监督学习表征模块，和一个在线的主动学习模块。<br>
+<p>总的来说，我第一次见到这类方法的时候就觉得很直观且很巧妙，经过近年的发展，它的可用性已经得到了验证，个人认为在表征学习的这个道路上，自监督学习还是比较靠谱的。
+但是放到具体的下游任务上，面临标记数据的匮乏时，用主动学习选取标注才是合理之选。
+或许将来的可以实用的大模型都会包含一个离线的自监督学习表征模块，和一个在线的主动学习模块。
 这样既可以缓解主动学习在深度表征上的乏力，也可以高效的在表征确定的时候找到目标模型。</p>
+<h1>Reference</h1>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/367290573">《对比学习（Contrastive Learning）:研究进展精要》</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/462539667">【对比学习】| Triplet loss</a></li>
+</ul>
 
                 
               </div>
@@ -444,6 +467,8 @@ Predictor 的存在保证了模型不坍缩（具体为何没有定论）。</p>
       
         <a href="/tags/self-supervised-learning/">#self-supervised-learning</a>
       
+        <a href="/tags/triplet-loss/">#triplet-loss</a>
+      
     </div>
   
 </div>
@@ -470,6 +495,11 @@ Predictor 的存在保证了模型不坍缩（具体为何没有定论）。</p>
           <div>2021年9月30日</div>
         </div>
       
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2023年1月6日</div>
+        </div>
       
       
         <div class="license-meta-item">

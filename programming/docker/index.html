@@ -309,7 +309,7 @@
 <li>容器（Container）：镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的类和实例一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。</li>
 <li>仓库（Repository）：仓库可看成一个代码控制中心，用来保存镜像。</li>
 </ul>
-<p>Docker 容器通过 Docker 镜像来创建。<br>
+<p>Docker 容器通过 Docker 镜像来创建。
 容器与镜像的关系类似于面向对象编程中的对象与类。</p>
 <h2 id="基础命令">基础命令</h2>
 <p>Docker run 可以在容器内运行一个应用程序。</p>
@@ -319,7 +319,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker run -it ubuntu /bin/bash   <span class="hljs-comment">#运行交互式容器</span><br>$ docker run -itd ubuntu /bin/bash   <span class="hljs-comment">#后台启动容器</span><br>$ <span class="hljs-built_in">exit</span> (ctrl+D) <span class="hljs-comment">#容器内退出容器</span><br>$ docker stop [<span class="hljs-built_in">id</span>/name] <span class="hljs-comment">#停止容器（在容器外）</span><br>$ docker start [<span class="hljs-built_in">id</span>/name] <span class="hljs-comment">#后台启用停止的容器</span><br>$ docker restart [<span class="hljs-built_in">id</span>/name] <span class="hljs-comment">#重启容器</span><br>$ docker <span class="hljs-built_in">exec</span> -it [<span class="hljs-built_in">id</span>/name] <span class="hljs-comment">#进入容器，退出终端容器不停止</span><br>$ docker attach [<span class="hljs-built_in">id</span>/name] <span class="hljs-comment">#进入容器，退出终端导致容器停止</span><br>$ docker <span class="hljs-built_in">rm</span> [<span class="hljs-built_in">id</span>/name] <span class="hljs-comment">#删除容器</span><br>$ docker rmi [<span class="hljs-built_in">id</span>/name] <span class="hljs-comment">#删除镜像</span><br></code></pre></td></tr></table></figure>
 <h2 id="创建镜像">创建镜像</h2>
 <h3 id="更新镜像">更新镜像</h3>
-<p>当我们从 docker 镜像仓库中下载的镜像不能满足我们的需求时，需要对镜像进行更改。<br>
+<p>当我们从 docker 镜像仓库中下载的镜像不能满足我们的需求时，需要对镜像进行更改。
 一般有两种方法：</p>
 <ol>
 <li>从已经创建的容器中更新镜像，并且提交这个镜像</li>

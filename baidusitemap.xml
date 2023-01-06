@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.superui.cc/machine-learning/contrastive-learning/</loc>
+    <lastmod>2023-01-06</lastmod>
+  </url>
+  <url>
     <loc>https://blog.superui.cc/life/2022-year-report/</loc>
     <lastmod>2023-01-02</lastmod>
   </url>
@@ -131,10 +135,6 @@
   <url>
     <loc>https://blog.superui.cc/computer-science-engineering/sorting/</loc>
     <lastmod>2021-10-08</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.superui.cc/machine-learning/contrastive-learning/</loc>
-    <lastmod>2021-09-30</lastmod>
   </url>
   <url>
     <loc>https://blog.superui.cc/artificial-intelligence/ai-search/</loc>

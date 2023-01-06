@@ -305,8 +305,8 @@
                 <p>人工智能中的约束满足问题（Constraint Satisfaction Problems 问题）学习笔记。</p>
 <span id="more"></span>
 <h1>约束满足问题</h1>
-<p>约束满足问题的目标是在一定的约束下，寻找符合条件的状态。<br>
-这种问题在生活中比较常见，以大学排课为例，已知教授的授课可以授课的时间，寻求满足所有教授时间的排课课程表。<br>
+<p>约束满足问题的目标是在一定的约束下，寻找符合条件的状态。
+这种问题在生活中比较常见，以大学排课为例，已知教授的授课可以授课的时间，寻求满足所有教授时间的排课课程表。
 常见的一些约束满足问题有：</p>
 <ul>
 <li>八皇后问题</li>
@@ -340,9 +340,9 @@
 <li>CSP 具有可交换性（commutative）</li>
 </ol>
 <h2 id="CSPs-中的局部相容性（consistency）">CSPs 中的局部相容性（consistency）</h2>
-<p>在 CSPs 中，算法可以<strong>搜索</strong>，也可以做一种称作约束传播的<strong>推理</strong>。<br>
-推理的目的是用约束减小一个变量的合法取值范围。<br>
-可以把推理作为搜索前的预处理步骤。<br>
+<p>在 CSPs 中，算法可以<strong>搜索</strong>，也可以做一种称作约束传播的<strong>推理</strong>。
+推理的目的是用约束减小一个变量的合法取值范围。
+可以把推理作为搜索前的预处理步骤。
 核心思想是增强局部相容性，使不相容的结点取值被删除。</p>
 <ul>
 <li>节点相容（Node-consistency）：来自节点本身的一元约束</li>
@@ -364,8 +364,8 @@
 </li>
 </ul>
 <h2 id="具体解法：回溯搜索">具体解法：回溯搜索</h2>
-<p>仍然使用搜索来求解，一般来说使用 Backtracking Search（BTS）回溯搜索。<br>
-用于深度优先之中，每次为一个变量选择一个赋值，当没有合法的值时就回溯。<br>
+<p>仍然使用搜索来求解，一般来说使用 Backtracking Search（BTS）回溯搜索。
+用于深度优先之中，每次为一个变量选择一个赋值，当没有合法的值时就回溯。
 由于可交换性，我们只用搜索组合而不是排列，所以叶节点个数至多为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>d</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">d^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span>个（不回溯的情况）。</p>
 <p>在回溯搜索中，也需要考虑如下问题来对搜索进行改进：</p>
 <ul>
@@ -384,8 +384,8 @@
 <li>最小约束值 Least Constraining Value (LCV)，试图为剩余变量赋值留下最大的空间。这里只需要找到一个解，所以优先考虑最可能的值。</li>
 </ul>
 <h3 id="2-每步搜索应该进行怎样的推理？是否能预见失败？">2. 每步搜索应该进行怎样的推理？是否能预见失败？</h3>
-<p>搜索和推理应当交替进行。<br>
-推理的目的是减小值域，减小搜索空间。<br>
+<p>搜索和推理应当交替进行。
+推理的目的是减小值域，减小搜索空间。
 当我们决定给某个变量某个值时，都有机会推理其邻接变量的值域空间。</p>
 <ul>
 <li>最简单的形式是向前检验 Forward Checking（FC）。跟踪维护所有为选取变量的可能取值，当任何一个变量没有合法取值时结束。联合使用 MRV 和前向检验，很多问题的搜索将更有效。但是前向检验只使当前变量弧相容，却不向前看使其他变量弧相容。</li>

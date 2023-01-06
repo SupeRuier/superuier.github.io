@@ -306,9 +306,9 @@
 <p>此处记录对于 Batch Normalization 的学习。</p>
 <span id="more"></span>
 <h2 id="神经网络中存在的-ICS-问题">神经网络中存在的 ICS 问题</h2>
-<p>深度学习中存在 Internal Covariate Shift (ICS) 的问题。<br>
-类比迁移学习中的 Covariate Shift 指源领域和目标领域数据 marginal distribution 的偏移。<br>
-这里 ICS 指神经网络中，由于参数的变化，引起的每一层输出分布的差异变化，换句话说之后下一层的输入在参数变化后，可能基于了另一个分布。<br>
+<p>深度学习中存在 Internal Covariate Shift (ICS) 的问题。
+类比迁移学习中的 Covariate Shift 指源领域和目标领域数据 marginal distribution 的偏移。
+这里 ICS 指神经网络中，由于参数的变化，引起的每一层输出分布的差异变化，换句话说之后下一层的输入在参数变化后，可能基于了另一个分布。
 所以下一层在训练过程中就需要不断的去适应这种变化。</p>
 <p>于是带来了以下问题：</p>
 <ul>
@@ -316,11 +316,11 @@
 <li>对于饱和非线性激活函数，例如 sigmoid 和 tanh，容易落入饱和区。饱和区是指由于输入值极度偏离0点，导致梯度计算接近于0，从而难以起到学习效果。</li>
 </ul>
 <h2 id="如何解决-ICS-问题">如何解决 ICS 问题</h2>
-<p>此类由于分布变化带来不良影响的问题，最 naive 的解决方式一般来说都是对分布进行限制。<br>
-就比如在迁移学习中，会将源域和目标域的样本来做一个统一（减小分布差异）。<br>
+<p>此类由于分布变化带来不良影响的问题，最 naive 的解决方式一般来说都是对分布进行限制。
+就比如在迁移学习中，会将源域和目标域的样本来做一个统一（减小分布差异）。
 在 ICS 问题中，也可以对分布进行限制。</p>
-<p>最初，白化（whitening）被提出，一般来说采用 <a target="_blank" rel="noopener" href="http://ufldl.stanford.edu/tutorial/unsupervised/PCAWhitening/">PCA</a> 或者 ZCA 的方法，使所有特征分布均值为0，方差为1（PCA）或相同（ZCA）。<br>
-白话的目的是去除数据特征之间相关性（独立），同时使其具有相同均值和方差（同分布）。<br>
+<p>最初，白化（whitening）被提出，一般来说采用 <a target="_blank" rel="noopener" href="http://ufldl.stanford.edu/tutorial/unsupervised/PCAWhitening/">PCA</a> 或者 ZCA 的方法，使所有特征分布均值为0，方差为1（PCA）或相同（ZCA）。
+白话的目的是去除数据特征之间相关性（独立），同时使其具有相同均值和方差（同分布）。
 这样每一层网络的输入分布被固定，加速网络收敛。</p>
 <p>但是白化也存在一些问题：</p>
 <ul>
@@ -328,7 +328,7 @@
 <li>改变数据表达能力，一些参数信息会被丢失</li>
 <li>不可微，难以通过反向传播训练</li>
 </ul>
-<p>所以说我们期望有一种计算代价低廉，且能使标准化的数据尽可能保有表达能力的方法。<br>
+<p>所以说我们期望有一种计算代价低廉，且能使标准化的数据尽可能保有表达能力的方法。
 这就是 Batch Normalization 提出的背景。</p>
 <h2 id="什么是-Batch-Normalization">什么是 Batch Normalization</h2>
 <p>主要思路：</p>
@@ -371,7 +371,7 @@
 <li>对于 ReLU 而言，目前并没有定论，不管是实验还是理论争论都比较多，目前看来 BN 放在 ReLU 之后可能表现更好，但是放在 ReLU 前的可能更多一些（BN 原论文是放在了前面）。（<strong>大误</strong>）</li>
 </ul>
 <h2 id="在-Pytorch-中的-Batch-Normalization">在 Pytorch 中的 Batch Normalization</h2>
-<p>在 Pytorch 的实现中，BN 也包含两次平移和伸缩变换，其中第二次变换可以通过调整仿射变换参数 <code>affine=True</code> 选择是否打开。<br>
+<p>在 Pytorch 的实现中，BN 也包含两次平移和伸缩变换，其中第二次变换可以通过调整仿射变换参数 <code>affine=True</code> 选择是否打开。
 这里可能也体现了这个仿射变换是否有必要的争议。</p>
 <h2 id="Reference">Reference</h2>
 <ul>

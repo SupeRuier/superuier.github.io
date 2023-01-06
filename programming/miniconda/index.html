@@ -310,16 +310,16 @@
             
               <div class="markdown-body">
                 
-                <p>Miniconda 与 Anaconda 为 conda 的发行版，主要用于包管理，其中 miniconda 更轻量级。<br>
+                <p>Miniconda 与 Anaconda 为 conda 的发行版，主要用于包管理，其中 miniconda 更轻量级。
 由于日常使用总是会忘记，所以此处记录一些常用的命令。</p>
 <span id="more"></span>
 <h2 id="安装">安装</h2>
 <p>首先从清华源下载安装包并安装。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda2-4.5.11-Linux-x86_64.sh<br>bash Miniconda2-4.5.11-Linux-x86_64.sh<br><span class="hljs-built_in">source</span> ~/.bashrc<br></code></pre></td></tr></table></figure>
-<p>Conda 默认的软件源在国外,速度非常的慢,我们可以将其更换为<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/">清华源</a>。<br>
+<p>Conda 默认的软件源在国外,速度非常的慢,我们可以将其更换为<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/">清华源</a>。
 可以直接在<code>.condarc</code>中添加</p>
 <figure class="highlight bash"><figcaption><span>.condarc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">- https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/<br>- https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/<br>- https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/<br>- https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/<br></code></pre></td></tr></table></figure>
-<p>之后需要使用 <code>conda clean -i</code> 清除索引缓存，保证用的是镜像站提供的索引。]<br>
+<p>之后需要使用 <code>conda clean -i</code> 清除索引缓存，保证用的是镜像站提供的索引。]
 注意有的时候会显示 url 错误， 此时换成 https 可能会解决问题。</p>
 <h2 id="配置">配置</h2>
 <h3 id="对环境更改">对环境更改</h3>

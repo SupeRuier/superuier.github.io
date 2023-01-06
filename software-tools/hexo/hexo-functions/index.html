@@ -309,7 +309,7 @@
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
 <h2 id="Generate-static-files-Run-server">Generate static files + Run server</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo clean <span class="hljs-comment"># Clean local files</span><br>$ hexo generate <span class="hljs-comment"># Generate static files</span><br>$ hexo server <span class="hljs-comment"># Build local server</span><br></code></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a><br>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a>
 More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
 <h2 id="远端部署-use-Gitbuh-Action">远端部署 (use Gitbuh Action)</h2>
 <p>The procedure is in <code>.github/workflows/deploy.yml</code></p>
@@ -321,11 +321,11 @@ More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generati
 <p>站内文章引用语法如下。</p>
 <figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name">post_link</span> file_name Title_of_link %&#125;</span><br></code></pre></td></tr></table></figure>
 <h2 id="Insert-figures">Insert figures</h2>
-<p>不同于markdown的图片引用方法，Hexo有着自己的语法。<br>
+<p>不同于markdown的图片引用方法，Hexo有着自己的语法。
 图片文件夹位于<code>_post</code>目录下</p>
 <figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name">asset_img</span> test.jpg%&#125;</span><br></code></pre></td></tr></table></figure>
 <img src="/software-tools/hexo/hexo-functions/test.jpg" srcset="/img/loading.gif" lazyload class="">
-<p>同时可以自定义图片大小。<br>
+<p>同时可以自定义图片大小。
 语法与html语法相同。</p>
 <figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width:70%;margin:auto&quot;</span>&gt;</span></span><span class="hljs-template-tag">&#123;% <span class="hljs-name">asset_img</span> test.jpg%&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
 <div style="width:70%;margin:auto"><img src="/software-tools/hexo/hexo-functions/test.jpg" srcset="/img/loading.gif" lazyload class=""></div>
