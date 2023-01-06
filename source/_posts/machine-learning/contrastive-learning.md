@@ -3,7 +3,7 @@ title: Contrastive Learning 学习记录
 index_img: /gallery/covers/contrastive-learning.jpg
 banner_img: /gallery/covers/contrastive-learning.jpg
 date: 2021-09-30 14:02:00
-updated:  2021-09-30 14:02:00
+updated:  2023-01-06 12:00:00
 category: 
 - Machine Learning
 toc: true
@@ -11,6 +11,7 @@ tags:
 - machine-learning
 - contrastive-learning
 - self-supervised-learning
+- triplet-loss
 
 math: true
 ---
@@ -18,7 +19,7 @@ math: true
 
 之前总是会断断续续看到一些自监督学习的工作/想法。
 同时也总是看到对比学习这个词，不明所以，所以对此进行一个简单的学习。
-本文可以看作对[《对比学习（Contrastive Learning）:研究进展精要》](https://zhuanlan.zhihu.com/p/367290573)这片知乎文章的阅读笔记。
+本文可以看作对[《对比学习（Contrastive Learning）:研究进展精要》](https://zhuanlan.zhihu.com/p/367290573)这篇知乎文章的阅读笔记。
 
 <!-- more -->
 
@@ -68,6 +69,22 @@ $$
 
 - 在 Moco 中并没有 Projector，在 SimCLR 加入 projector 后效果提升明显。
 - SimCLR 论文中表示，Encoder后的特征表示，会有更多包含图像增强信息在内的细节特征，而这些细节信息经过Projector后，很多被过滤掉了。
+
+### Triplet Loss
+
+此处对 triplet loss 做一个相关学习。
+这项损失目的也是将正样本距离拉近，负样本距离拉远（但是对于一些难负样本，似乎还是主要拉近正样本）。
+其形式如下：
+
+$$
+L=\max (d(a, p)-d(a, n)+\operatorname{margin}, 0)
+$$
+
+其中 $p$ 和 $n$ 分别为正负样本。
+Margin 是一个大于零的数，希望与正样本的距离至少比负样本的距离小一个 margin。
+这种 loss 一般用于人脸识别，细粒度分类等这种训练样本差异较小的个体识别任务。
+
+
 
 ## 基于负例：Moco V2
 
@@ -140,3 +157,7 @@ BYOL，SwAV，DeepCluster-v2 都在 many-shot（ImageNet上学，再迁移到其
 但是放到具体的下游任务上，面临标记数据的匮乏时，用主动学习选取标注才是合理之选。
 或许将来的可以实用的大模型都会包含一个离线的自监督学习表征模块，和一个在线的主动学习模块。
 这样既可以缓解主动学习在深度表征上的乏力，也可以高效的在表征确定的时候找到目标模型。
+
+# Reference
+- [《对比学习（Contrastive Learning）:研究进展精要》](https://zhuanlan.zhihu.com/p/367290573)
+- [【对比学习】| Triplet loss](https://zhuanlan.zhihu.com/p/462539667)

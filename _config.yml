@@ -40,6 +40,8 @@ post_asset_folder: true
 #   breaks: false
 # fluid 中使用 katex 时，配置以下插件
 markdown:
+  render:
+    breaks: false
   plugins:
     - "@traptitech/markdown-it-katex"
 relative_link: false
