@@ -9,6 +9,8 @@ categories:
 tags: 
 - AI
 - search
+
+math: true
 ---
 
 人工智能中的约束满足问题（Constraint Satisfaction Problems 问题）学习笔记。

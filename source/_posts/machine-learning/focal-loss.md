@@ -12,6 +12,8 @@ tags:
 - machine-learning
 - loss-function
 
+math: true
+
 ---
 <!-- omit in toc -->
 

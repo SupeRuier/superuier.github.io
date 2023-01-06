@@ -7,6 +7,8 @@ banner_img: /gallery/covers/ai-basics.jpg
 categories:
 - Artificial Intelligence
 tags: AI
+
+math: true
 ---
 
 人工智能基础知识和一些概念。

@@ -9,6 +9,9 @@ categories:
 tags: 
 - AI
 - logic
+
+math: true
+
 ---
 
 将逻辑作为基于知识的 Agent 的一类通用表示，这样的 Agent 通过对信息的组合和再组合以适应各种用途。

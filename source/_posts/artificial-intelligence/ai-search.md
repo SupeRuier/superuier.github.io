@@ -9,6 +9,8 @@ categories:
 tags: 
 - AI
 - search
+
+math: true
 ---
 
 人工智能中关于搜索的一些最基础的知识。

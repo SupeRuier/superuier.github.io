@@ -11,6 +11,8 @@ tags:
 - machine-learning
 - gaussian-process
 
+math: true
+
 ---
 <!-- omit in toc -->
 

@@ -13,6 +13,7 @@ tags:
 - loss
 - gradient
 
+math: true
 ---
 <!-- omit in toc -->
 
@@ -26,7 +27,9 @@ tags:
 
 自然的，去掉一个样本带来的参数变化可以写作 $\hat{\theta}_{-z}-\hat{\theta}$，其中
 
-$$\hat{\theta}_{-z} \stackrel{\text { def }}{=} \arg \min _{\theta \in \Theta} \sum_{z_i \neq z} L\left(z_i, \theta\right)$$
+$$
+\hat{\theta}_{-z} \stackrel{\text { def }}{=} \arg \min _{\theta \in \Theta} \sum_{z_i \neq z} L\left(z_i, \theta\right)
+$$
 
 但是对于每一个样本而言，我们不可能总是去掉它并重新训练一个模型。
 于是我们可以从 influence function 的角度来理解这个问题。
@@ -42,7 +45,9 @@ $$\left.\mathcal{I}_{\text {up,params }}(z) \stackrel{\text { def }}{=} \frac{d 
 在训练集中去掉 $z$ 点就相当于将 $\epsilon$ 设为 $-\frac{1}{n}$，那么参数的变化 $\hat{\theta}_{-z}-\hat{\theta}$ 则可在不重训练模型的情况下近似为 $ -\frac{1}{n} \mathcal{I}_{\text {up,params }}(z)$.
 这样在更改 $z$ 权重的情况下，对于一个测试样本的影响的解析解可以写作：
 
-$$\begin{aligned} \mathcal{I}_{\text {up }, \text { loss }}\left(z, z_{\text {test }}\right) &\left.\stackrel{\text { def }}{=} \frac{d L\left(z_{\text {test }}, \hat{\theta}_{\epsilon, z}\right)}{d \epsilon}\right|_{\epsilon=0} \\ &=\left.\nabla_\theta L\left(z_{\text {test }}, \hat{\theta}\right)^{\top} \frac{d \hat{\theta}_{\epsilon, z}}{d \epsilon}\right|_{\epsilon=0} \\ &=-\nabla_\theta L\left(z_{\text {test }}, \hat{\theta}\right)^{\top} H_{\hat{\theta}}^{-1} \nabla_\theta L(z, \hat{\theta}) . \end{aligned}$$
+$$
+\begin{aligned} \mathcal{I}_{\text {up }, \text { loss }}\left(z, z_{\text {test }}\right) &\left.\stackrel{\text { def }}{=} \frac{d L\left(z_{\text {test }}, \hat{\theta}_{\epsilon, z}\right)}{d \epsilon}\right|_{\epsilon=0} \\ &=\left.\nabla_\theta L\left(z_{\text {test }}, \hat{\theta}\right)^{\top} \frac{d \hat{\theta}_{\epsilon, z}}{d \epsilon}\right|_{\epsilon=0} \\ &=-\nabla_\theta L\left(z_{\text {test }}, \hat{\theta}\right)^{\top} H_{\hat{\theta}}^{-1} \nabla_\theta L(z, \hat{\theta}) . \end{aligned}
+$$
 
 ## 主动学习中对这一结论的运用【1】
 

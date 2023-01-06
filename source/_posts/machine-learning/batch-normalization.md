@@ -11,6 +11,7 @@ tags:
 - neural-network
 - machine-learning
 
+math: true
 ---
 <!-- omit in toc -->
 

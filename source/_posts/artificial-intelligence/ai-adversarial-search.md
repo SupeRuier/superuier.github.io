@@ -9,6 +9,9 @@ categories:
 tags: 
 - AI
 - search
+
+math: true
+
 ---
 
 人工智能中的对抗搜索学习笔记。

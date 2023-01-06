@@ -12,6 +12,8 @@ tags:
 - machine-learning
 - attention
 
+math: true
+
 ---
 <!-- omit in toc -->
 

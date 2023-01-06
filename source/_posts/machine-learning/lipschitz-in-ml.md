@@ -12,6 +12,8 @@ tags:
 - machine-learning
 - theory
 
+math: true
+
 ---
 <!-- omit in toc -->
 

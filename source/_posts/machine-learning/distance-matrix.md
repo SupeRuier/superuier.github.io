@@ -10,6 +10,8 @@ toc: true
 tags: 
 - machine-learning
 
+math: true
+
 ---
 
 <!-- omit in toc -->
