@@ -16,24 +16,25 @@
   <meta name="author" content="Superui">
   <meta name="keywords" content="">
   
-    <meta name="description" content="记录一些内容并未不适合公开的糖盐。 个人觉得还比较有趣，亦不免寓教于乐。">
+    <meta name="description" content="主动学习发展已经约 30 年，作为领域里面的无名小卒，自己也对这个方向有大概四五年的了解。 近些年发现本领域的文章以灌水居多，真正提出问题和解决问题的少之又少（虽然绝大多数领域都是这样）。 目前有一些人对 AL 的实用性和表现提出了质疑，并且也收获了一些认可。 那么主动学习领域到底会何去何从？ 本文我会整理总结一下自己的看法，或许有一些观点缺乏证据支持，若日后需要深入，则会补上。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="糖盐">
-<meta property="og:url" content="https://blog.superui.cc/knowledge-from-growth/sugar-salt/index.html">
+<meta property="og:title" content="对于主动学习的一些思考">
+<meta property="og:url" content="https://blog.superui.cc/machine-learning/al-thinking/index.html">
 <meta property="og:site_name" content="Superui&#39;s Blog">
-<meta property="og:description" content="记录一些内容并未不适合公开的糖盐。 个人觉得还比较有趣，亦不免寓教于乐。">
+<meta property="og:description" content="主动学习发展已经约 30 年，作为领域里面的无名小卒，自己也对这个方向有大概四五年的了解。 近些年发现本领域的文章以灌水居多，真正提出问题和解决问题的少之又少（虽然绝大多数领域都是这样）。 目前有一些人对 AL 的实用性和表现提出了质疑，并且也收获了一些认可。 那么主动学习领域到底会何去何从？ 本文我会整理总结一下自己的看法，或许有一些观点缺乏证据支持，若日后需要深入，则会补上。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.superui.cc/gallery/covers/sugar-salt.jpg">
-<meta property="article:published_time" content="2021-01-21T11:44:50.000Z">
-<meta property="article:modified_time" content="2022-03-23T06:00:00.000Z">
+<meta property="og:image" content="https://blog.superui.cc/gallery/covers/al-thinking.jpg">
+<meta property="article:published_time" content="2023-02-11T10:40:00.000Z">
+<meta property="article:modified_time" content="2023-02-11T10:40:00.000Z">
 <meta property="article:author" content="Superui">
-<meta property="article:tag" content="感悟总结">
+<meta property="article:tag" content="active-learning">
+<meta property="article:tag" content="thinking">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.superui.cc/gallery/covers/sugar-salt.jpg">
+<meta name="twitter:image" content="https://blog.superui.cc/gallery/covers/al-thinking.jpg">
   
   
   
-  <title>糖盐 - Superui&#39;s Blog</title>
+  <title>对于主动学习的一些思考 - Superui&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,13 +233,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/gallery/covers/sugar-salt.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/gallery/covers/al-thinking.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="糖盐"></span>
+            <span id="subtitle" data-typed-text="对于主动学习的一些思考"></span>
           
         </div>
 
@@ -249,8 +250,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2021-01-21 19:44" pubdate>
-          2021年1月21日 晚上
+        <time datetime="2023-02-11 18:40" pubdate>
+          2023年2月11日 晚上
         </time>
       </span>
     
@@ -261,7 +262,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          328 字
+          2.8k 字
         
       </span>
     
@@ -272,7 +273,7 @@
         
         
         
-          3 分钟
+          24 分钟
         
       </span>
     
@@ -310,46 +311,169 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">糖盐</h1>
-            
-              <p class="note note-info">
-                
-                  
-                    本文最后更新于：1 年前
-                  
-                
-              </p>
+            <h1 style="display: none">对于主动学习的一些思考</h1>
             
             
               <div class="markdown-body">
                 
-                <p>记录一些内容并未不适合公开的糖盐。
-个人觉得还比较有趣，亦不免寓教于乐。</p>
+                <!-- omit in toc -->
+<p>主动学习发展已经约 30 年，作为领域里面的无名小卒，自己也对这个方向有大概四五年的了解。
+近些年发现本领域的文章以灌水居多，真正提出问题和解决问题的少之又少（虽然绝大多数领域都是这样）。
+目前有一些人对 AL 的实用性和表现提出了质疑，并且也收获了一些认可。
+那么主动学习领域到底会何去何从？
+本文我会整理总结一下自己的看法，或许有一些观点缺乏证据支持，若日后需要深入，则会补上。</p>
 <span id="more"></span>
-<h2 id="Archive">Archive</h2>
+<h1>客观上 AL 是什么？</h1>
+<div class="note note-primary">
+            <p>关于 AL 的具体信息，可见本人 <code>awesome-active-learning</code> 的仓库，详见<a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning">此链接</a>。</p>
+          </div>
+<h2 id="主动学习面向的问题">主动学习面向的问题</h2>
+<p>在机器学习中，需要标记样本来训练模型，获得标记样本需要成本（人工标注，实验模拟等）。
+为了训练一个良好的模型，获取标记样本的成本往往可观。
+所以我们期望可以使用更少的标记成本（通常意味着更少的标记样本）来训练得到一个表现相当的可用模型。</p>
+<p>这个问题通常有两个解决思路：</p>
+<ol>
+<li>在少量标记样本下，尽可能来提升模型的表现。</li>
+<li>选取更加值有价值的样本进行标注且训练模型。</li>
+</ol>
+<h2 id="主动学习的基本思路">主动学习的基本思路</h2>
+<h3 id="一个重要的假设">一个重要的假设</h3>
+<p>并不是所有的样本对于模型训练有着相同的重要性。
+相同数量的重要样本训练出的模型要好于相同数目的劣质样本。
+那么选择重要样本标记并训练可以有效减少标注成本（因为不同样本的标记成本近似相同）。</p>
+<h3 id="基本解决方案（通常遵循的思路）">基本解决方案（通常遵循的思路）</h3>
+<p>迭代式选取与训练：</p>
+<ol>
+<li>基于当前标记样本训练模型。</li>
+<li>基于当前训练好的模型选取重要的新样本并更新已有标记样本库。</li>
+<li>重复 1&amp;2 直到预算耗尽。</li>
+</ol>
+<p>于是乎绝大多数工作的重点都放在了如何定义“重要”以及如何选取“重要样本”。</p>
+<h1>客观上 AL 现状？有什么局限？</h1>
+<h2 id="现状">现状</h2>
+<h3 id="从论文的角度而言">从论文的角度而言</h3>
+<ol>
+<li>从论文发表的角度来看，每年都会有一定程度的顶会顶刊，作为一个相对成熟的领域还算正常。</li>
+<li>从论文的内容来看
+<ol>
+<li>高水平会议以及期刊针对于 AL 方法或者当前解决方案的局限性进行分析讨论。</li>
+<li>其他绝大多数工作是将 AL 当作工具与其他领域问题结合使用。
+在这些问题上或提出新策略，或没有。</li>
+<li>针对传统问题提主动学习策略的越来越少。</li>
+</ol>
+</li>
+</ol>
+<h3 id="从应用的角度而言">从应用的角度而言</h3>
+<ol>
+<li>听说过一些数据标记公司使用 AL 来标记/构建模型。</li>
+<li>也能时常看到一些科学界或者产业界的应用论文。</li>
+</ol>
+<h3 id="从学者研究强度的角度而言">从学者研究强度的角度而言</h3>
+<p>每年也都有几篇 AL 相关的博士论文。
+也仍有一些课题组将 AL 作为研究重点之一。
+详见我们的 <a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning">AL 资料库</a>。</p>
+<h2 id="局限性-质疑">局限性/质疑</h2>
+<p>我曾写过一个相关深度主动学习局限性相关论文的（见<a href="/paper-reading/deep-AL-criticism/" title="阅读笔记">阅读笔记</a>）。
+此外在 <code>awesome-active-learning</code> 的仓库中也有进行一些更新，详见<a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning/blob/master/subfields/deep_AL.md">此链接</a>。</p>
+<p>目前来说，对于现有主动学习工作/框架的质疑主要集中于以下几点：</p>
+<ol>
+<li>表现上（是否可以在有限样本下获得最大程度提升）：
+<ol>
+<li>在用少量标记样本的前提下，表现远差于基于半监督学习和自监督学习的方法（不论用什么策略）。</li>
+<li>如果与基于半监督学习和自监督学习的方法结合使用主动学习，AL 的提升不明显。</li>
+</ol>
+</li>
+<li>可靠性上（使用可以使选用的策略优于其他策略）：
+<ol>
+<li>当前许多工作提出的方法的可信性有限，不同的文章中相同的策略有时会给出不同的结果。没有一些约定俗成的 benchmark 来对比不同文章的策略。这个可能来源于不同的 AL 的设定（不同 AL_batchsize 或者重复次数随机种子可能会影响最终表现）。</li>
+<li>当前对于主动学习策略的理解有限，同一个策略在不同的设定下可以有不同的表现，当前缺乏不同场景下哪种策略更适用的认识。</li>
+<li>在一些场景下，主动学习甚至表现差于随机选取。</li>
+</ol>
+</li>
+<li>实际使用上（是否可以顺利地部署）：
+<ol>
+<li>由于主动学习实际使用中只有一次使用机会，那么如何保障其至少不差？（可靠性相关）</li>
+<li>主动学习的标注流程与实际的标注条件或许存在冲突（串行并行）。</li>
+</ol>
+</li>
+</ol>
+<h1>我们是否还需要 AL？（以问题为导向）</h1>
+<p>从实际的角度来看判断一个技术是否还有用，在以问题为导向的思路下，或许可以从以下几个角度思考：</p>
+<ol>
+<li>该技术可以用来解决的问题是否还存在？是否发生变化？</li>
+<li>是否有其他的技术完美解决这个问题？</li>
+<li>该技术的表现是否达到可用标准？</li>
+</ol>
+<h2 id="问题是否还存在？是否发生变化？">问题是否还存在？是否发生变化？</h2>
+<p>“针对任务构建模型时标注成本昂贵的”问题依旧存在，但或许有了一些变化。</p>
+<ol>
+<li>标记需要付出成本的前提依旧存在。
 <ul>
-<li>“虚无的充实感”
-<ul>
-<li>描述忙活了半天却不知道做出什么进展但却心满意足的样子。</li>
-<li>个人认为旨在期望你清楚地认识到自己的进步在哪里，或者说到底有没有进步。</li>
-<li>eg. “埋头写了1000行代码，好充实的一天。”</li>
+<li>标注的定义更加广义，人工之外可能还有机器，亦或一些模拟实验。</li>
+<li>随着一些众包平台的发展，或许一些简单的人力标注成本有所降低。</li>
 </ul>
 </li>
-<li>“那你/我还不如去买彩票呢”
+<li>监督学习的场景下，训练“特定任务”上的良好模型仍需要相对多的标记样本。
 <ul>
-<li>描述一种期望可能性很小的状态，一般会有上一句作为铺垫。</li>
-<li>个人认为旨在期望你认识到此事的荒谬。</li>
-<li>eg. “那我要只期望我的学生XXX（此处为动词），那我还不如去买彩票呢。”</li>
+<li>但是纯监督学习的应用场景或许越来越少（实际使用中或许越来越局限）。</li>
 </ul>
 </li>
-<li>“如果我没记错的话”
+</ol>
+<h2 id="其他解决方式的是否比-AL-好？">其他解决方式的是否比 AL 好？</h2>
+<p>总的来说，主动学习期望以少量标记样本获得较好表现，当前有着以下一些方法同样面对这个场景，区别在于他们并没有着重于样本评估选取。</p>
+<ol>
+<li>半监督学习，同时利用标记以及未标记样本，在少样本下表现较好（于少样本监督学习）。</li>
+<li>自监督学习，利用未标记样本和辅助任务提取标准，在使用少量标记样本 fine-tune，复杂任务上表现较好（于少样本监督学习）。</li>
+<li>类迁移学习（预先存在一些知识积累）：
+<ol>
+<li>迁移学习：有一些目标领域标记样本，通常表现好于仅在目标领域少量样本监督学习。</li>
+<li>小样本学习：通常标记数目极少，several-shots，表现好于仅使用小样本监督学习。</li>
+</ol>
+</li>
+</ol>
+<p>这些方法通常都好于仅使用少量样本的监督学习，因为其或多或少都用到了标记样本之外的更多信息（好于单纯仅仅使用 AL）。
+可以说这些方法或多或少的解决了小样本下低标注成本的学习问题。</p>
+<h2 id="AL-表现上是否达到可用标准？">AL 表现上是否达到可用标准？</h2>
+<p>“可用标准”或许难以定义，但是考虑到其他方法的优良表现，可以认为在很多情况下，简单的仅在监督学习中使用主动学习是不能满足需求的，即不可用。</p>
+<p>但“其他解决方式结合 AL 的重要样本选取”相对于“仅使用其他解决方式”而言，很多时候是可以带来表现提升的（表现更好通常就意味着更节省成本。）</p>
 <ul>
-<li>表示我没记错，一般用于展开陈述的开头。</li>
-<li>个人认为旨在加强语气，但是留出弹性空间，同时引出需要强调的陈述。</li>
-<li>eg. “如果我没记错，现在在校的同学，应该都是申请过提前返校的同学。”</li>
+<li>例如一些半监督学习/自监督学习/数据增强 + AL。</li>
+<li>例如域迁移/预训练模型 + AL。</li>
+</ul>
+<p>所以，与各种先进范式结合的 AL 选取是可以达到使用标准的，即可用。
+但需要注意的是 AL 于其它范式的结合带来的提升并不能保证很大，同时在训练上可能也会带来负担（多次训练）。</p>
+<h2 id="我们是否还需要-AL？">我们是否还需要 AL？</h2>
+<ol>
+<li>如果单样本标注成本极高
+<ul>
+<li>那么哪怕极少量的标记数降低都可以带来可观的成本节约。</li>
+<li>这些情况往往在科学研究，医疗分析等强依赖专家或者模拟实验中出现。</li>
+<li>这种情况我们需要 AL。</li>
 </ul>
 </li>
+<li>如果单样本标注成本有限。
+<ul>
+<li>那么需要极大量的标记数目减少才可以节约成本。</li>
+<li>这种情况在很多常见的任务中都会出现，成本或有不同，但是应该还是在一个数量级。</li>
+<li>这种情况非 AL 或许已经可以带来极大的成本节约。</li>
+<li>如果预算其极有限，那么或许我们进一步还需要 AL。</li>
 </ul>
+</li>
+</ol>
+<h1>个人看法</h1>
+<p>如果还想在 AL 领域继续深入研究：</p>
+<ol>
+<li>使用时需要与先进范式结合及对比，而不是简单的使用随机选取监督学习作为基线。</li>
+<li>需要找昂贵标记成本的实际运用，这是 AL 最有实际价值的地方。</li>
+<li>AL 实际使用中有着一些阻碍，可能仍需要进一步研究。
+<ul>
+<li>选取样本的依据及合理性，包含一些理论研究</li>
+<li>不同数据分布条件下的考虑</li>
+<li>传统 AL 流程的复杂度和易用性</li>
+<li>其他种种可以见我们的 <a target="_blank" rel="noopener" href="https://github.com/SupeRuier/awesome-active-learning#5-practical-considerations---%E8%BF%90%E7%94%A8-al-%E6%97%B6%E7%9A%84%E8%80%83%E8%99%91">AAL 仓库</a></li>
+</ul>
+</li>
+</ol>
 
                 
               </div>
@@ -368,7 +492,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/knowledge-from-growth/" class="category-chain-item">Knowledge from Growth</a>
+  <a href="/categories/Machine-Learning/" class="category-chain-item">Machine Learning</a>
   
   
 
@@ -383,7 +507,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%84%9F%E6%82%9F%E6%80%BB%E7%BB%93/">#感悟总结</a>
+        <a href="/tags/active-learning/">#active-learning</a>
+      
+        <a href="/tags/thinking/">#thinking</a>
       
     </div>
   
@@ -395,8 +521,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>糖盐</div>
-      <div>https://blog.superui.cc/knowledge-from-growth/sugar-salt/</div>
+      <div>对于主动学习的一些思考</div>
+      <div>https://blog.superui.cc/machine-learning/al-thinking/</div>
     </div>
     <div class="license-meta">
       
@@ -408,14 +534,9 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2021年1月21日</div>
+          <div>2023年2月11日</div>
         </div>
       
-      
-        <div class="license-meta-item license-meta-date">
-          <div>更新于</div>
-          <div>2022年3月23日</div>
-        </div>
       
       
         <div class="license-meta-item">
@@ -445,18 +566,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/economy-finance/didongsheng/rmb-courses/" title="翟东升人民币国际化课程">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">翟东升人民币国际化课程</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/paper-reading/deep-AL-survey/" title="A Survey of Deep Active Learning">
-                        <span class="hidden-mobile">A Survey of Deep Active Learning</span>
+                      <a href="/machine-learning/spiking-neural-network/" title="Spiking Neural Network">
+                        <span class="hidden-mobile">Spiking Neural Network</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
