@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>Contrastive Learning 再次学习</title>
+    <link href="/machine-learning/contrastive-learning-again/"/>
+    <url>/machine-learning/contrastive-learning-again/</url>
+    
+    <content type="html"><![CDATA[<!-- omit in toc --><p>由于最近工作需要用到对比损失，这里对近期看到的一些资料进行整理。之前我们也对对比学习做过一个初步学习，具体详见<a href="/machine-learning/contrastive-learning/" title="此笔记">此笔记</a>。</p><span id="more"></span><p>本文主要是对以下三篇资料的学习：</p><ul><li>SimCSE: Simple Contrastive Learning of Sentence Embeddings <a href="https://arxiv.org/pdf/2104.08821.pdf">[2021, EMNLP]</a></li><li>Prototypical Contrastive Learning of Unsupervised Representations <a href="https://arxiv.org/pdf/2005.04966.pdf">[2021, ICLR]</a></li><li><strong>Tutotial:</strong> Contrastive Data and Learning for Natural Language Processing <a href="https://contrastive-nlp-tutorial.github.io/files/contrastive_nlp_tutorial.pdf">[2022, NAACL]</a></li></ul><h1>SimCSE</h1><p>同时有监督式和无监督式对比学习，standard <strong>dropout</strong> used as noise：</p><ol><li>Unsupervised approach:<ul><li>使用两次 dropout 并互为正样本。</li><li>Unsupervised SimCSE essentially improves uniformity while avoiding degenerated alignment via dropout noise, thus improving the expressiveness of the representations.</li></ul></li><li>Supervised approach:<ul><li>将标注样本加入对比学习。</li><li>Takes alignment between semantically-related positive pairs and uniformity of the whole representation space to measure the quality of learned embeddings.</li></ul></li><li>对比了其他的正样本生成方式：<ul><li>crop / word deletion / synonym replacement</li></ul></li><li>使用 supervised  和 unsupervised CL：<ul><li>目测这个 supervised 里面已经包含了 unsupervised？</li><li>在他自己的分析中，他们这种使用 dropout 的方法保证了 uniformity 和 alignment。</li></ul></li></ol><h1>Prototypical Contrastive Learning</h1><p>同时使用无监督对比表征学习和聚类。</p><ol><li>It encodes semantic structures discovered by clustering into the learned embedding space.</li><li>Propose ProtoNCE loss, a generalized version of the InfoNCE loss for contrastive learning, which encourages representations to be closer to their assigned prototypes.<ul><li>包含一项 infoNCE，to retain the property of local smoothness and help bootstrap clustering.</li><li>也包含一项 cluster 相关的 loss，形式和 infoNCE 很像，只是把 augmented examples 替换成了 cluster centroids。这个其实可以看做某种半/无监督类型的对比，因为本质上是使用了 pseudo-labels。</li></ul></li></ol><h1>Contrastive Data and Learning for NLP</h1><p>这个是 NAACL 上的一个 Toturial，此处记录一些自认为重要的点：</p><ol><li>Contrastive Learning = Contrastive Data Creation + Contrastive Objective Optimization</li><li>Noise Contrastive Estimation (NCE) 仅是对比学习中的一类 loss。</li><li>Normalized Temperature-scaled Cross-Entropy (NT-Xent) 即为 InfoNCE with Cosine Similarity on Normalized Embeddings。</li><li>Hard negative mining: find hard negative examples. We want to ancher-neg is greater than anchor-pos, at least by the margin.</li><li>更大的批选取通常有更好的表现。</li><li>Two geometric forces on the hypersphere: alignment &amp; uniformity</li></ol><h1>My Questions?</h1><p>本次阅读这些文章主要是为了回答自己的两个问题：</p><ol><li>在文本上如何进行正负样本的构建？（图像上的构建方式在上一次的学习笔记中已经提到不少。）<ul><li>crop / word deletion / synonym replacement / back-translation / cut-off / mixup</li></ul></li><li>同时添加 supervised 和 unsupervised contrastive loss 这种方式有时表现不错，如何解释？<ul><li>前两篇文章都有监督损失和非监督损失的结合，都取得了较好的表现。</li><li>或许是因为两种结合可以更好的保证学得表征的 alignment &amp; uniformity。</li></ul></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>Machine Learning</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>machine-learning</tag>
+      
+      <tag>contrastive-learning</tag>
+      
+      <tag>self-supervised-learning</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>对于主动学习的一些思考</title>
     <link href="/machine-learning/al-thinking/"/>
     <url>/machine-learning/al-thinking/</url>
