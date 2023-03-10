@@ -69,7 +69,7 @@ Wiki[^5]
 
 Web 2.0 (also known as participative (or participatory) web and social web) refers to websites that emphasize user-generated content, ease of use, participatory culture and interoperability (i.e., compatibility with other products, systems, and devices) for end users.
 
-Web 2.0（也称为参与式网络[1]或社交网络[2]），指以最终用户为目标，强调用户生成内容、易用性、参与文化和互操作性（如：与其它产品、系统和设备兼容）的网站。
+Web 2.0（也称为参与式网络或社交网络），指以最终用户为目标，强调用户生成内容、易用性、参与文化和互操作性（如：与其它产品、系统和设备兼容）的网站。
 {% endnote %}
 
 {% note primary %}
