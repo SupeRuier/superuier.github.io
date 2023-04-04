@@ -4,7 +4,7 @@ index_img: /gallery/covers/attention.jpg
 banner_img: /gallery/covers/attention.jpg
 toc: true
 date: 2022-09-30 16:00:00
-updated: 2023-04-04 02:00:00
+updated: 2023-04-04 12:00:00
 category:
 - Machine Learning
 tags:
@@ -56,23 +56,33 @@ Attention 做的事情简单来说就是“加权求和”：
 这个加权求和的过程不可以看作一个全连接层，因为全连接层的权重是固定的，而 attention 的权重是可学习的。
 全连接的作用的是对一个实体进行从一个特征空间到另一个特征空间的映射，而注意力机制是要对来自同一个特征空间的多个实体进行整合。
 
-## Attention 中权重的计算
+## Attention 的定义的数学形式
 
-以下是 “Attention Is All You Need”【4】这篇重磅论文中给出的 attention 定义。
-这个定义虽说是针对于他们的 scaled dot-product attention，但是整体来说整个 attention 类型方法都是一个逻辑，所以下式可以拿来作为一个整体的计算思路。
+{% note primary %}
+An attention function can be described as mapping a query and a set of key-value pairs to an output, where the query, keys, values, and output are all vectors. The output is computed as a weighted sum of the values, where the weight assigned to each value is computed by a compatibility function of the query with the corresponding key.【4】
+{% endnote %}
+
+以下是 “Attention Is All You Need”【4】这篇重磅论文中给出的 attention 数学定义。
+这个定义虽说是 particular 针对于他们的 scaled dot-product attention，但是整体来说整个 attention 类型方法都是一个逻辑，所以下式可以拿来作为一个整体的广义定义。
 
 $$
 \operatorname{Attention}(Q, K, V)=\operatorname{softmax}\left(\frac{Q K^T}{\sqrt{d_k}}\right) V
 $$
 
+虽然理解分析的时候时我们使用的是向量，但是实际上考虑到整个序列，我们使用矩阵来同时处理多个向量。
 即通过关系矩阵 $Q K^T$ 归一化得到的概率分布 $\operatorname{softmax}\left(\frac{Q K^T}{\sqrt{d_k}}\right)$ 对 $V$ 进行重采样。
+其中 $Q$ 为查询矩阵（可以使用上一个 hidden state，用来描述当前位置）。
+$K$ 为键矩阵，表示输入中的每个位置。
+$V$ 为值矩阵，表示输入中的每个位置的值。
+$d_k$ 为键矩阵和查询矩阵的维度，此处用来缩放权重。
 当然这个 $Q/K/V$ 在不同场景下可能有着不同的具体含义。
 关系矩阵可以认为是 attention 的核心，其直接影响到权重，其计算方式有很多种，这里只是其中一种。
+这里的 attention 对应到上一小节可以理解为 context vector（同样为一个向量）。
 
 ## Multi-head attention
 
 如下图所示。
-简单来说就是将多个 scaled dot-product attention 的值拼接，再通过线形结合输出。
+简单来说就是将多个 scaled dot-product attention 的值拼接，再通过线形结合输出，如下图所示
 
 <div style="width:80%;margin:auto">{% asset_img multi-head-attention.png multi-head attention%}</div>
 
@@ -83,13 +93,45 @@ $$
 where \quad \text{head}_i=\operatorname{Attention}\left(Q W_i^Q, K W_i^K, V W_i^V\right)
 $$
 
+映射参数为相应的矩阵， $W_i^Q \in \mathbb{R}^{d_{\text {model }} \times d_k}, W_i^K \in \mathbb{R}^{d_{\text {model }} \times d_k}, W_i^V \in \mathbb{R}^{d_{\text {model }} \times d_v}$ and $W^O \in \mathbb{R}^{h d_v \times d_{\text {model }}}$.
+不同于直接使用表征 attention，这里要对表征做一个可学习的线性变换，然后再进行 attention。
+此外，使用多次 attention 的目的是为了让模型能够学习到不同的关系，而不是仅仅依赖于一个关系。
+
+
 ## Transformer
 
 其模型结构如下图所示。
 Multi-head attention 是其主要组成部分。
 在 attention 之外，样本的位置（顺序）信息使用 positional encoding 嵌入（因为不像 RNN 有顺序结构）。
+下面我们来看看 Transformer 的具体结构。
 
 <div style="width:50%;margin:auto">{% asset_img transformer.png transformer%}</div>
+
+### Encoder
+
+有 N 层 encoder layer，每个 encoder layer 有两个 sub-layer，分别是 multi-head attention 和 feed-forward。
+原始输入是原始的词向量组成的矩阵，维度 $(n,k)$，其中 $n$ 为句子长度，$k$ 为 embedding 的维度。
+经过 positional encoding 嵌入，得到维度为 $(n,d_k)$ 的矩阵。
+$d_k$ 和 $d_v$ 通常相同，其 self-attention 里为输入的维度（因为查询空间和值空间相同）。
+此外其与 $d_{\text {model}}$ 之间存在比例关系，即 $d_{\text {model}}/h=d_v$，以满足可以残差连接。
+
+每层 encoder layer 输入都先通过一个 multi-head attention layer，再做一次 residual connection 和 layer normalization。
+这一步之后输出的维度应当为 $d_{\text{model}}$。
+之后再通过一个 feed-forward layer，再做一次 residual connection 和 layer normalization。
+这一步之后输出的维度应当也为 $d_{\text {model}}$。
+在多次通过 encoder layer 之后，将原始数据编码到维度为 $(n,d_{\text {model}})$ 的矩阵。
+
+### Decoder
+
+有 N 层 decoder layer，每个 decoder layer 有三个 sub-layer，分别是两个 multi-head attention 和 feed-forward。
+原始输入是原始的词向量组成的矩阵，以同样的方式经过 positional encoding 嵌入。
+
+每层 decoder layer 输入都先通过一个 multi-head attention layer，再做一次 residual connection 和 layer normalization。
+之后将输出再作为查询向量 $Q$，将 encoder 中编码后的输入作为键值对 $(K,V)$，再通过一次 multi-head attention layer，再做一次 residual connection 和 layer normalization。
+之后再通过一个 feed-forward layer，再做一次 residual connection 和 layer normalization。
+在多次通过 encoder layer 之后，将输出通过一个全连接层以及 softmax 得到最终的概率输出。
+
+需要注意的是，在训练时， self-attention 中需要有一项 mask，用来屏蔽掉后面的词，因为在预测时，后面的词是不可见的。
 
 ## Reference
 1. [深度学习中Attention与全连接层的区别何在？ - SleepyBag的回答 - 知乎](https://www.zhihu.com/question/320174043/answer/651998472)
