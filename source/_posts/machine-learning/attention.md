@@ -133,8 +133,14 @@ $d_k$ 和 $d_v$ 通常相同，其 self-attention 里为输入的维度（因为
 
 需要注意的是，在训练时， self-attention 中需要有一项 mask，用来屏蔽掉后面的词，因为在预测时，后面的词是不可见的。
 
+## Transformer 应用
+
+- 基于编码器：Bert
+- 基于解码器：GPT 系列模型
+
 ## Reference
 1. [深度学习中Attention与全连接层的区别何在？ - SleepyBag的回答 - 知乎](https://www.zhihu.com/question/320174043/answer/651998472)
 2. [Attention机制详解（一）——Seq2Seq中的Attention](https://zhuanlan.zhihu.com/p/47063917)
 3. [目前主流的attention方法都有哪些？ - 电光幻影炼金术的回答 - 知乎](https://www.zhihu.com/question/68482809/answer/1876764572)
 4. Vaswani, Ashish, et al. "Attention is all you need." Advances in neural information processing systems 30 (2017).
+5. [OpenAI ChatGPT（一）：十分钟读懂 Transformer - 绝密伏击的文章 - 知乎](https://zhuanlan.zhihu.com/p/600773858)
