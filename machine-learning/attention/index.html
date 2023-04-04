@@ -274,7 +274,7 @@
         
         
         
-          44 分钟
+          45 分钟
         
       </span>
     
@@ -317,7 +317,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：14 分钟前
+                    本文最后更新于：2 小时前
                   
                 
               </p>
@@ -461,12 +461,18 @@ Multi-head attention 是其主要组成部分。
 之后再通过一个 feed-forward layer，再做一次 residual connection 和 layer normalization。
 在多次通过 encoder layer 之后，将输出通过一个全连接层以及 softmax 得到最终的概率输出。</p>
 <p>需要注意的是，在训练时， self-attention 中需要有一项 mask，用来屏蔽掉后面的词，因为在预测时，后面的词是不可见的。</p>
+<h2 id="Transformer-应用">Transformer 应用</h2>
+<ul>
+<li>基于编码器：Bert</li>
+<li>基于解码器：GPT 系列模型</li>
+</ul>
 <h2 id="Reference">Reference</h2>
 <ol>
 <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/320174043/answer/651998472">深度学习中Attention与全连接层的区别何在？ - SleepyBag的回答 - 知乎</a></li>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/47063917">Attention机制详解（一）——Seq2Seq中的Attention</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/68482809/answer/1876764572">目前主流的attention方法都有哪些？ - 电光幻影炼金术的回答 - 知乎</a></li>
 <li>Vaswani, Ashish, et al. “Attention is all you need.” Advances in neural information processing systems 30 (2017).</li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/600773858">OpenAI ChatGPT（一）：十分钟读懂 Transformer - 绝密伏击的文章 - 知乎</a></li>
 </ol>
 
                 
