@@ -4,7 +4,7 @@ index_img: /gallery/covers/attention.jpg
 banner_img: /gallery/covers/attention.jpg
 toc: true
 date: 2022-09-30 16:00:00
-updated: 2023-04-04 12:00:00
+updated: 2023-04-10 12:00:00
 category:
 - Machine Learning
 tags:
@@ -19,6 +19,7 @@ math: true
 
 注意力机制和 Transformer 在神经网络中已经取得了良好的表现，此处做一个简要的学习。
 因为在自己的工作中并不会用到，所以此处可能更注重一些逻辑上的思路，以加强直观上的理解，具体细节有需要的时候再进行补充。
+（题外话，翁小姐的博客简直是 GPT 的技术栈。）
 
 <!-- more -->
 
@@ -133,6 +134,34 @@ $d_k$ 和 $d_v$ 通常相同，其 self-attention 里为输入的维度（因为
 
 需要注意的是，在训练时， self-attention 中需要有一项 mask，用来屏蔽掉后面的词，因为在预测时，后面的词是不可见的。
 
+### 位置编码
+
+在 Transformer 中，位置信息是通过 positional encoding 嵌入的。
+其原理是将位置信息转换为向量，然后将其与原始的词向量相加。
+给定一个位置 $i=1,2,\dots,L$ 和对应的 $\delta=1,2,\dots,d$，对应的 Positional Encoding $PE_{(i,j)}$ is defined as:
+
+$$
+\mathrm{PE}(i, \delta)= \begin{cases}\sin \left(\frac{i}{10000^{2 \delta^{\prime} / d}}\right) & \text { if } \delta=2 \delta^{\prime} \\ \cos \left(\frac{i}{10000^{2 \delta^{\prime} / d}}\right) & \text { if } \delta=2 \delta^{\prime}+1\end{cases}
+$$
+
+<div style="width:100%;margin:auto">{% asset_img sinoidual-positional-encoding.png positional encoding%}</div>
+
+### 更长的文本？Memory
+
+目前 vanilla transformer 的长度是有限的，因为其 attention 机制是基于位置的。
+如果要处理更长的文本，可以使用加入 memory 的 transformer。
+记忆机制的思想是，将之前的信息存储起来，然后在当前的输入中使用。
+通常来说可以使用可微的记忆（Transformer-XL，类似 RNN 的循环）以及不可微的记忆（kNN）。
+此处因为可能不太会用得上，所以这里不做详细介绍，需要的时候再加深印象。
+
+### 循环起来！
+
+如果我们固定一个循环次数，Universal Transformer 和多层 Transformer 很像.
+<div style="width:100%;margin:auto">{% asset_img universal-transformer.png universal transformer%}</div>
+
+如果只看 decoder 的话，这个东西很像 GPT 的 decoder only 结构了。
+
+
 ## Transformer 应用
 
 - 基于编码器：Bert
@@ -144,3 +173,4 @@ $d_k$ 和 $d_v$ 通常相同，其 self-attention 里为输入的维度（因为
 3. [目前主流的attention方法都有哪些？ - 电光幻影炼金术的回答 - 知乎](https://www.zhihu.com/question/68482809/answer/1876764572)
 4. Vaswani, Ashish, et al. "Attention is all you need." Advances in neural information processing systems 30 (2017).
 5. [OpenAI ChatGPT（一）：十分钟读懂 Transformer - 绝密伏击的文章 - 知乎](https://zhuanlan.zhihu.com/p/600773858)
+6. [The Transformer Family Version 2.0](https://lilianweng.github.io/posts/2023-01-27-the-transformer-family-v2/)
