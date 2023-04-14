@@ -10,6 +10,7 @@ categories:
 tags: 
 - 年终总结
 - 生活
+hide: true
 ---
 
 写在 2023 年年初，对 2022 的回顾。

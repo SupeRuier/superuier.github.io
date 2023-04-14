@@ -4,7 +4,7 @@ index_img: /gallery/covers/ensemble-learning.jpg
 banner_img: /gallery/covers/ensemble-learning.jpg
 toc: true
 date: 2022-04-12 12:00:00
-updated: 2023-04-12 12:00:00
+updated: 2022-04-12 12:00:00
 category:
 - Machine Learning
 tags:
