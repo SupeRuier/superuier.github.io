@@ -316,7 +316,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：12 小时前
+                    本文最后更新于：2 天前
                   
                 
               </p>
@@ -351,13 +351,13 @@
 <h3 id="构建弱学习器-2">构建弱学习器</h3>
 <p>Boosting 通常使用串行的方式来构建弱学习器。
 每个弱学习器都是基于上一个弱学习器的结果来构建的。
-对于当前的学习器，我们希望它能够更好地拟合上一个学习器的残差。
-换句话说，就是希望新训练的学习器能够更好地拟合训练集中没有被上一个学习器拟合的部分（对错分样本加权）。
+换句话说，就是希望新训练的学习器能够更好地拟合训练集中没有被上一个学习器拟合的部分。
+这个可以通过对错分样本加权，或者计算残差来实现。
 这样随着学习器的增多，我们就能够逐渐地拟合整个训练集。</p>
 <h3 id="整合弱学习器-2">整合弱学习器</h3>
 <p>Boosting 通常使用加权求和的方式来整合弱学习器。
-权重通常是基于每个学习器的表现来确定的。
-该学习器目前的表现越好，那么它的权重就越大。</p>
+权重通常与子分类器构建的过程有关。
+例如 adaboost 基于每个学习器的表现来确定的，该学习器目前的表现越好，那么它的权重就越大。</p>
 <h3 id="Boosting-的特点">Boosting 的特点</h3>
 <ul>
 <li>通过整理合并一系列 high bias 的弱学习器，得到一个 low bias 的强学习器。</li>
@@ -464,9 +464,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/reading-note/more-money-than-god/" title="富可敌国">
+                      <a href="/machine-learning/tree-models/" title="树模型知识小结">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">富可敌国</span>
+                        <span class="hidden-mobile">树模型知识小结</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
