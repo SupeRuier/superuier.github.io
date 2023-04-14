@@ -4,9 +4,15 @@ layout: about
 date: 2023-01-03 18:44:37
 ---
 
-{% blockquote%}
-一些关于“我”的浅层的标签。
-{% endblockquote %}
+<p class="note note-primary">
+先说正事 / Business First
+</p>
+
+[简历](resume.pdf) / [Résumé](resume.pdf)
+
+<p class="note note-success">
+正事说完就是一些关于“我”的浅层的标签。
+</p>
 
 - 上世纪九十年代中期人。
 - 处女座（上升狮子 + 月亮白羊）& ENTP-A。
