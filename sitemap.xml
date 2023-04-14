@@ -944,13 +944,6 @@
   </url>
   
   <url>
-    <loc>https://blog.superui.cc/tags/loss-function/</loc>
-    <lastmod>2023-04-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.superui.cc/tags/gaussian-process/</loc>
     <lastmod>2023-04-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -965,13 +958,6 @@
   </url>
   
   <url>
-    <loc>https://blog.superui.cc/tags/gradient/</loc>
-    <lastmod>2023-04-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.superui.cc/tags/rnn/</loc>
     <lastmod>2023-04-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -980,6 +966,20 @@
   
   <url>
     <loc>https://blog.superui.cc/tags/lstm/</loc>
+    <lastmod>2023-04-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.superui.cc/tags/gradient/</loc>
+    <lastmod>2023-04-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.superui.cc/tags/loss-function/</loc>
     <lastmod>2023-04-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
