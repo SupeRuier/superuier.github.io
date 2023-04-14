@@ -17,7 +17,8 @@ math: true
 <!-- omit in toc -->
 
 之前对于树模型仅停留在普通的树 + 一些简单的 bagging 方法。
-这里对一些相对先进的模型做一个学习总结。
+这里对树模型做一个学习总结，包含决策树以及其集成化的方法。
+本文不涉及一些先进的计算库，这些将在后续的文章中介绍。
 
 <!-- more -->
 
@@ -184,109 +185,7 @@ F_i(x)=F_{i-1}(x)+\mu f_i(x) \quad(0<\mu \leq 1)
 $$
 
 
-## XGBoost
-
-XGBoost 是大规模并行 boosting tree 的工具，它是目前最快最好的开源 boosting tree 工具包，比常见的工具包快 10 倍以上。
-XGBoost 和 GBDT 两者都是 boosting 方法，除了工程实现、解决问题上的一些差异外，最大的不同就是目标函数的定义。
-XGBoost 不止支持决策树，还支持线性模型，此处我们主要介绍决策树。
-
-### 基础知识
-
-目标函数可以写作：
-$$
-\begin{aligned}
-Obj^{(t)} & =\sum_{i=1}^n l\left(y_i, \hat{y}_i^t\right)+\sum_{i=1}^t \Omega\left(f_i\right) \\
-& =\sum_{i=1}^n l\left(y_i, \hat{y}_i^{t-1}+f_t\left(x_i\right)\right)+\sum_{i=1}^t \Omega\left(f_i\right)
-\end{aligned}
-$$
-
-其中，$\hat{y}_i^t$ 是第 $t$ 次迭代的预测值，$f_t$ 是第 $t$ 次迭代的模型，$\Omega$ 是正则项。
-对该式求解可以利用到泰勒展开 $f(x)=\sum_{i=0}^n \frac{f^{(i)}\left(x_0\right)}{i !}\left(x-x_0\right)^i+R_n(x)$。
-那么对于一个函数在 $x$ 处的二阶展开可以写作 $f(x+\Delta x) \approx f(x)+f^{\prime}(x) \Delta x+\frac{1}{2} f^{\prime \prime}(x) \Delta x^2$。
-那么目标函数可以重写为：
-
-$$
-O b j^{(t)}=\sum_{i=1}^n\left[l\left(y_i, \hat{y}_i^{t-1}\right)+g_i f_t\left(x_i\right)+\frac{1}{2} h_i f_t^2\left(x_i\right)\right]+\sum_{i=1}^t \Omega\left(f_i\right)
-$$
-
-其中，$g_i$ 和 $h_i$ 分别是损失函数 $l$ 关于 $\hat{y}_i^{t-1}$ 的一阶和二阶导数。
-又由于 $l\left(y_i, \hat{y}_i^{t-1}\right)$ 是一个常数，不会对优化目标产生影响，所以
-
-$$
-Obj^{(t)} \approx \sum_{i=1}^n\left[g_i f_t\left(x_i\right)+\frac{1}{2} h_i f_t^2\left(x_i\right)\right]+\sum_{i=1}^t \Omega\left(f_i\right)
-$$
-
-所以我们只需要求出每一步损失函数的一阶导和二阶导的值（两个值就是常数），然后优化目标函数，就可以得到每一步的 $f_t$。
-
-### 与决策树一起使用
-
-定义决策树为 $f_t\left(x\right)= w_{q(x)}$, 其中 $q(x)$ 是叶子节点的索引，$w_j$ 是叶子节点的取值（权值）。
-对于决策树来说，复杂度可以用叶子节点的个数 $T$ 来表示，此外叶子结点的权重 $w_j$ 也是需要优化的参数，所以正则项可以写作
-
-$$
-\Omega\left(f_t\right)=\gamma T+\frac{1}{2} \lambda \sum_{j=1}^T w_j^2
-$$
-
-那么，目标函数可以写作
-
-$$
-\begin{aligned}
-O b j^{(t)} & \approx \sum_{i=1}^n\left[g_i f_t\left(x_i\right)+\frac{1}{2} h_i f_t^2\left(x_i\right)\right]+\Omega\left(f_t\right) \\
-& =\sum_{i=1}^n\left[g_i w_{q\left(x_i\right)}+\frac{1}{2} h_i w_{q\left(x_i\right)}^2\right]+\gamma T+\frac{1}{2} \lambda \sum_{j=1}^T w_j^2 \\
-& =\sum_{j=1}^T\left[\left(\sum_{i \in I_j} g_i\right) w_j+\frac{1}{2}\left(\sum_{i \in I_j} h_i+\lambda\right) w_j^2\right]+\gamma T
-& =\sum_{j=1}^T\left[G_j w_j+\frac{1}{2}\left(H_j+\lambda\right) w_j^2\right]+\gamma T
-\end{aligned}
-$$
-
-其中，$I_j$ 是叶子节点 $j$ 中的样本索引集合, $G_j$ 和 $H_j$ 分别是 $I_j$ 中样本的一阶导数和二阶导数之和。
-此时是一个二次规划问题，将目标函数对 $w_j$ 求导，并令其为 0，可以得到
-
-$$
-\begin{aligned}
-&w_j^*=-\frac{G_j}{H_j+\lambda}
-\end{aligned}
-$$
-
-所以目标函数可以简化为以下形式，这个值越小，代表这个树的结构越好。
-
-$$
-\begin{aligned}
-&Obj=-\frac{1}{2} \sum_{j=1}^T \frac{G_j^2}{H_j+\lambda}+\gamma T
-\end{aligned}
-$$
-
-### 使用时的具体考虑
-
-之后的问题就是如何找到最优的结构，使得 $Obj$ 最小。
-需要考虑到的问题有：
-1. 如何切分节点：一般来说有两种方法，一种是贪心算法（类似普通决策树），一种是近似算法（针对数据量过大无法读入内存的情况，对于每个特征只考察分位点可以减少计算复杂度）。
-2. 加权分位数缩略图：不是简单地按照样本个数进行分位，而是以二阶导数值 $h_i$ 作为样本的权重进行划分
-3. 稀疏感知算法：XGBoost 在构建树的节点过程中只考虑非缺失值的数据遍历，而为每个节点增加了一个缺省方向，当样本相应的特征值缺失时，可以被归类到缺省方向上。
-
-实际实现上的考虑（实在是不太懂说啥）：
-1. XGBoost 在训练之前对根据特征对数据进行了排序，然后保存到块结构中，并在每个块结构中都采用了稀疏矩阵存储格式进行存储，后面的训练过程中会重复地使用块结构，可以大大减小计算量。在对节点进行分裂时需要选择增益最大的特征作为分裂，这时各个特征的增益计算可以同时进行，这也是 Xgboost 能够实现分布式或者多线程计算的原因。
-2. 为了解决缓存命中率低的问题，XGBoost 提出了缓存访问优化算法：为每个线程分配一个连续的缓存区，将需要的梯度信息存放在缓冲区中，这样就是实现了非连续空间到连续空间的转换，提高了算法效率。
-3. XGBoost 独立一个线程专门用于从硬盘读入数据，以实现处理数据和读入数据同时进行。
-
-### 特性
-
-1. 精度更高：GBDT 只用到一阶泰勒展开，而 XGBoost 对损失函数进行了二阶泰勒展开。
-2. 列抽样：XGBoost 借鉴了随机森林的做法，支持列抽样，不仅能降低过拟合，还能减少计算。
-3. 可以并行化操作：块结构可以很好的支持并行计算。
-
-## LightGBM
-
-## CatBoost
-
-
-
-## 小结与个人看法
-
-
-
 ## Reference
 
 1. [【机器学习】决策树（中）——Random Forest、Adaboost、GBDT （非常详细） - 阿泽的文章 - 知乎](https://zhuanlan.zhihu.com/p/86263786)
 2. Intelligent Data Analysis (SUSTech CSE5002) Lecture 6: Multiple Classiﬁer Systems
-3. [【机器学习】决策树（下）——XGBoost、LightGBM（非常详细） - 阿泽的文章 - 知乎](https://zhuanlan.zhihu.com/p/87885678)
-
