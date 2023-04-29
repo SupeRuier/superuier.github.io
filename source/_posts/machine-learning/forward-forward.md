@@ -11,8 +11,8 @@ tags:
 - neural-network
 - machine-learning
 - deep-learning
-footnote:
-  enable: true
+# footnote:
+#   enable: true
 #   header: '<h2>参考</h2>'
 
 math: true
