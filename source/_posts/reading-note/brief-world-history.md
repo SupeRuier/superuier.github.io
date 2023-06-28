@@ -1,6 +1,6 @@
 ---
-title: 《世界简史》读书笔记
-date: 2022-7-24 16:30:00
+title: 世界简史
+date: 2022-6-14 23:10:00
 index_img: /gallery/covers/brief-world-history.jpg
 banner_img: /gallery/covers/brief-world-history.jpg
 toc: true
