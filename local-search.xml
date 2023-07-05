@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>大语言模型代理</title>
+    <link href="/writing/LLM-agent/"/>
+    <url>/writing/LLM-agent/</url>
+    
+    <content type="html"><![CDATA[<p>其实自己一直在想大语言模型（仅讨论 LLM，其他任务上的 transformer 生成模型不考虑）可以做什么，绝大多数人的想象力都是有限的，我也不例外。我的主要观点一直在不断的坚定，即“非结构化数据处理”的问题，当然这个问题在哪里还需要广泛深度的调研。昨天终于有空读了 Lilian Weng 的 LLM Powered Autonomous Agents<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="[LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/)">[1]</span></a></sup>，这篇博客从“术”的层面，介绍了大语言模型可以在能力边界上做什么扩展。这一类工作被称为“自动代理”，面向特定任务。</p><span id="more"></span><h1>文章关键内容</h1><p>个人认为此博客比较细致，谈到了方方面面，此处我们粒度不需要那么细。文章中最重要的内容我认为是对整体技术脉络的把控（<strong>技术树</strong>）以及对大语言模型的能力边界的划分（<strong>局限性/挑战</strong>）。本节内容全部摘录自博客原文。</p><div style="width:80%;margin:auto"><img src="/writing/LLM-agent/agent-overview.png" class="" title="Agent 概览"></div><p><strong>Challenges：</strong></p><ul><li><strong>Finite context length</strong>: The restricted context capacity limits the inclusion of historical information, detailed instructions, API call context, and responses. The design of the system has to work with this limited communication bandwidth, while mechanisms like self-reflection to learn from past mistakes would benefit a lot from long or infinite context windows. Although vector stores and retrieval can provide access to a larger knowledge pool, their representation power is not as powerful as full attention.</li><li>Challenges in <strong>long-term planning</strong> and <strong>task decomposition</strong>: Planning over a lengthy history and effectively exploring the solution space remain challenging. LLMs struggle to adjust plans when faced with unexpected errors, making them less robust compared to humans who learn from trial and error.</li><li><strong>Reliability of natural language interface</strong>: Current agent system relies on natural language as an interface between LLMs and external components such as memory and tools. However, the reliability of model outputs is questionable, as LLMs may make formatting errors and occasionally exhibit rebellious behavior (e.g. refuse to follow an instruction). Consequently, much of the agent demo code focuses on parsing model output.</li></ul><h1>个人思考</h1><p>核心观点仍旧是“LLM 的强项在且仅在于非结构化数据处理”，但是从这一角度细化下去还是有很多东西可以谈。</p><ul><li>什么是“非结构化数据”？<ul><li>这类型的数据在哪个领域大量存在？这个数据在哪个领域十分重要？</li><li>在这些领域上“非结构化数据”带来的挑战是不是以前无法解决的？即之前我们没有很好的办法来处理这些数据？（或许这个要讨论调研 NLP 方向以及智能决策方向的大多数任务。）</li></ul></li><li>“数据处理”的输出是什么？<ul><li>是要处理为结构化数据吗？那么似乎可以用于专用的领域强模型。</li><li>是要处理为另一种非结构化数据吗？那么似乎直接用于需要非结构化数据的任务。</li></ul></li><li>“数据处理”之后要做什么？<ul><li>之前能做但是没做好的任务。</li><li>之前不能做的任务。</li></ul></li></ul><p>还是没想清楚 LLM 带来了什么本质上的不同，似乎只是在“非结构化数据处理”这一步上有了更好的方法，但是这个方法能做什么，能做到什么程度，还是需要思考。</p><h1>Reference</h1><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://lilianweng.github.io/posts/2023-06-23-agent/">LLM Powered Autonomous Agents</a><a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+    
+    
+    <categories>
+      
+      <category>Writing</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>随笔</tag>
+      
+      <tag>互联网</tag>
+      
+      <tag>chatgpt</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Web 3.0，从 Chatgpt 说起</title>
     <link href="/writing/web3chatgpt/"/>
     <url>/writing/web3chatgpt/</url>
@@ -24,13 +53,13 @@
       
       <tag>互联网</tag>
       
+      <tag>chatgpt</tag>
+      
       <tag>web1.0</tag>
       
       <tag>web2.0</tag>
       
       <tag>web3.0</tag>
-      
-      <tag>chatgpt</tag>
       
       <tag>元宇宙</tag>
       
