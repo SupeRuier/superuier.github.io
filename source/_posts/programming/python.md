@@ -3,7 +3,7 @@ title: Python
 index_img: /gallery/covers/python.jpeg
 banner_img: /gallery/covers/python.jpeg
 date: 2020-12-15 12:56:03
-updated: 2022-11-07 16:00:00
+updated: 2023-08-09 16:00:00
 categories:
 - Programming
 tags: Python
@@ -34,6 +34,15 @@ class_instance = class_name() # Remember the instantiation.
 参考这两篇博文：
 - [Python 使用反射机制实例化对象](https://blog.csdn.net/lom9357bye/article/details/79107711)
 - [Python 动态导入对象, importlib.import_module() 使用](https://blog.csdn.net/xie_0723/article/details/78004649)
+
+## 设置代理
+
+```python
+import os
+os.environ['http_proxy'] = "http://127.0.0.1:xxxx"
+os.environ['https_proxy'] = "http://127.0.0.1:xxxx"
+```
+其中 xxxx 为对应的端口号。
 
 # 功能
 

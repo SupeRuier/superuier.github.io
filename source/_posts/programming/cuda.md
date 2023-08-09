@@ -15,7 +15,7 @@ tags: Cuda
 猜测应该是某种版本不匹配造成的问题。
 于是先查询版本。
 
-通过`nvidia-smi` 查询到的版本为 `CUDA Version: 11.0`， 和我安装的pytorch对应的cuda10.0不兼容。
+通过`nvidia-smi` 查询到的版本为 `CUDA Version: 11.0`， 和我安装的 pytorch 对应的 cuda10.0 不兼容。
 于是下载对应版本即可解决，注意与 python 发行版的冲突。(下载贼慢)
 
 ```
