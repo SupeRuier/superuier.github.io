@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.superui.cc/gallery/covers/python.jpeg">
 <meta property="article:published_time" content="2020-12-15T04:56:03.000Z">
-<meta property="article:modified_time" content="2022-11-07T08:00:00.000Z">
+<meta property="article:modified_time" content="2023-08-09T08:00:00.000Z">
 <meta property="article:author" content="Superui">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary_large_image">
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.7k 字
+          2.9k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          23 分钟
+          25 分钟
         
       </span>
     
@@ -315,7 +315,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：9 个月前
+                    本文最后更新于：4 小时前
                   
                 
               </p>
@@ -338,6 +338,9 @@
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/lom9357bye/article/details/79107711">Python 使用反射机制实例化对象</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/xie_0723/article/details/78004649">Python 动态导入对象, importlib.import_module() 使用</a></li>
 </ul>
+<h2 id="设置代理">设置代理</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br>os.environ[<span class="hljs-string">&#x27;http_proxy&#x27;</span>] = <span class="hljs-string">&quot;http://127.0.0.1:xxxx&quot;</span><br>os.environ[<span class="hljs-string">&#x27;https_proxy&#x27;</span>] = <span class="hljs-string">&quot;http://127.0.0.1:xxxx&quot;</span><br></code></pre></td></tr></table></figure>
+<p>其中 xxxx 为对应的端口号。</p>
 <h1>功能</h1>
 <h2 id="格式化字符串">格式化字符串</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">## Basics             ## use &quot;·&quot; to visualize whitespace</span><br><span class="hljs-string">&quot;&#123;&#125; &#123;&#125;&quot;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)  <span class="hljs-comment">## &quot;1·2&quot;</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;<span class="hljs-number">1</span>&#125;</span> <span class="hljs-subst">&#123;<span class="hljs-number">2</span>&#125;</span>&quot;</span>            <span class="hljs-comment">## &quot;1·2&quot;</span><br><br><span class="hljs-comment">## Padding and alignment</span><br>a = <span class="hljs-string">&quot;test&quot;</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;a:<span class="hljs-number">10</span>&#125;</span>&quot;</span>             <span class="hljs-comment">## &quot;test······&quot;</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;a:&lt;<span class="hljs-number">10</span>&#125;</span>&quot;</span>            <span class="hljs-comment">## &quot;test······&quot;</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;a:&gt;<span class="hljs-number">10</span>&#125;</span>&quot;</span>            <span class="hljs-comment">## &quot;······test&quot;</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;a:^<span class="hljs-number">10</span>&#125;</span>&quot;</span>            <span class="hljs-comment">## &quot;···test···&quot;</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;a:_&lt;<span class="hljs-number">10</span>&#125;</span>&quot;</span>           <span class="hljs-comment">## &quot;test______&quot;</span><br><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;a!s&#125;</span>&quot;</span>              <span class="hljs-comment">## equals to f&quot;&#123;str(a)&#125;&quot;</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;a!r:<span class="hljs-number">10</span>&#125;</span>&quot;</span>           <span class="hljs-comment">## f&quot;&#123;repr(a):10&#125;&quot;</span><br><br><span class="hljs-comment">## Floats</span><br>b = <span class="hljs-number">0.5</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;b:<span class="hljs-number">5</span>&#125;</span>&quot;</span>              <span class="hljs-comment">## &quot;··0.5&quot; !!!</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;b:&lt;<span class="hljs-number">5</span>&#125;</span>&quot;</span>             <span class="hljs-comment">## &quot;0.5··&quot;</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;b!s:<span class="hljs-number">5</span>&#125;</span>&quot;</span>            <span class="hljs-comment">## &quot;0.5··&quot;</span><br><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;b:05&#125;</span>&quot;</span>             <span class="hljs-comment">## &quot;000.5&quot;</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;b:<span class="hljs-number">.3</span>f&#125;</span>&quot;</span>            <span class="hljs-comment">## &quot;0.500&quot;</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;b:<span class="hljs-number">.3</span>e&#125;</span>&quot;</span>            <span class="hljs-comment">## &quot;5.000e-01&quot;</span><br><span class="hljs-string">f&quot;<span class="hljs-subst">&#123;b:<span class="hljs-number">.2</span>%&#125;</span>&quot;</span>            <span class="hljs-comment">## &quot;50.00%&quot;</span><br></code></pre></td></tr></table></figure>
@@ -449,7 +452,7 @@ You should simply change your condition to if test.lower() == ‘true’</p>
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年11月7日</div>
+          <div>2023年8月9日</div>
         </div>
       
       

@@ -319,7 +319,7 @@
 <p>最主要的问题是在 python 中输入<code>torch.cuda.is_available()</code>时，返回 False。
 猜测应该是某种版本不匹配造成的问题。
 于是先查询版本。</p>
-<p>通过<code>nvidia-smi</code> 查询到的版本为 <code>CUDA Version: 11.0</code>， 和我安装的pytorch对应的cuda10.0不兼容。
+<p>通过<code>nvidia-smi</code> 查询到的版本为 <code>CUDA Version: 11.0</code>， 和我安装的 pytorch 对应的 cuda10.0 不兼容。
 于是下载对应版本即可解决，注意与 python 发行版的冲突。(下载贼慢)</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">conda</span> install pytorch torchvision cudatoolkit=<span class="hljs-number">11</span>.<span class="hljs-number">0</span> -c pytorch<br></code></pre></td></tr></table></figure>
 <h2 id="查询版本">查询版本</h2>
