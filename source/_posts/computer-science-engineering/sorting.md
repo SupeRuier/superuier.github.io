@@ -4,7 +4,7 @@ index_img: /gallery/covers/sorting.jpg
 banner_img: /gallery/covers/sorting.jpg
 toc: true
 date: 2021-10-08 19:30:00
-updated: 2021-10-08 19:30:00
+updated: 2023-08-14 10:00:00
 category:
 - Computer Science and Engineering
 tags:
@@ -97,3 +97,6 @@ for j = 1 to n do
 if A[i] < A[j] then
 swap A[i] and A[j]
 ```
+
+本质上是一种插入排序，即把第 i 位的数插入到前 i-1 位的数中，使得前 i 位的数有序。
+不同于经典的插入排序是直接插，此处是进行交换插入。
