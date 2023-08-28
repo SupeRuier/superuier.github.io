@@ -1,5 +1,5 @@
 ---
-title: 某基金招聘笔试问卷
+title: 某风险投资招聘笔试问卷
 date: 2023-07-11 18:00:00
 updated: 2023-07-11 18:00:00
 index_img: /gallery/covers/xvc.jpg
