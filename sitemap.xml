@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.superui.cc/computer-science-engineering/p-np/</loc>
+    
+    <lastmod>2023-08-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.superui.cc/computer-science-engineering/sorting/</loc>
     
     <lastmod>2023-08-14</lastmod>
@@ -885,6 +894,20 @@
   </url>
   
   <url>
+    <loc>https://blog.superui.cc/tags/algorithms/</loc>
+    <lastmod>2023-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.superui.cc/tags/NP/</loc>
+    <lastmod>2023-08-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.superui.cc/tags/cs-seminar/</loc>
     <lastmod>2023-08-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -893,13 +916,6 @@
   
   <url>
     <loc>https://blog.superui.cc/tags/sorting/</loc>
-    <lastmod>2023-08-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.superui.cc/tags/algorithms/</loc>
     <lastmod>2023-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
