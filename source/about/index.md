@@ -8,7 +8,7 @@ date: 2023-01-03 18:44:37
 先说正事 / Business First
 </p>
 
-[简历](resume.pdf) / [Résumé](resume.pdf)
+[简历](resume-zh.pdf) / [Résumé](resume-en.pdf)
 
 <p class="note note-success">
 正事说完就是一些关于“我”的浅层的标签。
