@@ -1,7 +1,7 @@
 ---
 title: Computer and AI Aided Drug Design
-date: 2023-08-29 12:00:00
-updated: 2023-08-29 12:00:00
+date: 2023-09-04 12:00:00
+updated: 2023-09-04 12:00:00
 index_img: /gallery/covers/cadd.jpg
 banner_img: /gallery/covers/cadd.jpg
 toc: true
