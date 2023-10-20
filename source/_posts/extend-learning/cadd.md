@@ -6,7 +6,7 @@ index_img: /gallery/covers/cadd.jpg
 banner_img: /gallery/covers/cadd.jpg
 toc: true
 categories:
-- Writing
+- Extend Learning
 tags: 
 - AI4Science
 - AIDD

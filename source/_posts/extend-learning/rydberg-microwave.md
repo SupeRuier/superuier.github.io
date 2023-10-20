@@ -6,7 +6,7 @@ index_img: /gallery/covers/rydberg-microwave.jpg
 banner_img: /gallery/covers/rydberg-microwave.jpg
 toc: true
 categories:
-- Writing
+- Extend Learning
 tags: 
 - AI4Science
 - Rydberg
