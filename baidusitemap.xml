@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.superui.cc/machine-learning/diffusion/</loc>
+    <lastmod>2023-11-07</lastmod>
+  </url>
+  <url>
     <loc>https://blog.superui.cc/machine-learning/attention/</loc>
     <lastmod>2023-11-06</lastmod>
   </url>
