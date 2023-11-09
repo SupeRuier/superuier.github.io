@@ -263,7 +263,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.8k 字
+          7.2k 字
         
       </span>
     
@@ -274,7 +274,7 @@
         
         
         
-          58 分钟
+          61 分钟
         
       </span>
     
@@ -317,7 +317,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2 天前
+                    本文最后更新于：3 天前
                   
                 
               </p>
@@ -331,7 +331,10 @@
 （题外话，翁小姐的博客简直是 GPT 的技术栈。）</p>
 <span id="more"></span>
 <blockquote>
-<p>2023-11 更新：描述准确性提升，修改了一些错误。</p>
+<ul>
+<li>2023-11 更新：增加代码理解。</li>
+<li>2023-11 更新：描述准确性提升，修改了一些错误。</li>
+</ul>
 </blockquote>
 <h1>Attention</h1>
 <h2 id="Sequence-to-sequence-是什么？">Sequence to sequence 是什么？</h2>
@@ -471,7 +474,7 @@ where \quad \text{head}_i=\operatorname{Attention}\left(X_q W_i^Q, X_k W_i^K, X_
 <li>对于每层 encoder layer：
 <ul>
 <li>输入都先通过一个 multi-head attention layer，输入输出的维度都为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mtext>model</mtext></msub></mrow><annotation encoding="application/x-tex">d_{\text {model}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">model</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。</li>
-<li>再做一次 residual connection 和 layer normalization，这一步之后输出的维度仍为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mtext>model</mtext></msub></mrow><annotation encoding="application/x-tex">d_{\text{model}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">model</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。Layer norm 是对每个样本而不是对 batch 进行，即使得每一个样本所有 feature 均值为 0，方差为 1。</li>
+<li>再做一次 residual connection 和 layer normalization，这一步之后输出的维度仍为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mtext>model</mtext></msub></mrow><annotation encoding="application/x-tex">d_{\text{model}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">model</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。Layer norm 是对每个样本而不是对 batch 进行，其原理与 batch norm 相似，仍具有可学习的缩放以及平移参数。</li>
 <li>之后再通过一个 feed-forward layer，以及一次 residual connection 和 layer normalization，输入输出的维度应当也为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mtext>model</mtext></msub></mrow><annotation encoding="application/x-tex">d_{\text {model}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">model</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。</li>
 </ul>
 </li>
@@ -517,6 +520,13 @@ where \quad \text{head}_i=\operatorname{Attention}\left(X_q W_i^Q, X_k W_i^K, X_
 <li>基于编码器：Bert 作为特征提取器</li>
 <li>基于解码器：GPT 系列大语言模型</li>
 </ul>
+<h1>代码理解</h1>
+<p>目前较为著名的代码为哈佛 NLP 组基于 Pytorch 实现的，请见<a target="_blank" rel="noopener" href="https://github.com/harvardnlp/annotated-transformer/blob/master/the_annotated_transformer.py">此链接</a>。
+代码整体通俗易懂，此处仅点名一些处理的比较好，或直观上不容易理解的地方：</p>
+<ol>
+<li>在 <code>MultiHeadedAttention</code> 中，使用 <code>self.linears = clones(nn.Linear(d_model, d_model), 4)</code> 来作为全连接层。与我们印象中的三组 <code>h</code> 个维度为 <code>(d_model, d_k)</code> 的全连接层不同，此处直接将其进行拼接，并在之后对得到的矩阵进行切分。此外多出的一个全连接层用于最后 concat 之后的映射。</li>
+<li>注意位置编码中的维度。单数位和偶数位的维度是一样的，但是其值是不同的，因此需要分开处理再合并。此外为了适应批数据，需要在最外层通过 <code>unsqueeze(0)</code> 扩展维度。</li>
+</ol>
 <h1>其他变体与考虑</h1>
 <h2 id="更长的文本？">更长的文本？</h2>
 <h3 id="Memory">Memory</h3>
@@ -534,6 +544,7 @@ where \quad \text{head}_i=\operatorname{Attention}\left(X_q W_i^Q, X_k W_i^K, X_
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/600773858">OpenAI ChatGPT（一）：十分钟读懂 Transformer - 绝密伏击的文章 - 知乎</a></li>
 <li><a target="_blank" rel="noopener" href="https://lilianweng.github.io/posts/2023-01-27-the-transformer-family-v2/">The Transformer Family Version 2.0</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=N6aRv06iv2g">【機器學習2021】Transformer</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/398039366">Transformer源码详解（Pytorch版本） - Codering的文章 - 知乎</a></li>
 </ol>
 
                 
