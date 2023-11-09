@@ -23,7 +23,8 @@ math: true
 
 <!-- more -->
 
-> 2023-11 更新：描述准确性提升，修改了一些错误。
+> - 2023-11 更新：增加代码理解。
+> - 2023-11 更新：描述准确性提升，修改了一些错误。
 
 # Attention
 
@@ -129,7 +130,7 @@ Encoder 由 N 层 encoder layer 组成，每个 encoder layer 有两个 sub-laye
 - 经过 positional encoding 嵌入，得到维度为 $(n,d_{model})$ 的矩阵。
 - 对于每层 encoder layer：
   - 输入都先通过一个 multi-head attention layer，输入输出的维度都为 $d_{\text {model}}$。
-  - 再做一次 residual connection 和 layer normalization，这一步之后输出的维度仍为 $d_{\text{model}}$。Layer norm 是对每个样本而不是对 batch 进行，即使得每一个样本所有 feature 均值为 0，方差为 1。
+  - 再做一次 residual connection 和 layer normalization，这一步之后输出的维度仍为 $d_{\text{model}}$。Layer norm 是对每个样本而不是对 batch 进行，其原理与 batch norm 相似，仍具有可学习的缩放以及平移参数。
   - 之后再通过一个 feed-forward layer，以及一次 residual connection 和 layer normalization，输入输出的维度应当也为 $d_{\text {model}}$。
 - 在多次通过 encoder layer 之后，将原始数据编码到维度为 $(n,d_{\text {model}})$ 的矩阵。
 
@@ -178,6 +179,15 @@ $$
 - 基于编码器：Bert 作为特征提取器
 - 基于解码器：GPT 系列大语言模型
 
+# 代码理解
+
+目前较为著名的代码为哈佛 NLP 组基于 Pytorch 实现的，请见[此链接](https://github.com/harvardnlp/annotated-transformer/blob/master/the_annotated_transformer.py)。
+代码整体通俗易懂，此处仅点名一些处理的比较好，或直观上不容易理解的地方：
+
+1. 在 `MultiHeadedAttention` 中，使用 `self.linears = clones(nn.Linear(d_model, d_model), 4)` 来作为全连接层。与我们印象中的三组 `h` 个维度为 `(d_model, d_k)` 的全连接层不同，此处直接将其进行拼接，并在之后对得到的矩阵进行切分。此外多出的一个全连接层用于最后 concat 之后的映射。
+2. 注意位置编码中的维度。单数位和偶数位的维度是一样的，但是其值是不同的，因此需要分开处理再合并。此外为了适应批数据，需要在最外层通过 `unsqueeze(0)` 扩展维度。
+
+
 # 其他变体与考虑
 
 ## 更长的文本？
@@ -198,3 +208,4 @@ $$
 5. [OpenAI ChatGPT（一）：十分钟读懂 Transformer - 绝密伏击的文章 - 知乎](https://zhuanlan.zhihu.com/p/600773858)
 6. [The Transformer Family Version 2.0](https://lilianweng.github.io/posts/2023-01-27-the-transformer-family-v2/)
 7. [【機器學習2021】Transformer](https://www.youtube.com/watch?v=N6aRv06iv2g)
+8. [Transformer源码详解（Pytorch版本） - Codering的文章 - 知乎](https://zhuanlan.zhihu.com/p/398039366)
