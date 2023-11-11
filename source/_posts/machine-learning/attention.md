@@ -209,3 +209,4 @@ $$
 6. [The Transformer Family Version 2.0](https://lilianweng.github.io/posts/2023-01-27-the-transformer-family-v2/)
 7. [【機器學習2021】Transformer](https://www.youtube.com/watch?v=N6aRv06iv2g)
 8. [Transformer源码详解（Pytorch版本） - Codering的文章 - 知乎](https://zhuanlan.zhihu.com/p/398039366)
+9. [The Annotated Transformer](http://nlp.seas.harvard.edu/annotated-transformer/)
