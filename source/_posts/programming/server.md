@@ -9,6 +9,7 @@ categories:
 tags: 
 - linux
 - server
+- proxy
 ---
 
 远程服务器配置相关内容。
