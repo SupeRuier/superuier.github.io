@@ -25,10 +25,11 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.superui.cc/gallery/covers/server.jpg">
 <meta property="article:published_time" content="2023-08-09T12:00:00.000Z">
-<meta property="article:modified_time" content="2023-08-09T12:00:00.000Z">
+<meta property="article:modified_time" content="2023-11-11T12:00:00.000Z">
 <meta property="article:author" content="Superui">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="server">
+<meta property="article:tag" content="proxy">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.superui.cc/gallery/covers/server.jpg">
   
@@ -262,7 +263,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          58 字
+          438 字
         
       </span>
     
@@ -273,7 +274,7 @@
         
         
         
-          1 分钟
+          4 分钟
         
       </span>
     
@@ -313,14 +314,27 @@
             <!-- SEO header -->
             <h1 style="display: none">远程服务器配置</h1>
             
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：44 分钟后
+                  
+                
+              </p>
+            
             
               <div class="markdown-body">
                 
                 <p>远程服务器配置相关内容。</p>
 <span id="more"></span>
 <h2 id="服务器代理设置">服务器代理设置</h2>
-<p>由于有时需要在服务器上下载被墙的包，所以需要设置代理。
-具体方法请参见<a target="_blank" rel="noopener" href="https://www.duckflew.cn/archives/fu-wu-qi-shang-pei-zhi-c-l-a-s-h">此篇教程</a>。</p>
+<p>由于有时需要在服务器上下载被墙的数据，所以需要设置代理。
+通常只会在 Python 场景下使用，可以使用 <code>os</code> 模块设置代理。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Proxy on server.</span><br><span class="hljs-keyword">import</span> os<br><br><span class="hljs-comment"># 设置代理</span><br>os.environ[<span class="hljs-string">&#x27;http_proxy&#x27;</span>] = <span class="hljs-string">&quot;http://127.0.0.1:7890&quot;</span><br>os.environ[<span class="hljs-string">&#x27;https_proxy&#x27;</span>] = <span class="hljs-string">&quot;http://127.0.0.1:7890&quot;</span><br><br><span class="hljs-comment"># 测试代理</span><br>result = os.system(<span class="hljs-string">&#x27;curl -v google.com&#x27;</span>)<br><span class="hljs-built_in">print</span>(result)  <br></code></pre></td></tr></table></figure>
+<p>但是服务器端配置代理比较麻烦，多次尝试 clash 都不能保证稳定运行。
+幸好不会重度使用代理，所以可以使用简单的方法，将本地的代理转发到服务器上。
+仅需要将 <code>127.0.0.1</code> 替换为本地的 IP 地址即可。
+（当然前提需要在服务器上可以 ping 通本地 IP）</p>
 
                 
               </div>
@@ -358,6 +372,8 @@
       
         <a href="/tags/server/">#server</a>
       
+        <a href="/tags/proxy/">#proxy</a>
+      
     </div>
   
 </div>
@@ -384,6 +400,11 @@
           <div>2023年8月9日</div>
         </div>
       
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2023年11月11日</div>
+        </div>
       
       
         <div class="license-meta-item">

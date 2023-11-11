@@ -337,9 +337,9 @@ Adobe 和 Mac 社区偶像级专家。&lt;/p&gt;</summary>
     <link href="https://blog.superui.cc/programming/server/"/>
     <id>https://blog.superui.cc/programming/server/</id>
     <published>2023-08-09T12:00:00.000Z</published>
-    <updated>2023-08-09T12:00:00.000Z</updated>
+    <updated>2023-11-11T12:00:00.000Z</updated>
     
-    <content type="html"><![CDATA[<p>远程服务器配置相关内容。</p><span id="more"></span><h2 id="服务器代理设置">服务器代理设置</h2><p>由于有时需要在服务器上下载被墙的包，所以需要设置代理。具体方法请参见<a href="https://www.duckflew.cn/archives/fu-wu-qi-shang-pei-zhi-c-l-a-s-h">此篇教程</a>。</p>]]></content>
+    <content type="html"><![CDATA[<p>远程服务器配置相关内容。</p><span id="more"></span><h2 id="服务器代理设置">服务器代理设置</h2><p>由于有时需要在服务器上下载被墙的数据，所以需要设置代理。通常只会在 Python 场景下使用，可以使用 <code>os</code> 模块设置代理。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Proxy on server.</span><br><span class="hljs-keyword">import</span> os<br><br><span class="hljs-comment"># 设置代理</span><br>os.environ[<span class="hljs-string">&#x27;http_proxy&#x27;</span>] = <span class="hljs-string">&quot;http://127.0.0.1:7890&quot;</span><br>os.environ[<span class="hljs-string">&#x27;https_proxy&#x27;</span>] = <span class="hljs-string">&quot;http://127.0.0.1:7890&quot;</span><br><br><span class="hljs-comment"># 测试代理</span><br>result = os.system(<span class="hljs-string">&#x27;curl -v google.com&#x27;</span>)<br><span class="hljs-built_in">print</span>(result)  <br></code></pre></td></tr></table></figure><p>但是服务器端配置代理比较麻烦，多次尝试 clash 都不能保证稳定运行。幸好不会重度使用代理，所以可以使用简单的方法，将本地的代理转发到服务器上。仅需要将 <code>127.0.0.1</code> 替换为本地的 IP 地址即可。（当然前提需要在服务器上可以 ping 通本地 IP）</p>]]></content>
     
     
     <summary type="html">&lt;p&gt;远程服务器配置相关内容。&lt;/p&gt;</summary>
@@ -352,6 +352,8 @@ Adobe 和 Mac 社区偶像级专家。&lt;/p&gt;</summary>
     <category term="linux" scheme="https://blog.superui.cc/tags/linux/"/>
     
     <category term="server" scheme="https://blog.superui.cc/tags/server/"/>
+    
+    <category term="proxy" scheme="https://blog.superui.cc/tags/proxy/"/>
     
   </entry>
   
