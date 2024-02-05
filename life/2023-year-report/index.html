@@ -16,24 +16,25 @@
   <meta name="author" content="Superui">
   <meta name="keywords" content="">
   
-    <meta name="description" content="此处记录一些 Latex 的用法。">
+    <meta name="description" content="写在 2024 农历新年前，对过去一年的回顾。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Latex 图片表格排版记录">
-<meta property="og:url" content="https://blog.superui.cc/programming/latex/index.html">
+<meta property="og:title" content="超级 Rui 的 2023 年度总结">
+<meta property="og:url" content="https://blog.superui.cc/life/2023-year-report/index.html">
 <meta property="og:site_name" content="Superui&#39;s Blog">
-<meta property="og:description" content="此处记录一些 Latex 的用法。">
+<meta property="og:description" content="写在 2024 农历新年前，对过去一年的回顾。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.superui.cc/gallery/covers/latex.png">
-<meta property="article:published_time" content="2021-08-30T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-05-30T03:00:00.000Z">
+<meta property="og:image" content="https://blog.superui.cc/gallery/covers/2023-year-report.jpg">
+<meta property="article:published_time" content="2024-02-05T18:00:00.000Z">
+<meta property="article:modified_time" content="2024-02-05T18:00:00.000Z">
 <meta property="article:author" content="Superui">
-<meta property="article:tag" content="latex">
+<meta property="article:tag" content="年终总结">
+<meta property="article:tag" content="生活">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.superui.cc/gallery/covers/latex.png">
+<meta name="twitter:image" content="https://blog.superui.cc/gallery/covers/2023-year-report.jpg">
   
   
   
-  <title>Latex 图片表格排版记录 - Superui&#39;s Blog</title>
+  <title>超级 Rui 的 2023 年度总结 - Superui&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,13 +233,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/gallery/covers/latex.png') no-repeat center center; background-size: cover;">
+     style="background: url('/gallery/covers/2023-year-report.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Latex 图片表格排版记录"></span>
+            <span id="subtitle" data-typed-text="超级 Rui 的 2023 年度总结"></span>
           
         </div>
 
@@ -249,8 +250,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2021-08-30 11:00" pubdate>
-          2021年8月30日 上午
+        <time datetime="2024-02-06 02:00" pubdate>
+          2024年2月6日 凌晨
         </time>
       </span>
     
@@ -261,7 +262,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.9k 字
+          2.5k 字
         
       </span>
     
@@ -272,7 +273,7 @@
         
         
         
-          24 分钟
+          21 分钟
         
       </span>
     
@@ -310,42 +311,140 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Latex 图片表格排版记录</h1>
-            
-              <p class="note note-info">
-                
-                  
-                    本文最后更新于：2 年前
-                  
-                
-              </p>
+            <h1 style="display: none">超级 Rui 的 2023 年度总结</h1>
             
             
               <div class="markdown-body">
                 
-                <!-- omit in toc -->
-<p>此处记录一些 Latex 的用法。</p>
+                <p>写在 2024 农历新年前，对过去一年的回顾。</p>
 <span id="more"></span>
-<h2 id="图片排版">图片排版</h2>
-<h3 id="子图排版">子图排版</h3>
-<p>涉及子图的图片排版可以参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/a6822342/article/details/80533135">此链接</a>。
-在此就不再赘述。</p>
-<h3 id="将图片放置于表格中">将图片放置于表格中</h3>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs LaTeX"><span class="hljs-keyword">\begin</span>&#123;table&#125;<br>   <span class="hljs-keyword">\centering</span><br>   <span class="hljs-keyword">\caption</span>&#123;The table of figures&#125;<br>   <span class="hljs-keyword">\hspace</span>*&#123;-0.15<span class="hljs-keyword">\linewidth</span>&#125;<br>   <span class="hljs-keyword">\begin</span>&#123;tabular&#125;&#123;cM&#123;0.25<span class="hljs-keyword">\linewidth</span>&#125;M&#123;0.25<span class="hljs-keyword">\linewidth</span>&#125;M&#123;0.25<span class="hljs-keyword">\linewidth</span>&#125;M&#123;0.25<span class="hljs-keyword">\linewidth</span>&#125;&#125;<br>      <span class="hljs-keyword">\toprule</span><br>        <span class="hljs-built_in">&amp;</span> A                                              <span class="hljs-built_in">&amp;</span> B                                              <span class="hljs-built_in">&amp;</span> C                                              <span class="hljs-built_in">&amp;</span> D                                              <span class="hljs-keyword">\\</span><br>      <span class="hljs-keyword">\midrule</span><br>      K <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\includegraphics</span>[width=<span class="hljs-keyword">\linewidth</span>]&#123;figure.png&#125; <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\includegraphics</span>[width=<span class="hljs-keyword">\linewidth</span>]&#123;figure.png&#125; <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\includegraphics</span>[width=<span class="hljs-keyword">\linewidth</span>]&#123;figure.png&#125; <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\includegraphics</span>[width=<span class="hljs-keyword">\linewidth</span>]&#123;figure.png&#125; <span class="hljs-keyword">\\</span><br>      L <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\includegraphics</span>[width=<span class="hljs-keyword">\linewidth</span>]&#123;figure.png&#125; <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\includegraphics</span>[width=<span class="hljs-keyword">\linewidth</span>]&#123;figure.png&#125; <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\includegraphics</span>[width=<span class="hljs-keyword">\linewidth</span>]&#123;figure.png&#125; <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\includegraphics</span>[width=<span class="hljs-keyword">\linewidth</span>]&#123;figure.png&#125; <span class="hljs-keyword">\\</span><br>      M <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\includegraphics</span>[width=<span class="hljs-keyword">\linewidth</span>]&#123;figure.png&#125; <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\includegraphics</span>[width=<span class="hljs-keyword">\linewidth</span>]&#123;figure.png&#125; <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\includegraphics</span>[width=<span class="hljs-keyword">\linewidth</span>]&#123;figure.png&#125; <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\includegraphics</span>[width=<span class="hljs-keyword">\linewidth</span>]&#123;figure.png&#125; <span class="hljs-keyword">\\</span><br>      N <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\includegraphics</span>[width=<span class="hljs-keyword">\linewidth</span>]&#123;figure.png&#125; <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\includegraphics</span>[width=<span class="hljs-keyword">\linewidth</span>]&#123;figure.png&#125; <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\includegraphics</span>[width=<span class="hljs-keyword">\linewidth</span>]&#123;figure.png&#125; <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\includegraphics</span>[width=<span class="hljs-keyword">\linewidth</span>]&#123;figure.png&#125; <span class="hljs-keyword">\\</span><br>      <span class="hljs-keyword">\bottomrule</span><br>   <span class="hljs-keyword">\end</span>&#123;tabular&#125;<br>   <span class="hljs-keyword">\label</span>&#123;table:table-of-figures&#125;<br><span class="hljs-keyword">\end</span>&#123;table&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="子图超出行宽强制不换行">子图超出行宽强制不换行</h3>
-<p>这个需求是因为在写文章时有时模版会在子图间加距离，导致按比例设置大小的子图超出行距换行。
-另一种情况就是有时我们需要稍外超出一些行距来使图片更大一些。
-一般来说这里需要使用到 <code>\makebox</code> 命令。</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs LaTeX"><span class="hljs-keyword">\begin</span>&#123;figure&#125;<br>   <span class="hljs-keyword">\centering</span><br>   <span class="hljs-keyword">\makebox</span>[<span class="hljs-keyword">\textwidth</span>][c]&#123;<br>   <span class="hljs-keyword">\subfigure</span>[Caption A]&#123;<br>      <span class="hljs-keyword">\begin</span>&#123;minipage&#125;[b]&#123;0.3<span class="hljs-keyword">\linewidth</span>&#125;<br>         <span class="hljs-keyword">\includegraphics</span>[width=1<span class="hljs-keyword">\textwidth</span>]&#123;figure/digit<span class="hljs-built_in">_</span>best.png&#125;<br>      <span class="hljs-keyword">\end</span>&#123;minipage&#125;<br>   &#125;<br>   <span class="hljs-keyword">\hspace</span>&#123;-0.05<span class="hljs-keyword">\linewidth</span>&#125;<br>   <span class="hljs-keyword">\subfigure</span>[Caption B]&#123;<br>      <span class="hljs-keyword">\begin</span>&#123;minipage&#125;[b]&#123;0.3<span class="hljs-keyword">\linewidth</span>&#125;<br>         <span class="hljs-keyword">\includegraphics</span>[width=1<span class="hljs-keyword">\textwidth</span>]&#123;figure/amazon<span class="hljs-built_in">_</span>best.png&#125;<br>      <span class="hljs-keyword">\end</span>&#123;minipage&#125;<br>   &#125;<br>   <span class="hljs-keyword">\hspace</span>&#123;-0.05<span class="hljs-keyword">\linewidth</span>&#125;<br>   <span class="hljs-keyword">\subfigure</span>[Caption C]&#123;<br>      <span class="hljs-keyword">\begin</span>&#123;minipage&#125;[b]&#123;0.3<span class="hljs-keyword">\linewidth</span>&#125;<br>         <span class="hljs-keyword">\includegraphics</span>[width=1<span class="hljs-keyword">\textwidth</span>]&#123;figure/office<span class="hljs-built_in">_</span>best.png&#125;<br>      <span class="hljs-keyword">\end</span>&#123;minipage&#125;<br>   &#125;<br>   <span class="hljs-keyword">\hspace</span>&#123;-0.05<span class="hljs-keyword">\linewidth</span>&#125;<br>   <span class="hljs-keyword">\subfigure</span>[Caption D]&#123;<br>      <span class="hljs-keyword">\begin</span>&#123;minipage&#125;[b]&#123;0.3<span class="hljs-keyword">\linewidth</span>&#125;<br>         <span class="hljs-keyword">\includegraphics</span>[width=1<span class="hljs-keyword">\textwidth</span>]&#123;figure/imageCLEF<span class="hljs-built_in">_</span>best.png&#125;<br>      <span class="hljs-keyword">\end</span>&#123;minipage&#125;<br>   &#125;&#125;<br>   <span class="hljs-keyword">\caption</span>&#123;A box of figures.&#125;<br>   <span class="hljs-keyword">\label</span>&#123;fig:box-figures&#125;<br><span class="hljs-keyword">\end</span>&#123;figure&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="子图引用">子图引用</h3>
-<p>如果是单张子图，可以直接引用 <code>Fig.~\ref&#123;子图&#125;</code>。
-如果是多张子图，可以使用 <code>Fig.~\ref&#123;主图&#125;\subref&#123;子图1&#125;\subref&#123;子图2&#125;</code> 来进行引用。（但是这个方法无法放到同一个括号里。）</p>
-<h2 id="表格排版">表格排版</h2>
-<h3 id="竖排表格中的文本">竖排表格中的文本</h3>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs LaTeX"><span class="hljs-keyword">\rotatebox</span>&#123;90&#125;&#123;some rotated text&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="表格中文本加粗">表格中文本加粗</h3>
-<p>通常情况下加粗后会使文本变宽，导致表格无法对齐。
-<a target="_blank" rel="noopener" href="https://blog.csdn.net/a411358606/article/details/120121332">前人</a>也遇到过这个问题，并尝试了了不同的加粗命令，发现使用<code>\pmb</code>可以避免文本变宽情况出现。</p>
+<h1>写在最最前</h1>
+<p>以后打算把年终总结放在农历新年前写，一是因为年关事多外加自己实在拖延，二是农历新年的分割性似乎比阳历新年更加明显。
+暂定每年除夕前以及阳历七八月份吧。
+这是个人的第三篇总结了，还是希望坚持下去。
+过去的这一年个人处境和心态有着巨大的变化，可以说是人生中比较重要的一年。</p>
+<h1>具体来说</h1>
+<h2 id="学业">学业</h2>
+<p>提交完论文之后这些手续拖得也太久了，不过终于也在 1 月份通过了答辩。
+答辩持续了近五个小时，第一次体会到“一个大写的博士”这句话的分量。
+这应该是年终总结里最后一次出现学业这一项了。</p>
+<p>此外终于在博士毕业之前进行了学术会议汇报，有趣。</p>
+<h2 id="健康">健康</h2>
+<p>这半年恢复了运动，但是篮球好久没打了，取而代之的是跑步。
+跑步虽然比较无趣，但是也能提供一点运动量，听着播客似乎也能接受。
+当然运动频率还是没有保证，记录如下。</p>
+<div style="width:40%; margin:auto"><img src="/life/2023-year-report/gym.jpeg" srcset="/img/loading.gif" lazyload class=""></div>
+<h2 id="工作">工作</h2>
+<p>半年前期望如今会有一个不错的答案，而现在却还没有答案。
+不过在找工作的过程中看清了很多东西，打破了很多自己的幻想，让自己直接接触这个现实的社会。
+再次希望今年的半年报里可以给出一个答案，不必是一个最好的答案，但是是一个自己可以接受的答案。</p>
+<h2 id="项目">项目</h2>
+<p>半年前想了很多脑洞项目，但是现在看来似乎都浮于表面，并不是为了解决实际问题。
+从功利的角度来讲，并不能拿来卖钱（有人买单），于是也就没有继续思考下去。</p>
+<h2 id="金钱与消费">金钱与消费</h2>
+<p>有着与上次记录相似的财务状况。
+认为记录财务状况是一个很好的习惯，即清楚自己的资产负债表。
+有知有行提供的工具还是比较美观好用的。</p>
+<p>发现越来越舍得花钱买体验，似乎有一些掉入消费主义。
+但是也有一些本质区别，即让“自己开心”还是“符合社会对开心的要求”。</p>
+<h2 id="读书">读书</h2>
+<p>上半年一本书都没有读，下半年读了很多书。
+读书很杂，有功利的也有非功利的。
+读到了最爱的一本书《献给阿尔吉侬的花束》。
+《马斯克传》我认为可以称为年度最佳科幻小说。
+也读了《别独自用餐》这种类成功学书籍。</p>
+<p>读书是一件重要的事情，其获得的快乐本质上与旅游无异，同时也可以替代短视频奶头乐，何乐而不为。</p>
+<h2 id="观影和视频">观影和视频</h2>
+<p>今年并没有什么观影体验。
+但近期看《繁花》，王家卫导演监制。
+光影绝美，叙事的方式也很有趣。
+我倒是对故事线不是很感兴趣，虽然也跌宕起伏，但是更加喜爱摄影的格调。
+高级的事物总是会引人喜爱的。</p>
+<h2 id="摄影">摄影</h2>
+<p>这是拍照片最多的一年，提交完大论文之后又把相机们买了回来。
+但是似乎还是没有找到自己的风格。
+尝试了不少主题，但似乎还是拍的不够多，想的不够多。
+或许可以多看看多学学。
+已然意识到这是终身爱好，不必急于求成。</p>
+<p>已有的作品整理展示或者印刷分享其实是一件较为重要的事。
+不管是从分享快乐还是从严肃成长方面，都可以更系统性的做起来。</p>
+<h2 id="东游西逛">东游西逛</h2>
+<p>去了贵阳去了杭州去了克拉科夫去了卡塔尔去了伊斯坦布尔去了东京。
+读博之后第一次出这么多门，感觉还是很不错的。
+东京已然成为内心最喜爱城市 top3，感叹这个城市的美感以及高级感。</p>
+<h2 id="感情">感情</h2>
+<p>我认识到人对自己需求的认识是会不断完善的。
+也认识到不会有完美的人，任何关系在袒露自我的过程中都会暴露出一些问题，本质原因是自我性的回归导致滤镜的打破。</p>
+<p>人和人的深度关系基础是对其真实人格的接纳，而不是对自己内心幻想的接纳，即要爱真实的人。
+但是这是一件很难的事情，因为需要包容。
+拒绝接纳很简单，包容很难，希望自己能够逐步提升这个能力，不要只做简单的事。
+（此外，你觉得你是在包容别人，殊不知别人也在包容你，不要只看到自己单方面的付出。）</p>
+<h1>认知方面</h1>
+<p>在自己摸索以及和长辈们交谈的过程中，一次又一次地感受到了自己的认知水平的不足。
+以后每次总结都会对这段时间的认知变化进行记录。</p>
+<p>但认知到底是个什么东西，似乎还没有一个准确的定义。
+或许指的是如何看待事物、优化能力、信息处理等。
+自己认为或有以下几个重要维度，每次总结或有删改。
+自己以为然的，记录在下面。</p>
+<h2 id="自我提升">自我提升</h2>
+<ul>
+<li>在经验和方法论上和世界上各行业最优秀的人攀比 (学习), 在最终的结果上和过去的自己攀比。</li>
+<li>优秀的人一定有稀缺性以及不一样的地方，至少不能被别人的帕累托前沿支配。</li>
+<li>从追求简历美德到追求悼词美德。即从名头到价值，当然这两者也不是完全独立的。</li>
+</ul>
+<h2 id="心态调节">心态调节</h2>
+<ul>
+<li>和自己和解，不要总是苛求每一步的完美，否则容易捡了芝麻丢了西瓜。</li>
+<li>降低期望值，不要把一些正在争取的事看作理所应当。</li>
+<li>接受一切可能发生的结果。这一项很难，或许需要不断磨练。</li>
+<li>急功近利和走捷径的心态要不得，有时候可以不那么聪明，踏实稳重一些。</li>
+</ul>
+<h2 id="做决定">做决定</h2>
+<ul>
+<li>“成年人的世界，在于你敢不敢承担风险，敢，就是成年人。”承担风险一定程度上可以看做不同维度间的选择，不能既要又要，想清楚自己要什么然后果断去做。</li>
+<li>芒格说：“在选择人生伴侣时，你要在你能接触到的，并且愿意和你携手的人中，挑选一位最优秀的。有的人愿意和你携手，但你接触不到，那就不在考虑范围之内。” 做选择亦是如此，有很多虚假的选择会骗过你自己。</li>
+</ul>
+<h2 id="信息获取">信息获取</h2>
+<ul>
+<li>找到一个方向，阅读这个方向里最聪明人的历史所有微博记录，迅速增加观察世界的角度。</li>
+</ul>
+<h2 id="人际交往">人际交往</h2>
+<ul>
+<li>不同阶层的特征主要是感情的稀缺性以及资源量级的不同。</li>
+<li>要做主动的人，不要怕麻烦别人，大部分长者以及有经验的人是乐于帮助你的，你不会损失什么，或许只有一些虚假的自尊。</li>
+</ul>
+<h2 id="一些道理">一些道理</h2>
+<ul>
+<li>骗别人可以，不要把自己也骗了。</li>
+<li>你是你的投资组合中，最有价值的资产。你的声誉是你未来收入的代表。而声誉是一个简单的结构，建立在两个想法之上，能力：你能做什么，可靠性：你实际做了什么。对于时间的投资最好还是要落到这两个地方，即投资自己。</li>
+</ul>
+<h1>番外篇：一些碎碎念 Blah Blah</h1>
+<ul>
+<li>再次，太喜欢老板了。</li>
+<li>自己出生 10000 天打卡纪念。</li>
+<li>答辩完成如释重负。</li>
+<li>做一只伊斯坦布尔的猫好幸福。</li>
+<li>开始喝咖啡了，当然是比较弱的拿铁。</li>
+<li>荒木经惟的照片过于有感染力。</li>
+<li>想当一个摄影很棒的有趣的人。</li>
+</ul>
+<h1>总结展望</h1>
+<h2 id="一些收获">一些收获</h2>
+<p>科研成果满足毕业要求，终于能毕业了，这是今年最大的收获。</p>
+<h2 id="一些遗憾">一些遗憾</h2>
+<ul>
+<li>没能进 VC 和量化这两个行业体验一下。</li>
+</ul>
+<h2 id="立起新的-Flag">立起新的 Flag</h2>
+<p>沿用了很多上次的 flag，</p>
+<ul>
+<li>猛猛健康运动！</li>
+<li>希望能找到一个喜欢的工作/事业。</li>
+<li>希望能多多探索不一样的事物（包括自己）。</li>
+<li>希望能坚持读书。</li>
+<li>争取把多邻国搞定。</li>
+<li>希望能精进一下摄影。</li>
+</ul>
 
                 
               </div>
@@ -364,7 +463,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/programming/" class="category-chain-item">Programming</a>
+  <a href="/categories/Life/" class="category-chain-item">Life</a>
   
   
 
@@ -379,7 +478,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/latex/">#latex</a>
+        <a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">#年终总结</a>
+      
+        <a href="/tags/%E7%94%9F%E6%B4%BB/">#生活</a>
       
     </div>
   
@@ -391,8 +492,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Latex 图片表格排版记录</div>
-      <div>https://blog.superui.cc/programming/latex/</div>
+      <div>超级 Rui 的 2023 年度总结</div>
+      <div>https://blog.superui.cc/life/2023-year-report/</div>
     </div>
     <div class="license-meta">
       
@@ -404,14 +505,9 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2021年8月30日</div>
+          <div>2024年2月6日</div>
         </div>
       
-      
-        <div class="license-meta-item license-meta-date">
-          <div>更新于</div>
-          <div>2022年5月30日</div>
-        </div>
       
       
         <div class="license-meta-item">
@@ -441,18 +537,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/machine-learning/batch-normalization/" title="Batch Normalization">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Batch Normalization</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/reading-note/china-bold-future/" title="中国为什么有前途">
-                        <span class="hidden-mobile">中国为什么有前途</span>
+                      <a href="/machine-learning/diffusion/" title="Diffusion Model">
+                        <span class="hidden-mobile">Diffusion Model</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
