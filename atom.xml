@@ -6,7 +6,7 @@
   <link href="https://blog.superui.cc/atom.xml" rel="self"/>
   
   <link href="https://blog.superui.cc/"/>
-  <updated>2024-02-05T18:00:00.000Z</updated>
+  <updated>2024-02-08T07:00:00.000Z</updated>
   <id>https://blog.superui.cc/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《我将宇宙随身携带—佩索阿诗集》读后感</title>
+    <link href="https://blog.superui.cc/reading-note/carry-the-universe/"/>
+    <id>https://blog.superui.cc/reading-note/carry-the-universe/</id>
+    <published>2024-02-08T07:00:00.000Z</published>
+    <updated>2024-02-08T07:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<!-- omit in toc --><p>作者，葡萄牙籍诗人，费尔南多·佩索阿。</p><p>这是一本因为书名而买的诗集，断断续续读完，并不记得哪些具体的诗，但记住了一种感觉。</p><span id="more"></span><h2 id="读后感">读后感</h2><p>这本书里的诗描述的客体种类繁多，有花花草草、各种动物、自然宇宙。但是有意思的一点在于，其描述都是以一种“客观”的方式进行。绝大多数诗中，作者将自己看作一个旁观者，睁大好奇的眼睛，去观察这个世界。他不掺杂自己的理解，不揣测事物的意义，用最真实的方式去描述。看似是在反对修辞，倒不如说，他不赋予事物任何的哲学意义，坚持事物仅仅是事物。</p><p>更有意思的一点在于，他总要强调自己“真实”的描述，即在描述之外，仍要强调描述的一切独立于作者的思想而存在。所以我们会经常看到以下类型的语句“我思考用眼睛和耳朵”，“我不知道我在想什么，我也不想知道”，“但事物并没有名字或人格”，“真实意味着不存在于我的内心”“《水就是水》”…可能作者生怕读者误解他在赋予事物意义，所以总是在强调它只是一个旁观者，事物并没有这种哲学意义。所以通篇串联下来，虽然每首诗在讲不同的观察，但是核心观点仅有一个——“我这个旁观者并不赋予事物意义，我只是观察和体会。”正如《一想到事物》这首诗中讲到，“我观看，事物存在。我思想，只有我存在。”</p><p>对于我个人来说，本书还是有着一定的启发，即“无我”。生活中我们总会给事物赋予我们自己的意义，但是这种意义并不是事物本身的意义。我们对自我的感知太强，以至于我们总是在用自己的眼光去看世界，而不是用世界的眼光去看世界。所以我们眼中的世界其实是自己的投射，有点类似于佛印和苏东坡说的“心中有佛所见皆佛，心中有屎所见皆屎。”（当然这个故事可能是小时候的鸡汤文）当然不论是佛还是屎，都是强加的意义，已经脱离了事物本质，蒙蔽了双眼。</p><p>但为什么要“无我”呢？剖离我的过程其实是一件较难的事情，要求人不以自己的价值观和好恶来看待事物。即更多的关注“是什么”“应该是什么”而不是“我觉得是什么”。这样便会不那么容易跳入以自我为中心的逻辑，也会避免由于自己人性的弱点而为自己无意设下的陷阱。</p><p>不过“无我之路”道阻且长，能时刻意识到自己处于自己的视角，而不是世界的视角，也还是不错的。</p>]]></content>
+    
+    
+    <summary type="html">&lt;!-- omit in toc --&gt;
+&lt;p&gt;作者，葡萄牙籍诗人，费尔南多·佩索阿。&lt;/p&gt;
+&lt;p&gt;这是一本因为书名而买的诗集，断断续续读完，并不记得哪些具体的诗，但记住了一种感觉。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Reading Note" scheme="https://blog.superui.cc/categories/reading-note/"/>
+    
+    
+    <category term="poem" scheme="https://blog.superui.cc/tags/poem/"/>
+    
+  </entry>
   
   <entry>
     <title>超级 Rui 的 2023 年度总结</title>
@@ -501,33 +524,6 @@ Adobe 和 Mac 社区偶像级专家。&lt;/p&gt;</summary>
     <category term="web3.0" scheme="https://blog.superui.cc/tags/web3-0/"/>
     
     <category term="元宇宙" scheme="https://blog.superui.cc/tags/%E5%85%83%E5%AE%87%E5%AE%99/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Contrastive Learning 再次学习</title>
-    <link href="https://blog.superui.cc/machine-learning/contrastive-learning-again/"/>
-    <id>https://blog.superui.cc/machine-learning/contrastive-learning-again/</id>
-    <published>2023-02-21T10:00:00.000Z</published>
-    <updated>2023-02-21T10:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<!-- omit in toc --><p>由于最近工作需要用到对比损失，这里对近期看到的一些资料进行整理。之前我们也对对比学习做过一个初步学习，具体详见<a href="/machine-learning/contrastive-learning/" title="此笔记">此笔记</a>。</p><span id="more"></span><p>本文主要是对以下三篇资料的学习：</p><ul><li>SimCSE: Simple Contrastive Learning of Sentence Embeddings <a href="https://arxiv.org/pdf/2104.08821.pdf">[2021, EMNLP]</a></li><li>Prototypical Contrastive Learning of Unsupervised Representations <a href="https://arxiv.org/pdf/2005.04966.pdf">[2021, ICLR]</a></li><li><strong>Tutotial:</strong> Contrastive Data and Learning for Natural Language Processing <a href="https://contrastive-nlp-tutorial.github.io/files/contrastive_nlp_tutorial.pdf">[2022, NAACL]</a></li></ul><h1>SimCSE</h1><p>同时有监督式和无监督式对比学习，standard <strong>dropout</strong> used as noise：</p><ol><li>Unsupervised approach:<ul><li>使用两次 dropout 并互为正样本。</li><li>Unsupervised SimCSE essentially improves uniformity while avoiding degenerated alignment via dropout noise, thus improving the expressiveness of the representations.</li></ul></li><li>Supervised approach:<ul><li>将标注样本加入对比学习。</li><li>Takes alignment between semantically-related positive pairs and uniformity of the whole representation space to measure the quality of learned embeddings.</li></ul></li><li>对比了其他的正样本生成方式：<ul><li>crop / word deletion / synonym replacement</li></ul></li><li>使用 supervised  和 unsupervised CL：<ul><li>目测这个 supervised 里面已经包含了 unsupervised？</li><li>在他自己的分析中，他们这种使用 dropout 的方法保证了 uniformity 和 alignment。</li></ul></li></ol><h1>Prototypical Contrastive Learning</h1><p>同时使用无监督对比表征学习和聚类。</p><ol><li>It encodes semantic structures discovered by clustering into the learned embedding space.</li><li>Propose ProtoNCE loss, a generalized version of the InfoNCE loss for contrastive learning, which encourages representations to be closer to their assigned prototypes.<ul><li>包含一项 infoNCE，to retain the property of local smoothness and help bootstrap clustering.</li><li>也包含一项 cluster 相关的 loss，形式和 infoNCE 很像，只是把 augmented examples 替换成了 cluster centroids。这个其实可以看做某种半/无监督类型的对比，因为本质上是使用了 pseudo-labels。</li></ul></li></ol><h1>Contrastive Data and Learning for NLP</h1><p>这个是 NAACL 上的一个 Toturial，此处记录一些自认为重要的点：</p><ol><li>Contrastive Learning = Contrastive Data Creation + Contrastive Objective Optimization</li><li>Noise Contrastive Estimation (NCE) 仅是对比学习中的一类 loss。</li><li>Normalized Temperature-scaled Cross-Entropy (NT-Xent) 即为 InfoNCE with Cosine Similarity on Normalized Embeddings。</li><li>Hard negative mining: find hard negative examples. We want to ancher-neg is greater than anchor-pos, at least by the margin.</li><li>更大的批选取通常有更好的表现。</li><li>Two geometric forces on the hypersphere: alignment &amp; uniformity</li></ol><h1>My Questions?</h1><p>本次阅读这些文章主要是为了回答自己的两个问题：</p><ol><li>在文本上如何进行正负样本的构建？（图像上的构建方式在上一次的学习笔记中已经提到不少。）<ul><li>crop / word deletion / synonym replacement / back-translation / cut-off / mixup</li></ul></li><li>同时添加 supervised 和 unsupervised contrastive loss 这种方式有时表现不错，如何解释？<ul><li>前两篇文章都有监督损失和非监督损失的结合，都取得了较好的表现。</li><li>或许是因为两种结合可以更好的保证学得表征的 alignment &amp; uniformity。</li></ul></li></ol>]]></content>
-    
-    
-    <summary type="html">&lt;!-- omit in toc --&gt;
-&lt;p&gt;由于最近工作需要用到对比损失，这里对近期看到的一些资料进行整理。
-之前我们也对对比学习做过一个初步学习，具体详见&lt;a href=&quot;/machine-learning/contrastive-learning/&quot; title=&quot;此笔记&quot;&gt;此笔记&lt;/a&gt;。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Machine Learning" scheme="https://blog.superui.cc/categories/Machine-Learning/"/>
-    
-    
-    <category term="machine-learning" scheme="https://blog.superui.cc/tags/machine-learning/"/>
-    
-    <category term="contrastive-learning" scheme="https://blog.superui.cc/tags/contrastive-learning/"/>
-    
-    <category term="self-supervised-learning" scheme="https://blog.superui.cc/tags/self-supervised-learning/"/>
     
   </entry>
   
