@@ -1085,6 +1085,34 @@
   </url>
   
   <url>
+    <loc>https://blog.superui.cc/tags/distribution/</loc>
+    <lastmod>2024-02-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.superui.cc/tags/KL-divergence/</loc>
+    <lastmod>2024-02-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.superui.cc/tags/JS-divergence/</loc>
+    <lastmod>2024-02-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.superui.cc/tags/optimization/</loc>
+    <lastmod>2024-02-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.superui.cc/tags/active-learning/</loc>
     <lastmod>2024-02-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -1288,34 +1316,6 @@
   </url>
   
   <url>
-    <loc>https://blog.superui.cc/tags/distribution/</loc>
-    <lastmod>2024-02-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.superui.cc/tags/KL-divergence/</loc>
-    <lastmod>2024-02-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.superui.cc/tags/JS-divergence/</loc>
-    <lastmod>2024-02-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.superui.cc/tags/optimization/</loc>
-    <lastmod>2024-02-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.superui.cc/tags/survey/</loc>
     <lastmod>2024-02-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -1428,13 +1428,6 @@
   </url>
   
   <url>
-    <loc>https://blog.superui.cc/tags/poem/</loc>
-    <lastmod>2024-02-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.superui.cc/tags/%E8%AF%BB%E4%B9%A6/</loc>
     <lastmod>2024-02-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -1443,6 +1436,13 @@
   
   <url>
     <loc>https://blog.superui.cc/tags/%E5%8E%86%E5%8F%B2/</loc>
+    <lastmod>2024-02-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.superui.cc/tags/poem/</loc>
     <lastmod>2024-02-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1645,6 +1645,13 @@
   </url>
   
   <url>
+    <loc>https://blog.superui.cc/tags/Cognitive/</loc>
+    <lastmod>2024-02-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.superui.cc/tags/Embodied-AI/</loc>
     <lastmod>2024-02-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -1653,13 +1660,6 @@
   
   <url>
     <loc>https://blog.superui.cc/tags/Robotics/</loc>
-    <lastmod>2024-02-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.superui.cc/tags/Cognitive/</loc>
     <lastmod>2024-02-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
