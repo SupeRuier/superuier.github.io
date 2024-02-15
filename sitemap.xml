@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.superui.cc/machine-learning/gaussian-process/</loc>
+    
+    <lastmod>2024-02-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.superui.cc/reading-note/special-privilege-and-rent-seeking/</loc>
     
     <lastmod>2024-02-13</lastmod>
@@ -533,15 +542,6 @@
   </url>
   
   <url>
-    <loc>https://blog.superui.cc/machine-learning/gaussian-process/</loc>
-    
-    <lastmod>2022-03-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.superui.cc/economy-finance/seminar-talks/dance-dragon/</loc>
     
     <lastmod>2022-02-26</lastmod>
@@ -1057,14 +1057,14 @@
   </url>
   
   <url>
-    <loc>https://blog.superui.cc/tags/interesting/</loc>
+    <loc>https://blog.superui.cc/tags/%E6%84%9F%E6%82%9F%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2024-02-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.superui.cc/tags/%E6%84%9F%E6%82%9F%E6%80%BB%E7%BB%93/</loc>
+    <loc>https://blog.superui.cc/tags/interesting/</loc>
     <lastmod>2024-02-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1155,20 +1155,6 @@
   </url>
   
   <url>
-    <loc>https://blog.superui.cc/tags/contrastive-learning/</loc>
-    <lastmod>2024-02-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.superui.cc/tags/self-supervised-learning/</loc>
-    <lastmod>2024-02-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.superui.cc/tags/deep-learning/</loc>
     <lastmod>2024-02-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -1177,6 +1163,20 @@
   
   <url>
     <loc>https://blog.superui.cc/tags/high-performance-computing/</loc>
+    <lastmod>2024-02-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.superui.cc/tags/contrastive-learning/</loc>
+    <lastmod>2024-02-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.superui.cc/tags/self-supervised-learning/</loc>
     <lastmod>2024-02-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1731,14 +1731,14 @@
   </url>
   
   <url>
-    <loc>https://blog.superui.cc/categories/Interesting-Stuff/</loc>
+    <loc>https://blog.superui.cc/categories/knowledge-from-growth/</loc>
     <lastmod>2024-02-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.superui.cc/categories/knowledge-from-growth/</loc>
+    <loc>https://blog.superui.cc/categories/Interesting-Stuff/</loc>
     <lastmod>2024-02-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
