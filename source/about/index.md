@@ -4,14 +4,14 @@ layout: about
 date: 2023-01-03 18:44:37
 ---
 
-<p class="note note-primary">
+<!-- <p class="note note-primary">
 先说正事 / Business First
-</p>
+</p> -->
 
-[简历](resume-zh.pdf) / [Résumé](resume-en.pdf)
+<!-- [简历](resume-zh.pdf) / [Résumé](resume-en.pdf) -->
 
 <p class="note note-success">
-正事说完就是一些关于“我”的浅层的标签。
+一些关于“我”的浅层的标签。
 </p>
 
 - 上世纪九十年代中期人。
