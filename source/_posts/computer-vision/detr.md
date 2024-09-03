@@ -85,7 +85,7 @@ DETR 是第一篇将 Transformer 应用到目标检测方向的算法。
 - 解码器有两个输入，一个是编码器得到的特征，一个是 object queries，其维度为 $N \times d$，其中 $N$ 为目标的个数（一个事先设置好的超参数，通常远大于实际目标数）。
   - 初始层的 self-attention 中使用 object queries 作为 Q 和 K，V，其中
   - 中间层的多头 cross-attention 中使用编码器得到的特征作为 K 和 V，其中需要将位置编码加入 K。
-  - Object queries 的作用类似于基于 CNN 的目标检测算法中的 anchor boxes，是一个可以训练的嵌入向量，用于预测目标的位置和类别。
+  - Object queries 的作用类似于基于 CNN 的目标检测算法中的 anchor boxes，是一个可以训练的嵌入向量，用于预测目标的位置和类别。具体来说使用了 learnt positional encoding 作为 object queries，以保证每一个 query 可以独特的表示一个物体。
   - 原始的 object query 也会通过 skip connection 传入每一层解码器的自注意力模块中的 Q 和 K，以及交叉注意力模块中的 Q。
   - N 个结果不是顺序得到的，而是一次性得到 N 个结果，这点和原始的 Transformer 的自回归计算是不同的（只做一次输出）。
   - 每个 object queries 通过预测头预测目标的 bounding box 和类别，其中 bounding box 有三个值，分别是目标的中心点以及宽和高。超过目标个数的 ground truth 使用背景元素来作为负样本。
