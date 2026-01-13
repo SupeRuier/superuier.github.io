@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SUPERUI - 粒子动效主页</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,9 +13,9 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Rubik', sans-serif;
             overflow: hidden;
-            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            background: #000000;
         }
 
         #canvas {
@@ -38,15 +39,10 @@
         .title {
             font-size: 8rem;
             font-weight: 900;
-            background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00, #00ffff);
-            background-size: 400% 400%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientShift 3s ease infinite;
-            text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+            color: #ffffff;
             letter-spacing: 0.1em;
             position: relative;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
         }
 
         .title::before {
@@ -55,14 +51,9 @@
             top: 0;
             left: 0;
             z-index: -1;
-            background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00, #00ffff);
-            background-size: 400% 400%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #ffffff;
             filter: blur(10px);
-            opacity: 0.5;
-            animation: gradientShift 3s ease infinite;
+            opacity: 0.3;
         }
 
         @keyframes gradientShift {
@@ -73,7 +64,7 @@
 
         .subtitle {
             font-size: 1.2rem;
-            color: #00ffff;
+            color: #ffffff;
             margin-top: 20px;
             opacity: 0.8;
             letter-spacing: 0.3em;
@@ -93,7 +84,7 @@
             transform: translate(-50%, -50%);
             width: 400px;
             height: 200px;
-            background: radial-gradient(ellipse, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+            background: radial-gradient(ellipse, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
             animation: pulse 4s ease-in-out infinite;
             z-index: 5;
         }
@@ -162,7 +153,8 @@
                 this.size = Math.random() * 2 + 0.5;
                 this.speedX = Math.random() * 0.5 - 0.25;
                 this.speedY = Math.random() * 0.5 - 0.25;
-                this.color = `rgba(${Math.random() * 100 + 155}, ${Math.random() * 100 + 155}, ${Math.random() * 255}, ${Math.random() * 0.8 + 0.2})`;
+                const brightness = Math.random() * 255;
+            this.color = `rgba(${brightness}, ${brightness}, ${brightness}, ${Math.random() * 0.8 + 0.2})`;
             }
 
             update() {
@@ -224,7 +216,7 @@
                         if (distance < this.connectionDistance) {
                             const opacity = 1 - distance / this.connectionDistance;
                             ctx.beginPath();
-                            ctx.strokeStyle = `rgba(0, 255, 255, ${opacity * 0.3})`;
+                            ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.3})`;
                             ctx.lineWidth = 0.5;
                             ctx.moveTo(this.particles[i].x, this.particles[i].y);
                             ctx.lineTo(this.particles[j].x, this.particles[j].y);
