@@ -56,6 +56,61 @@
             opacity: 0.3;
         }
 
+        /* 博客入口 */
+        .blog-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.95em;
+            margin-top: 2.5rem;
+            padding: 1rem 2.3rem;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.02);
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 0.84rem;
+            font-weight: 400;
+            letter-spacing: 0.32em;
+            text-decoration: none;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            transition: color 0.35s ease, border-color 0.35s ease, background 0.35s ease,
+                        box-shadow 0.35s ease, transform 0.35s ease;
+        }
+
+        .blog-link .arrow {
+            display: inline-block;
+            font-size: 1.15rem;
+            line-height: 1;
+            transition: transform 0.35s ease;
+        }
+
+        .blog-link:hover,
+        .blog-link:focus-visible {
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.07);
+            box-shadow: 0 0 34px rgba(255, 255, 255, 0.18),
+                        inset 0 0 22px rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .blog-link:focus-visible {
+            outline: 1px solid rgba(255, 255, 255, 0.55);
+            outline-offset: 4px;
+        }
+
+        .blog-link:hover .arrow,
+        .blog-link:focus-visible .arrow {
+            transform: translateX(5px);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .blog-link,
+            .blog-link .arrow {
+                transition: none;
+            }
+        }
+
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -104,6 +159,14 @@
                 font-size: 0.8rem;
             }
 
+            .blog-link {
+                margin-top: 1.9rem;
+                padding: 0.8rem 1.7rem;
+                font-size: 0.72rem;
+                letter-spacing: 0.26em;
+                gap: 0.7em;
+            }
+
             .glow-effect {
                 width: 250px;
                 height: 150px;
@@ -119,6 +182,13 @@
                 font-size: 0.6rem;
             }
 
+            .blog-link {
+                margin-top: 1.6rem;
+                padding: 0.75rem 1.5rem;
+                font-size: 0.68rem;
+                letter-spacing: 0.22em;
+            }
+
             .glow-effect {
                 width: 200px;
                 height: 100px;
@@ -131,6 +201,10 @@
     <div class="glow-effect"></div>
     <div class="title-container">
         <h1 class="title">SUPERUI</h1>
+        <a class="blog-link" href="https://superuier.github.io/rui-blog/">
+            <span>技术笔记</span>
+            <span class="arrow" aria-hidden="true">→</span>
+        </a>
     </div>
 
     <script>
